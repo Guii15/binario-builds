@@ -27,7 +27,6 @@ import {
 } from "lucide-react";
 import { useEffect, useMemo, useState, type ComponentType } from "react";
 
-import workbench from "@/assets/binario-workbench.jpg";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -113,7 +112,6 @@ function Index() {
   const [selected, setSelected] = useState<Record<string, number>>({});
   const [search, setSearch] = useState("");
   const [platform, setPlatform] = useState<"all" | "AMD" | "Intel">("all");
-  const [includeOrder, setIncludeOrder] = useState(false);
   const [sellerOpen, setSellerOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -134,11 +132,18 @@ function Index() {
 
   const visibleParts = parts.filter((part) => {
     if (part.category !== active) return false;
-    if (!includeOrder && part.stock === 0) return false;
+    if (part.stock === 0) return false;
     if (platform !== "all" && part.platform && part.platform !== platform) return false;
     if (active === "motherboard" && cpu?.socket && part.socket !== cpu.socket) return false;
     if (active === "memory" && cpu?.socket === "AM5" && !part.name.includes("32 GB")) return false;
     if (active === "memory" && cpu?.socket && cpu.socket !== "AM5" && part.name.includes("32 GB")) return false;
+    return `${part.name} ${part.brand} ${part.code}`.toLowerCase().includes(search.toLowerCase());
+  });
+
+  const orderParts = parts.filter((part) => {
+    if (part.category !== active || part.stock > 0) return false;
+    if (platform !== "all" && part.platform && part.platform !== platform) return false;
+    if (active === "motherboard" && cpu?.socket && part.socket !== cpu.socket) return false;
     return `${part.name} ${part.brand} ${part.code}`.toLowerCase().includes(search.toLowerCase());
   });
 
@@ -180,6 +185,12 @@ function Index() {
     setSellerOpen(false);
   }
 
+  function requestPart(part?: Part) {
+    const item = part ? `${part.name} (${part.code})` : `uma peça da categoria ${categories.find((item) => item.id === active)?.label}`;
+    const text = `Olá! Gostaria de consultar uma encomenda de ${item}. Podem verificar disponibilidade, prazo e valor?`;
+    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
+  }
+
   return (
     <div className="min-h-screen bg-background pb-24 text-foreground">
       <header className="site-header">
@@ -197,35 +208,15 @@ function Index() {
       </header>
 
       <main>
-        <section id="inicio" className="hero-section">
-          <div className="shell hero-grid">
-            <div className="hero-copy">
-              <div className="overline"><span>Montagem especializada</span><span>Varginha · MG</span></div>
-              <h1>Seu próximo PC começa com as peças certas.</h1>
-              <p>Monte com segurança, veja o preço na hora e fale direto com quem entende. Só mostramos combinações que funcionam juntas.</p>
-              <div className="flex flex-wrap gap-3">
-                <Button size="lg" asChild><a href="#montador">Começar montagem <ArrowDown /></a></Button>
-                <Button size="lg" variant="outline" asChild><a href="#prontas">Ver modelos prontos</a></Button>
-              </div>
-              <div className="hero-proof" aria-label="Diferenciais da loja">
-                <span><ShieldCheck /> Peças com garantia</span><span><PackageCheck /> Montado e testado</span><span><Headphones /> Suporte local</span>
-              </div>
-            </div>
-            <div className="hero-visual">
-              <img src={workbench} alt="Computador sendo montado e testado na bancada técnica" width={1400} height={900} />
-              <div className="image-stamp"><strong>PC</strong><span>montagem local<br />em Varginha</span></div>
-              <div className="image-caption"><span>Montagem técnica</span><strong>Organização, teste e cuidado em cada máquina.</strong></div>
-            </div>
+        <section id="inicio" className="builder-intro">
+          <div className="shell intro-content">
+            <div><span>BINÁRIO MONTE SEU PC</span><h1>Monte seu computador</h1><p>Escolha os componentes e acompanhe o valor da sua configuração.</p></div>
+            <div className="intro-benefits"><span><ShieldCheck /> Peças compatíveis</span><span><PackageCheck /> Montagem e testes</span><span><Truck /> Retirada em Varginha</span></div>
           </div>
-        </section>
-
-        <section className="trust-strip" aria-label="Informações de atendimento">
-          <div className="shell trust-grid"><div><Truck /><span><strong>Retire em Varginha</strong><small>ou consulte a entrega</small></span></div><div><ShieldCheck /><span><strong>Garantia de verdade</strong><small>nota fiscal em todas as peças</small></span></div><div><Gauge /><span><strong>Teste antes de sair</strong><small>máquina pronta para uso</small></span></div></div>
         </section>
 
         <section id="montador" className="builder-section">
           <div className="shell">
-            <div className="section-heading"><div><span className="section-index mono">01 / MONTADOR</span><h2>Escolha peça por peça</h2></div><p>Comece pelo processador. A seleção vai sendo filtrada conforme a sua montagem.</p></div>
             <div className="step-rail" role="tablist" aria-label="Etapas da montagem">
               {categories.map((category, index) => {
                 const done = chosen.some((part) => part.category === category.id);
@@ -236,11 +227,10 @@ function Index() {
 
             <div className="builder-grid">
               <div className="catalog-column">
-                <div className="catalog-title"><div><span className="mono">ETAPA {String(categories.findIndex((item) => item.id === active) + 1).padStart(2, "0")}</span><h3>{categories.find((item) => item.id === active)?.label}</h3></div><span>{visibleParts.length} opções compatíveis</span></div>
+                <div className="catalog-title"><div><span>ETAPA {categories.findIndex((item) => item.id === active) + 1} DE {categories.length}</span><h3>Escolha seu {categories.find((item) => item.id === active)?.label}</h3></div><span>{visibleParts.length} produtos disponíveis</span></div>
                 <div className="filter-bar">
                   <label className="search-field"><Search /><input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Buscar por nome, marca ou código" /></label>
                   <div className="segmented" aria-label="Filtrar plataforma"><button aria-pressed={platform === "all"} onClick={() => setPlatform("all")}>Todos</button><button aria-pressed={platform === "AMD"} onClick={() => setPlatform("AMD")}>AMD</button><button aria-pressed={platform === "Intel"} onClick={() => setPlatform("Intel")}>Intel</button></div>
-                  <label className="order-toggle"><input type="checkbox" checked={includeOrder} onChange={(event) => setIncludeOrder(event.target.checked)} /> Sob encomenda</label>
                 </div>
                 <div className="product-list">
                   {visibleParts.map((part) => {
@@ -248,11 +238,16 @@ function Index() {
                     const Icon = categories.find((category) => category.id === part.category)?.icon ?? Cpu;
                     return <article className="product-row" data-selected={chosenPart} key={part.id}>
                       <div className="product-icon"><Icon /></div>
-                      <div className="product-main"><div className="product-meta"><span>{part.brand}</span><code>{part.code}</code></div><h4>{part.name}</h4><p>{part.detail}</p><span className={part.stock ? "stock-ok" : "stock-order"}>{part.stock ? `${part.stock} em estoque` : "Sob encomenda"}</span></div>
-                      <div className="product-buy"><strong>{money.format(part.price)}</strong><small>em até 10×</small><Button variant={chosenPart ? "secondary" : "default"} onClick={() => chosenPart ? setSelected((current) => { const next = { ...current }; delete next[part.id]; return next; }) : selectPart(part)} aria-label={`${chosenPart ? "Remover" : "Escolher"} ${part.name}`}>{chosenPart ? <><Check /> Escolhido</> : <>Escolher <ArrowRight /></>}</Button></div>
+                      <div className="product-main"><div className="product-meta"><span>{part.brand}</span><code>{part.code}</code></div><h4>{part.name}</h4><p>{part.detail}</p><span className="stock-ok">Disponível · {part.stock} em estoque</span></div>
+                      <div className="product-buy"><strong>{money.format(part.price)}</strong><small>em até 10× sem juros</small><Button variant={chosenPart ? "secondary" : "default"} onClick={() => chosenPart ? setSelected((current) => { const next = { ...current }; delete next[part.id]; return next; }) : selectPart(part)} aria-label={`${chosenPart ? "Remover" : "Escolher"} ${part.name}`}>{chosenPart ? <><Check /> Escolhido</> : <>Escolher <ArrowRight /></>}</Button></div>
                     </article>;
                   })}
                   {!visibleParts.length && <div className="empty-state"><Search /><strong>Nenhuma peça encontrada</strong><span>Tente outro termo ou inclua itens sob encomenda.</span></div>}
+                </div>
+                <div className="order-panel">
+                  <div className="order-panel-head"><div><PackageCheck /><span><strong>Peças sob encomenda</strong><small>Consulte disponibilidade, prazo e valor com nossa equipe.</small></span></div><Button variant="outline" onClick={() => requestPart()}>Pedir outra peça <MessageCircle /></Button></div>
+                  {orderParts.map((part) => <article className="order-row" key={part.id}><div className="product-icon"><MonitorCog /></div><div><span>{part.brand} · {part.code}</span><strong>{part.name}</strong><small>{part.detail}</small></div><Button onClick={() => requestPart(part)}>Solicitar cotação</Button></article>)}
+                  {!orderParts.length && <p className="order-custom">Não encontrou o modelo desejado? Envie o nome da peça e consultamos com nossos fornecedores.</p>}
                 </div>
                 <div className="step-navigation"><Button variant="outline" disabled={active === "cpu"} onClick={() => moveStep(-1)}><ChevronLeft /> Anterior</Button><span>{completed} de {categories.length} etapas concluídas</span><Button disabled={active === "psu"} onClick={() => moveStep(1)}>Próxima <ChevronRight /></Button></div>
               </div>
