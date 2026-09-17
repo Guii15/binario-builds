@@ -6,7 +6,6 @@ import {
   CheckCircle2,
   ChevronLeft,
   ChevronRight,
-  CircleDollarSign,
   Copy,
   Cpu,
   Download,
@@ -22,10 +21,8 @@ import {
   Search,
   ShieldCheck,
   ShoppingCart,
-  Sparkles,
   Trash2,
   Truck,
-  X,
   Zap,
 } from "lucide-react";
 import { useEffect, useMemo, useState, type ComponentType } from "react";
@@ -153,7 +150,14 @@ function Index() {
       return next;
     });
     const index = categories.findIndex((category) => category.id === part.category);
-    if (index < categories.length - 1) setActive(categories[index + 1].id);
+    const nextCategory = categories[index + 1];
+    if (nextCategory) setActive(nextCategory.id);
+  }
+
+  function moveStep(offset: -1 | 1) {
+    const currentIndex = categories.findIndex((item) => item.id === active);
+    const target = categories[Math.max(0, Math.min(categories.length - 1, currentIndex + offset))];
+    if (target) setActive(target.id);
   }
 
   function usePreset(ids: string[]) {
@@ -250,7 +254,7 @@ function Index() {
                   })}
                   {!visibleParts.length && <div className="empty-state"><Search /><strong>Nenhuma peça encontrada</strong><span>Tente outro termo ou inclua itens sob encomenda.</span></div>}
                 </div>
-                <div className="step-navigation"><Button variant="outline" disabled={active === "cpu"} onClick={() => setActive(categories[Math.max(0, categories.findIndex((item) => item.id === active) - 1)].id)}><ChevronLeft /> Anterior</Button><span>{completed} de {categories.length} etapas concluídas</span><Button disabled={active === "psu"} onClick={() => setActive(categories[Math.min(categories.length - 1, categories.findIndex((item) => item.id === active) + 1)].id)}>Próxima <ChevronRight /></Button></div>
+                <div className="step-navigation"><Button variant="outline" disabled={active === "cpu"} onClick={() => moveStep(-1)}><ChevronLeft /> Anterior</Button><span>{completed} de {categories.length} etapas concluídas</span><Button disabled={active === "psu"} onClick={() => moveStep(1)}>Próxima <ChevronRight /></Button></div>
               </div>
 
               <aside className="build-summary" aria-label="Resumo da montagem">
