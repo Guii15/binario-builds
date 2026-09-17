@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  ArrowDown,
   ArrowRight,
   Check,
   CheckCircle2,
@@ -9,9 +8,7 @@ import {
   Copy,
   Cpu,
   Download,
-  Gauge,
   HardDrive,
-  Headphones,
   MapPin,
   MemoryStick,
   MessageCircle,
