@@ -62,7 +62,7 @@ const categories: { id: Category; label: string; short: string; icon: ComponentT
 ];
 
 const parts: Part[] = [
-  { id: "r5600", category: "cpu", name: "Ryzen 5 5600", brand: "AMD", code: "100-100000927BOX", price: 789.9, stock: 8, platform: "AMD", socket: "AM4", watts: 65, detail: "6 núcleos · 4,4 GHz · cooler incluso" },
+  { id: "r5600", category: "cpu", name: "Ryzen 5 5600G", brand: "AMD", code: "100-100000252BOX", price: 789.9, stock: 8, platform: "AMD", socket: "AM4", watts: 65, detail: "6 núcleos · vídeo integrado · cooler incluso" },
   { id: "r7600", category: "cpu", name: "Ryzen 5 7600", brand: "AMD", code: "100-100001015BOX", price: 1349.9, stock: 3, platform: "AMD", socket: "AM5", watts: 65, detail: "6 núcleos · DDR5 · vídeo integrado" },
   { id: "i514400", category: "cpu", name: "Core i5-14400F", brand: "Intel", code: "BX8071514400F", price: 1499.9, stock: 5, platform: "Intel", socket: "LGA1700", watts: 148, detail: "10 núcleos · até 4,7 GHz" },
   { id: "b550", category: "motherboard", name: "B550M Pro-VDH WiFi", brand: "MSI", code: "911-7C95-021", price: 749.9, stock: 4, platform: "AMD", socket: "AM4", detail: "mATX · Wi-Fi · 4 slots DDR4" },
@@ -176,7 +176,7 @@ function Index() {
   function whatsapp(seller: string) {
     const list = chosen.map((part) => `• ${part.name} — ${money.format(part.price)}`).join("\n");
     const text = `Olá, ${seller}! Quero confirmar esta montagem:\n\n${list || "Ainda preciso de ajuda para escolher as peças."}\n\nTotal estimado: ${money.format(total)}`;
-    window.open(`https://wa.me/5535999999999?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
+    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
     setSellerOpen(false);
   }
 
@@ -213,7 +213,7 @@ function Index() {
             </div>
             <div className="hero-visual">
               <img src={workbench} alt="Computador sendo montado e testado na bancada técnica" width={1400} height={900} />
-              <div className="image-stamp"><strong>18 anos</strong><span>montando tecnologia<br />no Sul de Minas</span></div>
+              <div className="image-stamp"><strong>PC</strong><span>montagem local<br />em Varginha</span></div>
               <div className="image-caption"><span>Montagem técnica</span><strong>Organização, teste e cuidado em cada máquina.</strong></div>
             </div>
           </div>
@@ -288,14 +288,14 @@ function Index() {
         </section>
       </main>
 
-      <footer><div className="shell footer-grid"><div className="brand brand-dark"><span className="brand-mark"><span /></span><span><strong>BINÁRIO</strong><small>Distribuidora & Tecnologia</small></span></div><p>Varginha, Minas Gerais<br />Atendimento de segunda a sexta</p><p>Preços e estoque demonstrativos.<br />Confirme as condições com um vendedor.</p></div></footer>
+      <footer><div className="shell footer-grid"><div className="brand brand-dark"><span className="brand-mark"><span /></span><span><strong>BINÁRIO</strong><small>Distribuidora & Tecnologia</small></span></div><p>Varginha, Minas Gerais<br />Atendimento local</p><p>Preços e estoque demonstrativos.<br />Confirme as condições com um vendedor.</p></div></footer>
 
       <div className="mobile-cart"><div><small>{chosen.length ? `${chosen.length} peças selecionadas` : "Sua montagem"}</small><strong>{money.format(total)}</strong></div><Button disabled={!chosen.length} onClick={() => setSellerOpen(true)}><ShoppingCart /> Finalizar</Button></div>
 
       <Dialog open={sellerOpen} onOpenChange={setSellerOpen}>
         <DialogContent className="seller-dialog">
           <DialogHeader><DialogTitle>Quem vai atender você?</DialogTitle><DialogDescription>Escolha um vendedor. Sua montagem já vai pronta na mensagem.</DialogDescription></DialogHeader>
-          <div className="seller-list"><button onClick={() => whatsapp("Rafael")}><span>RF</span><strong>Rafael<small>Montagem e upgrades</small></strong><MessageCircle /></button><button onClick={() => whatsapp("Marina")}><span>MA</span><strong>Marina<small>Vendas e pronta entrega</small></strong><MessageCircle /></button></div>
+          <div className="seller-list"><button onClick={() => whatsapp("pessoal")}><span>AT</span><strong>Atendimento comercial<small>Orçamentos e pronta entrega</small></strong><MessageCircle /></button><button onClick={() => whatsapp("pessoal do suporte")}><span>ST</span><strong>Suporte técnico<small>Montagem e upgrades</small></strong><MessageCircle /></button></div>
         </DialogContent>
       </Dialog>
     </div>
