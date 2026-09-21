@@ -2194,18 +2194,22 @@ function Index() {
               </p>
               <div className="hero-proof-pills">
                 <span className="hero-pill">
-                  <Check className="w-4 h-4 text-emerald-600" /> Compatibilidade
+                  <Check className="w-4 h-4 text-blue-600" /> Compatibilidade
                   100% Garantida
                 </span>
                 <span className="hero-pill">
-                  <ShieldCheck className="w-4 h-4 text-emerald-600" /> 1 Ano de
+                  <ShieldCheck className="w-4 h-4 text-blue-600" /> 1 Ano de
                   Garantia Local
                 </span>
                 <span className="hero-pill">
-                  <Truck className="w-4 h-4 text-emerald-600" /> Retirada
+                  <Truck className="w-4 h-4 text-blue-600" /> Retirada
                   Imediata em Varginha
                 </span>
               </div>
+              <a href="#montador" className="hero-cta">
+                Montar meu PC
+                <ArrowRight className="w-4 h-4" />
+              </a>
             </div>
           </div>
         </section>

@@ -230,26 +230,9 @@
 
   /* Hero Section */
   .hero-banner {
-    position: relative;
-    background: linear-gradient(180deg, #f5f7fb 0%, #ffffff 100%);
+    background: var(--background);
     border-bottom: 1px solid #d7dde8;
     padding: 2.5rem 0 2rem;
-    overflow: hidden;
-  }
-  .hero-banner::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      #0b4fa8,
-      #1a7f4b,
-      transparent
-    );
   }
   .hero-grid {
     display: grid;
@@ -292,7 +275,27 @@
   .hero-pill svg {
     width: 0.9rem;
     height: 0.9rem;
-    color: #1a7f4b;
+    color: var(--primary);
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+    background: var(--primary);
+    color: var(--primary-foreground);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.8rem 1.4rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+  .hero-cta:hover {
+    background: var(--primary-hover);
+  }
+  .hero-cta:active {
+    transform: translateY(1px);
   }
 
   /* Builder Layout */
@@ -2122,7 +2125,8 @@ body {
 
 /* --- Fundos cinza-claro vira "segunda camada" escura ----------------- */
 .dark .hero-banner {
-  background: linear-gradient(180deg, #0b1220 0%, #101b30 100%);
+  background: var(--background);
+  border-bottom-color: var(--border);
 }
 .dark .tab-status-icon,
 .dark .catalog-header,
