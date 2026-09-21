@@ -1,0 +1,2425 @@
+import { createFileRoute } from "@tanstack/react-router";
+import {
+  Armchair,
+  ArrowRight,
+  Box,
+  Check,
+  CheckCircle2,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  Copy,
+  Cpu,
+  Download,
+  Fan,
+  HardDrive,
+  Keyboard,
+  MapPin,
+  MemoryStick,
+  MessageCircle,
+  Microchip,
+  Minus,
+  Monitor,
+  MonitorCog,
+  Mouse,
+  Package,
+  PackageCheck,
+  Pencil,
+  Plus,
+  Search,
+  ShieldCheck,
+  Sparkles,
+  Trash2,
+  Truck,
+  UserRound,
+  Zap,
+} from "lucide-react";
+import { useEffect, useMemo, useState, type ComponentType } from "react";
+
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+
+type Category =
+  | "cpu"
+  | "motherboard"
+  | "memory"
+  | "gpu"
+  | "storage"
+  | "psu"
+  | "cooler"
+  | "case"
+  | "monitor"
+  | "keyboard"
+  | "mouse"
+  | "chair";
+type Part = {
+  id: string;
+  category: Category;
+  name: string;
+  brand: string;
+  code: string;
+  pixPrice: number;
+  stock: number;
+  platform?: "AMD" | "Intel";
+  socket?: "AM4" | "AM5" | "LGA1700";
+  memType?: "DDR4" | "DDR5";
+  watts?: number;
+  specs: string[];
+  detail: string;
+  // Caminho da foto real (opcional). Quando o extrator do WinThor rodar,
+  // basta apontar /fotos/<codigo>.jpg e jogar as fotos em public/fotos/.
+  foto?: string;
+  // apu = processador com vídeo integrado que roda jogos leves sem placa.
+  apu?: boolean;
+  // ramGB = capacidade do pente/kit, usada pra estimar desempenho.
+  ramGB?: number;
+};
+
+const categories: {
+  id: Category;
+  label: string;
+  short: string;
+  icon: ComponentType<{ className?: string }>;
+  // periferico = nao entra na conta de compatibilidade nem trava a montagem
+  periferico?: boolean;
+  // multi = pode escolher mais de uma peca / mais de uma unidade (memoria, SSD)
+  multi?: boolean;
+}[] = [
+  { id: "cpu", label: "Processador", short: "Processador", icon: Cpu },
+  {
+    id: "motherboard",
+    label: "Placa-mãe",
+    short: "Placa-mãe",
+    icon: Microchip,
+  },
+  {
+    id: "memory",
+    label: "Memória RAM",
+    short: "Memória",
+    icon: MemoryStick,
+    multi: true,
+  },
+  { id: "gpu", label: "Placa de Vídeo", short: "Vídeo", icon: MonitorCog },
+  {
+    id: "storage",
+    label: "Armazenamento SSD",
+    short: "SSD NVMe",
+    icon: HardDrive,
+    multi: true,
+  },
+  { id: "psu", label: "Fonte de Alimentação", short: "Fonte", icon: Zap },
+  { id: "cooler", label: "Cooler / Water Cooler", short: "Cooler", icon: Fan },
+  { id: "case", label: "Gabinete", short: "Gabinete", icon: Box },
+  {
+    id: "monitor",
+    label: "Monitor",
+    short: "Monitor",
+    icon: Monitor,
+    periferico: true,
+  },
+  {
+    id: "keyboard",
+    label: "Teclado",
+    short: "Teclado",
+    icon: Keyboard,
+    periferico: true,
+  },
+  {
+    id: "mouse",
+    label: "Mouse",
+    short: "Mouse",
+    icon: Mouse,
+    periferico: true,
+  },
+  {
+    id: "chair",
+    label: "Cadeira Gamer",
+    short: "Cadeira",
+    icon: Armchair,
+    periferico: true,
+  },
+];
+
+// Etapas que contam como "montagem completa".
+const CATEGORIAS_PECA = categories.filter((item) => !item.periferico);
+const isMulti = (cat: Category) =>
+  categories.find((item) => item.id === cat)?.multi ?? false;
+
+const parts: Part[] = [
+  // Processadores
+  {
+    id: "r5600",
+    category: "cpu",
+    name: "AMD Ryzen 5 5600G",
+    brand: "AMD",
+    code: "100-100000252BOX",
+    pixPrice: 789.9,
+    stock: 8,
+    platform: "AMD",
+    socket: "AM4",
+    watts: 65,
+    apu: true,
+    specs: ["6 Núcleos / 12 Threads", "Vídeo Vega 7", "Cooler Wraith Stealth"],
+    detail:
+      "Ideal para PCs sem placa de vídeo dedicada inicial. Excelente desempenho em tarefas diárias e eSports leves.",
+  },
+  {
+    id: "r7600",
+    category: "cpu",
+    name: "AMD Ryzen 5 7600",
+    brand: "AMD",
+    code: "100-100001015BOX",
+    pixPrice: 1349.9,
+    stock: 4,
+    platform: "AMD",
+    socket: "AM5",
+    watts: 65,
+    specs: ["Plataforma AM5", "DDR5 Native", "Boost até 5.1 GHz"],
+    detail:
+      "Nova geração de altíssimo desempenho em jogos competitivos e longevidade de plataforma.",
+  },
+  {
+    id: "i514400",
+    category: "cpu",
+    name: "Intel Core i5-14400F",
+    brand: "Intel",
+    code: "BX8071514400F",
+    foto: "/fotos/cpu-intel.jpg",
+    pixPrice: 1499.9,
+    stock: 5,
+    platform: "Intel",
+    socket: "LGA1700",
+    watts: 148,
+    specs: ["10 Núcleos / 16 Threads", "Arquitetura Híbrida", "Até 4.7 GHz"],
+    detail:
+      "Excelente multitarefa, edição de vídeo e jogos de alta demanda de CPU.",
+  },
+
+  // Placas-mãe
+  {
+    id: "b550",
+    category: "motherboard",
+    name: "MSI B550M Pro-VDH WiFi",
+    brand: "MSI",
+    code: "911-7C95-021",
+    foto: "/fotos/placa-mae.jpg",
+    pixPrice: 749.9,
+    stock: 4,
+    platform: "AMD",
+    socket: "AM4",
+    memType: "DDR4",
+    specs: ["Socket AM4", "Wi-Fi + Bluetooth", "VRM Robusto com Dissipador"],
+    detail:
+      "Placa completa com conexão sem fio e suporte total a overclock de memória DDR4.",
+  },
+  {
+    id: "b650",
+    category: "motherboard",
+    name: "ASRock B650M-HDV/M.2",
+    brand: "ASRock",
+    code: "90-MXBLA0-A0UAYZ",
+    foto: "/fotos/placa-mae.jpg",
+    pixPrice: 899.9,
+    stock: 3,
+    platform: "AMD",
+    socket: "AM5",
+    memType: "DDR5",
+    specs: ["Socket AM5", "PCIe 4.0", "Suporte DDR5 6000MHz+"],
+    detail:
+      "Construção de alta durabilidade pronta para a linha Ryzen 7000 e upgrades futuros.",
+  },
+  {
+    id: "b760",
+    category: "motherboard",
+    name: "Gigabyte B760M DS3H DDR4",
+    brand: "Gigabyte",
+    code: "B760M-DS3H-D4",
+    foto: "/fotos/placa-mae.jpg",
+    pixPrice: 849.9,
+    stock: 6,
+    platform: "Intel",
+    socket: "LGA1700",
+    memType: "DDR4",
+    specs: ["Socket LGA1700", "Dual M.2 NVMe", "Rede 2.5GbE"],
+    detail:
+      "Estabilidade e conexão ultrarrápida para processadores Intel de 12ª, 13ª e 14ª geração.",
+  },
+
+  // Memórias
+  {
+    id: "ram16",
+    category: "memory",
+    name: "Kingston Fury Beast 16 GB (2x8GB)",
+    brand: "Kingston",
+    code: "KF432C16BBK2-16",
+    pixPrice: 329.9,
+    stock: 12,
+    memType: "DDR4",
+    ramGB: 16,
+    specs: ["DDR4 3200MHz", "Dual Channel", "Dissipador de Alumínio"],
+    detail:
+      "Configuração ideal para Dual Channel rápido e sem engasgos em jogos atuais.",
+  },
+  {
+    id: "ram32",
+    category: "memory",
+    name: "Kingston Fury Beast 32 GB (2x16GB)",
+    brand: "Kingston",
+    code: "KF556C36BBEK2-32",
+    pixPrice: 729.9,
+    stock: 5,
+    memType: "DDR5",
+    ramGB: 32,
+    specs: ["DDR5 5600MHz", "AMD EXPO & XMP 3.0", "Alta Densidade"],
+    detail:
+      "Capacidade de sobra para jogos AAA pesados, multitarefa e renderização profissional.",
+  },
+
+  // Placas de Vídeo
+  {
+    id: "rx6600",
+    category: "gpu",
+    name: "ASRock Radeon RX 6600 Challenger D 8GB",
+    brand: "ASRock",
+    code: "RX6600-CLD-8G",
+    pixPrice: 1599.9,
+    stock: 4,
+    watts: 132,
+    specs: [
+      "8 GB GDDR6",
+      "Cooler Dual Fan",
+      "O melhor custo-benefício Full HD",
+    ],
+    detail:
+      "Roda todos os jogos modernos em 1080p com alta taxa de quadros e baixo consumo.",
+  },
+  {
+    id: "rtx4060",
+    category: "gpu",
+    name: "MSI GeForce RTX 4060 Ventus 2X Black 8GB",
+    brand: "MSI",
+    code: "RTX4060-V2X-8G",
+    pixPrice: 2199.9,
+    stock: 3,
+    watts: 115,
+    specs: ["8 GB GDDR6", "NVIDIA DLSS 3 Frame Gen", "Ray Tracing de 3ª Gen"],
+    detail:
+      "Tecnologia DLSS 3 para dobrar sua taxa de quadros nos lançamentos mais recentes.",
+  },
+  {
+    id: "rtx4070",
+    category: "gpu",
+    name: "Galax GeForce RTX 4070 Super 12GB",
+    brand: "Galax",
+    code: "47SOM7MD9PSU",
+    pixPrice: 4299.9,
+    stock: 2,
+    watts: 220,
+    specs: ["12 GB GDDR6X", "Ideal para Quad HD (1440p)", "Desempenho Extremo"],
+    detail:
+      "Potência gráfica devastadora para jogar em resolução Quad HD no Ultra com Ray Tracing.",
+  },
+
+  // Armazenamento
+  {
+    id: "ssd1",
+    category: "storage",
+    name: "Kingston NV2 1 TB NVMe M.2",
+    brand: "Kingston",
+    code: "SNV2S-1000G",
+    foto: "/fotos/ssd-nvme.jpg",
+    pixPrice: 399.9,
+    stock: 18,
+    specs: [
+      "Leitura até 3.500 MB/s",
+      "Gravação até 2.100 MB/s",
+      "PCIe 4.0 NVMe",
+    ],
+    detail:
+      "Abertura instantânea de sistema operacional, programas e carregamento ultrarrápido de jogos.",
+  },
+  {
+    id: "ssd2",
+    category: "storage",
+    name: "WD Black SN770 2 TB NVMe M.2",
+    brand: "WD Black",
+    code: "WDS200T3X0E",
+    foto: "/fotos/ssd-sata.jpg",
+    pixPrice: 899.9,
+    stock: 4,
+    specs: ["Leitura até 5.150 MB/s", "Gamer Pro Grade", "PCIe Gen4 x4"],
+    detail:
+      "Desempenho e espaço massivo sem compromises para quem possui biblioteca gigante de jogos.",
+  },
+
+  // Fontes
+  {
+    id: "psu550",
+    category: "psu",
+    name: "Cooler Master MWE Bronze V2 550 W",
+    brand: "Cooler Master",
+    code: "MPE-5501-ACAAB",
+    foto: "/fotos/fonte.jpg",
+    pixPrice: 389.9,
+    stock: 7,
+    watts: 550,
+    specs: ["80 Plus Bronze", "PFC Ativo", "Circuito DC-to-DC"],
+    detail:
+      "Energia estável e segura para configurações intermediárias com placa de vídeo.",
+  },
+  {
+    id: "psu650",
+    category: "psu",
+    name: "Corsair CX650 650 W",
+    brand: "Corsair",
+    code: "CP-9020278-BR",
+    foto: "/fotos/fonte.jpg",
+    pixPrice: 529.9,
+    stock: 5,
+    watts: 650,
+    specs: [
+      "80 Plus Bronze",
+      "5 Anos de Garantia Corsair",
+      "Ventoinha Silenciosa",
+    ],
+    detail:
+      "Confiabilidade mundialmente reconhecida para sustentar placas como RTX 4060 e RX 7600.",
+  },
+  {
+    id: "psu750",
+    category: "psu",
+    name: "XPG Core Reactor II 750 W Gold",
+    brand: "XPG",
+    code: "COREREACTORII750G",
+    foto: "/fotos/fonte.jpg",
+    pixPrice: 749.9,
+    stock: 3,
+    watts: 750,
+    specs: [
+      "80 Plus Gold / Cybenetics",
+      "Full Modular",
+      "Capacitores 100% Japoneses",
+    ],
+    detail:
+      "Eficiência máxima de energia, cabeamento modular e garantia estendida de alto nível.",
+  },
+
+  // ----- Coolers -----
+  // ATENCAO: itens de TESTE, iguais ao resto do catalogo. Os codigos e precos
+  // reais vem do extrator do WinThor.
+  {
+    id: "cool-hyper212",
+    category: "cooler",
+    name: "Cooler Master Hyper 212 Black",
+    brand: "Cooler Master",
+    code: "RR-212S-20PK-R1",
+    pixPrice: 219.9,
+    stock: 9,
+    specs: [
+      "4 Heatpipes de contato direto",
+      "Ventoinha 120mm PWM",
+      "AM4 / AM5 / LGA1700",
+    ],
+    detail:
+      "Troca o cooler de caixa e derruba a temperatura do processador em trabalho pesado.",
+  },
+  {
+    id: "cool-wc240",
+    category: "cooler",
+    name: "Water Cooler DeepCool LE520 240mm",
+    brand: "DeepCool",
+    code: "R-LE520-BKAMNF-G-1",
+    pixPrice: 479.9,
+    stock: 4,
+    specs: [
+      "Radiador 240mm",
+      "Bomba de 3 anos de garantia",
+      "AM4 / AM5 / LGA1700",
+    ],
+    detail:
+      "Refrigeração líquida para processadores mais quentes e gabinetes com vidro.",
+  },
+
+  // ----- Gabinetes -----
+  {
+    id: "case-mid",
+    category: "case",
+    name: "Gabinete Gamer Redragon Wideload Mesh",
+    brand: "Redragon",
+    code: "GC-608",
+    foto: "/fotos/gabinete.jpg",
+    pixPrice: 299.9,
+    stock: 7,
+    specs: [
+      "Frontal em malha (mesh)",
+      "Lateral em vidro temperado",
+      "Suporta até 4 fans",
+    ],
+    detail:
+      "Fluxo de ar bom e visual limpo para quem quer ver as peças por dentro.",
+  },
+  {
+    id: "case-slim",
+    category: "case",
+    name: "Gabinete Slim K-Mex Micro-ATX",
+    brand: "K-Mex",
+    code: "GM-05T8",
+    foto: "/fotos/gabinete-azul.jpg",
+    pixPrice: 179.9,
+    stock: 11,
+    specs: ["Formato compacto", "Micro-ATX", "Ideal para balcão e recepção"],
+    detail: "Ocupa pouco espaço em mesa de escritório, caixa e recepção.",
+  },
+
+  // ----- Monitores -----
+  {
+    id: "mon-24",
+    category: "monitor",
+    name: 'Monitor AOC 24" 100Hz IPS Full HD',
+    brand: "AOC",
+    code: "24B2HM2",
+    foto: "/fotos/monitor.jpg",
+    pixPrice: 749.9,
+    stock: 8,
+    specs: ["24 polegadas", "1920x1080 @ 100Hz", "Painel IPS"],
+    detail:
+      "Tamanho mais vendido da loja. Serve tanto para trabalho quanto para jogo casual.",
+  },
+  {
+    id: "mon-27",
+    category: "monitor",
+    name: 'Monitor Gamer LG UltraGear 27" 165Hz',
+    brand: "LG",
+    code: "27GS50F-B",
+    foto: "/fotos/monitor.jpg",
+    pixPrice: 1349.9,
+    stock: 3,
+    specs: ["27 polegadas", "1920x1080 @ 165Hz", "1ms / AMD FreeSync"],
+    detail:
+      "Taxa de atualização alta para jogos competitivos, sem rastro na imagem.",
+  },
+  {
+    id: "mon-office",
+    category: "monitor",
+    name: 'Monitor Philips 22" Full HD',
+    brand: "Philips",
+    code: "221V8",
+    foto: "/fotos/monitor.jpg",
+    pixPrice: 589.9,
+    stock: 12,
+    specs: ["22 polegadas", "1920x1080 @ 75Hz", "Modo de baixa luz azul"],
+    detail: "Opção econômica para planilha, sistema e emissão de nota.",
+  },
+
+  // ----- Teclados -----
+  {
+    id: "kb-mec",
+    category: "keyboard",
+    name: "Teclado Mecânico Redragon Kumara ABNT2",
+    brand: "Redragon",
+    code: "K552-ABNT2",
+    pixPrice: 229.9,
+    stock: 10,
+    specs: ["Switch Outemu Blue", "Layout ABNT2 com Ç", "Iluminação RGB"],
+    detail:
+      "Mecânico de entrada com o layout brasileiro certo, sem gambiarra de acento.",
+  },
+  {
+    id: "kb-office",
+    category: "keyboard",
+    name: "Teclado Multilaser Slim USB ABNT2",
+    brand: "Multilaser",
+    code: "TC193",
+    pixPrice: 59.9,
+    stock: 25,
+    specs: ["Membrana silenciosa", "Layout ABNT2", "Conexão USB"],
+    detail: "Simples e resistente para escritório, balcão e caixa.",
+  },
+  {
+    id: "kb-combo",
+    category: "keyboard",
+    name: "Combo Teclado + Mouse Sem Fio Logitech MK270",
+    brand: "Logitech",
+    code: "920-004433",
+    pixPrice: 189.9,
+    stock: 6,
+    specs: ["Sem fio 2.4GHz", "Receptor USB único", "Pilhas inclusas"],
+    detail:
+      "Deixa a mesa sem fio. Um receptor só atende teclado e mouse juntos.",
+  },
+
+  // ----- Mouses -----
+  {
+    id: "mou-gamer",
+    category: "mouse",
+    name: "Mouse Gamer Logitech G203 Lightsync",
+    brand: "Logitech",
+    code: "910-005794",
+    pixPrice: 159.9,
+    stock: 14,
+    specs: ["Até 8000 DPI", "6 botões programáveis", "RGB Lightsync"],
+    detail: "Leve e preciso, o mais pedido por quem joga FPS.",
+  },
+  {
+    id: "mou-office",
+    category: "mouse",
+    name: "Mouse Óptico Multilaser USB 1200 DPI",
+    brand: "Multilaser",
+    code: "MO300",
+    pixPrice: 34.9,
+    stock: 30,
+    specs: ["1200 DPI", "3 botões", "Cabo de 1,3m"],
+    detail: "Básico, barato e confiável para uso de escritório.",
+  },
+
+  // ----- Cadeiras -----
+  {
+    id: "cad-gamer",
+    category: "chair",
+    name: "Cadeira Gamer ThunderX3 EC3 Reclinável",
+    brand: "ThunderX3",
+    code: "EC3-BK",
+    pixPrice: 1099.9,
+    stock: 3,
+    specs: ["Reclina até 180°", "Apoio de braço 2D", "Suporta até 120kg"],
+    detail: "Encosto alto e reclinável para quem passa o dia inteiro sentado.",
+  },
+  {
+    id: "cad-office",
+    category: "chair",
+    name: "Cadeira de Escritório Giratória com Encosto em Tela",
+    brand: "Or Design",
+    code: "OR-3301",
+    pixPrice: 549.9,
+    stock: 5,
+    specs: [
+      "Encosto em tela respirável",
+      "Altura a gás",
+      "Base com 5 rodízios",
+    ],
+    detail: "Ventilada e mais discreta, pensada para escritório.",
+  },
+];
+
+const presets = [
+  {
+    name: "Binário Gamer Entry",
+    kicker: "Competitivo & Trabalho",
+    pixPrice: 2379.15,
+    cardPrice: 2799,
+    fps: ["Valorant: 220+ FPS", "CS2: 140+ FPS", "Fortnite: 120+ FPS"],
+    note: "PC super rápido para estudos, trabalho e jogos competitivos leves. Preparado para receber placa de vídeo dedicada no futuro.",
+    ids: ["r5600", "b550", "ram16", "ssd1", "psu550"],
+  },
+  {
+    name: "Binário Arena AM5 High-FPS",
+    kicker: "Mais Vendido da Loja",
+    pixPrice: 4164.15,
+    cardPrice: 4899,
+    fps: ["Valorant: 320+ FPS", "CS2: 240+ FPS", "GTA V: 140+ FPS"],
+    note: "Equilíbrio perfeito de alta taxa de quadros em 1080p com processador moderno de longevidade AM5.",
+    ids: ["r5600", "b550", "ram16", "rx6600", "ssd1", "psu550"],
+    featured: true,
+  },
+  {
+    name: "Binário Studio & Extreme 4K",
+    kicker: "Alta Performance & Criação",
+    pixPrice: 6544.15,
+    cardPrice: 7699,
+    fps: ["Cyberpunk 2077: 90+ FPS", "AAA Ultra: 110+ FPS", "Edição & Live 4K"],
+    note: "Plataforma AM5 topo de linha com 32 GB DDR5 e RTX 4060 para criadores de conteúdo e gamers exigentes.",
+    ids: ["r7600", "b650", "ram32", "rtx4060", "ssd1", "psu650"],
+  },
+];
+
+const stockMachines = [
+  {
+    id: "BN-1048",
+    name: "Binário Start Home & Office",
+    spec: "Ryzen 5 5600G · 16 GB DDR4 · SSD 1 TB NVMe · Fonte 550W",
+    pixPrice: 2711.5,
+    tone: "Pronta entrega em Varginha",
+  },
+  {
+    id: "BN-1051",
+    name: "Binário Arena Gamer RX",
+    spec: "Ryzen 5 5600 · RX 6600 8GB · 16 GB DDR4 · SSD 1 TB NVMe",
+    pixPrice: 4241.5,
+    tone: "Última unidade no estoque",
+  },
+  {
+    id: "BN-1053",
+    name: "Binário Studio RTX DLSS 3",
+    spec: "Core i5 14400F · RTX 4060 8GB · 32 GB DDR5 · SSD 1 TB",
+    pixPrice: 5856.5,
+    tone: "Pronta entrega em Varginha",
+  },
+];
+
+// ---------------------------------------------------------------------
+// CONTATOS
+// Os numeros foram informados com 8 digitos (ex: 9131-9886). Celular no
+// Brasil tem 9, entao o "9" inicial foi acrescentado aqui.
+// >>> TESTAR CADA BOTAO ANTES DE SUBIR PRA PRODUCAO. <<<
+// ---------------------------------------------------------------------
+type Vendedor = { nome: string; numero: string };
+
+const VENDEDORES: Vendedor[] = [
+  { nome: "Thiago Moseli", numero: "5535991319886" },
+  { nome: "Isaac", numero: "5535991836566" },
+  { nome: "Osmar", numero: "5535984559330" },
+  { nome: "Patrícia", numero: "5535999463434" },
+  { nome: "Yhan", numero: "5535999432108" },
+];
+
+// Quem recebe a lista de separacao de pecas.
+// Galeria de montagens feitas na loja. AGORA são fotos de exemplo —
+// troque por fotos reais das montagens da Binário quando tiver.
+const MONTAGENS = [
+  {
+    foto: "/fotos/montagem-1.jpg",
+    titulo: "Setup Gamer Branco RGB",
+    desc: "Ryzen 5 + RX 6600, cable management caprichado.",
+  },
+  {
+    foto: "/fotos/montagem-2.jpg",
+    titulo: "Arena AM5 High-FPS",
+    desc: "Fluxo de ar em malha e iluminação sincronizada.",
+  },
+  {
+    foto: "/fotos/montagem-3.jpg",
+    titulo: "Estação de Trabalho",
+    desc: "Foco em silêncio e organização para o dia a dia.",
+  },
+];
+
+const CONTATOS_TI: Vendedor[] = [
+  { nome: "Estoque Binário", numero: "5535997082738" },
+  { nome: "Suporte T.I.", numero: "5535998998455" },
+];
+
+const VENDEDOR_STORAGE_KEY = "binario:vendedor";
+const CLIENTE_FLAG = "__cliente__";
+
+// Peça que o cliente pediu e a loja não tem em estoque.
+type Cotacao = { id: string; categoria: Category | "outro"; descricao: string };
+
+// Logo clara (texto branco) para fundos escuros; escura para fundos claros.
+const LOGO_LIGHT = "/logo-binario.png";
+const LOGO_DARK = "/logo-binario-dark.png";
+
+// ---------------------------------------------------------------------
+// DESEMPENHO ESTIMADO (1080p, gráficos altos). Valores APROXIMADOS pra dar
+// uma noção ao cliente — não são benchmark oficial. Ajuste à vontade.
+// A chave é o id da GPU; "apu" é o vídeo integrado do Ryzen 5 5600G.
+// ---------------------------------------------------------------------
+const JOGOS = [
+  "Valorant",
+  "CS2",
+  "Fortnite",
+  "GTA V",
+  "EA FC 25",
+  "Cyberpunk 2077",
+];
+const FPS_MAX = 400;
+const FPS_POR_GPU: Record<string, number[]> = {
+  apu: [70, 75, 45, 50, 60, 22],
+  rx6600: [240, 190, 110, 130, 140, 65],
+  rtx4060: [300, 230, 140, 145, 165, 85],
+  rtx4070: [400, 340, 175, 165, 195, 115],
+};
+
+type NivelTrabalho = { nome: string; nota: 0 | 1 | 2 | 3; obs: string };
+
+const money = new Intl.NumberFormat("pt-BR", {
+  style: "currency",
+  currency: "BRL",
+});
+
+export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      {
+        title: "Monte seu PC Gamer Sob Medida | Binário Tecnologia Varginha-MG",
+      },
+      {
+        name: "description",
+        content:
+          "Monte seu computador com garantia de compatibilidade, preço especial no PIX e suporte técnico especializado em Varginha.",
+      },
+      { property: "og:title", content: "Montador de PC Binário Tecnologia" },
+      {
+        property: "og:description",
+        content:
+          "Escolha suas peças de computador com montagem profissional, testes de 24h e atendimento em Varginha-MG.",
+      },
+      { property: "og:type", content: "website" },
+    ],
+  }),
+  component: Index,
+});
+
+function Index() {
+  const [active, setActive] = useState<Category>("cpu");
+  const [selected, setSelected] = useState<Record<string, number>>({});
+  const [search, setSearch] = useState("");
+  const [platform, setPlatform] = useState<"all" | "AMD" | "Intel">("all");
+  const [copied, setCopied] = useState(false);
+  const [reviewMode, setReviewMode] = useState(false);
+  // Vendedor que esta operando o site. Fica salvo no navegador daquele
+  // computador/celular, entao cada vendedor escolhe o nome dele uma vez so.
+  const [vendedor, setVendedor] = useState<Vendedor | null>(null);
+  // Cliente final montando sozinho (nao e vendedor). Nesse caso o botao de
+  // separacao pro T.I. some — separar peca e coisa interna da loja.
+  const [ehCliente, setEhCliente] = useState(false);
+  // Depois de identificar quem pediu, abre a janela de destinos do T.I.
+  const [tiAberto, setTiAberto] = useState(false);
+  // Pecas que o cliente pediu e a loja nao tem em estoque — vao como "a cotar".
+  const [cotacoes, setCotacoes] = useState<Cotacao[]>([]);
+  const [cotacaoCategoria, setCotacaoCategoria] = useState<
+    Category | "outro" | ""
+  >("");
+  const [cotacaoDescricao, setCotacaoDescricao] = useState("");
+  const [cotacaoErro, setCotacaoErro] = useState("");
+  // O que a janela de vendedores vai fazer quando escolherem um nome.
+  const [sellerIntent, setSellerIntent] = useState<
+    | { kind: "orcamento" }
+    | { kind: "montada"; machineId: string }
+    | { kind: "identificar" }
+    | { kind: "trocar" }
+    | null
+  >(null);
+
+  useEffect(() => {
+    const ids =
+      new URLSearchParams(window.location.search).get("pc")?.split(",") ?? [];
+    const restored = Object.fromEntries(
+      ids
+        .filter((id) => parts.some((part) => part.id === id))
+        .map((id) => [id, 1]),
+    );
+    const rawCot = new URLSearchParams(window.location.search).get("cot");
+    let restoredCot: Cotacao[] = [];
+    if (rawCot) {
+      try {
+        const parsed: unknown = JSON.parse(decodeURIComponent(rawCot));
+        if (Array.isArray(parsed)) {
+          restoredCot = parsed
+            .filter(
+              (item): item is { c: string; d: string } =>
+                !!item &&
+                typeof item === "object" &&
+                "c" in item &&
+                "d" in item,
+            )
+            .map((item, i) => ({
+              id: `cot-url-${i}`,
+              categoria: item.c as Category | "outro",
+              descricao: String(item.d).slice(0, 200),
+            }));
+          setCotacoes(restoredCot);
+        }
+      } catch {
+        // link com parametro estragado — ignora as cotacoes
+      }
+    }
+    if (Object.keys(restored).length || restoredCot.length) {
+      setSelected(restored);
+      setReviewMode(true);
+    }
+    try {
+      const saved = window.localStorage.getItem(VENDEDOR_STORAGE_KEY);
+      if (saved === CLIENTE_FLAG) {
+        setEhCliente(true);
+      } else {
+        const match = VENDEDORES.find((item) => item.nome === saved);
+        if (match) setVendedor(match);
+      }
+    } catch {
+      // navegador sem storage (aba anonima, etc) — segue sem operador salvo
+    }
+  }, []);
+
+  function escolherVendedor(item: Vendedor) {
+    setVendedor(item);
+    setEhCliente(false);
+    try {
+      window.localStorage.setItem(VENDEDOR_STORAGE_KEY, item.nome);
+    } catch {
+      // ignora
+    }
+  }
+
+  function escolherCliente() {
+    setVendedor(null);
+    setEhCliente(true);
+    try {
+      window.localStorage.setItem(VENDEDOR_STORAGE_KEY, CLIENTE_FLAG);
+    } catch {
+      // ignora
+    }
+    setSellerIntent(null);
+  }
+
+  // A categoria é obrigatória de propósito: sem ela chega pedido tipo
+  // "5600mhz" e ninguém sabe se é memória, fonte ou processador.
+  function addCotacao() {
+    if (!cotacaoCategoria) {
+      setCotacaoErro("Escolha de que tipo é a peça.");
+      return;
+    }
+    const descricao = cotacaoDescricao.trim();
+    if (descricao.length < 3) {
+      setCotacaoErro("Descreva a peça que o cliente quer.");
+      return;
+    }
+    setCotacoes((current) => [
+      ...current,
+      { id: `cot-${Date.now()}`, categoria: cotacaoCategoria, descricao },
+    ]);
+    setCotacaoCategoria("");
+    setCotacaoDescricao("");
+    setCotacaoErro("");
+  }
+
+  function removeCotacao(id: string) {
+    setCotacoes((current) => current.filter((item) => item.id !== id));
+  }
+
+  function rotuloCotacao(item: Cotacao) {
+    if (item.categoria === "outro") return "Outro";
+    return (
+      categories.find((cat) => cat.id === item.categoria)?.label ?? "Outro"
+    );
+  }
+
+  // Linhas "a cotar" que entram no WhatsApp, no PDF e no pedido pro T.I.
+  const linhasCotacao = cotacoes.map(
+    (item) => `• [A COTAR] ${rotuloCotacao(item)}: ${item.descricao}`,
+  );
+
+  const chosen = useMemo(
+    () => parts.filter((part) => selected[part.id]),
+    [selected],
+  );
+  const totalPix = chosen.reduce(
+    (sum, part) => sum + part.pixPrice * (selected[part.id] ?? 0),
+    0,
+  );
+  const totalCard = totalPix / 0.85;
+  const installmentVal = totalCard / 10;
+  const pixSavings = totalCard - totalPix;
+
+  const cpu = chosen.find((part) => part.category === "cpu");
+  const gpu = chosen.find((part) => part.category === "gpu");
+  const psu = chosen.find((part) => part.category === "psu");
+  const mobo = chosen.find((part) => part.category === "motherboard");
+  const rams = chosen.filter((part) => part.category === "memory");
+
+  const requiredWatts =
+    cpu && gpu
+      ? Math.ceil(((cpu.watts ?? 65) + (gpu.watts ?? 0) + 220) / 50) * 50
+      : 0;
+  const currentPsuWatts = psu?.watts ?? 0;
+  const powerOk = !requiredWatts || !psu || currentPsuWatts >= requiredWatts;
+  const wattsPct =
+    requiredWatts && currentPsuWatts
+      ? Math.min(100, Math.round((requiredWatts / currentPsuWatts) * 100))
+      : 0;
+
+  const socketOk = !cpu?.socket || !mobo?.socket || cpu.socket === mobo.socket;
+
+  // O tipo de memoria e ditado pela placa-mae. Enquanto ela nao for escolhida,
+  // deduzimos pelo socket do processador (AM4 -> DDR4, AM5 -> DDR5).
+  const boardMemType: "DDR4" | "DDR5" | undefined =
+    mobo?.memType ??
+    (cpu?.socket === "AM5"
+      ? "DDR5"
+      : cpu?.socket === "AM4"
+        ? "DDR4"
+        : undefined);
+  const ramOk =
+    !boardMemType ||
+    rams.every((r) => !r.memType || r.memType === boardMemType);
+
+  const completed = CATEGORIAS_PECA.filter((category) =>
+    chosen.some((part) => part.category === category.id),
+  ).length;
+
+  // ----- Desempenho estimado da montagem atual -----
+  const ramTotal = rams.reduce(
+    (sum, r) => sum + (r.ramGB ?? 0) * (selected[r.id] ?? 1),
+    0,
+  );
+  const fpsPerfil = gpu
+    ? FPS_POR_GPU[gpu.id]
+    : cpu?.apu
+      ? FPS_POR_GPU["apu"]
+      : undefined;
+  const fpsFonte = gpu ? gpu.name : cpu?.apu ? "Vídeo integrado (Vega)" : "";
+  const temDesempenho = Boolean(cpu || gpu);
+
+  const trabalho: NivelTrabalho[] = [
+    {
+      nome: "Escritório & estudos",
+      nota: cpu ? 3 : 0,
+      obs: "Excel, navegador, sistema, emissão de nota",
+    },
+    {
+      nome: "Edição de foto e vídeo",
+      nota: !cpu ? 0 : ramTotal >= 16 ? (gpu ? 3 : 2) : 1,
+      obs: "Photoshop, Premiere, CapCut",
+    },
+    {
+      nome: "Render 3D, live e stream",
+      nota: !cpu ? 0 : !gpu ? 1 : ramTotal >= 32 ? 3 : ramTotal >= 16 ? 2 : 1,
+      obs: "Blender, OBS, transmissão",
+    },
+  ];
+
+  const visibleParts = parts.filter((part) => {
+    if (part.category !== active) return false;
+    if (part.stock === 0) return false;
+    if (platform !== "all" && part.platform && part.platform !== platform)
+      return false;
+    if (active === "motherboard" && cpu?.socket && part.socket !== cpu.socket)
+      return false;
+    if (
+      active === "memory" &&
+      boardMemType &&
+      part.memType &&
+      part.memType !== boardMemType
+    )
+      return false;
+    if (active === "psu" && requiredWatts && (part.watts ?? 0) < requiredWatts)
+      return false;
+    return `${part.name} ${part.brand} ${part.code} ${part.specs.join(" ")}`
+      .toLowerCase()
+      .includes(search.toLowerCase());
+  });
+
+  function selectPart(part: Part) {
+    const multi = isMulti(part.category);
+    setSelected((current) => {
+      const next = { ...current };
+      if (!multi) {
+        // categoria de escolha unica: troca a peca da mesma categoria
+        for (const selectedPart of parts)
+          if (selectedPart.category === part.category)
+            delete next[selectedPart.id];
+        next[part.id] = 1;
+      } else {
+        // memoria / SSD: soma uma unidade, permitindo varios itens juntos
+        next[part.id] = (next[part.id] ?? 0) + 1;
+      }
+      return next;
+    });
+    // so avanca sozinho nas etapas de escolha unica; em multi o vendedor
+    // decide quando terminou e clica em "Proxima etapa".
+    if (!multi) {
+      const index = categories.findIndex(
+        (category) => category.id === part.category,
+      );
+      const nextCategory = categories[index + 1];
+      if (nextCategory) setActive(nextCategory.id);
+    }
+  }
+
+  function mudarQtd(id: string, delta: number) {
+    setSelected((current) => {
+      const next = { ...current };
+      const q = (next[id] ?? 0) + delta;
+      if (q <= 0) delete next[id];
+      else next[id] = q;
+      return next;
+    });
+  }
+
+  function moveStep(offset: -1 | 1) {
+    const currentIndex = categories.findIndex((item) => item.id === active);
+    const target =
+      categories[
+        Math.max(0, Math.min(categories.length - 1, currentIndex + offset))
+      ];
+    if (target) setActive(target.id);
+  }
+
+  function loadPreset(ids: string[]) {
+    setSelected(Object.fromEntries(ids.map((id) => [id, 1])));
+    document.querySelector("#montador")?.scrollIntoView({ behavior: "smooth" });
+  }
+
+  async function copiarTexto(texto: string) {
+    try {
+      await navigator.clipboard.writeText(texto);
+      return true;
+    } catch {
+      // Fallback para quando o clipboard nao esta disponivel (aba sem foco,
+      // permissao negada, ou site aberto por IP em vez de localhost/https).
+      try {
+        const area = document.createElement("textarea");
+        area.value = texto;
+        area.style.position = "fixed";
+        area.style.opacity = "0";
+        document.body.appendChild(area);
+        area.focus();
+        area.select();
+        const ok = document.execCommand("copy");
+        document.body.removeChild(area);
+        return ok;
+      } catch {
+        return false;
+      }
+    }
+  }
+
+  async function shareBuild() {
+    const url = new URL(window.location.href);
+    url.searchParams.set("pc", chosen.map((part) => part.id).join(","));
+    if (cotacoes.length) {
+      url.searchParams.set(
+        "cot",
+        encodeURIComponent(
+          JSON.stringify(
+            cotacoes.map((item) => ({ c: item.categoria, d: item.descricao })),
+          ),
+        ),
+      );
+    } else {
+      url.searchParams.delete("cot");
+    }
+    const ok = await copiarTexto(url.toString());
+    if (ok) {
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1800);
+    } else {
+      window.prompt(
+        "Não consegui copiar sozinho. Copie o link abaixo:",
+        url.toString(),
+      );
+    }
+  }
+
+  function editBuild() {
+    const url = new URL(window.location.href);
+    url.searchParams.delete("pc");
+    url.searchParams.delete("cot");
+    window.history.replaceState({}, "", url.pathname + url.search);
+    setReviewMode(false);
+  }
+
+  function abrirWhats(numero: string, texto: string) {
+    window.open(
+      `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
+  }
+
+  // Orcamento montado peca a peca -> vai pro WhatsApp do vendedor escolhido.
+  function enviarOrcamento(item: Vendedor) {
+    const linhas = [
+      ...chosen.map(
+        (part) =>
+          `• [${part.code}] *${part.name}* — ${money.format(part.pixPrice)} (PIX)`,
+      ),
+      ...linhasCotacao,
+    ].join("\n");
+    const aviso = cotacoes.length
+      ? `\n\n_${cotacoes.length} item(ns) marcado(s) como A COTAR ainda não entram no total._`
+      : "";
+    const text = `Olá, ${item.nome}! Gostaria de consultar este orçamento de PC:\n\n${linhas || "Ainda estou montando minhas peças."}\n\n*Total no PIX (com 15% OFF)*: ${money.format(totalPix)}\n*Parcelado*: 10x de ${money.format(installmentVal)}${aviso}\n\nMontagem inclusa. Podem verificar disponibilidade em Varginha?`;
+    abrirWhats(item.numero, text);
+  }
+
+  // Maquina ja montada em estoque -> WhatsApp do vendedor escolhido.
+  function enviarMontada(item: Vendedor, machineId: string) {
+    const machine = stockMachines.find((m) => m.id === machineId);
+    if (!machine) return;
+    const text = `Olá, ${item.nome}! Tenho interesse nesta máquina pronta entrega:\n\n*${machine.name}*\nCódigo: ${machine.id}\n${machine.spec}\n\nValor no PIX: ${money.format(machine.pixPrice)}\n\nAinda está disponível?`;
+    abrirWhats(item.numero, text);
+  }
+
+  // Texto da lista de separacao, assinado por quem pediu.
+  function textoSeparacao() {
+    const list = [
+      ...chosen.map(
+        (part) => `• [${part.code}] ${part.name} — ${selected[part.id] ?? 1}un`,
+      ),
+      ...linhasCotacao,
+    ].join("\n");
+    const quem = vendedor?.nome ?? "Vendedor";
+    return `*MONTAGEM PARA O T.I.*\n\nSolicitado por: *${quem}*\nLocal: Loja Varginha\n\n${list}`;
+  }
+
+  // Abre a conversa de UM destino (Estoque ou T.I.). Cada clique = 1 aba, pra
+  // o navegador nao bloquear como pop-up (era o motivo de so ir pro Estoque).
+  function enviarDestinoTI(contato: Vendedor) {
+    abrirWhats(contato.numero, textoSeparacao());
+  }
+
+  function sendToTI() {
+    if (!chosen.length && !cotacoes.length) return;
+    // Cliente nao separa peca — botao nem aparece pra ele, mas por seguranca:
+    if (ehCliente) return;
+    // Sem vendedor identificado a lista nao sai — o T.I. precisa saber quem pediu.
+    if (!vendedor) {
+      setSellerIntent({ kind: "identificar" });
+      return;
+    }
+    setTiAberto(true);
+  }
+
+  // Uma unica janela de vendedores serve pros tres casos.
+  function onEscolherVendedor(item: Vendedor) {
+    escolherVendedor(item);
+    const intent = sellerIntent;
+    setSellerIntent(null);
+    if (!intent) return;
+    if (intent.kind === "orcamento") enviarOrcamento(item);
+    if (intent.kind === "montada") enviarMontada(item, intent.machineId);
+    if (intent.kind === "identificar") setTiAberto(true);
+  }
+
+  const sellerDialog = (
+    <Dialog
+      open={sellerIntent !== null}
+      onOpenChange={(open) => !open && setSellerIntent(null)}
+    >
+      <DialogContent className="bg-white border-slate-200 text-slate-900 max-w-md shadow-2xl">
+        <DialogHeader>
+          <DialogTitle className="text-xl font-bold font-display text-slate-900">
+            {sellerIntent?.kind === "identificar" ||
+            sellerIntent?.kind === "trocar"
+              ? "Quem está montando?"
+              : "Quem vai te atender?"}
+          </DialogTitle>
+          <DialogDescription className="text-slate-600 text-xs">
+            {sellerIntent?.kind === "identificar"
+              ? "Escolha seu nome para o T.I. e o Estoque saberem quem pediu a separação das peças."
+              : sellerIntent?.kind === "trocar"
+                ? "Seu nome fica salvo neste computador e assina os pedidos enviados ao T.I."
+                : "A lista de peças e o orçamento já vão prontos na mensagem."}
+          </DialogDescription>
+        </DialogHeader>
+
+        {(sellerIntent?.kind === "identificar" ||
+          sellerIntent?.kind === "trocar") && (
+          <span className="seller-group-label">Vendedores</span>
+        )}
+
+        <div className="seller-grid">
+          {VENDEDORES.map((item) => (
+            <button
+              key={item.nome}
+              onClick={() => onEscolherVendedor(item)}
+              className="seller-btn"
+            >
+              <span className="seller-avatar">{item.nome.charAt(0)}</span>
+              <span className="seller-name">{item.nome}</span>
+              <MessageCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+            </button>
+          ))}
+        </div>
+
+        {(sellerIntent?.kind === "identificar" ||
+          sellerIntent?.kind === "trocar") && (
+          <button onClick={escolherCliente} className="seller-cliente-btn">
+            <UserRound className="w-4 h-4" />
+            <span>Sou cliente (não sou vendedor)</span>
+          </button>
+        )}
+      </DialogContent>
+    </Dialog>
+  );
+
+  // Janela de destinos da separação: Estoque e Suporte T.I., cada um 1 clique.
+  const tiDialog = (
+    <Dialog open={tiAberto} onOpenChange={setTiAberto}>
+      <DialogContent className="bg-white border-slate-200 text-slate-900 max-w-md shadow-2xl">
+        <DialogHeader>
+          <DialogTitle className="text-xl font-bold font-display text-slate-900">
+            Enviar montagem para separação
+          </DialogTitle>
+          <DialogDescription className="text-slate-600 text-xs">
+            {vendedor
+              ? `Assinado como ${vendedor.nome}. Clique em cada destino para abrir a conversa — o WhatsApp bloqueia se tentar abrir os dois de uma vez.`
+              : "Clique em cada destino para abrir a conversa."}
+          </DialogDescription>
+        </DialogHeader>
+
+        <div className="seller-grid">
+          {CONTATOS_TI.map((contato) => (
+            <button
+              key={contato.numero}
+              onClick={() => enviarDestinoTI(contato)}
+              className="seller-btn"
+            >
+              <span className="seller-avatar">
+                <Package className="w-4 h-4" />
+              </span>
+              <span className="seller-name">{contato.nome}</span>
+              <MessageCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+            </button>
+          ))}
+        </div>
+
+        <p className="seller-dica">
+          Dica: um grupo do WhatsApp com Estoque + T.I. deixaria isso em um
+          clique só. Se criarem, me passa o link do grupo.
+        </p>
+      </DialogContent>
+    </Dialog>
+  );
+
+  // Bloco que sai no PDF / impressao. Fica escondido na tela.
+  const printBudget = (
+    <div className="print-budget">
+      <div className="print-budget-head">
+        <img src={LOGO_DARK} alt="Binário Tecnologia" />
+        <div>
+          <strong>Orçamento de Montagem de PC</strong>
+          <span>Binário Tecnologia · Varginha - MG · Montagem inclusa</span>
+        </div>
+      </div>
+      <table className="print-budget-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Código</th>
+            <th>Peça</th>
+            <th>Qtd</th>
+            <th>Valor PIX</th>
+          </tr>
+        </thead>
+        <tbody>
+          {chosen.map((part) => (
+            <tr key={part.id}>
+              <td className="print-thumb-cell">
+                {part.foto ? (
+                  <img src={part.foto} alt="" className="print-thumb" />
+                ) : null}
+              </td>
+              <td className="mono">{part.code}</td>
+              <td>{part.name}</td>
+              <td>{selected[part.id] ?? 1}</td>
+              <td>{money.format(part.pixPrice)}</td>
+            </tr>
+          ))}
+          {cotacoes.map((item) => (
+            <tr key={item.id}>
+              <td className="print-thumb-cell"></td>
+              <td className="mono">A COTAR</td>
+              <td>
+                {rotuloCotacao(item)}: {item.descricao}
+              </td>
+              <td>1</td>
+              <td>sob consulta</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className="print-budget-total">
+        <span>
+          Total no PIX: <strong>{money.format(totalPix)}</strong>
+        </span>
+        <span>ou 10x de {money.format(installmentVal)}</span>
+      </div>
+      <p className="print-budget-note">
+        Valores sujeitos a confirmação de estoque. Peças separadas pelo código
+        informado acima.
+        {cotacoes.length > 0 &&
+          " Itens marcados como A COTAR não estão em estoque e não entram no total."}
+      </p>
+    </div>
+  );
+
+  const budgetSummary = (
+    <>
+      <div className="summary-items-list">
+        {categories.map((category) => {
+          const itens = chosen.filter((item) => item.category === category.id);
+          const CategoryIcon = category.icon;
+
+          // Categoria sem peça: no modo resumo e nos periféricos, some.
+          // Nas peças obrigatórias, mostra uma linha "clique para escolher".
+          if (!itens.length) {
+            if (reviewMode || category.periferico) return null;
+            return (
+              <div
+                key={category.id}
+                onClick={() => setActive(category.id)}
+                className="summary-item-row cursor-pointer hover:bg-slate-50 px-2 rounded transition-colors"
+              >
+                <div className="flex items-center gap-2 min-w-0">
+                  <CategoryIcon className="w-4 h-4 text-slate-400 shrink-0" />
+                  <div className="summary-item-label">
+                    <small>{category.short}</small>
+                    <strong>Clique para escolher</strong>
+                  </div>
+                </div>
+              </div>
+            );
+          }
+
+          return itens.map((part) => {
+            const qtd = selected[part.id] ?? 1;
+            return (
+              <div
+                key={part.id}
+                onClick={() => !reviewMode && setActive(category.id)}
+                className={
+                  reviewMode
+                    ? "summary-item-row px-2"
+                    : "summary-item-row cursor-pointer hover:bg-slate-50 px-2 rounded transition-colors"
+                }
+              >
+                <div className="flex items-center gap-2 min-w-0">
+                  <CategoryIcon className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <div className="summary-item-label">
+                    <small>
+                      {category.short}
+                      {qtd > 1 ? ` · ${qtd}x` : ""}
+                    </small>
+                    <strong>{part.name}</strong>
+                    <em className="summary-item-code">Cód. {part.code}</em>
+                  </div>
+                </div>
+                <span className="summary-item-price">
+                  {money.format(part.pixPrice * qtd)}
+                </span>
+              </div>
+            );
+          });
+        })}
+
+        {cotacoes.map((item) => (
+          <div key={item.id} className="summary-item-row px-2">
+            <div className="flex items-center gap-2 min-w-0">
+              <Search className="w-4 h-4 text-amber-600 shrink-0" />
+              <div className="summary-item-label">
+                <small>{rotuloCotacao(item)} · a cotar</small>
+                <strong>{item.descricao}</strong>
+              </div>
+            </div>
+            {!reviewMode && (
+              <button
+                onClick={() => removeCotacao(item.id)}
+                className="text-slate-400 hover:text-red-500 shrink-0"
+                title="Remover cotação"
+              >
+                <Trash2 className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {cotacoes.length > 0 && (
+        <p className="cotacao-aviso">
+          {cotacoes.length === 1 ? "1 item" : `${cotacoes.length} itens`} sob
+          encomenda — o valor entra depois que o vendedor cotar com o
+          fornecedor.
+        </p>
+      )}
+
+      {/* Power Watts Progress Meter */}
+      <div className="watts-meter-box">
+        <div className="watts-header">
+          <span className="flex items-center gap-1 text-slate-800">
+            <Zap className="w-4 h-4 text-amber-600" /> Consumo Estimado
+          </span>
+          <span className="font-mono text-slate-800 font-bold">
+            {requiredWatts ? `${requiredWatts} W` : "Sem cálculo"}
+          </span>
+        </div>
+        <div className="watts-progress-track">
+          <div
+            className="watts-progress-fill"
+            style={{
+              width: `${wattsPct}%`,
+              backgroundColor: !powerOk
+                ? "#ef4444"
+                : wattsPct > 80
+                  ? "#d97706"
+                  : "#059669",
+            }}
+          />
+        </div>
+        <p className="text-[11px] text-slate-500 mt-2">
+          {!requiredWatts
+            ? "Selecione CPU e Placa de Vídeo para calcular a fonte recomendada."
+            : !psu
+              ? `Recomendação mínima: Fonte de ${requiredWatts} W ou superior.`
+              : powerOk
+                ? `Fonte de ${psu.watts}W é totalmente adequada para o sistema.`
+                : `Atenção: A fonte selecionada (${psu.watts}W) é menor que o recomendado (${requiredWatts}W).`}
+        </p>
+      </div>
+
+      {/* Socket Compatibility Status Badge */}
+      <div
+        className={`compatibility-status-box ${socketOk && ramOk ? "is-ok" : "is-warning"}`}
+      >
+        <ShieldCheck className="w-4 h-4 shrink-0" />
+        <span>
+          {!mobo
+            ? "Aguardando escolha da placa-mãe para validação."
+            : socketOk && ramOk
+              ? `Socket ${cpu?.socket} e memórias ${boardMemType ?? ""} 100% compatíveis!`
+              : !socketOk
+                ? "Atenção: o socket da placa-mãe não bate com o do processador."
+                : `Atenção: a placa-mãe usa ${boardMemType} e uma das memórias é de outro tipo.`}
+        </span>
+      </div>
+    </>
+  );
+
+  // ---------------------------------------------------------------
+  // Modo visualizacao: link compartilhado abre direto no orcamento.
+  // ---------------------------------------------------------------
+  if (reviewMode) {
+    return (
+      <div className="min-h-screen bg-slate-50 text-foreground">
+        <header className="site-header no-print">
+          <div className="shell flex h-20 items-center justify-between gap-4">
+            <a href="/" className="brand-logo">
+              <img
+                src={LOGO_DARK}
+                alt="Binário Tecnologia"
+                className="brand-logo-img"
+              />
+            </a>
+            <Button
+              onClick={() => setSellerIntent({ kind: "orcamento" })}
+              className="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold gap-2 text-xs sm:text-sm px-4 h-10"
+            >
+              <MessageCircle className="w-4 h-4 fill-current" />
+              <span>Falar com Técnico</span>
+            </Button>
+          </div>
+        </header>
+
+        <main className="shell review-wrapper">
+          <div className="review-card">
+            <div className="review-head no-print">
+              <div>
+                <span className="review-kicker">Orçamento compartilhado</span>
+                <h1>Montagem selecionada</h1>
+                <p>
+                  Confira as peças abaixo. Montagem inclusa, sem taxa adicional.
+                </p>
+              </div>
+            </div>
+
+            {budgetSummary}
+
+            <div className="pricing-summary-box">
+              <div className="pix-total-block">
+                <span>Total no PIX (com 15% OFF)</span>
+                <strong>{money.format(totalPix)}</strong>
+                {pixSavings > 0 && (
+                  <span className="pix-savings-pill">
+                    <CheckCircle2 className="w-3.5 h-3.5" /> Você economiza{" "}
+                    {money.format(pixSavings)} no PIX
+                  </span>
+                )}
+              </div>
+
+              <div className="credit-total-line">
+                ou em até <strong>10x de {money.format(installmentVal)}</strong>{" "}
+                sem juros
+              </div>
+
+              <button
+                disabled={!chosen.length && !cotacoes.length}
+                onClick={() => setSellerIntent({ kind: "orcamento" })}
+                className="btn-whatsapp-checkout no-print"
+              >
+                <MessageCircle className="w-5 h-5 fill-current" />
+                <span>Finalizar no WhatsApp</span>
+              </button>
+
+              <div className="grid grid-cols-2 gap-2 mt-3 no-print">
+                <Button
+                  variant="outline"
+                  onClick={editBuild}
+                  className="border-slate-300 hover:bg-slate-100 text-slate-700 text-xs h-9"
+                >
+                  <Pencil className="w-3.5 h-3.5 mr-1" /> Editar montagem
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={() => window.print()}
+                  className="border-slate-300 hover:bg-slate-100 text-slate-700 text-xs h-9"
+                >
+                  <Download className="w-3.5 h-3.5 mr-1" /> PDF / Imprimir
+                </Button>
+              </div>
+
+              {!ehCliente && (
+                <button
+                  disabled={!chosen.length && !cotacoes.length}
+                  onClick={sendToTI}
+                  className="btn-send-ti no-print"
+                >
+                  <Package className="w-4 h-4" />
+                  <span>Enviar montagem para o T.I.</span>
+                </button>
+              )}
+            </div>
+          </div>
+        </main>
+
+        {printBudget}
+
+        {sellerDialog}
+        {tiDialog}
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
+      {/* Retail Header */}
+      <header className="site-header no-print">
+        <div className="shell flex h-20 items-center justify-between gap-4">
+          <a href="#inicio" className="brand-logo">
+            <img
+              src={LOGO_DARK}
+              alt="Binário Tecnologia"
+              className="brand-logo-img"
+            />
+          </a>
+
+          <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-700">
+            <a
+              href="#montador"
+              className="hover:text-blue-600 transition-colors"
+            >
+              Montador de PC
+            </a>
+            <a
+              href="#prontas"
+              className="hover:text-blue-600 transition-colors"
+            >
+              PCs Recomendados
+            </a>
+            <a
+              href="#estoque"
+              className="hover:text-blue-600 transition-colors"
+            >
+              Pronta Entrega
+            </a>
+          </nav>
+
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setSellerIntent({ kind: "trocar" })}
+              className="vendedor-chip"
+              data-vazio={!vendedor && !ehCliente}
+              title="Quem está montando"
+            >
+              <span className="vendedor-chip-avatar">
+                {vendedor ? (
+                  vendedor.nome.charAt(0)
+                ) : (
+                  <UserRound className="w-3.5 h-3.5" />
+                )}
+              </span>
+              <span className="vendedor-chip-texto">
+                <small>{ehCliente ? "Montando" : "Vendedor"}</small>
+                <strong>
+                  {vendedor
+                    ? vendedor.nome
+                    : ehCliente
+                      ? "Cliente"
+                      : "Escolher"}
+                </strong>
+              </span>
+              <ChevronDown className="w-3.5 h-3.5 opacity-60 shrink-0" />
+            </button>
+            <Button
+              onClick={() => setSellerIntent({ kind: "orcamento" })}
+              className="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold gap-2 text-xs sm:text-sm px-4 h-10 shadow-md shadow-emerald-600/20"
+            >
+              <MessageCircle className="w-4 h-4 fill-current" />
+              <span className="hidden sm:inline">Falar com Vendedor</span>
+              <span className="sm:hidden">Falar</span>
+            </Button>
+          </div>
+        </div>
+      </header>
+
+      <main className="flex-1">
+        {/* Hero Banner */}
+        <section id="inicio" className="hero-banner no-print">
+          <div className="shell hero-grid">
+            <div className="hero-headline">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold mb-3">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>MONTAGEM DE ALTA PERFORMANCE EM VARGINHA</span>
+              </div>
+              <h1>Monte seu PC Gamer ou de Trabalho Sob Medida</h1>
+              <p>
+                Escolha os componentes ideais para a sua necessidade. Todas as
+                máquinas montadas na Binário saem da loja com
+                <strong>
+                  {" "}
+                  cabos organizados, BIOS atualizada gratuitamente e 24h de
+                  teste de estresse
+                </strong>
+                .
+              </p>
+              <div className="hero-proof-pills">
+                <span className="hero-pill">
+                  <Check className="w-4 h-4 text-emerald-600" /> Compatibilidade
+                  100% Garantida
+                </span>
+                <span className="hero-pill">
+                  <ShieldCheck className="w-4 h-4 text-emerald-600" /> 1 Ano de
+                  Garantia Local
+                </span>
+                <span className="hero-pill">
+                  <Truck className="w-4 h-4 text-emerald-600" /> Retirada
+                  Imediata em Varginha
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Builder Section */}
+        <section id="montador" className="builder-layout no-print">
+          <div className="shell">
+            {/* Step Category Rail */}
+            <div
+              className="step-rail-container"
+              role="tablist"
+              aria-label="Categorias de peças"
+            >
+              {categories.map((category, index) => {
+                const done = chosen.some(
+                  (part) => part.category === category.id,
+                );
+                const Icon = category.icon;
+                return (
+                  <button
+                    key={category.id}
+                    role="tab"
+                    aria-selected={active === category.id}
+                    data-done={done}
+                    data-periferico={category.periferico}
+                    className="category-tab-btn"
+                    onClick={() => setActive(category.id)}
+                  >
+                    <span className="tab-status-icon">
+                      {done ? (
+                        <Check className="w-3.5 h-3.5" />
+                      ) : (
+                        String(index + 1)
+                      )}
+                    </span>
+                    <Icon className="w-4 h-4" />
+                    <span>{category.short}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Main Builder Catalog & Summary Grid */}
+            <div className="main-builder-grid">
+              {/* Catalog Column */}
+              <div className="catalog-card">
+                <div className="catalog-header">
+                  <div>
+                    <h2>
+                      Escolha o seu{" "}
+                      {categories.find((item) => item.id === active)?.label}
+                    </h2>
+                    <span>Exibindo peças compatíveis em estoque na loja</span>
+                  </div>
+                  <span className="catalog-step-pill">
+                    ETAPA{" "}
+                    {categories.findIndex((item) => item.id === active) + 1} DE{" "}
+                    {categories.length}
+                  </span>
+                </div>
+
+                {/* Filter Bar */}
+                <div className="filter-bar">
+                  <div className="search-input-wrapper">
+                    <Search />
+                    <input
+                      value={search}
+                      onChange={(e) => setSearch(e.target.value)}
+                      placeholder="Buscar por modelo, marca (ex: Ryzen, RTX, Kingston)..."
+                    />
+                  </div>
+                  <div
+                    className="platform-segmented"
+                    aria-label="Filtrar por fabricante"
+                  >
+                    <button
+                      aria-pressed={platform === "all"}
+                      onClick={() => setPlatform("all")}
+                    >
+                      Todas
+                    </button>
+                    <button
+                      aria-pressed={platform === "AMD"}
+                      onClick={() => setPlatform("AMD")}
+                    >
+                      AMD
+                    </button>
+                    <button
+                      aria-pressed={platform === "Intel"}
+                      onClick={() => setPlatform("Intel")}
+                    >
+                      Intel
+                    </button>
+                  </div>
+                </div>
+
+                {/* Product Cards List */}
+                <div className="products-list-wrapper">
+                  {visibleParts.map((part) => {
+                    const qtd = selected[part.id] ?? 0;
+                    const chosenPart = qtd > 0;
+                    const partMulti = isMulti(part.category);
+                    const CategoryIcon =
+                      categories.find((cat) => cat.id === part.category)
+                        ?.icon ?? Cpu;
+
+                    return (
+                      <article
+                        className="product-item-card"
+                        data-selected={chosenPart}
+                        key={part.id}
+                      >
+                        {/* Foto real do produto; se não tiver, mostra o ícone */}
+                        <div className="hardware-thumb-box">
+                          {part.foto ? (
+                            <img
+                              src={part.foto}
+                              alt={part.name}
+                              className="hardware-thumb-img"
+                              loading="lazy"
+                            />
+                          ) : (
+                            <>
+                              <CategoryIcon />
+                              <span className="hardware-thumb-badge">
+                                {part.brand}
+                              </span>
+                            </>
+                          )}
+                        </div>
+
+                        {/* Hardware Details */}
+                        <div className="product-info-col">
+                          <div className="product-brand-tags">
+                            <span className="brand-badge">{part.brand}</span>
+                            <span className="code-badge">Cód. {part.code}</span>
+                            {part.socket && (
+                              <span className="spec-badge">
+                                Socket {part.socket}
+                              </span>
+                            )}
+                            {part.memType && (
+                              <span className="spec-badge">{part.memType}</span>
+                            )}
+                            {part.platform && (
+                              <span className="spec-badge">
+                                {part.platform}
+                              </span>
+                            )}
+                            {part.watts && (
+                              <span className="spec-badge">
+                                {part.watts}W TDP
+                              </span>
+                            )}
+                          </div>
+                          <h3>{part.name}</h3>
+                          <p>{part.detail}</p>
+                          <div className="flex flex-wrap gap-1.5 my-1.5">
+                            {part.specs.map((spec, idx) => (
+                              <span
+                                key={idx}
+                                className="text-[11px] font-mono bg-slate-100 text-slate-700 px-2 py-0.5 rounded border border-slate-200"
+                              >
+                                {spec}
+                              </span>
+                            ))}
+                          </div>
+                          <span className="stock-status-tag">
+                            Em estoque em Varginha · {part.stock} unidades
+                          </span>
+                        </div>
+
+                        {/* Price & Action */}
+                        <div className="product-price-col">
+                          <div className="pix-price-highlight">
+                            <strong>{money.format(part.pixPrice)}</strong>
+                            <span className="pix-badge-small">
+                              15% OFF NO PIX
+                            </span>
+                          </div>
+                          <span className="credit-price-small">
+                            ou 10x de {money.format(part.pixPrice / 0.85 / 10)}
+                          </span>
+
+                          {partMulti && chosenPart ? (
+                            <div className="qty-stepper">
+                              <button
+                                type="button"
+                                aria-label="Diminuir"
+                                onClick={() => mudarQtd(part.id, -1)}
+                              >
+                                <Minus className="w-3.5 h-3.5" />
+                              </button>
+                              <span className="qty-value">{qtd}</span>
+                              <button
+                                type="button"
+                                aria-label="Adicionar mais um"
+                                onClick={() => mudarQtd(part.id, 1)}
+                              >
+                                <Plus className="w-3.5 h-3.5" />
+                              </button>
+                            </div>
+                          ) : (
+                            <Button
+                              onClick={() =>
+                                chosenPart && !partMulti
+                                  ? setSelected((curr) => {
+                                      const next = { ...curr };
+                                      delete next[part.id];
+                                      return next;
+                                    })
+                                  : selectPart(part)
+                              }
+                              className={
+                                chosenPart && !partMulti
+                                  ? "bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold text-xs h-9 px-4"
+                                  : "bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs h-9 px-4 shadow-md shadow-blue-600/20"
+                              }
+                            >
+                              {chosenPart && !partMulti ? (
+                                <>
+                                  <Check className="w-3.5 h-3.5 mr-1" />{" "}
+                                  Selecionado
+                                </>
+                              ) : (
+                                <>
+                                  {partMulti ? "Adicionar" : "Adicionar"}{" "}
+                                  <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                                </>
+                              )}
+                            </Button>
+                          )}
+                        </div>
+                      </article>
+                    );
+                  })}
+
+                  {!visibleParts.length && (
+                    <div className="p-12 text-center text-slate-500 flex flex-col items-center gap-2">
+                      <Search className="w-8 h-8 opacity-40" />
+                      <strong className="text-slate-900 text-base">
+                        Nenhum componente encontrado
+                      </strong>
+                      <span className="text-xs">
+                        {active === "psu" && requiredWatts
+                          ? `Nenhuma fonte cadastrada atinge os ${requiredWatts} W necessários para esta montagem.`
+                          : active === "memory" && boardMemType
+                            ? `Nenhuma memória ${boardMemType} em estoque para a placa-mãe escolhida.`
+                            : "Tente buscar por outro termo ou ajuste os filtros acima."}
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Pedido de cotação — peça que a loja não tem em estoque */}
+                <div className="cotacao-box">
+                  <div className="cotacao-head">
+                    <Search className="w-4 h-4 text-amber-600" />
+                    <div>
+                      <strong>Não achou a peça que o cliente quer?</strong>
+                      <span>
+                        A loja encomenda do fornecedor. Descreva a peça e ela
+                        entra no orçamento como <em>a cotar</em>.
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="cotacao-form">
+                    <select
+                      value={cotacaoCategoria}
+                      onChange={(e) => {
+                        setCotacaoCategoria(
+                          e.target.value as Category | "outro" | "",
+                        );
+                        setCotacaoErro("");
+                      }}
+                      className="cotacao-select"
+                      aria-label="Tipo da peça"
+                    >
+                      <option value="">Tipo da peça…</option>
+                      {categories.map((category) => (
+                        <option key={category.id} value={category.id}>
+                          {category.label}
+                        </option>
+                      ))}
+                      <option value="outro">Outro</option>
+                    </select>
+
+                    <input
+                      value={cotacaoDescricao}
+                      onChange={(e) => {
+                        setCotacaoDescricao(e.target.value);
+                        setCotacaoErro("");
+                      }}
+                      onKeyDown={(e) => e.key === "Enter" && addCotacao()}
+                      maxLength={200}
+                      placeholder="Ex: 32GB DDR5 6000MHz Corsair Vengeance"
+                      className="cotacao-input"
+                      aria-label="Descrição da peça"
+                    />
+
+                    <button onClick={addCotacao} className="cotacao-btn">
+                      <Plus className="w-4 h-4" />
+                      <span>Pedir cotação</span>
+                    </button>
+                  </div>
+
+                  {cotacaoErro && (
+                    <span className="cotacao-erro">{cotacaoErro}</span>
+                  )}
+                </div>
+
+                {/* Step Navigation Bar */}
+                <div className="flex items-center justify-between gap-2 p-4 bg-slate-50 border-t border-slate-200">
+                  <Button
+                    variant="outline"
+                    disabled={categories[0]?.id === active}
+                    onClick={() => moveStep(-1)}
+                    className="border-slate-300 hover:bg-slate-100 text-slate-700 text-xs"
+                  >
+                    <ChevronLeft className="w-4 h-4 mr-1" />{" "}
+                    <span className="hidden sm:inline">Etapa</span> Anterior
+                  </Button>
+                  <span className="text-xs font-semibold text-slate-600 text-center">
+                    {completed} de {CATEGORIAS_PECA.length} peças
+                  </span>
+                  <Button
+                    disabled={categories[categories.length - 1]?.id === active}
+                    onClick={() => moveStep(1)}
+                    className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold"
+                  >
+                    <span className="hidden sm:inline">Próxima Etapa</span>
+                    <span className="sm:hidden">Próxima</span>
+                    <ChevronRight className="w-4 h-4 ml-1" />
+                  </Button>
+                </div>
+              </div>
+
+              {/* Sticky Summary Sidebar */}
+              <aside className="summary-sidebar-card">
+                <div className="summary-sidebar-header">
+                  <h3>
+                    <PackageCheck className="w-5 h-5 text-emerald-400" />
+                    Sua Montagem
+                  </h3>
+                  {(chosen.length > 0 || cotacoes.length > 0) && (
+                    <button
+                      onClick={() => {
+                        setSelected({});
+                        setCotacoes([]);
+                      }}
+                      className="text-slate-300 hover:text-red-400 text-xs flex items-center gap-1 transition-colors"
+                      title="Limpar seleção"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                      <span>Limpar</span>
+                    </button>
+                  )}
+                </div>
+
+                {budgetSummary}
+
+                {/* Pricing Summary Box */}
+                <div className="pricing-summary-box">
+                  <div className="pix-total-block">
+                    <span>Total no PIX (com 15% OFF)</span>
+                    <strong>{money.format(totalPix)}</strong>
+                    {pixSavings > 0 && (
+                      <span className="pix-savings-pill">
+                        <CheckCircle2 className="w-3.5 h-3.5" /> Você economiza{" "}
+                        {money.format(pixSavings)} no PIX
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="credit-total-line">
+                    ou em até{" "}
+                    <strong>10x de {money.format(installmentVal)}</strong> sem
+                    juros
+                  </div>
+
+                  <button
+                    disabled={!chosen.length && !cotacoes.length}
+                    onClick={() => setSellerIntent({ kind: "orcamento" })}
+                    className="btn-whatsapp-checkout"
+                  >
+                    <MessageCircle className="w-5 h-5 fill-current" />
+                    <span>Finalizar no WhatsApp</span>
+                  </button>
+
+                  <div className="grid grid-cols-2 gap-2 mt-3">
+                    <Button
+                      variant="outline"
+                      disabled={!chosen.length && !cotacoes.length}
+                      onClick={shareBuild}
+                      className="border-slate-300 hover:bg-slate-100 text-slate-700 text-xs h-9"
+                    >
+                      {copied ? (
+                        <Check className="w-3.5 h-3.5 mr-1 text-emerald-600" />
+                      ) : (
+                        <Copy className="w-3.5 h-3.5 mr-1" />
+                      )}
+                      {copied ? "Copiado!" : "Copiar Link"}
+                    </Button>
+                    <Button
+                      variant="outline"
+                      disabled={!chosen.length && !cotacoes.length}
+                      onClick={() => window.print()}
+                      className="border-slate-300 hover:bg-slate-100 text-slate-700 text-xs h-9"
+                    >
+                      <Download className="w-3.5 h-3.5 mr-1" /> PDF / Imprimir
+                    </Button>
+                  </div>
+
+                  {!ehCliente && (
+                    <button
+                      disabled={!chosen.length && !cotacoes.length}
+                      onClick={sendToTI}
+                      className="btn-send-ti"
+                    >
+                      <Package className="w-4 h-4" />
+                      <span>Enviar montagem para o T.I.</span>
+                    </button>
+                  )}
+                </div>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        {/* Desempenho estimado da montagem */}
+        {temDesempenho && (
+          <section className="perf-section no-print">
+            <div className="shell">
+              <div className="section-title-head">
+                <h2>Como esse PC se sai</h2>
+                <p>
+                  Estimativa em 1080p com gráficos altos, baseada nas peças
+                  escolhidas. Valores aproximados para dar uma ideia — não são
+                  benchmark oficial.
+                </p>
+              </div>
+
+              <div className="perf-grid">
+                {/* Jogos */}
+                <div className="perf-card">
+                  <h3>
+                    <Sparkles className="w-4 h-4 text-blue-600" /> Nos jogos
+                  </h3>
+                  {fpsPerfil ? (
+                    <>
+                      <span className="perf-fonte">
+                        Rodando com: <strong>{fpsFonte}</strong>
+                      </span>
+                      <div className="perf-jogos">
+                        {JOGOS.map((jogo, i) => {
+                          const fps = fpsPerfil[i] ?? 0;
+                          const pct = Math.min(100, (fps / FPS_MAX) * 100);
+                          const cor =
+                            fps >= 120
+                              ? "#059669"
+                              : fps >= 60
+                                ? "#d97706"
+                                : "#dc2626";
+                          return (
+                            <div key={jogo} className="perf-jogo-row">
+                              <span className="perf-jogo-nome">{jogo}</span>
+                              <div className="perf-bar-track">
+                                <div
+                                  className="perf-bar-fill"
+                                  style={{
+                                    width: `${pct}%`,
+                                    backgroundColor: cor,
+                                  }}
+                                />
+                              </div>
+                              <span
+                                className="perf-jogo-fps"
+                                style={{ color: cor }}
+                              >
+                                {fps} FPS
+                              </span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                      <span className="perf-legenda">
+                        <b style={{ color: "#059669" }}>120+</b> muito fluido ·
+                        <b style={{ color: "#d97706" }}> 60+</b> joga bem ·
+                        <b style={{ color: "#dc2626" }}> abaixo</b> precisa
+                        baixar gráficos
+                      </span>
+                    </>
+                  ) : (
+                    <p className="perf-vazio">
+                      Escolha uma placa de vídeo (ou um processador com vídeo
+                      integrado) para ver o desempenho nos jogos.
+                    </p>
+                  )}
+                </div>
+
+                {/* Trabalho */}
+                <div className="perf-card">
+                  <h3>
+                    <MonitorCog className="w-4 h-4 text-blue-600" /> No trabalho
+                  </h3>
+                  <div className="perf-trabalho">
+                    {trabalho.map((t) => (
+                      <div key={t.nome} className="perf-trab-row">
+                        <div className="perf-trab-info">
+                          <strong>{t.nome}</strong>
+                          <small>{t.obs}</small>
+                        </div>
+                        <div
+                          className="perf-dots"
+                          aria-label={`${t.nota} de 3`}
+                        >
+                          {[1, 2, 3].map((n) => (
+                            <span
+                              key={n}
+                              className="perf-dot"
+                              data-on={n <= t.nota}
+                            />
+                          ))}
+                          <span className="perf-nota-txt">
+                            {t.nota === 0
+                              ? "—"
+                              : t.nota === 1
+                                ? "Básico"
+                                : t.nota === 2
+                                  ? "Bom"
+                                  : "Ótimo"}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  {ramTotal > 0 && (
+                    <span className="perf-fonte">
+                      Memória total da montagem: <strong>{ramTotal} GB</strong>
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Recommended Preset PCs */}
+        <section id="prontas" className="presets-section no-print">
+          <div className="shell">
+            <div className="section-title-head">
+              <h2>Configurações Recomendadas pelos Nossos Técnicos</h2>
+              <p>
+                Modelos montados e testados pela equipe da Binário. Você pode
+                carregar uma build e alterar qualquer peça.
+              </p>
+            </div>
+
+            <div className="presets-cards-grid">
+              {presets.map((preset) => (
+                <div
+                  key={preset.name}
+                  className="preset-build-card"
+                  data-featured={preset.featured}
+                >
+                  <span className="preset-kicker">{preset.kicker}</span>
+                  <h3>{preset.name}</h3>
+                  <p className="text-slate-600 text-xs leading-relaxed mb-3">
+                    {preset.note}
+                  </p>
+
+                  <div className="preset-fps-badges">
+                    {preset.fps.map((item, i) => (
+                      <span key={i} className="fps-badge">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-auto pt-4 border-t border-slate-200">
+                    <div className="flex items-baseline justify-between mb-3">
+                      <div>
+                        <span className="text-[10px] text-emerald-700 uppercase font-bold block">
+                          À vista no PIX
+                        </span>
+                        <strong className="text-2xl font-extrabold text-emerald-700 font-display">
+                          {money.format(preset.pixPrice)}
+                        </strong>
+                      </div>
+                      <span className="text-xs text-slate-500">
+                        ou 10x de {money.format(preset.cardPrice / 10)}
+                      </span>
+                    </div>
+
+                    <Button
+                      onClick={() => loadPreset(preset.ids)}
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs h-10"
+                    >
+                      Carregar esta Build no Montador{" "}
+                      <ArrowRight className="w-4 h-4 ml-1" />
+                    </Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Galeria de montagens da Binário */}
+        <section className="galeria-section no-print">
+          <div className="shell">
+            <div className="section-title-head">
+              <h2>Montagens que saíram da nossa bancada</h2>
+              <p>
+                Cada PC é montado, testado por 24h e organizado por dentro aqui
+                em Varginha antes de ir pra casa do cliente.
+              </p>
+            </div>
+            <div className="galeria-grid">
+              {MONTAGENS.map((m) => (
+                <figure key={m.titulo} className="galeria-card">
+                  <img src={m.foto} alt={m.titulo} loading="lazy" />
+                  <figcaption>
+                    <strong>{m.titulo}</strong>
+                    <span>{m.desc}</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Ready Stock Section */}
+        <section id="estoque" className="stock-section no-print">
+          <div className="shell">
+            <div className="section-title-head">
+              <h2>Computadores Pronta Entrega na Loja em Varginha</h2>
+              <p>
+                Já saem montados, formatados com Windows de avaliação e prontos
+                para uso imediato.
+              </p>
+            </div>
+
+            <div className="stock-grid">
+              {stockMachines.map((machine) => (
+                <div key={machine.id} className="stock-machine-card">
+                  <div className="stock-machine-body">
+                    <span className="code-badge">Cód. {machine.id}</span>
+                    <h3>{machine.name}</h3>
+                    <p>{machine.spec}</p>
+                    <span className="stock-machine-tone">{machine.tone}</span>
+                  </div>
+
+                  <div className="stock-machine-foot">
+                    <button
+                      onClick={() =>
+                        setSellerIntent({
+                          kind: "montada",
+                          machineId: machine.id,
+                        })
+                      }
+                      className="btn-whatsapp-checkout"
+                    >
+                      <MessageCircle className="w-5 h-5 fill-current" />
+                      <span>Comprar pelo WhatsApp</span>
+                    </button>
+                    <div className="stock-machine-price">
+                      <strong>{money.format(machine.pixPrice)}</strong>
+                      <span>no PIX</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {printBudget}
+
+      {/* Footer */}
+      <footer className="site-footer no-print">
+        <div className="shell footer-grid">
+          <div className="footer-brand">
+            <img
+              src={LOGO_LIGHT}
+              alt="Binário Tecnologia"
+              className="footer-logo-img"
+            />
+            <p>
+              Distribuidora e assistência técnica em Varginha - MG. Montagem,
+              configuração e garantia local para o Sul de Minas.
+            </p>
+          </div>
+
+          <div className="footer-col">
+            <strong>Loja</strong>
+            <span className="footer-line">
+              <MapPin className="w-3.5 h-3.5" /> Varginha - MG
+            </span>
+            <span className="footer-line">
+              <Truck className="w-3.5 h-3.5" /> Retirada imediata na loja
+            </span>
+            <span className="footer-line">
+              <ShieldCheck className="w-3.5 h-3.5" /> 1 ano de garantia
+            </span>
+          </div>
+
+          <div className="footer-col">
+            <strong>Pagamento</strong>
+            <span>PIX à vista com desconto</span>
+            <span>Cartão em até 10x sem juros</span>
+            <span>Montagem inclusa, sem taxa</span>
+          </div>
+        </div>
+
+        <div className="shell footer-bottom">
+          <span>
+            © {new Date().getFullYear()} Binário Tecnologia · Desde 1997
+          </span>
+          <span>
+            Valores sujeitos a confirmação de estoque com a equipe de vendas.
+          </span>
+        </div>
+      </footer>
+
+      {sellerDialog}
+      {tiDialog}
+    </div>
+  );
+}

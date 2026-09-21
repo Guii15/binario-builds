@@ -1,0 +1,40 @@
+BINARIO BUILDS - montador de PC
+================================
+
+Como rodar:
+1. Abra este projeto no VS Code (ou terminal na pasta).
+2. Rode: npm install
+3. Rode: npm run dev
+4. Acesse http://127.0.0.1:8080 (ou a porta que aparecer no terminal)
+
+O que tem nessa versao (21/09/2026):
+- 12 categorias: processador, placa-mae, memoria, video, ssd, fonte,
+  cooler, gabinete, monitor, teclado, mouse, cadeira
+- Fotos reais em algumas pecas (public/fotos/) -- cooler e cadeira ainda
+  sem foto, mostram o icone.
+- Pedido de cotacao para peca fora de estoque.
+- Vendedor identifica quem esta montando (ou "cliente", que esconde o
+  botao de mandar pro T.I.).
+- Mensagem pro WhatsApp: separacao de peca vai pro Estoque E pro
+  Suporte T.I. junto (dois botoes, um clique cada, pra nao travar no
+  bloqueio de pop-up do navegador).
+- Checklist de compatibilidade (socket, memoria, fonte) com bolinha
+  verde/laranja.
+- Aviso de "falta pouco" quando faltam 1 ou 2 pecas essenciais.
+- Filtro de preco na busca (Ate R$500, R$500-1000, etc).
+- Orcamento salva sozinho no navegador -- se o cliente fechar a aba e
+  voltar depois, as pecas continuam la.
+- Modo escuro (botao de sol/lua no cabecalho).
+- Animacoes leves nos cards e transicoes.
+- Painel de "como esse PC se sai" (FPS estimado em jogos + nota pra
+  trabalho, baseado na CPU/GPU/RAM escolhida).
+- Galeria de montagens fica desativada por enquanto (linha comentada
+  em src/routes/index.tsx, procure por "Galeria de montagens").
+
+Pendente / vale conferir:
+- Confirmar se os numeros de WhatsApp dos vendedores e do T.I. estao
+  certos (testar cada botao).
+- Faltam fotos reais de: cooler, cadeira, e a maioria dos ~6000 itens
+  do estoque -- por enquanto so alguns produtos de exemplo tem foto.
+- Extrator do WinThor (Oracle) pra puxar estoque real ainda nao feito.
+- Sem link publico ainda (precisa de hospedagem, tipo Hostinger/VPS).
