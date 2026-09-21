@@ -2559,3 +2559,196 @@ button:not(:disabled):active,
   border-color: var(--border);
   color: var(--foreground);
 }
+
+/* =====================================================================
+   Ajustes 21/09/2026 (6) — sugestão de upgrade e histórico de orçamentos.
+   ===================================================================== */
+.upgrade-box {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0.85rem 1.5rem 0;
+  padding: 0.7rem 0.9rem;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 0.55rem;
+  color: #1d4ed8;
+  animation: fade-in-up 0.25s ease;
+}
+.upgrade-box > svg {
+  flex-shrink: 0;
+  color: #2563eb;
+}
+.upgrade-box > div {
+  flex: 1;
+  min-width: 0;
+}
+.upgrade-box strong {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #1d4ed8;
+}
+.upgrade-box span {
+  display: block;
+  font-size: 0.72rem;
+  color: #3b82f6;
+  margin-top: 0.15rem;
+}
+.upgrade-box button {
+  flex-shrink: 0;
+  height: 2.1rem;
+  padding: 0 0.9rem;
+  border: 0;
+  border-radius: 0.4rem;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.upgrade-box button:hover {
+  background: #1d4ed8;
+}
+.dark .upgrade-box {
+  background: rgba(59, 130, 246, 0.14);
+  border-color: rgba(59, 130, 246, 0.35);
+  color: #93c5fd;
+}
+.dark .upgrade-box > svg {
+  color: #60a5fa;
+}
+.dark .upgrade-box strong {
+  color: #bfdbfe;
+}
+.dark .upgrade-box span {
+  color: #93c5fd;
+}
+
+@media (max-width: 640px) {
+  .upgrade-box {
+    flex-wrap: wrap;
+    margin: 0.75rem 1rem 0;
+  }
+  .upgrade-box button {
+    width: 100%;
+  }
+}
+
+/* --- Histórico de orçamentos ------------------------------------------ */
+.history-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 9999px;
+  background: #ffffff;
+  color: #334155;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+  flex-shrink: 0;
+}
+.history-btn:hover {
+  border-color: #94a3b8;
+}
+.dark .history-btn {
+  background: var(--card);
+  border-color: var(--border);
+  color: var(--foreground);
+}
+.dark .history-btn:hover {
+  border-color: #3b82f6;
+}
+.history-empty {
+  padding: 1.5rem 0.5rem;
+  text-align: center;
+  color: #64748b;
+  font-size: 0.85rem;
+}
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+.history-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.55rem;
+  background: #f8fafc;
+}
+.history-card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.history-card-head strong {
+  font-size: 0.85rem;
+  color: #0f172a;
+}
+.history-card-head span {
+  font-size: 0.7rem;
+  color: #64748b;
+  white-space: nowrap;
+}
+.history-card-itens {
+  font-size: 0.76rem;
+  color: #475569;
+  line-height: 1.5;
+}
+.history-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.2rem;
+}
+.history-card-total {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #059669;
+}
+.history-card button {
+  height: 2rem;
+  padding: 0 0.75rem;
+  border: 1px solid #2563eb;
+  border-radius: 0.4rem;
+  background: #ffffff;
+  color: #1d4ed8;
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.history-card button:hover {
+  background: #eff6ff;
+}
+.dark .history-card {
+  background: var(--secondary);
+  border-color: var(--border);
+}
+.dark .history-card-head strong {
+  color: var(--foreground);
+}
+.dark .history-card-head span,
+.dark .history-card-itens {
+  color: var(--muted-foreground);
+}
+.dark .history-card button {
+  background: var(--card);
+  border-color: #3b82f6;
+  color: #93c5fd;
+}
+.dark .history-card button:hover {
+  background: rgba(59, 130, 246, 0.14);
+}

@@ -37,6 +37,7 @@ import {
   Zap,
   Sun,
   Moon,
+  History,
 } from "lucide-react";
 import { useEffect, useMemo, useState, type ComponentType } from "react";
 
@@ -726,9 +727,31 @@ const CLIENTE_FLAG = "__cliente__";
 // voltar depois (ou fechar a aba sem querer) encontrar tudo do jeito que deixou.
 const BUILD_STORAGE_KEY = "binario:orcamento-salvo";
 const TEMA_STORAGE_KEY = "binario:tema";
+// Guarda os últimos orçamentos enviados pro WhatsApp, pra quem operou o
+// computador achar de novo sem precisar rolar a conversa no celular.
+const HISTORICO_STORAGE_KEY = "binario:historico-orcamentos";
+const HISTORICO_MAX = 5;
 
 // Peça que o cliente pediu e a loja não tem em estoque.
 type Cotacao = { id: string; categoria: Category | "outro"; descricao: string };
+
+// Um orçamento já enviado — guardado pra reabrir depois.
+type HistoricoItem = {
+  id: string;
+  data: number;
+  vendedor: string;
+  itens: {
+    id: string;
+    name: string;
+    code: string;
+    category: Category;
+    qty: number;
+    pixPrice: number;
+  }[];
+  cotacoes: Cotacao[];
+  observacao: string;
+  totalPix: number;
+};
 
 // Logo clara (texto branco) para fundos escuros; escura para fundos claros.
 const LOGO_LIGHT = "/logo-binario.png";
@@ -828,6 +851,23 @@ function Index() {
   // Modo escuro: começa claro no servidor (evita piscar) e ajusta no
   // primeiro efeito, lendo o que a pessoa escolheu da última vez.
   const [temaEscuro, setTemaEscuro] = useState(false);
+  // Últimos orçamentos enviados pro WhatsApp (fica só neste navegador).
+  const [historico, setHistorico] = useState<HistoricoItem[]>([]);
+  const [historicoAberto, setHistoricoAberto] = useState(false);
+
+  useEffect(() => {
+    try {
+      const raw = window.localStorage.getItem(HISTORICO_STORAGE_KEY);
+      if (raw) {
+        const parsed: unknown = JSON.parse(raw);
+        if (Array.isArray(parsed)) {
+          setHistorico(parsed.slice(0, HISTORICO_MAX) as HistoricoItem[]);
+        }
+      }
+    } catch {
+      // navegador sem storage ou histórico corrompido — segue vazio
+    }
+  }, []);
 
   useEffect(() => {
     try {
@@ -1124,6 +1164,54 @@ function Index() {
     (id) => categories.find((c) => c.id === id)?.short ?? id,
   );
 
+  // ----- Sugestão de upgrade -----
+  // Pra categoria de escolha única (memória/SSD ficam de fora, são multi),
+  // acha a próxima peça mais cara da mesma categoria que ainda é compatível
+  // e sugere só quando a diferença de preço é pequena ("por mais R$X...").
+  function upgradeSugerido(part: Part): Part | null {
+    if (isMulti(part.category)) return null;
+    const candidatos = parts
+      .filter((candidato) => {
+        if (candidato.category !== part.category) return false;
+        if (candidato.id === part.id) return false;
+        if (candidato.stock === 0) return false;
+        if (candidato.pixPrice <= part.pixPrice) return false;
+        if (
+          part.category === "motherboard" &&
+          cpu?.socket &&
+          candidato.socket !== cpu.socket
+        )
+          return false;
+        if (
+          part.category === "cpu" &&
+          mobo?.socket &&
+          candidato.socket !== mobo.socket
+        )
+          return false;
+        if (
+          part.category === "psu" &&
+          requiredWatts &&
+          candidato.watts !== undefined &&
+          candidato.watts < requiredWatts
+        )
+          return false;
+        return true;
+      })
+      .sort((a, b) => a.pixPrice - b.pixPrice);
+    const proximo = candidatos[0];
+    if (!proximo) return null;
+    const diff = proximo.pixPrice - part.pixPrice;
+    const limite = Math.min(400, Math.max(150, part.pixPrice * 0.25));
+    return diff <= limite ? proximo : null;
+  }
+
+  const upgradeAtivo = (() => {
+    const partAtual = chosen.find((part) => part.category === active);
+    if (!partAtual) return null;
+    const sugestao = upgradeSugerido(partAtual);
+    return sugestao ? { atual: partAtual, sugestao } : null;
+  })();
+
   const completed = CATEGORIAS_PECA.filter((category) =>
     chosen.some((part) => part.category === category.id),
   ).length;
@@ -1316,6 +1404,51 @@ function Index() {
     );
   }
 
+  // Guarda uma cópia do que foi mandado, pra aparecer no histórico depois.
+  function registrarHistorico(nomeVendedor: string) {
+    if (!chosen.length && !cotacoes.length) return;
+    const entry: HistoricoItem = {
+      id: `h-${Date.now()}`,
+      data: Date.now(),
+      vendedor: nomeVendedor,
+      itens: chosen.map((part) => ({
+        id: part.id,
+        name: part.name,
+        code: part.code,
+        category: part.category,
+        qty: selected[part.id] ?? 1,
+        pixPrice: part.pixPrice,
+      })),
+      cotacoes,
+      observacao,
+      totalPix,
+    };
+    setHistorico((current) => {
+      const next = [entry, ...current].slice(0, HISTORICO_MAX);
+      try {
+        window.localStorage.setItem(
+          HISTORICO_STORAGE_KEY,
+          JSON.stringify(next),
+        );
+      } catch {
+        // navegador sem storage — o histórico só vale pra essa visita
+      }
+      return next;
+    });
+  }
+
+  // Recarrega um orçamento antigo do histórico pro montador atual.
+  function carregarHistorico(entry: HistoricoItem) {
+    const restoredSel: Record<string, number> = {};
+    for (const item of entry.itens) {
+      if (parts.some((p) => p.id === item.id)) restoredSel[item.id] = item.qty;
+    }
+    setSelected(restoredSel);
+    setCotacoes(entry.cotacoes ?? []);
+    setObservacao(entry.observacao ?? "");
+    setHistoricoAberto(false);
+  }
+
   // Orcamento montado peca a peca -> vai pro WhatsApp do vendedor escolhido.
   function enviarOrcamento(item: Vendedor) {
     const linhas = [
@@ -1332,6 +1465,7 @@ function Index() {
       ? `\n\n*Observação:* ${observacao.trim()}`
       : "";
     const text = `Olá, ${item.nome}! Gostaria de consultar este orçamento de PC:\n\n${linhas || "Ainda estou montando minhas peças."}\n\n*Total no PIX (com 15% OFF)*: ${money.format(totalPix)}\n*Parcelado*: 10x de ${money.format(installmentVal)}${aviso}${obs}\n\nMontagem inclusa. Podem verificar disponibilidade em Varginha?`;
+    registrarHistorico(item.nome);
     abrirWhats(item.numero, text);
   }
 
@@ -1495,6 +1629,67 @@ function Index() {
           Dica: um grupo do WhatsApp com Estoque + T.I. deixaria isso em um
           clique só. Se criarem, me passa o link do grupo.
         </p>
+      </DialogContent>
+    </Dialog>
+  );
+
+  // Últimos orçamentos enviados — pra reabrir sem precisar remontar do zero.
+  const historicoDialog = (
+    <Dialog open={historicoAberto} onOpenChange={setHistoricoAberto}>
+      <DialogContent className="bg-white border-slate-200 text-slate-900 max-w-md shadow-2xl">
+        <DialogHeader>
+          <DialogTitle className="text-xl font-bold font-display text-slate-900">
+            Últimos orçamentos enviados
+          </DialogTitle>
+          <DialogDescription className="text-slate-600 text-xs">
+            Os {HISTORICO_MAX} últimos orçamentos mandados pro WhatsApp neste
+            computador. Carregar substitui a montagem atual.
+          </DialogDescription>
+        </DialogHeader>
+
+        {historico.length === 0 ? (
+          <p className="history-empty">
+            Nenhum orçamento enviado ainda por aqui.
+          </p>
+        ) : (
+          <div className="history-list">
+            {historico.map((entry) => (
+              <div key={entry.id} className="history-card">
+                <div className="history-card-head">
+                  <strong>{entry.vendedor}</strong>
+                  <span>
+                    {new Date(entry.data).toLocaleString("pt-BR", {
+                      day: "2-digit",
+                      month: "2-digit",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
+                  </span>
+                </div>
+                <div className="history-card-itens">
+                  {entry.itens.length
+                    ? entry.itens
+                        .map(
+                          (item) =>
+                            `${item.name}${item.qty > 1 ? ` (${item.qty}x)` : ""}`,
+                        )
+                        .join(" · ")
+                    : "Só itens a cotar"}
+                  {entry.cotacoes.length > 0 &&
+                    ` · ${entry.cotacoes.length} a cotar`}
+                </div>
+                <div className="history-card-foot">
+                  <span className="history-card-total">
+                    {money.format(entry.totalPix)}
+                  </span>
+                  <button onClick={() => carregarHistorico(entry)}>
+                    Carregar de novo
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </DialogContent>
     </Dialog>
   );
@@ -1929,6 +2124,17 @@ function Index() {
                 <Moon className="w-4 h-4" />
               )}
             </button>
+            {!ehCliente && (
+              <button
+                type="button"
+                className="history-btn"
+                onClick={() => setHistoricoAberto(true)}
+                title="Últimos orçamentos enviados"
+                aria-label="Ver histórico de orçamentos enviados"
+              >
+                <History className="w-4 h-4" />
+              </button>
+            )}
             <button
               onClick={() => setSellerIntent({ kind: "trocar" })}
               className="vendedor-chip"
@@ -2109,6 +2315,29 @@ function Index() {
                     <option value="acima2000">Acima de R$ 2.000</option>
                   </select>
                 </div>
+
+                {/* Sugestão de upgrade — só quando a diferença de preço é pequena */}
+                {upgradeAtivo && (
+                  <div className="upgrade-box">
+                    <Sparkles className="w-4 h-4" />
+                    <div>
+                      <strong>
+                        Por mais{" "}
+                        {money.format(
+                          upgradeAtivo.sugestao.pixPrice -
+                            upgradeAtivo.atual.pixPrice,
+                        )}
+                        , leve o {upgradeAtivo.sugestao.name}
+                      </strong>
+                      <span>
+                        {upgradeAtivo.sugestao.specs.slice(0, 2).join(" · ")}
+                      </span>
+                    </div>
+                    <button onClick={() => selectPart(upgradeAtivo.sugestao)}>
+                      Trocar
+                    </button>
+                  </div>
+                )}
 
                 {/* Product Cards List */}
                 <div className="products-list-wrapper">
@@ -2764,6 +2993,7 @@ function Index() {
 
       {sellerDialog}
       {tiDialog}
+      {historicoDialog}
     </div>
   );
 }
