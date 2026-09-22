@@ -4,7 +4,6 @@ import {
   ArrowRight,
   Box,
   Check,
-  CheckCircle2,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
@@ -72,11 +71,16 @@ type Part = {
   pixPrice: number;
   stock: number;
   platform?: "AMD" | "Intel";
-  socket?: "AM4" | "AM5" | "LGA1700" | "LGA1200" | "LGA1151" | "LGA1150" | "LGA1155" | "LGA1156";
+  socket?:
+    | "AM4"
+    | "AM5"
+    | "LGA1700"
+    | "LGA1200"
+    | "LGA1151"
+    | "LGA1150"
+    | "LGA1155"
+    | "LGA1156";
   memType?: "DDR3" | "DDR4" | "DDR5";
-  // slots = quantos pentes de memoria a placa aceita. So preenchido onde a
-  // descricao do WinThor diz; sem valor, o montador nao limita.
-  slots?: number;
   watts?: number;
   specs: string[];
   detail: string;
@@ -85,10 +89,6 @@ type Part = {
   foto?: string;
   // apu = processador com vídeo integrado que roda jogos leves sem placa.
   apu?: boolean;
-  // videoIntegrado = da imagem no monitor sem placa. Todo apu tem, mas nem
-  // todo processador com video integrado roda jogos. Ryzen AM4 so tem nos
-  // modelos terminados em "G"; os Intel terminados em "F" nao tem.
-  videoIntegrado?: boolean;
   // ramGB = capacidade do pente/kit, usada pra estimar desempenho.
   ramGB?: number;
 };
@@ -160,7 +160,8 @@ const categories: {
 
 // Etapas que contam como "montagem completa".
 const CATEGORIAS_PECA = categories.filter((item) => !item.periferico);
-const isMulti = (cat: Category) => categories.find((item) => item.id === cat)?.multi ?? false;
+const isMulti = (cat: Category) =>
+  categories.find((item) => item.id === cat)?.multi ?? false;
 
 const parts: Part[] = [
   // Processadores
@@ -170,14 +171,12 @@ const parts: Part[] = [
     name: "Processador AMD AM4 Ryzen 3 3200G OEM",
     brand: "Amd",
     code: "15380",
-    foto: "/fotos/15380.jpg",
     pixPrice: 389.9,
     stock: 291,
     platform: "AMD",
     socket: "AM4",
     watts: 65,
     apu: true,
-    videoIntegrado: true,
     specs: ["Socket AM4", "Video integrado", "Amd"],
     detail: "PROCESSADOR AMD AM4 RYZEN 3 3200G OEM",
   },
@@ -187,7 +186,6 @@ const parts: Part[] = [
     name: "Processador AMD Ryzen 7 1700 3.0GHZ AM4",
     brand: "Amd",
     code: "17507",
-    foto: "/fotos/17507.jpg",
     pixPrice: 429.9,
     stock: 9,
     platform: "AMD",
@@ -202,7 +200,6 @@ const parts: Part[] = [
     name: "Processador AMD Ryzen 3 4100 3.8 AM4",
     brand: "Amd",
     code: "12634",
-    foto: "/fotos/12634.jpg",
     pixPrice: 629.9,
     stock: 26,
     platform: "AMD",
@@ -231,7 +228,6 @@ const parts: Part[] = [
     name: "Processador Ryzen 5 5500 3.6GH AM4 BOX",
     brand: "Amd",
     code: "17867",
-    foto: "/fotos/17867.jpg",
     pixPrice: 799.9,
     stock: 34,
     platform: "AMD",
@@ -246,7 +242,6 @@ const parts: Part[] = [
     name: "Processador Ryzen 7 3700X 3.6GHZ",
     brand: "Amd",
     code: "18861",
-    foto: "/fotos/18861.jpg",
     pixPrice: 1159.9,
     stock: 1,
     platform: "AMD",
@@ -261,7 +256,6 @@ const parts: Part[] = [
     name: "Processador Ryzen 7 5700X 3.4GHZ AM4 OEM",
     brand: "Amd",
     code: "18599",
-    foto: "/fotos/18599.jpg",
     pixPrice: 1189.9,
     stock: 14,
     platform: "AMD",
@@ -282,7 +276,6 @@ const parts: Part[] = [
     socket: "AM4",
     watts: 105,
     apu: true,
-    videoIntegrado: true,
     specs: ["Socket AM4", "Video integrado", "Clock 4.6 GHz"],
     detail: "L-PROCESSADOR RYZEN7 5700G 4.6GHZAM4 BOX",
   },
@@ -292,7 +285,6 @@ const parts: Part[] = [
     name: "Processador AMD Ryzen 7 5800X 3.8GHZ",
     brand: "Amd",
     code: "13281",
-    foto: "/fotos/13281.jpg",
     pixPrice: 1779.9,
     stock: 1,
     platform: "AMD",
@@ -308,7 +300,6 @@ const parts: Part[] = [
     name: "Placa Mae Desk 1155 G-H61/K Knup (2xddr3",
     brand: "Knup",
     code: "13164",
-    foto: "/fotos/13164.jpg",
     pixPrice: 129.9,
     stock: 4,
     platform: "Intel",
@@ -322,13 +313,11 @@ const parts: Part[] = [
     name: "Placa Mae H61 LGA1155 DDR3 Hayom Plm2300",
     brand: "Hayom",
     code: "21561",
-    foto: "/fotos/21561.jpg",
     pixPrice: 129.9,
     stock: 191,
     platform: "Intel",
     socket: "LGA1155",
     memType: "DDR3",
-    slots: 2,
     specs: ["Socket LGA1155", "Memoria DDR3", "Hayom"],
     detail: "PLACA MAE H61 LGA1155 DDR3 HAYOM PLM2300",
   },
@@ -378,7 +367,6 @@ const parts: Part[] = [
     name: "Placa Mae G-H81/M Desk Knup DDR3 Lga 115",
     brand: "Knup",
     code: "12405",
-    foto: "/fotos/12405.jpg",
     pixPrice: 159.9,
     stock: 3,
     platform: "Intel",
@@ -419,7 +407,6 @@ const parts: Part[] = [
     name: "Placa Mae H81m.2-tg DDR3 LGA1150",
     brand: "Brazil Pc",
     code: "13656",
-    foto: "/fotos/13656.jpg",
     pixPrice: 179.9,
     stock: 3,
     platform: "Intel",
@@ -434,7 +421,6 @@ const parts: Part[] = [
     name: "Placa Mae Hm55-nt DDR3 LGA1156",
     brand: "Sem marca",
     code: "11414",
-    foto: "/fotos/11414.jpg",
     pixPrice: 189.9,
     stock: 19,
     platform: "Intel",
@@ -474,7 +460,6 @@ const parts: Part[] = [
     name: "Placa Mae A320 Mainboard Haoquing",
     brand: "Haoquing",
     code: "17705",
-    foto: "/fotos/17705.jpg",
     pixPrice: 339.9,
     stock: 60,
     platform: "AMD",
@@ -502,7 +487,6 @@ const parts: Part[] = [
     name: "Placa Mae H310 LGA1151 M2 Delta-h310m2k",
     brand: "Delta",
     code: "22333",
-    foto: "/fotos/22333.jpg",
     pixPrice: 349.9,
     stock: 1388,
     platform: "Intel",
@@ -516,7 +500,6 @@ const parts: Part[] = [
     name: "Placa Mae G-A520 Desk DDR4 AM4",
     brand: "Revenger",
     code: "12375",
-    foto: "/fotos/12375.jpg",
     pixPrice: 359.9,
     stock: 30,
     platform: "AMD",
@@ -531,7 +514,6 @@ const parts: Part[] = [
     name: "Placa Mae Dx H110ZG Duex DDR4 LGA1151",
     brand: "Intel",
     code: "13525",
-    foto: "/fotos/13525.jpg",
     pixPrice: 359.9,
     stock: 9,
     platform: "Intel",
@@ -560,7 +542,6 @@ const parts: Part[] = [
     name: "Placa Mae Dxmbh110s M2 LGA1151 DDR4 Duex",
     brand: "Duex",
     code: "21563",
-    foto: "/fotos/21563.jpg",
     pixPrice: 359.9,
     stock: 35,
     platform: "Intel",
@@ -575,7 +556,6 @@ const parts: Part[] = [
     name: "Placa Mae Bpc-h310/b250m.2-tg Bpc DDR4",
     brand: "Bpc",
     code: "15479",
-    foto: "/fotos/15479.jpg",
     pixPrice: 369.9,
     stock: 1,
     platform: "Intel",
@@ -590,7 +570,6 @@ const parts: Part[] = [
     name: "Placa Mae G-H310 LGA1151 Revenger",
     brand: "Revenger",
     code: "17412",
-    foto: "/fotos/17412.jpg",
     pixPrice: 389.9,
     stock: 20,
     platform: "Intel",
@@ -604,7 +583,6 @@ const parts: Part[] = [
     name: "Placa Mae G-H470 Revenger DDR4 LGA1200",
     brand: "Revenger",
     code: "13715",
-    foto: "/fotos/13715.jpg",
     pixPrice: 399.9,
     stock: 3,
     platform: "Intel",
@@ -619,7 +597,6 @@ const parts: Part[] = [
     name: "Placa Mae Lga 1200 G-H511 Revenger",
     brand: "Revenger",
     code: "18314",
-    foto: "/fotos/18314.jpg",
     pixPrice: 429.9,
     stock: 20,
     platform: "Intel",
@@ -633,7 +610,6 @@ const parts: Part[] = [
     name: "Placa Mae Lga 1200 DDR4 G-H511 Revenger",
     brand: "Revenger",
     code: "18308",
-    foto: "/fotos/18308.jpg",
     pixPrice: 439.9,
     stock: 2,
     platform: "Intel",
@@ -648,7 +624,6 @@ const parts: Part[] = [
     name: "Placa Mae Delta-a520m2k AM4",
     brand: "Delta",
     code: "19577",
-    foto: "/fotos/19577.jpg",
     pixPrice: 449.9,
     stock: 9,
     platform: "AMD",
@@ -662,7 +637,6 @@ const parts: Part[] = [
     name: "Placa Mae G-H610 Revenger DDR4 LGA1700",
     brand: "Revenger",
     code: "14224",
-    foto: "/fotos/14224.jpg",
     pixPrice: 469.9,
     stock: 33,
     platform: "Intel",
@@ -703,7 +677,6 @@ const parts: Part[] = [
     name: "Placa Mae G-H510 DDR4 Lga 1200",
     brand: "Knup",
     code: "11439",
-    foto: "/fotos/11439.jpg",
     pixPrice: 489.9,
     stock: 1,
     platform: "Intel",
@@ -718,7 +691,6 @@ const parts: Part[] = [
     name: "Placa Mae H310MHP S1151 Biostar DDR4 Lga",
     brand: "Biostar",
     code: "10491",
-    foto: "/fotos/10491.jpg",
     pixPrice: 499.9,
     stock: 2,
     platform: "Intel",
@@ -733,7 +705,6 @@ const parts: Part[] = [
     name: "Placa Mae H610 Revenger DDR4 LGA1700",
     brand: "Revenger",
     code: "18884",
-    foto: "/fotos/18884.jpg",
     pixPrice: 499.9,
     stock: 23,
     platform: "Intel",
@@ -774,7 +745,6 @@ const parts: Part[] = [
     name: "Placa Mae Lga 1700 G-B760 Revenger",
     brand: "Revenger",
     code: "21131",
-    foto: "/fotos/21131.jpg",
     pixPrice: 579.9,
     stock: 14,
     platform: "Intel",
@@ -788,7 +758,6 @@ const parts: Part[] = [
     name: "Placa Mae Lga 1700 G-B760 Revenger",
     brand: "Revenger",
     code: "18307",
-    foto: "/fotos/18307.jpg",
     pixPrice: 589.9,
     stock: 17,
     platform: "Intel",
@@ -802,7 +771,6 @@ const parts: Part[] = [
     name: "Placa Mae B450M-A DDR4 Angthumb",
     brand: "Binario",
     code: "19486",
-    foto: "/fotos/19486.jpg",
     pixPrice: 629.9,
     stock: 1,
     platform: "AMD",
@@ -817,7 +785,6 @@ const parts: Part[] = [
     name: "Placa Mae c/ Processador I7 G11800H DDR4",
     brand: "Knup",
     code: "13927",
-    foto: "/fotos/13927.jpg",
     pixPrice: 1579.9,
     stock: 3,
     memType: "DDR4",
@@ -830,7 +797,6 @@ const parts: Part[] = [
     name: "Placa Mae c/ Processador I7 G10870H DDR4",
     brand: "Knup",
     code: "16472",
-    foto: "/fotos/16472.jpg",
     pixPrice: 1579.9,
     stock: 17,
     memType: "DDR4",
@@ -880,7 +846,6 @@ const parts: Part[] = [
     name: "Memoria PC 8GB DDR4 Axpro 3200MHZ",
     brand: "Axpro",
     code: "16642",
-    foto: "/fotos/16642.jpg",
     pixPrice: 99.9,
     stock: 1,
     memType: "DDR4",
@@ -894,7 +859,6 @@ const parts: Part[] = [
     name: "Memoria PC 8GB DDR4 Kgt 2400MHZ",
     brand: "Kingston",
     code: "17211",
-    foto: "/fotos/17211.jpg",
     pixPrice: 99.9,
     stock: 1,
     memType: "DDR4",
@@ -921,7 +885,6 @@ const parts: Part[] = [
     name: "Memoria PC 8GB DDR3 Clanm 1600MHZ",
     brand: "Clainm",
     code: "17849",
-    foto: "/fotos/17849.jpg",
     pixPrice: 109.9,
     stock: 8,
     memType: "DDR3",
@@ -935,7 +898,6 @@ const parts: Part[] = [
     name: "Memoria PC 8GB DDR3 1600MHZ OEM",
     brand: "Sem marca",
     code: "8173",
-    foto: "/fotos/8173.jpg",
     pixPrice: 159.9,
     stock: 482,
     memType: "DDR3",
@@ -949,7 +911,6 @@ const parts: Part[] = [
     name: "Memoria PC 8GB DDR3 1600 MHZ Prodrive",
     brand: "Prodrive",
     code: "19932",
-    foto: "/fotos/19932.jpg",
     pixPrice: 159.9,
     stock: 253,
     memType: "DDR3",
@@ -989,7 +950,6 @@ const parts: Part[] = [
     name: "Memoria PC 8GB DDR3 1600 MHZ Ara-1608p",
     brand: "Aitek",
     code: "19685",
-    foto: "/fotos/19685.jpg",
     pixPrice: 189.9,
     stock: 79,
     memType: "DDR3",
@@ -1003,7 +963,6 @@ const parts: Part[] = [
     name: "Memoria PC 4GB DDR4 Adata 2400MHZ",
     brand: "Adata ",
     code: "19871",
-    foto: "/fotos/19871.jpg",
     pixPrice: 189.9,
     stock: 68,
     memType: "DDR4",
@@ -1030,7 +989,6 @@ const parts: Part[] = [
     name: "Memoria PC 4GB DDR4 2666MHZ",
     brand: "Smart",
     code: "9390",
-    foto: "/fotos/9390.jpg",
     pixPrice: 209.9,
     stock: 1,
     memType: "DDR4",
@@ -1044,7 +1002,6 @@ const parts: Part[] = [
     name: "Memoria PC 16GB DDR4 Kgt 2666MHZ",
     brand: "Kingston",
     code: "17610",
-    foto: "/fotos/17610.jpg",
     pixPrice: 229.9,
     stock: 1,
     memType: "DDR4",
@@ -1071,7 +1028,6 @@ const parts: Part[] = [
     name: "Memoria PC 8GB DDR4 2666 MHZ",
     brand: "Kingston",
     code: "1396",
-    foto: "/fotos/1396.jpg",
     pixPrice: 359.9,
     stock: 74,
     memType: "DDR4",
@@ -1085,7 +1041,6 @@ const parts: Part[] = [
     name: "Memoria PC 8GB DDR4 Desk 3200MHZ",
     brand: "Bpc",
     code: "16120",
-    foto: "/fotos/16120.jpg",
     pixPrice: 359.9,
     stock: 1,
     memType: "DDR4",
@@ -1099,7 +1054,6 @@ const parts: Part[] = [
     name: "Memoria PC 8GB DDR4 Kgt 3200MHZ",
     brand: "Kingston",
     code: "19145",
-    foto: "/fotos/19145.jpg",
     pixPrice: 359.9,
     stock: 170,
     memType: "DDR4",
@@ -1113,7 +1067,6 @@ const parts: Part[] = [
     name: "Memoria PC 8GB DDR4 3200MHZ Fury",
     brand: "Kingston",
     code: "19865",
-    foto: "/fotos/19865.jpg",
     pixPrice: 389.9,
     stock: 1,
     memType: "DDR4",
@@ -1127,7 +1080,6 @@ const parts: Part[] = [
     name: "Memoria PC 8GB DDR4 Keepdata 2666HZ",
     brand: "Keepdata",
     code: "21336",
-    foto: "/fotos/21336.jpg",
     pixPrice: 389.9,
     stock: 50,
     memType: "DDR4",
@@ -1154,7 +1106,6 @@ const parts: Part[] = [
     name: "Memoria 8GB DDR4 Hayom 2666 MHZ",
     brand: "Hayom",
     code: "18345",
-    foto: "/fotos/18345.jpg",
     pixPrice: 599.9,
     stock: 15,
     memType: "DDR4",
@@ -1168,7 +1119,6 @@ const parts: Part[] = [
     name: "Memoria PC 16GB DDR4 Kgt 3200MHZ",
     brand: "Kingston",
     code: "19346",
-    foto: "/fotos/19346.jpg",
     pixPrice: 919.9,
     stock: 2,
     memType: "DDR4",
@@ -1182,7 +1132,6 @@ const parts: Part[] = [
     name: "Memoria PC 16GB DDR4 3200MHZ Hyperx Fury",
     brand: "Hyperx",
     code: "15523",
-    foto: "/fotos/15523.jpg",
     pixPrice: 990.9,
     stock: 1,
     memType: "DDR4",
@@ -1223,7 +1172,6 @@ const parts: Part[] = [
     name: "Placa de Video Geforce G-GT610/2G Reven",
     brand: "Knup",
     code: "17063",
-    foto: "/fotos/17063.jpg",
     pixPrice: 209.9,
     stock: 45,
     watts: 30,
@@ -1248,7 +1196,6 @@ const parts: Part[] = [
     name: "Placa de Video NVIDIA Geforce GT730/4GB",
     brand: "Knup",
     code: "21635",
-    foto: "/fotos/21635.jpg",
     pixPrice: 369.9,
     stock: 35,
     watts: 50,
@@ -1285,7 +1232,6 @@ const parts: Part[] = [
     name: "Placa de Video 4GB DDR5 Delta-rx560",
     brand: "Aitek",
     code: "19209",
-    foto: "/fotos/19209.jpg",
     pixPrice: 799.9,
     stock: 10,
     watts: 80,
@@ -1298,7 +1244,6 @@ const parts: Part[] = [
     name: "Placa de Video 4GB DDR5 GTX1050TI",
     brand: "Nvidia",
     code: "20957",
-    foto: "/fotos/20957.jpg",
     pixPrice: 1019.9,
     stock: 15,
     watts: 75,
@@ -1390,7 +1335,6 @@ const parts: Part[] = [
     name: "HD SSD 120GB Masterdrive",
     brand: "Masterdrive",
     code: "10731",
-    foto: "/fotos/10731.jpg",
     pixPrice: 179.9,
     stock: 13,
     specs: ["120 GB", "Masterdrive"],
@@ -1413,7 +1357,6 @@ const parts: Part[] = [
     name: "SSD 240GB SATA 3.0 Masterdrive",
     brand: "Masterdrive",
     code: "21550",
-    foto: "/fotos/21550.jpg",
     pixPrice: 239.9,
     stock: 291,
     specs: ["240 GB", "SATA", "Masterdrive"],
@@ -1447,7 +1390,6 @@ const parts: Part[] = [
     name: "SSD M2 256GB NVME PCIE Gen3x4 Keepdata",
     brand: "Keepdata",
     code: "19336",
-    foto: "/fotos/19336.jpg",
     pixPrice: 349.9,
     stock: 2,
     specs: ["256 GB", "NVMe M.2", "Keepdata"],
@@ -1459,7 +1401,6 @@ const parts: Part[] = [
     name: "SSD NVME 256GB Kgt",
     brand: "Kingston",
     code: "21655",
-    foto: "/fotos/21655.jpg",
     pixPrice: 399.9,
     stock: 97,
     specs: ["256 GB", "NVMe M.2", "Kingston"],
@@ -1471,7 +1412,6 @@ const parts: Part[] = [
     name: "SSD 240GB Sata3 2.5 Burst Elite Patriot",
     brand: "Patriot",
     code: "15316",
-    foto: "/fotos/15316.jpg",
     pixPrice: 449.9,
     stock: 1,
     specs: ["240 GB", "SATA", "Patriot"],
@@ -1505,7 +1445,6 @@ const parts: Part[] = [
     name: "SSD SATA 240GB A400",
     brand: "Kingston",
     code: "3251",
-    foto: "/fotos/3251.jpg",
     pixPrice: 479.9,
     stock: 19,
     specs: ["240 GB", "SATA", "Kingston"],
@@ -1517,7 +1456,6 @@ const parts: Part[] = [
     name: "HD SSD 480GB Masterdrive",
     brand: "Masterdrive",
     code: "10733",
-    foto: "/fotos/10733.jpg",
     pixPrice: 479.9,
     stock: 204,
     specs: ["480 GB", "Masterdrive"],
@@ -1529,7 +1467,6 @@ const parts: Part[] = [
     name: 'SSD 512GB 3.5" 550mb/s Markvision',
     brand: "Markvision ",
     code: "19332",
-    foto: "/fotos/19332.jpg",
     pixPrice: 489.9,
     stock: 32,
     specs: ["512 GB", "Markvision "],
@@ -1541,7 +1478,6 @@ const parts: Part[] = [
     name: "SSD 512GB Onex X-ssd-512",
     brand: "Markvision ",
     code: "19334",
-    foto: "/fotos/19334.jpg",
     pixPrice: 489.9,
     stock: 11,
     specs: ["512 GB", "Markvision "],
@@ -1553,7 +1489,6 @@ const parts: Part[] = [
     name: "SSD 480GB SATA 3 Crucial",
     brand: "Crucial",
     code: "21521",
-    foto: "/fotos/21521.jpg",
     pixPrice: 529.9,
     stock: 270,
     specs: ["480 GB", "SATA", "Crucial"],
@@ -1576,7 +1511,6 @@ const parts: Part[] = [
     name: "SSD M2 512GB NVME PCIE Gen3x4 Keepdata",
     brand: "Keepdata",
     code: "19149",
-    foto: "/fotos/19149.jpg",
     pixPrice: 639.9,
     stock: 3,
     specs: ["512 GB", "NVMe M.2", "Keepdata"],
@@ -1588,7 +1522,6 @@ const parts: Part[] = [
     name: "SSD 500GB M.2 2280 NVME Nm610 Pro Lexar",
     brand: "Lexar",
     code: "16874",
-    foto: "/fotos/16874.jpg",
     pixPrice: 679.9,
     stock: 26,
     specs: ["500 GB", "NVMe M.2", "Lexar"],
@@ -1600,7 +1533,6 @@ const parts: Part[] = [
     name: "SSD NVME M.2 Nv3 500GB PCIE 4.0 Kingston",
     brand: "Kingston",
     code: "14103",
-    foto: "/fotos/14103.jpg",
     pixPrice: 869.9,
     stock: 1,
     specs: ["500 GB", "NVMe M.2", "Kingston"],
@@ -1636,7 +1568,6 @@ const parts: Part[] = [
     name: "Fonte ATX 200W Px300dng 110/220v K-mex S",
     brand: "K-Mex",
     code: "10774",
-    foto: "/fotos/10774.jpg",
     pixPrice: 59.9,
     stock: 22,
     watts: 200,
@@ -1649,7 +1580,6 @@ const parts: Part[] = [
     name: "Fonte Real 500W 20+4 Pinos Hdw-004 Fonen",
     brand: "Knup",
     code: "11096",
-    foto: "/fotos/11096.jpg",
     pixPrice: 89.9,
     stock: 1,
     watts: 500,
@@ -1662,7 +1592,6 @@ const parts: Part[] = [
     name: "Fonte LED Power 300W Df-300w-24v",
     brand: "Rohs",
     code: "19686",
-    foto: "/fotos/19686.jpg",
     pixPrice: 89.9,
     stock: 1,
     watts: 300,
@@ -1675,7 +1604,6 @@ const parts: Part[] = [
     name: "Fonte Tfx 350W 110v/220v Kp-cb202",
     brand: "Knup",
     code: "15708",
-    foto: "/fotos/15708.jpg",
     pixPrice: 99.9,
     stock: 3,
     watts: 350,
@@ -1688,7 +1616,6 @@ const parts: Part[] = [
     name: "Fonte Afx Slim 350W Bivolt Kp-cb203",
     brand: "Knup",
     code: "16999",
-    foto: "/fotos/16999.jpg",
     pixPrice: 99.9,
     stock: 2,
     watts: 350,
@@ -1701,7 +1628,6 @@ const parts: Part[] = [
     name: "Fonte ATX 400W Bpc-427v1.0 24 Pinos OEM",
     brand: "Tronos",
     code: "17555",
-    foto: "/fotos/17555.jpg",
     pixPrice: 99.9,
     stock: 1,
     watts: 400,
@@ -1714,7 +1640,6 @@ const parts: Part[] = [
     name: "Fonte ATX 500W Bpc/5350b-m 24pinos BOX",
     brand: "Tronos",
     code: "19069",
-    foto: "/fotos/19069.jpg",
     pixPrice: 99.9,
     stock: 108,
     watts: 500,
@@ -1727,7 +1652,6 @@ const parts: Part[] = [
     name: "Fonte para PC 500W Delta-ef500",
     brand: "Delta",
     code: "21062",
-    foto: "/fotos/21062.jpg",
     pixPrice: 139.9,
     stock: 59,
     watts: 500,
@@ -1740,7 +1664,6 @@ const parts: Part[] = [
     name: "Fonte ATX 500W para PC Ft-500",
     brand: "F3",
     code: "15884",
-    foto: "/fotos/15884.jpg",
     pixPrice: 179.9,
     stock: 1,
     watts: 500,
@@ -1753,7 +1676,6 @@ const parts: Part[] = [
     name: "Fonte Ez8828c Eztfx 300W 80 Plus Bronze",
     brand: "K-Mex",
     code: "15154",
-    foto: "/fotos/15154.jpg",
     pixPrice: 209.9,
     stock: 14,
     watts: 300,
@@ -1766,7 +1688,6 @@ const parts: Part[] = [
     name: "Fonte Real 550W Fo-max01 80plus",
     brand: "Knup",
     code: "13097",
-    foto: "/fotos/13097.jpg",
     pixPrice: 259.9,
     stock: 6,
     watts: 550,
@@ -1779,7 +1700,6 @@ const parts: Part[] = [
     name: "Fonte 650W 80plus Bronze Delta-f650",
     brand: "Delta",
     code: "19942",
-    foto: "/fotos/19942.jpg",
     pixPrice: 259.9,
     stock: 18,
     watts: 650,
@@ -1792,7 +1712,6 @@ const parts: Part[] = [
     name: "Fonte Gamer 650W Fo-max02 80plus Bronze",
     brand: "Knup",
     code: "13098",
-    foto: "/fotos/13098.jpg",
     pixPrice: 309.9,
     stock: 4,
     watts: 650,
@@ -1805,7 +1724,6 @@ const parts: Part[] = [
     name: "Fonte ATX 750W Plus Bronze Fo-max03",
     brand: "Revenger",
     code: "21080",
-    foto: "/fotos/21080.jpg",
     pixPrice: 319.9,
     stock: 10,
     watts: 750,
@@ -1831,7 +1749,6 @@ const parts: Part[] = [
     name: "Cooler Fan 8x8 Dx-8c 80MM Dex C/conector",
     brand: "Dex",
     code: "1067",
-    foto: "/fotos/1067.jpg",
     pixPrice: 12.9,
     stock: 63,
     specs: ["Dex"],
@@ -1843,7 +1760,6 @@ const parts: Part[] = [
     name: "Cooler G-VR300 Knup",
     brand: "Knup",
     code: "13986",
-    foto: "/fotos/13986.jpg",
     pixPrice: 19.9,
     stock: 1,
     specs: ["Knup"],
@@ -1855,7 +1771,6 @@ const parts: Part[] = [
     name: "Cooler para Processador INTEL",
     brand: "Brazil Pc",
     code: "15397",
-    foto: "/fotos/15397.jpg",
     pixPrice: 19.9,
     stock: 3,
     specs: ["Brazil Pc"],
@@ -1867,7 +1782,6 @@ const parts: Part[] = [
     name: "Cooler Duex 115X Dx C1",
     brand: "Knup",
     code: "17041",
-    foto: "/fotos/17041.jpg",
     pixPrice: 19.9,
     stock: 4266,
     specs: ["Knup"],
@@ -1890,7 +1804,6 @@ const parts: Part[] = [
     name: "Cooler RGB 120MM Delta-c1261p",
     brand: "Delta",
     code: "18225",
-    foto: "/fotos/18225.jpg",
     pixPrice: 29.9,
     stock: 7,
     specs: ["Delta"],
@@ -1902,7 +1815,6 @@ const parts: Part[] = [
     name: "Cooler RGB 120MM Delta-c1261b",
     brand: "Delta",
     code: "18226",
-    foto: "/fotos/18226.jpg",
     pixPrice: 29.9,
     stock: 37,
     specs: ["Delta"],
@@ -1914,7 +1826,6 @@ const parts: Part[] = [
     name: "Cooler G-VR348 Knup Universal",
     brand: "Knup",
     code: "15507",
-    foto: "/fotos/15507.jpg",
     pixPrice: 39.9,
     stock: 50,
     specs: ["Knup"],
@@ -1948,7 +1859,6 @@ const parts: Part[] = [
     name: "Fan Cooler G-VR352K P/gabinete",
     brand: "Knup",
     code: "17230",
-    foto: "/fotos/17230.jpg",
     pixPrice: 109.9,
     stock: 7,
     specs: ["Knup"],
@@ -1993,7 +1903,6 @@ const parts: Part[] = [
     name: "KIT Ventilacao c/ 02 Coolers 12V Padrao",
     brand: "Knup",
     code: "6074",
-    foto: "/fotos/6074.jpg",
     pixPrice: 249.9,
     stock: 11,
     specs: ["Knup"],
@@ -2028,7 +1937,6 @@ const parts: Part[] = [
     name: "Gabinete Matx Bpc-n110matx- Bm255 C/fo",
     brand: "Bpc",
     code: "19308",
-    foto: "/fotos/19308.jpg",
     pixPrice: 119.9,
     stock: 29,
     specs: ["Bpc"],
@@ -2040,7 +1948,6 @@ const parts: Part[] = [
     name: "Gabinete Gamer c/ 3 Fans Gb1727 Hayom",
     brand: "Hayom",
     code: "21577",
-    foto: "/fotos/21577.jpg",
     pixPrice: 169.9,
     stock: 23,
     specs: ["Hayom"],
@@ -2052,7 +1959,6 @@ const parts: Part[] = [
     name: "Gabinete Gamer Gb1710 com 3 Fans Hayom",
     brand: "Hayom",
     code: "19087",
-    foto: "/fotos/19087.jpg",
     pixPrice: 259.9,
     stock: 3,
     specs: ["Hayom"],
@@ -2064,7 +1970,6 @@ const parts: Part[] = [
     name: "Gabinete ATX Cx-2d67 S/fonte Preto",
     brand: "K-Mex",
     code: "13549",
-    foto: "/fotos/13549.jpg",
     pixPrice: 299.9,
     stock: 22,
     specs: ["K-Mex"],
@@ -2087,7 +1992,6 @@ const parts: Part[] = [
     name: "Gabinete Gamer c/ 5 Fans D-matx11",
     brand: "Grasep",
     code: "19001",
-    foto: "/fotos/19001.jpg",
     pixPrice: 439.9,
     stock: 1,
     specs: ["Grasep"],
@@ -2099,7 +2003,6 @@ const parts: Part[] = [
     name: "Gabinete Gamer c/ 7 Fans D-atx08",
     brand: "Grasep",
     code: "18998",
-    foto: "/fotos/18998.jpg",
     pixPrice: 529.9,
     stock: 1,
     specs: ["Grasep"],
@@ -2111,7 +2014,6 @@ const parts: Part[] = [
     name: "Gabinete Gamer c/ 7 Fans D-atx09",
     brand: "Grasep",
     code: "18999",
-    foto: "/fotos/18999.jpg",
     pixPrice: 549.9,
     stock: 1,
     specs: ["Grasep"],
@@ -2123,7 +2025,6 @@ const parts: Part[] = [
     name: "Gabinete Gamer 4 Fans D-matx05",
     brand: "Grasep",
     code: "19324",
-    foto: "/fotos/19324.jpg",
     pixPrice: 589.9,
     stock: 1,
     specs: ["Grasep"],
@@ -2135,7 +2036,6 @@ const parts: Part[] = [
     name: "Gabinete Gamer c/ 6 Fans D-atx12",
     brand: "Grasep",
     code: "19002",
-    foto: "/fotos/19002.jpg",
     pixPrice: 609.9,
     stock: 1,
     specs: ["Grasep"],
@@ -2148,7 +2048,6 @@ const parts: Part[] = [
     name: "Switch de Monitor Kvm 2 Portas Sem Os Ca",
     brand: "Sem marca",
     code: "1203",
-    foto: "/fotos/1203.jpg",
     pixPrice: 39.9,
     stock: 40,
     specs: ["Consulte especificacoes"],
@@ -2160,7 +2059,6 @@ const parts: Part[] = [
     name: "Switch de Monitor Kvm 4 Portas Sem Os Ca",
     brand: "Sem marca",
     code: "1216",
-    foto: "/fotos/1216.jpg",
     pixPrice: 59.9,
     stock: 46,
     specs: ["Consulte especificacoes"],
@@ -2172,7 +2070,6 @@ const parts: Part[] = [
     name: "Luminaria de LED para Monitor Ald-ac3065",
     brand: "Aitek",
     code: "19669",
-    foto: "/fotos/19669.jpg",
     pixPrice: 89.9,
     stock: 13,
     specs: ["Aitek"],
@@ -2184,7 +2081,6 @@ const parts: Part[] = [
     name: "Coluna Pedestal para Monitor D-zj01-1",
     brand: "Pix ",
     code: "14884",
-    foto: "/fotos/14884.jpg",
     pixPrice: 99.9,
     stock: 15,
     specs: ["Pix "],
@@ -2196,7 +2092,6 @@ const parts: Part[] = [
     name: 'Monitor LED 19" Mnbox D-mn002 Preto e',
     brand: "Mnbox",
     code: "10883",
-    foto: "/fotos/10883.jpg",
     pixPrice: 199.9,
     stock: 4,
     specs: ["19 polegadas", "Mnbox"],
@@ -2208,7 +2103,6 @@ const parts: Part[] = [
     name: 'Monitor LED 19" Bpc-19we02-b Preto',
     brand: "Brazil Pc",
     code: "5335",
-    foto: "/fotos/5335.jpg",
     pixPrice: 209.9,
     stock: 75,
     specs: ["19 polegadas", "Brazil Pc"],
@@ -2220,7 +2114,6 @@ const parts: Part[] = [
     name: 'Monitor LED 19" Tronos Trs-hk19wy Preto',
     brand: "Tronos",
     code: "14075",
-    foto: "/fotos/14075.jpg",
     pixPrice: 209.9,
     stock: 1183,
     specs: ["19 polegadas", "Tronos"],
@@ -2232,7 +2125,6 @@ const parts: Part[] = [
     name: "Monitor LED 19tronos Trs-hk19wy Preto",
     brand: "Tronos",
     code: "14282",
-    foto: "/fotos/14282.jpg",
     pixPrice: 209.9,
     stock: 70,
     specs: ["Tronos"],
@@ -2244,7 +2136,6 @@ const parts: Part[] = [
     name: 'Monitor LED 20" Trs-20wv 75HZ Preto',
     brand: "Tronos",
     code: "13828",
-    foto: "/fotos/13828.jpg",
     pixPrice: 229.9,
     stock: 11,
     specs: ["20 polegadas", "Tronos"],
@@ -2256,7 +2147,6 @@ const parts: Part[] = [
     name: 'Monitor LED 20" IPS 75HZ Axpro Ax-20',
     brand: "Axpro",
     code: "17531",
-    foto: "/fotos/17531.jpg",
     pixPrice: 239.9,
     stock: 124,
     specs: ["20 polegadas", "Axpro"],
@@ -2268,7 +2158,6 @@ const parts: Part[] = [
     name: 'Monitor LED 19" Enterprise 19epr-bv',
     brand: "Enterprise Corp",
     code: "14293",
-    foto: "/fotos/14293.jpg",
     pixPrice: 269.9,
     stock: 1,
     specs: ["19 polegadas", "Enterprise Corp"],
@@ -2280,7 +2169,6 @@ const parts: Part[] = [
     name: "Monitor 19 TN - 60HZ - 5-8ms - Axpro",
     brand: "Axpro",
     code: "16042",
-    foto: "/fotos/16042.jpg",
     pixPrice: 269.9,
     stock: 38,
     specs: ["Axpro"],
@@ -2292,7 +2180,6 @@ const parts: Part[] = [
     name: 'Monitor LED 22" IPS 75HZ Axpro Ax-22',
     brand: "Axpro",
     code: "18904",
-    foto: "/fotos/18904.jpg",
     pixPrice: 279.9,
     stock: 37,
     specs: ["22 polegadas", "Axpro"],
@@ -2304,7 +2191,6 @@ const parts: Part[] = [
     name: 'Monitor LED 22" Vga+hdmi Vx220x Vxpro',
     brand: "Duex",
     code: "17292",
-    foto: "/fotos/17292.jpg",
     pixPrice: 289.9,
     stock: 3,
     specs: ["22 polegadas", "Duex"],
@@ -2316,7 +2202,6 @@ const parts: Part[] = [
     name: 'Monitor LED 23" 23epr-75 Fhd Enterprise',
     brand: "Vx Pro",
     code: "22099",
-    foto: "/fotos/22099.jpg",
     pixPrice: 319.9,
     stock: 3,
     specs: ["23 polegadas", "Vx Pro"],
@@ -2328,7 +2213,6 @@ const parts: Part[] = [
     name: "Monitor 21,5 TN - 60HZ - 5-8ms - Axpro",
     brand: "Binario",
     code: "16043",
-    foto: "/fotos/16043.jpg",
     pixPrice: 329.9,
     stock: 19,
     specs: ["Binario"],
@@ -2340,7 +2224,6 @@ const parts: Part[] = [
     name: 'Monitor LED 24" IPS 75HZ Axpro Ax-24',
     brand: "Axpro",
     code: "19306",
-    foto: "/fotos/19306.jpg",
     pixPrice: 329.9,
     stock: 32,
     specs: ["24 polegadas", "Axpro"],
@@ -2352,7 +2235,6 @@ const parts: Part[] = [
     name: 'Monitor LED 22" Hq22 Slim 75HZ Haoquing',
     brand: "Uniarch",
     code: "17467",
-    foto: "/fotos/17467.jpg",
     pixPrice: 339.9,
     stock: 1,
     specs: ["22 polegadas", "Uniarch"],
@@ -2364,7 +2246,6 @@ const parts: Part[] = [
     name: "Monitor 23 TN - 60HZ - 5-8ms - Axpro",
     brand: "Binario",
     code: "16044",
-    foto: "/fotos/16044.jpg",
     pixPrice: 349.9,
     stock: 1,
     specs: ["Binario"],
@@ -2376,7 +2257,6 @@ const parts: Part[] = [
     name: 'Monitor LED 24" Bpc-24wr-75 Preto',
     brand: "Brazil Pc",
     code: "16844",
-    foto: "/fotos/16844.jpg",
     pixPrice: 359.9,
     stock: 173,
     specs: ["24 polegadas", "Brazil Pc"],
@@ -2388,7 +2268,6 @@ const parts: Part[] = [
     name: 'Monitor LED 23" 23WR-75 Fhd VGA HDMI Pr',
     brand: "Brazil Pc",
     code: "9936",
-    foto: "/fotos/9936.jpg",
     pixPrice: 499.9,
     stock: 7,
     specs: ["23 polegadas", "Brazil Pc"],
@@ -2422,7 +2301,6 @@ const parts: Part[] = [
     name: 'Monitor 19,5" HD Lg com Tela de Cristal',
     brand: "Lg",
     code: "16851",
-    foto: "/fotos/16851.jpg",
     pixPrice: 719.9,
     stock: 1,
     specs: ["Lg"],
@@ -2445,7 +2323,6 @@ const parts: Part[] = [
     name: 'Monitor LED 21,5" Bpc22sadp-100 Fhd Pr',
     brand: "Brazil Pc",
     code: "17443",
-    foto: "/fotos/17443.jpg",
     pixPrice: 789.9,
     stock: 24,
     specs: ["Brazil Pc"],
@@ -2457,7 +2334,6 @@ const parts: Part[] = [
     name: 'Monitor LED 23.8" Bpc24sadp-75 Frameless',
     brand: "Bpc",
     code: "17001",
-    foto: "/fotos/17001.jpg",
     pixPrice: 869.9,
     stock: 18,
     specs: ["Bpc"],
@@ -2469,7 +2345,6 @@ const parts: Part[] = [
     name: 'Monitor LED 24.5" D-245g/100h',
     brand: "Grasep",
     code: "17277",
-    foto: "/fotos/17277.jpg",
     pixPrice: 869.9,
     stock: 1,
     specs: ["Grasep"],
@@ -2492,7 +2367,6 @@ const parts: Part[] = [
     name: 'Monitor Gamer 27" 2K 100HZ Delta-m2710ra',
     brand: "Aitek",
     code: "18048",
-    foto: "/fotos/18048.jpg",
     pixPrice: 1029.9,
     stock: 2,
     specs: ["27 polegadas", "Aitek"],
@@ -2504,7 +2378,6 @@ const parts: Part[] = [
     name: 'Monitor LED 27" 27WFY-75XE 60HZ Bpc',
     brand: "Brazil Pc",
     code: "14974",
-    foto: "/fotos/14974.jpg",
     pixPrice: 1109.9,
     stock: 1,
     specs: ["27 polegadas", "Brazil Pc"],
@@ -2516,7 +2389,6 @@ const parts: Part[] = [
     name: 'Monitor LED 23.8" Lg 24bl550j Pos Full H',
     brand: "Lg",
     code: "11890",
-    foto: "/fotos/11890.jpg",
     pixPrice: 1239.9,
     stock: 8,
     specs: ["Lg"],
@@ -2539,7 +2411,6 @@ const parts: Part[] = [
     name: "Delta-m3220a Pro Monitor Gamer 32P",
     brand: "Aitek",
     code: "17954",
-    foto: "/fotos/17954.jpg",
     pixPrice: 1629.9,
     stock: 2,
     specs: ["32 polegadas", "Aitek"],
@@ -2551,7 +2422,6 @@ const parts: Part[] = [
     name: "Delta-m3240a Pro Monitor 75HZ Gamer 32P",
     brand: "Aitek",
     code: "17953",
-    foto: "/fotos/17953.jpg",
     pixPrice: 1919.9,
     stock: 3,
     specs: ["32 polegadas", "Aitek"],
@@ -2563,7 +2433,6 @@ const parts: Part[] = [
     name: "Delta-m3820auc Pro Monitor Gamer 38P",
     brand: "Aitek",
     code: "17952",
-    foto: "/fotos/17952.jpg",
     pixPrice: 2439.9,
     stock: 1,
     specs: ["38 polegadas", "Aitek"],
@@ -2575,7 +2444,6 @@ const parts: Part[] = [
     name: "Monitor Gamer 49P Delta-m4922auc Pro",
     brand: "Aitek",
     code: "17951",
-    foto: "/fotos/17951.jpg",
     pixPrice: 4529.9,
     stock: 2,
     specs: ["49 polegadas", "Aitek"],
@@ -2588,7 +2456,6 @@ const parts: Part[] = [
     name: "Teclado USB Padrao com Fio Kb110 Duex",
     brand: "C3 Tech",
     code: "14565",
-    foto: "/fotos/14565.jpg",
     pixPrice: 19.9,
     stock: 1,
     specs: ["C3 Tech"],
@@ -2600,7 +2467,6 @@ const parts: Part[] = [
     name: "Teclado Office USB Fio Santana 015-0041",
     brand: "Santana",
     code: "16270",
-    foto: "/fotos/16270.jpg",
     pixPrice: 19.9,
     stock: 40,
     specs: ["Santana"],
@@ -2612,7 +2478,6 @@ const parts: Part[] = [
     name: "Teclado com Fio USB 5VDC Abnt2 Kp-te148",
     brand: "Knup",
     code: "16592",
-    foto: "/fotos/16592.jpg",
     pixPrice: 22.9,
     stock: 4,
     specs: ["Knup"],
@@ -2624,7 +2489,6 @@ const parts: Part[] = [
     name: "KIT Teclado/mouse C/fio Office Kc-500 5+",
     brand: "Santana",
     code: "13271",
-    foto: "/fotos/13271.jpg",
     pixPrice: 29.9,
     stock: 13,
     specs: ["Santana"],
@@ -2636,7 +2500,6 @@ const parts: Part[] = [
     name: "Teclado Basico USB Tf100 Tc193 Mult",
     brand: "Multilaser",
     code: "13675",
-    foto: "/fotos/13675.jpg",
     pixPrice: 29.9,
     stock: 1,
     specs: ["Multilaser"],
@@ -2648,7 +2511,6 @@ const parts: Part[] = [
     name: "Teclado Sem Fio Kp-2048",
     brand: "Knup",
     code: "18063",
-    foto: "/fotos/18063.jpg",
     pixPrice: 29.9,
     stock: 14,
     specs: ["Knup"],
@@ -2660,7 +2522,6 @@ const parts: Part[] = [
     name: "KIT Teclado e Mouse C/fio Kapbom Ka-670",
     brand: "Kap Bom",
     code: "18724",
-    foto: "/fotos/18724.jpg",
     pixPrice: 29.9,
     stock: 28,
     specs: ["Kap Bom"],
@@ -2672,7 +2533,6 @@ const parts: Part[] = [
     name: "Teclado C/fio Abnt2 Kapbom Ka-691",
     brand: "Kap Bom",
     code: "18725",
-    foto: "/fotos/18725.jpg",
     pixPrice: 29.9,
     stock: 480,
     specs: ["Kap Bom"],
@@ -2695,7 +2555,6 @@ const parts: Part[] = [
     name: "Combo Wireless 2.4GHZ Offi Mouse/teclado",
     brand: "Santana",
     code: "16425",
-    foto: "/fotos/16425.jpg",
     pixPrice: 39.9,
     stock: 20,
     specs: ["Santana"],
@@ -2707,7 +2566,6 @@ const parts: Part[] = [
     name: "Teclado Multimidia Km3928u",
     brand: "Ninja",
     code: "18831",
-    foto: "/fotos/18831.jpg",
     pixPrice: 39.9,
     stock: 182,
     specs: ["Ninja"],
@@ -2719,7 +2577,6 @@ const parts: Part[] = [
     name: "Teclado Gamer Single Hand Kp-te133",
     brand: "Knup",
     code: "19608",
-    foto: "/fotos/19608.jpg",
     pixPrice: 39.9,
     stock: 1,
     specs: ["Knup"],
@@ -2731,7 +2588,6 @@ const parts: Part[] = [
     name: "KIT Teclado Emouse S Fio Haoqing Hq-1633",
     brand: "Haoquing",
     code: "17895",
-    foto: "/fotos/17895.jpg",
     pixPrice: 49.9,
     stock: 2,
     specs: ["Haoquing"],
@@ -2743,7 +2599,6 @@ const parts: Part[] = [
     name: "Mini Teclado Sem Fio Bluetooth Kp-te109",
     brand: "Knup",
     code: "15632",
-    foto: "/fotos/15632.jpg",
     pixPrice: 59.9,
     stock: 7,
     specs: ["Knup"],
@@ -2810,7 +2665,6 @@ const parts: Part[] = [
     name: "KIT Teclado e Mouse Gamer Kp-te147",
     brand: "Knup",
     code: "18371",
-    foto: "/fotos/18371.jpg",
     pixPrice: 109.9,
     stock: 1,
     specs: ["Knup"],
@@ -2844,7 +2698,6 @@ const parts: Part[] = [
     name: "Teclado Gamer com Fio RGB Ate-m8701",
     brand: "Aitek",
     code: "19238",
-    foto: "/fotos/19238.jpg",
     pixPrice: 119.9,
     stock: 4,
     specs: ["Aitek"],
@@ -2889,7 +2742,6 @@ const parts: Part[] = [
     name: "Teclado Mecanico RGB LED Delta-tm1071",
     brand: "Delta",
     code: "21624",
-    foto: "/fotos/21624.jpg",
     pixPrice: 130.9,
     stock: 17,
     specs: ["Delta"],
@@ -2923,7 +2775,6 @@ const parts: Part[] = [
     name: "Teclado Mecanico RGB LED Delta-tm1111",
     brand: "Delta",
     code: "21623",
-    foto: "/fotos/21623.jpg",
     pixPrice: 149.9,
     stock: 8,
     specs: ["Delta"],
@@ -2946,7 +2797,6 @@ const parts: Part[] = [
     name: "Mini Teclado Dobravel C Touchpad Ims-950",
     brand: "Imenso",
     code: "15665",
-    foto: "/fotos/15665.jpg",
     pixPrice: 159.9,
     stock: 4,
     specs: ["Imenso"],
@@ -2981,7 +2831,6 @@ const parts: Part[] = [
     name: "Mouse USB Padrao com Fio M365 Duex",
     brand: "Duex",
     code: "14566",
-    foto: "/fotos/14566.jpg",
     pixPrice: 5.9,
     stock: 3546,
     specs: ["Duex"],
@@ -2993,7 +2842,6 @@ const parts: Part[] = [
     name: "Mouse USB Office Pr 1000DPI 015-0043 5+",
     brand: "Santana",
     code: "16632",
-    foto: "/fotos/16632.jpg",
     pixPrice: 5.9,
     stock: 12175,
     specs: ["Santana"],
@@ -3005,7 +2853,6 @@ const parts: Part[] = [
     name: "Mouse Optico USB com Fio Ka-601 Kapbom",
     brand: "Kap Bom",
     code: "18978",
-    foto: "/fotos/18978.jpg",
     pixPrice: 5.9,
     stock: 323,
     specs: ["Kap Bom"],
@@ -3017,7 +2864,6 @@ const parts: Part[] = [
     name: "Mouse 5+gamer Start 2.0 Preto/vermelho",
     brand: "Santana",
     code: "18806",
-    foto: "/fotos/18806.jpg",
     pixPrice: 6.9,
     stock: 480,
     specs: ["Santana"],
@@ -3040,7 +2886,6 @@ const parts: Part[] = [
     name: "Mouse com Fio Multi Mf100 1200DPI",
     brand: "Multilaser",
     code: "13830",
-    foto: "/fotos/13830.jpg",
     pixPrice: 9.9,
     stock: 1745,
     specs: ["Multilaser"],
@@ -3052,7 +2897,6 @@ const parts: Part[] = [
     name: "Mouse Sem Fio USB Office 015-0080",
     brand: "Santana",
     code: "19697",
-    foto: "/fotos/19697.jpg",
     pixPrice: 9.9,
     stock: 658,
     specs: ["Santana"],
@@ -3064,7 +2908,6 @@ const parts: Part[] = [
     name: "Mouse Gamer C/fio 3 Botoes Knup Kp-mu003",
     brand: "Knup",
     code: "17654",
-    foto: "/fotos/17654.jpg",
     pixPrice: 11.9,
     stock: 4,
     specs: ["Knup"],
@@ -3076,7 +2919,6 @@ const parts: Part[] = [
     name: "Mouse Optico Ninja Mo-m236 1200DPI USB",
     brand: "Ninja",
     code: "11411",
-    foto: "/fotos/11411.jpg",
     pixPrice: 15.9,
     stock: 60,
     specs: ["Ninja"],
@@ -3088,7 +2930,6 @@ const parts: Part[] = [
     name: "Mouse Gamer USB LED Kp-mu013 Knup",
     brand: "Knup",
     code: "15633",
-    foto: "/fotos/15633.jpg",
     pixPrice: 19.9,
     stock: 100,
     specs: ["Knup"],
@@ -3100,7 +2941,6 @@ const parts: Part[] = [
     name: "Controle Remoto Air Mouse Le-7716",
     brand: "Lelong",
     code: "16996",
-    foto: "/fotos/16996.jpg",
     pixPrice: 19.9,
     stock: 93,
     specs: ["Lelong"],
@@ -3123,7 +2963,6 @@ const parts: Part[] = [
     name: "Mouse Optico Gamer 3200DPI Kp-v4 Knup",
     brand: "Knup",
     code: "12905",
-    foto: "/fotos/12905.jpg",
     pixPrice: 29.9,
     stock: 75,
     specs: ["Knup"],
@@ -3135,7 +2974,6 @@ const parts: Part[] = [
     name: "Mouse Optico C/fiousb Acer M117 Branco",
     brand: "Acer",
     code: "16444",
-    foto: "/fotos/16444.jpg",
     pixPrice: 29.9,
     stock: 20,
     specs: ["Acer"],
@@ -3169,7 +3007,6 @@ const parts: Part[] = [
     name: "Mouse S/ Fio Bluetooth 2400DPI Kp-mu023",
     brand: "Knup",
     code: "16739",
-    foto: "/fotos/16739.jpg",
     pixPrice: 39.9,
     stock: 1,
     specs: ["Knup"],
@@ -3181,7 +3018,6 @@ const parts: Part[] = [
     name: "Mouse Sem Fio Kp-mu029",
     brand: "Knup",
     code: "17957",
-    foto: "/fotos/17957.jpg",
     pixPrice: 39.9,
     stock: 45,
     specs: ["Knup"],
@@ -3193,7 +3029,6 @@ const parts: Part[] = [
     name: "Mouse Gamer Aura Sync 7D Delta-vm7048",
     brand: "Delta",
     code: "18186",
-    foto: "/fotos/18186.jpg",
     pixPrice: 39.9,
     stock: 44,
     specs: ["Delta"],
@@ -3216,7 +3051,6 @@ const parts: Part[] = [
     name: "Mouse Gamer com Fio Kp-mu007",
     brand: "Knup",
     code: "17956",
-    foto: "/fotos/17956.jpg",
     pixPrice: 59.9,
     stock: 47,
     specs: ["Knup"],
@@ -3228,7 +3062,6 @@ const parts: Part[] = [
     name: "Mouse Gamer Aura Sync 9D Delta-vm9128",
     brand: "Delta",
     code: "18187",
-    foto: "/fotos/18187.jpg",
     pixPrice: 59.9,
     stock: 74,
     specs: ["Delta"],
@@ -3240,7 +3073,6 @@ const parts: Part[] = [
     name: "Mouse Sem Fio Peining Pei-me12",
     brand: "Peining",
     code: "21850",
-    foto: "/fotos/21850.jpg",
     pixPrice: 59.9,
     stock: 1,
     specs: ["Peining"],
@@ -3263,7 +3095,6 @@ const parts: Part[] = [
     name: "Mouse Optico com Fio USB Acer Emw130",
     brand: "Acer",
     code: "16446",
-    foto: "/fotos/16446.jpg",
     pixPrice: 69.9,
     stock: 55,
     specs: ["Acer"],
@@ -3276,7 +3107,6 @@ const parts: Part[] = [
     name: "Cadeira Escritorio Smart Fixa",
     brand: "Jgm",
     code: "19512",
-    foto: "/fotos/19512.jpg",
     pixPrice: 309.9,
     stock: 1,
     specs: ["Jgm"],
@@ -3299,7 +3129,6 @@ const parts: Part[] = [
     name: "Cadeira Escritorio Ergonomica Mcc-p021",
     brand: "Tomate",
     code: "18391",
-    foto: "/fotos/18391.jpg",
     pixPrice: 649.9,
     stock: 1,
     specs: ["Tomate"],
@@ -3311,7 +3140,6 @@ const parts: Part[] = [
     name: "Cadeira de Balanco Reclinavel Mcc-p025",
     brand: "Tomate",
     code: "17984",
-    foto: "/fotos/17984.jpg",
     pixPrice: 689.9,
     stock: 1,
     specs: ["Tomate"],
@@ -3323,7 +3151,7 @@ const presets = [
   {
     name: "Binário Essencial AM4",
     kicker: "Escritório & Estudo",
-    pixPrice: 1104.49,
+    pixPrice: 1299.4,
     cardPrice: 1299.4,
     fps: ["Valorant: 60+ FPS", "CS2: 50+ FPS", "Sem placa de vídeo"],
     note: "Ryzen com vídeo integrado Vega — roda o dia a dia, pacote Office e jogos leves sem precisar de placa dedicada. Todas as peças em estoque na loja.",
@@ -3332,7 +3160,7 @@ const presets = [
   {
     name: "Binário Arena 1050 Ti",
     kicker: "Mais Equilibrado da Loja",
-    pixPrice: 2370.91,
+    pixPrice: 2789.3,
     cardPrice: 2789.3,
     fps: ["Valorant: 140+ FPS", "CS2: 120+ FPS", "Fortnite: 70+ FPS"],
     note: "Ryzen 5 de 6 núcleos com GTX 1050 Ti. O melhor custo-benefício com o que está disponível hoje em Varginha.",
@@ -3342,42 +3170,35 @@ const presets = [
   {
     name: "Binário Studio RX 560",
     kicker: "Trabalho Pesado & Criação",
-    pixPrice: 2726.4,
-    cardPrice: 3207.5,
+    pixPrice: 3279.3,
+    cardPrice: 3279.3,
     fps: ["Edição de vídeo", "Render 3D leve", "Multitarefa pesada"],
     note: "Ryzen 7 de 8 núcleos com SSD NVMe de 480 GB. Focado em quem edita, renderiza ou trabalha com muitas abas e programas abertos.",
     ids: ["w18599", "w12375", "w19384", "w19209", "w25940", "w19069", "w21577"],
   },
 ];
 
-// ATENCAO: montadas a partir das pecas que existem no catalogo da 860,
-// porque as specs antigas citavam RX 6600 / RTX 4060 / DDR5, que a loja
-// nao tem. Os precos sao a soma das pecas no PIX.
-// >>> CONFERIR com o que esta montado de verdade na bancada. <<<
 const stockMachines = [
   {
     id: "BN-1048",
     name: "Binário Start Home & Office",
-    spec: "Ryzen 3 3200G · 8 GB DDR4 · SSD 240 GB · Fonte 500W",
-    ids: ["w15380", "w12375", "w19145", "w25877", "w19069", "w21476"],
-    pixPrice: 1559.4,
+    spec: "Ryzen 5 5600G · 16 GB DDR4 · SSD 1 TB NVMe · Fonte 550W",
+    pixPrice: 2711.5,
     tone: "Pronta entrega em Varginha",
   },
   {
     id: "BN-1051",
-    name: "Binário Arena GTX 1050 Ti",
-    spec: "Ryzen 5 5500 · GTX 1050 Ti 4GB · 8 GB DDR4 · SSD 480 GB",
-    ids: ["w17867", "w12375", "w19145", "w20957", "w25940", "w21062", "w21577"],
-    pixPrice: 3319.3,
-    tone: "Pronta entrega em Varginha",
+    name: "Binário Arena Gamer RX",
+    spec: "Ryzen 5 5600 · RX 6600 8GB · 16 GB DDR4 · SSD 1 TB NVMe",
+    pixPrice: 4241.5,
+    tone: "Última unidade no estoque",
   },
   {
     id: "BN-1053",
-    name: "Binário Studio RX 580",
-    spec: "Ryzen 7 5700X · RX 580 8GB · 8 GB DDR4 · SSD 480 GB",
-    ids: ["w18599", "w19577", "w19145", "w20166", "w25940", "w19942", "w19087"],
-    pixPrice: 4179.3,
-    tone: "Última unidade no estoque",
+    name: "Binário Studio RTX DLSS 3",
+    spec: "Core i5 14400F · RTX 4060 8GB · 32 GB DDR5 · SSD 1 TB",
+    pixPrice: 5856.5,
+    tone: "Pronta entrega em Varginha",
   },
 ];
 
@@ -3464,42 +3285,21 @@ const LOGO_DARK = "/logo-binario-dark.png";
 // uma noção ao cliente — não são benchmark oficial. Ajuste à vontade.
 // A chave é o id da GPU; "apu" é o vídeo integrado do Ryzen 5 5600G.
 // ---------------------------------------------------------------------
-const JOGOS = ["Valorant", "CS2", "Fortnite", "GTA V", "EA FC 25", "Cyberpunk 2077"];
+const JOGOS = [
+  "Valorant",
+  "CS2",
+  "Fortnite",
+  "GTA V",
+  "EA FC 25",
+  "Cyberpunk 2077",
+];
 const FPS_MAX = 400;
-// Estimativa em 1080p, graficos altos. A chave e o id da peca no catalogo.
-// "apu" e o video integrado dos Ryzen "G".
-// >>> NUMEROS ESTIMADOS: conferir com teste real antes de prometer pro
-// cliente. GPU que nao estiver aqui simplesmente nao mostra estimativa. <<<
 const FPS_POR_GPU: Record<string, number[]> = {
   apu: [70, 75, 45, 50, 60, 22],
-  w17063: [25, 20, 0, 0, 20, 0], // GT 610 2GB: video basico, nao e de jogo
-  w17103: [45, 35, 20, 22, 35, 0], // GT 730 4GB
-  w21635: [45, 35, 20, 22, 35, 0], // GT 730 4GB
-  w19296: [50, 40, 25, 28, 40, 0], // GT 740 4GB
-  w20485: [90, 75, 45, 45, 65, 0], // GTX 750 Ti 4GB
-  w19209: [100, 85, 50, 50, 75, 20], // RX 560 4GB
-  w20957: [120, 95, 60, 60, 90, 25], // GTX 1050 Ti 4GB
-  w20166: [160, 130, 80, 85, 120, 35], // RX 580 8GB
+  rx6600: [240, 190, 110, 130, 140, 65],
+  rtx4060: [300, 230, 140, 145, 165, 85],
+  rtx4070: [400, 340, 175, 165, 195, 115],
 };
-
-// Os 3 jogos que viram badge no card da build.
-const JOGOS_DESTAQUE = [0, 1, 5]; // Valorant, CS2, Cyberpunk
-
-// Resolve os ids de uma build pronta nas pecas do catalogo e reaproveita a
-// mesma estimativa de FPS do montador, pra ficha e montador baterem.
-function resumoDaBuild(ids: string[]) {
-  const pecas = ids
-    .map((id) => parts.find((p) => p.id === id))
-    .filter((p): p is Part => Boolean(p));
-  const gpu = pecas.find((p) => p.category === "gpu");
-  const cpu = pecas.find((p) => p.category === "cpu");
-  const fpsPerfil = gpu ? FPS_POR_GPU[gpu.id] : cpu?.apu ? FPS_POR_GPU["apu"] : undefined;
-  return {
-    pecas,
-    fpsPerfil,
-    fpsFonte: gpu ? gpu.name : cpu?.apu ? "Vídeo integrado" : "",
-  };
-}
 
 type NivelTrabalho = { nome: string; nota: 0 | 1 | 2 | 3; obs: string };
 
@@ -3517,7 +3317,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Monte seu computador com garantia de compatibilidade, preço especial no PIX e suporte técnico especializado em Varginha.",
+          "Monte seu computador com garantia de compatibilidade, preço direto de distribuidora e suporte técnico especializado em Varginha.",
       },
       { property: "og:title", content: "Montador de PC Binário Tecnologia" },
       {
@@ -3533,9 +3333,6 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [active, setActive] = useState<Category>("cpu");
-  const [detalhePeca, setDetalhePeca] = useState<Part | null>(null);
-  const [fichasPreset, setFichasPreset] = useState(false);
-  const [fichasEstoque, setFichasEstoque] = useState(false);
   const [selected, setSelected] = useState<Record<string, number>>({});
   const [search, setSearch] = useState("");
   const [precoFaixa, setPrecoFaixa] = useState<
@@ -3554,7 +3351,9 @@ function Index() {
   const [tiAberto, setTiAberto] = useState(false);
   // Pecas que o cliente pediu e a loja nao tem em estoque — vao como "a cotar".
   const [cotacoes, setCotacoes] = useState<Cotacao[]>([]);
-  const [cotacaoCategoria, setCotacaoCategoria] = useState<Category | "outro" | "">("");
+  const [cotacaoCategoria, setCotacaoCategoria] = useState<
+    Category | "outro" | ""
+  >("");
   const [cotacaoDescricao, setCotacaoDescricao] = useState("");
   const [cotacaoErro, setCotacaoErro] = useState("");
   // Observacao livre do cliente/vendedor (ex: "cliente quer gabinete branco",
@@ -3608,16 +3407,22 @@ function Index() {
   useEffect(() => {
     document.documentElement.classList.toggle("dark", temaEscuro);
     try {
-      window.localStorage.setItem(TEMA_STORAGE_KEY, temaEscuro ? "dark" : "light");
+      window.localStorage.setItem(
+        TEMA_STORAGE_KEY,
+        temaEscuro ? "dark" : "light",
+      );
     } catch {
       // navegador sem storage — a preferência só vale pra essa visita
     }
   }, [temaEscuro]);
 
   useEffect(() => {
-    const ids = new URLSearchParams(window.location.search).get("pc")?.split(",") ?? [];
+    const ids =
+      new URLSearchParams(window.location.search).get("pc")?.split(",") ?? [];
     const restored = Object.fromEntries(
-      ids.filter((id) => parts.some((part) => part.id === id)).map((id) => [id, 1]),
+      ids
+        .filter((id) => parts.some((part) => part.id === id))
+        .map((id) => [id, 1]),
     );
     const rawObs = new URLSearchParams(window.location.search).get("obs");
     if (rawObs) setObservacao(decodeURIComponent(rawObs).slice(0, 400));
@@ -3630,7 +3435,10 @@ function Index() {
           restoredCot = parsed
             .filter(
               (item): item is { c: string; d: string } =>
-                !!item && typeof item === "object" && "c" in item && "d" in item,
+                !!item &&
+                typeof item === "object" &&
+                "c" in item &&
+                "d" in item,
             )
             .map((item, i) => ({
               id: `cot-url-${i}`,
@@ -3661,12 +3469,21 @@ function Index() {
             const validSelected = Object.fromEntries(
               Object.entries(obj.selected ?? {}).filter(
                 ([id, qtd]) =>
-                  parts.some((part) => part.id === id) && typeof qtd === "number" && qtd > 0,
+                  parts.some((part) => part.id === id) &&
+                  typeof qtd === "number" &&
+                  qtd > 0,
               ),
             );
             const validCot = Array.isArray(obj.cotacoes) ? obj.cotacoes : [];
-            const validObs = typeof obj.observacao === "string" ? obj.observacao.slice(0, 400) : "";
-            if (Object.keys(validSelected).length || validCot.length || validObs) {
+            const validObs =
+              typeof obj.observacao === "string"
+                ? obj.observacao.slice(0, 400)
+                : "";
+            if (
+              Object.keys(validSelected).length ||
+              validCot.length ||
+              validObs
+            ) {
               setSelected(validSelected);
               setCotacoes(validCot);
               if (validObs) setObservacao(validObs);
@@ -3697,7 +3514,8 @@ function Index() {
     // Ninguém pode esquecer de se identificar: sem link compartilhado e sem
     // vendedor/cliente salvo, a janela abre sozinha e não deixa fechar sem
     // escolher (evita mandar coisa pro T.I. sem saber quem pediu).
-    const linkCompartilhado = Object.keys(restored).length > 0 || restoredCot.length > 0;
+    const linkCompartilhado =
+      Object.keys(restored).length > 0 || restoredCot.length > 0;
     if (!temIdentidade && !linkCompartilhado) {
       setSellerIntent({ kind: "obrigatorio" });
     }
@@ -3708,7 +3526,11 @@ function Index() {
   useEffect(() => {
     if (reviewMode) return;
     try {
-      if (!Object.keys(selected).length && !cotacoes.length && !observacao.trim()) {
+      if (
+        !Object.keys(selected).length &&
+        !cotacoes.length &&
+        !observacao.trim()
+      ) {
         window.localStorage.removeItem(BUILD_STORAGE_KEY);
         return;
       }
@@ -3769,7 +3591,9 @@ function Index() {
 
   function rotuloCotacao(item: Cotacao) {
     if (item.categoria === "outro") return "Outro";
-    return categories.find((cat) => cat.id === item.categoria)?.label ?? "Outro";
+    return (
+      categories.find((cat) => cat.id === item.categoria)?.label ?? "Outro"
+    );
   }
 
   // Linhas "a cotar" que entram no WhatsApp, no PDF e no pedido pro T.I.
@@ -3777,24 +3601,28 @@ function Index() {
     (item) => `• [A COTAR] ${rotuloCotacao(item)}: ${item.descricao}`,
   );
 
-  const chosen = useMemo(() => parts.filter((part) => selected[part.id]), [selected]);
-  const totalPix = chosen.reduce((sum, part) => sum + part.pixPrice * (selected[part.id] ?? 0), 0);
-  const totalCard = totalPix / 0.85;
+  const chosen = useMemo(
+    () => parts.filter((part) => selected[part.id]),
+    [selected],
+  );
+  const totalPix = chosen.reduce(
+    (sum, part) => sum + part.pixPrice * (selected[part.id] ?? 0),
+    0,
+  );
+  // Preco de venda do WinThor (PCTABPR.PVENDA), sem desconto de PIX por ora.
+  const totalCard = totalPix;
   const installmentVal = totalCard / 10;
-  const pixSavings = totalCard - totalPix;
 
   const cpu = chosen.find((part) => part.category === "cpu");
   const gpu = chosen.find((part) => part.category === "gpu");
   const psu = chosen.find((part) => part.category === "psu");
   const mobo = chosen.find((part) => part.category === "motherboard");
   const rams = chosen.filter((part) => part.category === "memory");
-  // Pentes ja escolhidos x slots da placa. Placa sem o dado nao limita.
-  const slotsDaPlaca = mobo?.slots;
-  const pentesUsados = rams.reduce((sum, r) => sum + (selected[r.id] ?? 1), 0);
-  const slotsCheios = slotsDaPlaca !== undefined && pentesUsados >= slotsDaPlaca;
 
   const requiredWatts =
-    cpu && gpu ? Math.ceil(((cpu.watts ?? 65) + (gpu.watts ?? 0) + 220) / 50) * 50 : 0;
+    cpu && gpu
+      ? Math.ceil(((cpu.watts ?? 65) + (gpu.watts ?? 0) + 220) / 50) * 50
+      : 0;
   const currentPsuWatts = psu?.watts ?? 0;
   const powerOk = !requiredWatts || !psu || currentPsuWatts >= requiredWatts;
   const wattsPct =
@@ -3807,8 +3635,15 @@ function Index() {
   // O tipo de memoria e ditado pela placa-mae. Enquanto ela nao for escolhida,
   // deduzimos pelo socket do processador (AM4 -> DDR4, AM5 -> DDR5).
   const boardMemType: "DDR3" | "DDR4" | "DDR5" | undefined =
-    mobo?.memType ?? (cpu?.socket === "AM5" ? "DDR5" : cpu?.socket === "AM4" ? "DDR4" : undefined);
-  const ramOk = !boardMemType || rams.every((r) => !r.memType || r.memType === boardMemType);
+    mobo?.memType ??
+    (cpu?.socket === "AM5"
+      ? "DDR5"
+      : cpu?.socket === "AM4"
+        ? "DDR4"
+        : undefined);
+  const ramOk =
+    !boardMemType ||
+    rams.every((r) => !r.memType || r.memType === boardMemType);
 
   // ----- Checklist de compatibilidade -----
   type Check = { estado: "ok" | "warn" | "pending"; texto: string };
@@ -3820,24 +3655,9 @@ function Index() {
         : { estado: "warn", texto: "Socket da placa não bate com a CPU" },
     !boardMemType || !rams.length
       ? { estado: "pending", texto: "Memória compatível" }
-      : !ramOk
-        ? { estado: "warn", texto: `Troque a memória para ${boardMemType}` }
-        : slotsDaPlaca !== undefined
-          ? {
-              estado: "ok",
-              texto: `Memória ${boardMemType}, ${pentesUsados} de ${slotsDaPlaca} slots`,
-            }
-          : { estado: "ok", texto: `Memória ${boardMemType} compatível` },
-    !cpu
-      ? { estado: "pending", texto: "Saída de vídeo" }
-      : gpu
-        ? { estado: "ok", texto: `Vídeo pela ${gpu.name}` }
-        : cpu.videoIntegrado
-          ? { estado: "ok", texto: "Vídeo integrado no processador" }
-          : {
-              estado: "warn",
-              texto: "Processador sem vídeo integrado, precisa de placa",
-            },
+      : ramOk
+        ? { estado: "ok", texto: `Memória ${boardMemType} compatível` }
+        : { estado: "warn", texto: `Troque a memória para ${boardMemType}` },
     !requiredWatts
       ? { estado: "pending", texto: "Fonte adequada ao consumo" }
       : !psu
@@ -3852,9 +3672,20 @@ function Index() {
   const tudoOk = checks.every((c) => c.estado === "ok");
 
   // ----- "Falta pouco" -----
-  const ESSENCIAIS: Category[] = ["cpu", "motherboard", "memory", "storage", "psu", "case"];
-  const faltando = ESSENCIAIS.filter((id) => !chosen.some((p) => p.category === id));
-  const faltandoLabels = faltando.map((id) => categories.find((c) => c.id === id)?.short ?? id);
+  const ESSENCIAIS: Category[] = [
+    "cpu",
+    "motherboard",
+    "memory",
+    "storage",
+    "psu",
+    "case",
+  ];
+  const faltando = ESSENCIAIS.filter(
+    (id) => !chosen.some((p) => p.category === id),
+  );
+  const faltandoLabels = faltando.map(
+    (id) => categories.find((c) => c.id === id)?.short ?? id,
+  );
 
   // ----- Sugestão de upgrade -----
   // Pra categoria de escolha única (memória/SSD ficam de fora, são multi),
@@ -3868,9 +3699,17 @@ function Index() {
         if (candidato.id === part.id) return false;
         if (candidato.stock === 0) return false;
         if (candidato.pixPrice <= part.pixPrice) return false;
-        if (part.category === "motherboard" && cpu?.socket && candidato.socket !== cpu.socket)
+        if (
+          part.category === "motherboard" &&
+          cpu?.socket &&
+          candidato.socket !== cpu.socket
+        )
           return false;
-        if (part.category === "cpu" && mobo?.socket && candidato.socket !== mobo.socket)
+        if (
+          part.category === "cpu" &&
+          mobo?.socket &&
+          candidato.socket !== mobo.socket
+        )
           return false;
         if (
           part.category === "psu" &&
@@ -3901,8 +3740,15 @@ function Index() {
   ).length;
 
   // ----- Desempenho estimado da montagem atual -----
-  const ramTotal = rams.reduce((sum, r) => sum + (r.ramGB ?? 0) * (selected[r.id] ?? 1), 0);
-  const fpsPerfil = gpu ? FPS_POR_GPU[gpu.id] : cpu?.apu ? FPS_POR_GPU["apu"] : undefined;
+  const ramTotal = rams.reduce(
+    (sum, r) => sum + (r.ramGB ?? 0) * (selected[r.id] ?? 1),
+    0,
+  );
+  const fpsPerfil = gpu
+    ? FPS_POR_GPU[gpu.id]
+    : cpu?.apu
+      ? FPS_POR_GPU["apu"]
+      : undefined;
   const fpsFonte = gpu ? gpu.name : cpu?.apu ? "Vídeo integrado (Vega)" : "";
   const temDesempenho = Boolean(cpu || gpu);
 
@@ -3927,14 +3773,30 @@ function Index() {
   const visibleParts = parts.filter((part) => {
     if (part.category !== active) return false;
     if (part.stock === 0) return false;
-    if (platform !== "all" && part.platform && part.platform !== platform) return false;
-    if (active === "motherboard" && cpu?.socket && part.socket !== cpu.socket) return false;
-    if (active === "memory" && boardMemType && part.memType && part.memType !== boardMemType)
+    if (platform !== "all" && part.platform && part.platform !== platform)
       return false;
-    if (active === "psu" && requiredWatts && (part.watts ?? 0) < requiredWatts) return false;
+    if (active === "motherboard" && cpu?.socket && part.socket !== cpu.socket)
+      return false;
+    if (
+      active === "memory" &&
+      boardMemType &&
+      part.memType &&
+      part.memType !== boardMemType
+    )
+      return false;
+    if (active === "psu" && requiredWatts && (part.watts ?? 0) < requiredWatts)
+      return false;
     if (precoFaixa === "ate500" && part.pixPrice > 500) return false;
-    if (precoFaixa === "500a1000" && (part.pixPrice < 500 || part.pixPrice > 1000)) return false;
-    if (precoFaixa === "1000a2000" && (part.pixPrice < 1000 || part.pixPrice > 2000)) return false;
+    if (
+      precoFaixa === "500a1000" &&
+      (part.pixPrice < 500 || part.pixPrice > 1000)
+    )
+      return false;
+    if (
+      precoFaixa === "1000a2000" &&
+      (part.pixPrice < 1000 || part.pixPrice > 2000)
+    )
+      return false;
     if (precoFaixa === "acima2000" && part.pixPrice < 2000) return false;
     return `${part.name} ${part.brand} ${part.code} ${part.specs.join(" ")}`
       .toLowerCase()
@@ -3942,14 +3804,14 @@ function Index() {
   });
 
   function selectPart(part: Part) {
-    if (part.category === "memory" && slotsCheios) return;
     const multi = isMulti(part.category);
     setSelected((current) => {
       const next = { ...current };
       if (!multi) {
         // categoria de escolha unica: troca a peca da mesma categoria
         for (const selectedPart of parts)
-          if (selectedPart.category === part.category) delete next[selectedPart.id];
+          if (selectedPart.category === part.category)
+            delete next[selectedPart.id];
         next[part.id] = 1;
       } else {
         // memoria / SSD: soma uma unidade, permitindo varios itens juntos
@@ -3960,16 +3822,15 @@ function Index() {
     // so avanca sozinho nas etapas de escolha unica; em multi o vendedor
     // decide quando terminou e clica em "Proxima etapa".
     if (!multi) {
-      const index = categories.findIndex((category) => category.id === part.category);
+      const index = categories.findIndex(
+        (category) => category.id === part.category,
+      );
       const nextCategory = categories[index + 1];
       if (nextCategory) setActive(nextCategory.id);
     }
   }
 
   function mudarQtd(id: string, delta: number) {
-    // Memoria nao pode passar do numero de slots da placa escolhida.
-    const peca = parts.find((p) => p.id === id);
-    if (delta > 0 && peca?.category === "memory" && slotsCheios) return;
     setSelected((current) => {
       const next = { ...current };
       const q = (next[id] ?? 0) + delta;
@@ -3981,62 +3842,11 @@ function Index() {
 
   function moveStep(offset: -1 | 1) {
     const currentIndex = categories.findIndex((item) => item.id === active);
-    const target = categories[Math.max(0, Math.min(categories.length - 1, currentIndex + offset))];
+    const target =
+      categories[
+        Math.max(0, Math.min(categories.length - 1, currentIndex + offset))
+      ];
     if (target) setActive(target.id);
-  }
-
-  // Ficha que abre dentro do card: o que vem na maquina e como ela roda.
-  function fichaDaBuild(ids: string[]) {
-    const { pecas, fpsPerfil, fpsFonte } = resumoDaBuild(ids);
-    return (
-      <div className="build-ficha">
-        <h4>O que vem nessa máquina</h4>
-        <ul className="build-ficha-pecas">
-          {pecas.map((peca) => (
-            <li key={peca.id}>
-              <span className="build-ficha-cat">
-                {categories.find((c) => c.id === peca.category)?.label ?? peca.category}
-              </span>
-              <span className="build-ficha-nome">{peca.name}</span>
-            </li>
-          ))}
-        </ul>
-        {fpsPerfil && (
-          <>
-            <h4>
-              Como roda nos jogos <small>({fpsFonte})</small>
-            </h4>
-            <div className="build-ficha-fps">
-              {JOGOS.map((jogo, i) => {
-                const fps = fpsPerfil[i] ?? 0;
-                const pct = Math.min(100, (fps / FPS_MAX) * 100);
-                const cor =
-                  fps >= 120
-                    ? "var(--status-ok)"
-                    : fps >= 60
-                      ? "var(--status-alerta)"
-                      : "var(--status-erro)";
-                return (
-                  <div key={jogo} className="build-ficha-fps-row">
-                    <span>{jogo}</span>
-                    <div className="build-ficha-fps-track">
-                      <div
-                        className="build-ficha-fps-fill"
-                        style={{ width: `${pct}%`, backgroundColor: cor }}
-                      />
-                    </div>
-                    <strong className="mono">{fps || "-"}</strong>
-                  </div>
-                );
-              })}
-            </div>
-            <p className="build-ficha-nota">
-              Estimativa em 1080p com gráficos altos. Não é benchmark oficial.
-            </p>
-          </>
-        )}
-      </div>
-    );
   }
 
   function loadPreset(ids: string[]) {
@@ -4075,7 +3885,9 @@ function Index() {
       url.searchParams.set(
         "cot",
         encodeURIComponent(
-          JSON.stringify(cotacoes.map((item) => ({ c: item.categoria, d: item.descricao }))),
+          JSON.stringify(
+            cotacoes.map((item) => ({ c: item.categoria, d: item.descricao })),
+          ),
         ),
       );
     } else {
@@ -4091,7 +3903,10 @@ function Index() {
       setCopied(true);
       window.setTimeout(() => setCopied(false), 1800);
     } else {
-      window.prompt("Não consegui copiar sozinho. Copie o link abaixo:", url.toString());
+      window.prompt(
+        "Não consegui copiar sozinho. Copie o link abaixo:",
+        url.toString(),
+      );
     }
   }
 
@@ -4134,7 +3949,10 @@ function Index() {
     setHistorico((current) => {
       const next = [entry, ...current].slice(0, HISTORICO_MAX);
       try {
-        window.localStorage.setItem(HISTORICO_STORAGE_KEY, JSON.stringify(next));
+        window.localStorage.setItem(
+          HISTORICO_STORAGE_KEY,
+          JSON.stringify(next),
+        );
       } catch {
         // navegador sem storage — o histórico só vale pra essa visita
       }
@@ -4158,15 +3976,18 @@ function Index() {
   function enviarOrcamento(item: Vendedor) {
     const linhas = [
       ...chosen.map(
-        (part) => `• [${part.code}] *${part.name}* — ${money.format(part.pixPrice)} (PIX)`,
+        (part) =>
+          `• [${part.code}] *${part.name}* — ${money.format(part.pixPrice)}`,
       ),
       ...linhasCotacao,
     ].join("\n");
     const aviso = cotacoes.length
       ? `\n\n_${cotacoes.length} item(ns) marcado(s) como A COTAR ainda não entram no total._`
       : "";
-    const obs = observacao.trim() ? `\n\n*Observação:* ${observacao.trim()}` : "";
-    const text = `Olá, ${item.nome}! Gostaria de consultar este orçamento de PC:\n\n${linhas || "Ainda estou montando minhas peças."}\n\n*Total no PIX (com 15% OFF)*: ${money.format(totalPix)}\n*Parcelado*: 10x de ${money.format(installmentVal)}${aviso}${obs}\n\nMontagem inclusa. Podem verificar disponibilidade em Varginha?`;
+    const obs = observacao.trim()
+      ? `\n\n*Observação:* ${observacao.trim()}`
+      : "";
+    const text = `Olá, ${item.nome}! Gostaria de consultar este orçamento de PC:\n\n${linhas || "Ainda estou montando minhas peças."}\n\n*Total*: ${money.format(totalPix)}\n*Parcelado*: 10x de ${money.format(installmentVal)}${aviso}${obs}\n\nMontagem inclusa. Podem verificar disponibilidade em Varginha?`;
     registrarHistorico(item.nome);
     abrirWhats(item.numero, text);
   }
@@ -4182,11 +4003,15 @@ function Index() {
   // Texto da lista de separacao, assinado por quem pediu.
   function textoSeparacao() {
     const list = [
-      ...chosen.map((part) => `• [${part.code}] ${part.name} — ${selected[part.id] ?? 1}un`),
+      ...chosen.map(
+        (part) => `• [${part.code}] ${part.name} — ${selected[part.id] ?? 1}un`,
+      ),
       ...linhasCotacao,
     ].join("\n");
     const quem = vendedor?.nome ?? "Vendedor";
-    const obs = observacao.trim() ? `\n\n*Observação:* ${observacao.trim()}` : "";
+    const obs = observacao.trim()
+      ? `\n\n*Observação:* ${observacao.trim()}`
+      : "";
     return `*MONTAGEM PARA O T.I.*\n\nSolicitado por: *${quem}*\nLocal: Loja Varginha\n\n${list}${obs}`;
   }
 
@@ -4262,11 +4087,17 @@ function Index() {
 
         {(sellerIntent?.kind === "identificar" ||
           sellerIntent?.kind === "trocar" ||
-          identificacaoObrigatoria) && <span className="seller-group-label">Vendedores</span>}
+          identificacaoObrigatoria) && (
+          <span className="seller-group-label">Vendedores</span>
+        )}
 
         <div className="seller-grid">
           {VENDEDORES.map((item) => (
-            <button key={item.nome} onClick={() => onEscolherVendedor(item)} className="seller-btn">
+            <button
+              key={item.nome}
+              onClick={() => onEscolherVendedor(item)}
+              className="seller-btn"
+            >
               <span className="seller-avatar">{item.nome.charAt(0)}</span>
               <span className="seller-name">{item.nome}</span>
               <MessageCircle className="w-4 h-4 text-emerald-600 shrink-0" />
@@ -4318,8 +4149,8 @@ function Index() {
         </div>
 
         <p className="seller-dica">
-          Dica: um grupo do WhatsApp com Estoque + T.I. deixaria isso em um clique só. Se criarem,
-          me passa o link do grupo.
+          Dica: um grupo do WhatsApp com Estoque + T.I. deixaria isso em um
+          clique só. Se criarem, me passa o link do grupo.
         </p>
       </DialogContent>
     </Dialog>
@@ -4334,13 +4165,15 @@ function Index() {
             Últimos orçamentos enviados
           </DialogTitle>
           <DialogDescription className="text-slate-600 text-xs">
-            Os {HISTORICO_MAX} últimos orçamentos mandados pro WhatsApp neste computador. Carregar
-            substitui a montagem atual.
+            Os {HISTORICO_MAX} últimos orçamentos mandados pro WhatsApp neste
+            computador. Carregar substitui a montagem atual.
           </DialogDescription>
         </DialogHeader>
 
         {historico.length === 0 ? (
-          <p className="history-empty">Nenhum orçamento enviado ainda por aqui.</p>
+          <p className="history-empty">
+            Nenhum orçamento enviado ainda por aqui.
+          </p>
         ) : (
           <div className="history-list">
             {historico.map((entry) => (
@@ -4359,14 +4192,22 @@ function Index() {
                 <div className="history-card-itens">
                   {entry.itens.length
                     ? entry.itens
-                        .map((item) => `${item.name}${item.qty > 1 ? ` (${item.qty}x)` : ""}`)
+                        .map(
+                          (item) =>
+                            `${item.name}${item.qty > 1 ? ` (${item.qty}x)` : ""}`,
+                        )
                         .join(" · ")
                     : "Só itens a cotar"}
-                  {entry.cotacoes.length > 0 && ` · ${entry.cotacoes.length} a cotar`}
+                  {entry.cotacoes.length > 0 &&
+                    ` · ${entry.cotacoes.length} a cotar`}
                 </div>
                 <div className="history-card-foot">
-                  <span className="history-card-total">{money.format(entry.totalPix)}</span>
-                  <button onClick={() => carregarHistorico(entry)}>Carregar de novo</button>
+                  <span className="history-card-total">
+                    {money.format(entry.totalPix)}
+                  </span>
+                  <button onClick={() => carregarHistorico(entry)}>
+                    Carregar de novo
+                  </button>
                 </div>
               </div>
             ))}
@@ -4393,14 +4234,16 @@ function Index() {
             <th>Código</th>
             <th>Peça</th>
             <th>Qtd</th>
-            <th>Valor PIX</th>
+            <th>Valor</th>
           </tr>
         </thead>
         <tbody>
           {chosen.map((part) => (
             <tr key={part.id}>
               <td className="print-thumb-cell">
-                {part.foto ? <img src={part.foto} alt="" className="print-thumb" /> : null}
+                {part.foto ? (
+                  <img src={part.foto} alt="" className="print-thumb" />
+                ) : null}
               </td>
               <td className="mono">{part.code}</td>
               <td>{part.name}</td>
@@ -4423,12 +4266,13 @@ function Index() {
       </table>
       <div className="print-budget-total">
         <span>
-          Total no PIX: <strong>{money.format(totalPix)}</strong>
+          Total: <strong>{money.format(totalPix)}</strong>
         </span>
         <span>ou 10x de {money.format(installmentVal)}</span>
       </div>
       <p className="print-budget-note">
-        Valores sujeitos a confirmação de estoque. Peças separadas pelo código informado acima.
+        Valores sujeitos a confirmação de estoque. Peças separadas pelo código
+        informado acima.
         {cotacoes.length > 0 &&
           " Itens marcados como A COTAR não estão em estoque e não entram no total."}
       </p>
@@ -4481,13 +4325,7 @@ function Index() {
                 }
               >
                 <div className="flex items-center gap-2 min-w-0">
-                  <span className="summary-item-thumb">
-                    {part.foto ? (
-                      <img src={part.foto} alt="" loading="lazy" />
-                    ) : (
-                      <CategoryIcon className="w-4 h-4" />
-                    )}
-                  </span>
+                  <CategoryIcon className="w-4 h-4 text-emerald-600 shrink-0" />
                   <div className="summary-item-label">
                     <small>
                       {category.short}
@@ -4497,7 +4335,9 @@ function Index() {
                     <em className="summary-item-code">Cód. {part.code}</em>
                   </div>
                 </div>
-                <span className="summary-item-price">{money.format(part.pixPrice * qtd)}</span>
+                <span className="summary-item-price">
+                  {money.format(part.pixPrice * qtd)}
+                </span>
               </div>
             );
           });
@@ -4527,8 +4367,9 @@ function Index() {
 
       {cotacoes.length > 0 && (
         <p className="cotacao-aviso">
-          {cotacoes.length === 1 ? "1 item" : `${cotacoes.length} itens`} sob encomenda — o valor
-          entra depois que o vendedor cotar com o fornecedor.
+          {cotacoes.length === 1 ? "1 item" : `${cotacoes.length} itens`} sob
+          encomenda — o valor entra depois que o vendedor cotar com o
+          fornecedor.
         </p>
       )}
 
@@ -4574,7 +4415,11 @@ function Index() {
             className="watts-progress-fill"
             style={{
               width: `${wattsPct}%`,
-              backgroundColor: !powerOk ? "#ef4444" : wattsPct > 80 ? "#d97706" : "#059669",
+              backgroundColor: !powerOk
+                ? "#ef4444"
+                : wattsPct > 80
+                  ? "#d97706"
+                  : "#059669",
             }}
           />
         </div>
@@ -4618,9 +4463,14 @@ function Index() {
             <span>PC completo! É só finalizar o orçamento aqui embaixo.</span>
           </div>
         ) : faltando.length <= 2 ? (
-          <button className="falta-pouco is-near" onClick={() => setActive(faltando[0]!)}>
+          <button
+            className="falta-pouco is-near"
+            onClick={() => setActive(faltando[0]!)}
+          >
             <Sparkles className="w-4 h-4 shrink-0" />
-            <span>Falta só {faltandoLabels.join(" e ")} pra fechar seu PC!</span>
+            <span>
+              Falta só {faltandoLabels.join(" e ")} pra fechar seu PC!
+            </span>
           </button>
         ) : null)}
     </>
@@ -4647,9 +4497,15 @@ function Index() {
                 className="theme-toggle-btn"
                 onClick={() => setTemaEscuro((v) => !v)}
                 title={temaEscuro ? "Modo claro" : "Modo escuro"}
-                aria-label={temaEscuro ? "Ativar modo claro" : "Ativar modo escuro"}
+                aria-label={
+                  temaEscuro ? "Ativar modo claro" : "Ativar modo escuro"
+                }
               >
-                {temaEscuro ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                {temaEscuro ? (
+                  <Sun className="w-4 h-4" />
+                ) : (
+                  <Moon className="w-4 h-4" />
+                )}
               </button>
               <Button
                 onClick={() => setSellerIntent({ kind: "orcamento" })}
@@ -4668,7 +4524,9 @@ function Index() {
               <div>
                 <span className="review-kicker">Orçamento compartilhado</span>
                 <h1>Montagem selecionada</h1>
-                <p>Confira as peças abaixo. Montagem inclusa, sem taxa adicional.</p>
+                <p>
+                  Confira as peças abaixo. Montagem inclusa, sem taxa adicional.
+                </p>
               </div>
             </div>
 
@@ -4676,18 +4534,13 @@ function Index() {
 
             <div className="pricing-summary-box">
               <div className="pix-total-block">
-                <span>Total no PIX (com 15% OFF)</span>
+                <span>Total</span>
                 <strong>{money.format(totalPix)}</strong>
-                {pixSavings > 0 && (
-                  <span className="pix-savings-pill">
-                    <CheckCircle2 className="w-3.5 h-3.5" /> Você economiza{" "}
-                    {money.format(pixSavings)} no PIX
-                  </span>
-                )}
               </div>
 
               <div className="credit-total-line">
-                ou em até <strong>10x de {money.format(installmentVal)}</strong> sem juros
+                ou em até <strong>10x de {money.format(installmentVal)}</strong>{" "}
+                sem juros
               </div>
 
               <button
@@ -4752,13 +4605,22 @@ function Index() {
           </a>
 
           <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-700">
-            <a href="#montador" className="hover:text-blue-600 transition-colors">
+            <a
+              href="#montador"
+              className="hover:text-blue-600 transition-colors"
+            >
               Montador de PC
             </a>
-            <a href="#prontas" className="hover:text-blue-600 transition-colors">
+            <a
+              href="#prontas"
+              className="hover:text-blue-600 transition-colors"
+            >
               PCs Recomendados
             </a>
-            <a href="#estoque" className="hover:text-blue-600 transition-colors">
+            <a
+              href="#estoque"
+              className="hover:text-blue-600 transition-colors"
+            >
               Pronta Entrega
             </a>
           </nav>
@@ -4769,9 +4631,15 @@ function Index() {
               className="theme-toggle-btn"
               onClick={() => setTemaEscuro((v) => !v)}
               title={temaEscuro ? "Modo claro" : "Modo escuro"}
-              aria-label={temaEscuro ? "Ativar modo claro" : "Ativar modo escuro"}
+              aria-label={
+                temaEscuro ? "Ativar modo claro" : "Ativar modo escuro"
+              }
             >
-              {temaEscuro ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              {temaEscuro ? (
+                <Sun className="w-4 h-4" />
+              ) : (
+                <Moon className="w-4 h-4" />
+              )}
             </button>
             {!ehCliente && (
               <button
@@ -4791,11 +4659,21 @@ function Index() {
               title="Quem está montando"
             >
               <span className="vendedor-chip-avatar">
-                {vendedor ? vendedor.nome.charAt(0) : <UserRound className="w-3.5 h-3.5" />}
+                {vendedor ? (
+                  vendedor.nome.charAt(0)
+                ) : (
+                  <UserRound className="w-3.5 h-3.5" />
+                )}
               </span>
               <span className="vendedor-chip-texto">
                 <small>{ehCliente ? "Montando" : "Vendedor"}</small>
-                <strong>{vendedor ? vendedor.nome : ehCliente ? "Cliente" : "Escolher"}</strong>
+                <strong>
+                  {vendedor
+                    ? vendedor.nome
+                    : ehCliente
+                      ? "Cliente"
+                      : "Escolher"}
+                </strong>
               </span>
               <ChevronDown className="w-3.5 h-3.5 opacity-60 shrink-0" />
             </button>
@@ -4822,23 +4700,27 @@ function Index() {
               </div>
               <h1>Monte seu PC Gamer ou de Trabalho Sob Medida</h1>
               <p>
-                Escolha os componentes ideais para a sua necessidade. Todas as máquinas montadas na
-                Binário saem da loja com
+                Escolha os componentes ideais para a sua necessidade. Todas as
+                máquinas montadas na Binário saem da loja com
                 <strong>
                   {" "}
-                  cabos organizados, BIOS atualizada gratuitamente e 24h de teste de estresse
+                  cabos organizados, BIOS atualizada gratuitamente e 24h de
+                  teste de estresse
                 </strong>
                 .
               </p>
               <div className="hero-proof-pills">
                 <span className="hero-pill">
-                  <Check className="w-4 h-4 text-emerald-600" /> Compatibilidade 100% Garantida
+                  <Check className="w-4 h-4 text-emerald-600" /> Compatibilidade
+                  100% Garantida
                 </span>
                 <span className="hero-pill">
-                  <ShieldCheck className="w-4 h-4 text-emerald-600" /> 1 Ano de Garantia Local
+                  <ShieldCheck className="w-4 h-4 text-emerald-600" /> 1 Ano de
+                  Garantia Local
                 </span>
                 <span className="hero-pill">
-                  <Truck className="w-4 h-4 text-emerald-600" /> Retirada Imediata em Varginha
+                  <Truck className="w-4 h-4 text-emerald-600" /> Retirada
+                  Imediata em Varginha
                 </span>
               </div>
             </div>
@@ -4849,9 +4731,15 @@ function Index() {
         <section id="montador" className="builder-layout no-print">
           <div className="shell">
             {/* Step Category Rail */}
-            <div className="step-rail-container" role="tablist" aria-label="Categorias de peças">
+            <div
+              className="step-rail-container"
+              role="tablist"
+              aria-label="Categorias de peças"
+            >
               {categories.map((category, index) => {
-                const done = chosen.some((part) => part.category === category.id);
+                const done = chosen.some(
+                  (part) => part.category === category.id,
+                );
                 const Icon = category.icon;
                 return (
                   <button
@@ -4864,7 +4752,11 @@ function Index() {
                     onClick={() => setActive(category.id)}
                   >
                     <span className="tab-status-icon">
-                      {done ? <Check className="w-3.5 h-3.5" /> : String(index + 1)}
+                      {done ? (
+                        <Check className="w-3.5 h-3.5" />
+                      ) : (
+                        String(index + 1)
+                      )}
                     </span>
                     <Icon className="w-4 h-4" />
                     <span>{category.short}</span>
@@ -4879,11 +4771,15 @@ function Index() {
               <div className="catalog-card">
                 <div className="catalog-header">
                   <div>
-                    <h2>Escolha o seu {categories.find((item) => item.id === active)?.label}</h2>
+                    <h2>
+                      Escolha o seu{" "}
+                      {categories.find((item) => item.id === active)?.label}
+                    </h2>
                     <span>Exibindo peças compatíveis em estoque na loja</span>
                   </div>
                   <span className="catalog-step-pill">
-                    ETAPA {categories.findIndex((item) => item.id === active) + 1} DE{" "}
+                    ETAPA{" "}
+                    {categories.findIndex((item) => item.id === active) + 1} DE{" "}
                     {categories.length}
                   </span>
                 </div>
@@ -4898,11 +4794,20 @@ function Index() {
                       placeholder="Buscar por modelo, marca (ex: Ryzen, RTX, Kingston)..."
                     />
                   </div>
-                  <div className="platform-segmented" aria-label="Filtrar por fabricante">
-                    <button aria-pressed={platform === "all"} onClick={() => setPlatform("all")}>
+                  <div
+                    className="platform-segmented"
+                    aria-label="Filtrar por fabricante"
+                  >
+                    <button
+                      aria-pressed={platform === "all"}
+                      onClick={() => setPlatform("all")}
+                    >
                       Todas
                     </button>
-                    <button aria-pressed={platform === "AMD"} onClick={() => setPlatform("AMD")}>
+                    <button
+                      aria-pressed={platform === "AMD"}
+                      onClick={() => setPlatform("AMD")}
+                    >
                       AMD
                     </button>
                     <button
@@ -4916,7 +4821,9 @@ function Index() {
                     className="preco-filtro-select"
                     aria-label="Filtrar por faixa de preço"
                     value={precoFaixa}
-                    onChange={(e) => setPrecoFaixa(e.target.value as typeof precoFaixa)}
+                    onChange={(e) =>
+                      setPrecoFaixa(e.target.value as typeof precoFaixa)
+                    }
                   >
                     <option value="todos">Qualquer preço</option>
                     <option value="ate500">Até R$ 500</option>
@@ -4933,12 +4840,19 @@ function Index() {
                     <div>
                       <strong>
                         Por mais{" "}
-                        {money.format(upgradeAtivo.sugestao.pixPrice - upgradeAtivo.atual.pixPrice)}
+                        {money.format(
+                          upgradeAtivo.sugestao.pixPrice -
+                            upgradeAtivo.atual.pixPrice,
+                        )}
                         , leve o {upgradeAtivo.sugestao.name}
                       </strong>
-                      <span>{upgradeAtivo.sugestao.specs.slice(0, 2).join(" · ")}</span>
+                      <span>
+                        {upgradeAtivo.sugestao.specs.slice(0, 2).join(" · ")}
+                      </span>
                     </div>
-                    <button onClick={() => selectPart(upgradeAtivo.sugestao)}>Trocar</button>
+                    <button onClick={() => selectPart(upgradeAtivo.sugestao)}>
+                      Trocar
+                    </button>
                   </div>
                 )}
 
@@ -4949,7 +4863,8 @@ function Index() {
                     const chosenPart = qtd > 0;
                     const partMulti = isMulti(part.category);
                     const CategoryIcon =
-                      categories.find((cat) => cat.id === part.category)?.icon ?? Cpu;
+                      categories.find((cat) => cat.id === part.category)
+                        ?.icon ?? Cpu;
 
                     return (
                       <article
@@ -4969,7 +4884,9 @@ function Index() {
                           ) : (
                             <>
                               <CategoryIcon />
-                              <span className="hardware-thumb-badge">{part.brand}</span>
+                              <span className="hardware-thumb-badge">
+                                {part.brand}
+                              </span>
                             </>
                           )}
                         </div>
@@ -4980,11 +4897,23 @@ function Index() {
                             <span className="brand-badge">{part.brand}</span>
                             <span className="code-badge">Cód. {part.code}</span>
                             {part.socket && (
-                              <span className="spec-badge">Socket {part.socket}</span>
+                              <span className="spec-badge">
+                                Socket {part.socket}
+                              </span>
                             )}
-                            {part.memType && <span className="spec-badge">{part.memType}</span>}
-                            {part.platform && <span className="spec-badge">{part.platform}</span>}
-                            {part.watts && <span className="spec-badge">{part.watts}W TDP</span>}
+                            {part.memType && (
+                              <span className="spec-badge">{part.memType}</span>
+                            )}
+                            {part.platform && (
+                              <span className="spec-badge">
+                                {part.platform}
+                              </span>
+                            )}
+                            {part.watts && (
+                              <span className="spec-badge">
+                                {part.watts}W TDP
+                              </span>
+                            )}
                           </div>
                           <h3>{part.name}</h3>
                           <p>{part.detail}</p>
@@ -4998,24 +4927,18 @@ function Index() {
                               </span>
                             ))}
                           </div>
-                          <span className="stock-status-tag">Disponível em Varginha</span>
-                          <button
-                            type="button"
-                            className="product-ver-mais"
-                            onClick={() => setDetalhePeca(part)}
-                          >
-                            Ver detalhes
-                          </button>
+                          <span className="stock-status-tag">
+                            Em estoque em Varginha · {part.stock} unidades
+                          </span>
                         </div>
 
                         {/* Price & Action */}
                         <div className="product-price-col">
                           <div className="pix-price-highlight">
                             <strong>{money.format(part.pixPrice)}</strong>
-                            <span className="pix-badge-small">15% OFF NO PIX</span>
                           </div>
                           <span className="credit-price-small">
-                            ou 10x de {money.format(part.pixPrice / 0.85 / 10)}
+                            ou 10x de {money.format(part.pixPrice / 10)}
                           </span>
 
                           {partMulti && chosenPart ? (
@@ -5031,7 +4954,6 @@ function Index() {
                               <button
                                 type="button"
                                 aria-label="Adicionar mais um"
-                                disabled={part.category === "memory" && slotsCheios}
                                 onClick={() => mudarQtd(part.id, 1)}
                               >
                                 <Plus className="w-3.5 h-3.5" />
@@ -5056,7 +4978,8 @@ function Index() {
                             >
                               {chosenPart && !partMulti ? (
                                 <>
-                                  <Check className="w-3.5 h-3.5 mr-1" /> Selecionado
+                                  <Check className="w-3.5 h-3.5 mr-1" />{" "}
+                                  Selecionado
                                 </>
                               ) : (
                                 <>
@@ -5095,8 +5018,8 @@ function Index() {
                     <div>
                       <strong>Não achou a peça que o cliente quer?</strong>
                       <span>
-                        A loja encomenda do fornecedor. Descreva a peça e ela entra no orçamento
-                        como <em>a cotar</em>.
+                        A loja encomenda do fornecedor. Descreva a peça e ela
+                        entra no orçamento como <em>a cotar</em>.
                       </span>
                     </div>
                   </div>
@@ -5105,7 +5028,9 @@ function Index() {
                     <select
                       value={cotacaoCategoria}
                       onChange={(e) => {
-                        setCotacaoCategoria(e.target.value as Category | "outro" | "");
+                        setCotacaoCategoria(
+                          e.target.value as Category | "outro" | "",
+                        );
                         setCotacaoErro("");
                       }}
                       className="cotacao-select"
@@ -5139,7 +5064,9 @@ function Index() {
                     </button>
                   </div>
 
-                  {cotacaoErro && <span className="cotacao-erro">{cotacaoErro}</span>}
+                  {cotacaoErro && (
+                    <span className="cotacao-erro">{cotacaoErro}</span>
+                  )}
                 </div>
 
                 {/* Step Navigation Bar */}
@@ -5195,8 +5122,14 @@ function Index() {
                 {orcamentoRestaurado && (
                   <div className="orcamento-restaurado-aviso">
                     <Sparkles className="w-3.5 h-3.5" />
-                    <span>Recuperamos seu orçamento salvo. Pode continuar de onde parou.</span>
-                    <button onClick={() => setOrcamentoRestaurado(false)} aria-label="Fechar aviso">
+                    <span>
+                      Recuperamos seu orçamento salvo. Pode continuar de onde
+                      parou.
+                    </span>
+                    <button
+                      onClick={() => setOrcamentoRestaurado(false)}
+                      aria-label="Fechar aviso"
+                    >
                       ×
                     </button>
                   </div>
@@ -5207,18 +5140,14 @@ function Index() {
                 {/* Pricing Summary Box */}
                 <div className="pricing-summary-box">
                   <div className="pix-total-block">
-                    <span>Total no PIX (com 15% OFF)</span>
+                    <span>Total</span>
                     <strong>{money.format(totalPix)}</strong>
-                    {pixSavings > 0 && (
-                      <span className="pix-savings-pill">
-                        <CheckCircle2 className="w-3.5 h-3.5" /> Você economiza{" "}
-                        {money.format(pixSavings)} no PIX
-                      </span>
-                    )}
                   </div>
 
                   <div className="credit-total-line">
-                    ou em até <strong>10x de {money.format(installmentVal)}</strong> sem juros
+                    ou em até{" "}
+                    <strong>10x de {money.format(installmentVal)}</strong> sem
+                    juros
                   </div>
 
                   <button
@@ -5277,8 +5206,9 @@ function Index() {
               <div className="section-title-head">
                 <h2>Como esse PC se sai</h2>
                 <p>
-                  Estimativa em 1080p com gráficos altos, baseada nas peças escolhidas. Valores
-                  aproximados para dar uma ideia — não são benchmark oficial.
+                  Estimativa em 1080p com gráficos altos, baseada nas peças
+                  escolhidas. Valores aproximados para dar uma ideia — não são
+                  benchmark oficial.
                 </p>
               </div>
 
@@ -5297,7 +5227,12 @@ function Index() {
                         {JOGOS.map((jogo, i) => {
                           const fps = fpsPerfil[i] ?? 0;
                           const pct = Math.min(100, (fps / FPS_MAX) * 100);
-                          const cor = fps >= 120 ? "#059669" : fps >= 60 ? "#d97706" : "#dc2626";
+                          const cor =
+                            fps >= 120
+                              ? "#059669"
+                              : fps >= 60
+                                ? "#d97706"
+                                : "#dc2626";
                           return (
                             <div key={jogo} className="perf-jogo-row">
                               <span className="perf-jogo-nome">{jogo}</span>
@@ -5310,7 +5245,10 @@ function Index() {
                                   }}
                                 />
                               </div>
-                              <span className="perf-jogo-fps" style={{ color: cor }}>
+                              <span
+                                className="perf-jogo-fps"
+                                style={{ color: cor }}
+                              >
                                 {fps} FPS
                               </span>
                             </div>
@@ -5320,13 +5258,14 @@ function Index() {
                       <span className="perf-legenda">
                         <b style={{ color: "#059669" }}>120+</b> muito fluido ·
                         <b style={{ color: "#d97706" }}> 60+</b> joga bem ·
-                        <b style={{ color: "#dc2626" }}> abaixo</b> precisa baixar gráficos
+                        <b style={{ color: "#dc2626" }}> abaixo</b> precisa
+                        baixar gráficos
                       </span>
                     </>
                   ) : (
                     <p className="perf-vazio">
-                      Escolha uma placa de vídeo (ou um processador com vídeo integrado) para ver o
-                      desempenho nos jogos.
+                      Escolha uma placa de vídeo (ou um processador com vídeo
+                      integrado) para ver o desempenho nos jogos.
                     </p>
                   )}
                 </div>
@@ -5343,9 +5282,16 @@ function Index() {
                           <strong>{t.nome}</strong>
                           <small>{t.obs}</small>
                         </div>
-                        <div className="perf-dots" aria-label={`${t.nota} de 3`}>
+                        <div
+                          className="perf-dots"
+                          aria-label={`${t.nota} de 3`}
+                        >
                           {[1, 2, 3].map((n) => (
-                            <span key={n} className="perf-dot" data-on={n <= t.nota} />
+                            <span
+                              key={n}
+                              className="perf-dot"
+                              data-on={n <= t.nota}
+                            />
                           ))}
                           <span className="perf-nota-txt">
                             {t.nota === 0
@@ -5377,8 +5323,8 @@ function Index() {
             <div className="section-title-head">
               <h2>Configurações Recomendadas pelos Nossos Técnicos</h2>
               <p>
-                Modelos montados e testados pela equipe da Binário. Você pode carregar uma build e
-                alterar qualquer peça.
+                Modelos montados e testados pela equipe da Binário. Você pode
+                carregar uma build e alterar qualquer peça.
               </p>
             </div>
 
@@ -5391,26 +5337,23 @@ function Index() {
                 >
                   <span className="preset-kicker">{preset.kicker}</span>
                   <h3>{preset.name}</h3>
-                  <p className="text-slate-600 text-xs leading-relaxed mb-3">{preset.note}</p>
+                  <p className="text-slate-600 text-xs leading-relaxed mb-3">
+                    {preset.note}
+                  </p>
 
                   <div className="preset-fps-badges">
-                    {(() => {
-                      const { fpsPerfil } = resumoDaBuild(preset.ids);
-                      if (!fpsPerfil)
-                        return <span className="fps-badge">Sem placa de vídeo dedicada</span>;
-                      return JOGOS_DESTAQUE.map((i) => (
-                        <span key={i} className="fps-badge">
-                          {JOGOS[i]}: {fpsPerfil[i] || "-"} FPS
-                        </span>
-                      ));
-                    })()}
+                    {preset.fps.map((item, i) => (
+                      <span key={i} className="fps-badge">
+                        {item}
+                      </span>
+                    ))}
                   </div>
 
                   <div className="mt-auto pt-4 border-t border-slate-200">
                     <div className="flex items-baseline justify-between mb-3">
                       <div>
                         <span className="text-[10px] text-emerald-700 uppercase font-bold block">
-                          À vista no PIX
+                          À vista
                         </span>
                         <strong className="text-2xl font-extrabold text-emerald-700 font-display">
                           {money.format(preset.pixPrice)}
@@ -5421,28 +5364,12 @@ function Index() {
                       </span>
                     </div>
 
-                    <button
-                      type="button"
-                      className="build-ficha-toggle"
-                      aria-expanded={fichasPreset}
-                      onClick={() => setFichasPreset((v) => !v)}
-                    >
-                      {fichasPreset ? "Esconder as peças" : "Ver peças e como roda"}
-                      <ChevronDown
-                        className="w-4 h-4"
-                        style={{
-                          transform: fichasPreset ? "rotate(180deg)" : undefined,
-                        }}
-                      />
-                    </button>
-
-                    {fichasPreset && fichaDaBuild(preset.ids)}
-
                     <Button
                       onClick={() => loadPreset(preset.ids)}
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs h-10 mt-3"
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs h-10"
                     >
-                      Carregar esta Build no Montador <ArrowRight className="w-4 h-4 ml-1" />
+                      Carregar esta Build no Montador{" "}
+                      <ArrowRight className="w-4 h-4 ml-1" />
                     </Button>
                   </div>
                 </div>
@@ -5453,15 +5380,14 @@ function Index() {
 
         {/* Galeria de montagens — DESATIVADA por enquanto.
             Pra reativar: troque "false" por "true" na linha abaixo. */}
-        {/* eslint-disable-next-line no-constant-binary-expression -- interruptor proposital */}
         {false && (
           <section className="galeria-section no-print">
             <div className="shell">
               <div className="section-title-head">
                 <h2>Montagens que saíram da nossa bancada</h2>
                 <p>
-                  Cada PC é montado, testado por 24h e organizado por dentro aqui em Varginha antes
-                  de ir pra casa do cliente.
+                  Cada PC é montado, testado por 24h e organizado por dentro
+                  aqui em Varginha antes de ir pra casa do cliente.
                 </p>
               </div>
               <div className="galeria-grid">
@@ -5485,7 +5411,8 @@ function Index() {
             <div className="section-title-head">
               <h2>Computadores Pronta Entrega na Loja em Varginha</h2>
               <p>
-                Já saem montados, formatados com Windows de avaliação e prontos para uso imediato.
+                Já saem montados, formatados com Windows de avaliação e prontos
+                para uso imediato.
               </p>
             </div>
 
@@ -5497,23 +5424,6 @@ function Index() {
                     <h3>{machine.name}</h3>
                     <p>{machine.spec}</p>
                     <span className="stock-machine-tone">{machine.tone}</span>
-
-                    <button
-                      type="button"
-                      className="build-ficha-toggle"
-                      aria-expanded={fichasEstoque}
-                      onClick={() => setFichasEstoque((v) => !v)}
-                    >
-                      {fichasEstoque ? "Esconder as peças" : "Ver peças e como roda"}
-                      <ChevronDown
-                        className="w-4 h-4"
-                        style={{
-                          transform: fichasEstoque ? "rotate(180deg)" : undefined,
-                        }}
-                      />
-                    </button>
-
-                    {fichasEstoque && fichaDaBuild(machine.ids)}
                   </div>
 
                   <div className="stock-machine-foot">
@@ -5531,7 +5441,7 @@ function Index() {
                     </button>
                     <div className="stock-machine-price">
                       <strong>{money.format(machine.pixPrice)}</strong>
-                      <span>no PIX</span>
+                      <span></span>
                     </div>
                   </div>
                 </div>
@@ -5547,10 +5457,14 @@ function Index() {
       <footer className="site-footer no-print">
         <div className="shell footer-grid">
           <div className="footer-brand">
-            <img src={LOGO_LIGHT} alt="Binário Tecnologia" className="footer-logo-img" />
+            <img
+              src={LOGO_LIGHT}
+              alt="Binário Tecnologia"
+              className="footer-logo-img"
+            />
             <p>
-              Distribuidora e assistência técnica em Varginha - MG. Montagem, configuração e
-              garantia local para o Sul de Minas.
+              Distribuidora e assistência técnica em Varginha - MG. Montagem,
+              configuração e garantia local para o Sul de Minas.
             </p>
           </div>
 
@@ -5569,127 +5483,21 @@ function Index() {
 
           <div className="footer-col">
             <strong>Pagamento</strong>
-            <span>PIX à vista com desconto</span>
+            <span>PIX à vista</span>
             <span>Cartão em até 10x sem juros</span>
             <span>Montagem inclusa, sem taxa</span>
           </div>
         </div>
 
         <div className="shell footer-bottom">
-          <span>© {new Date().getFullYear()} Binário Tecnologia · Desde 1997</span>
-          <span>Valores sujeitos a confirmação de estoque com a equipe de vendas.</span>
+          <span>
+            © {new Date().getFullYear()} Binário Tecnologia · Desde 1997
+          </span>
+          <span>
+            Valores sujeitos a confirmação de estoque com a equipe de vendas.
+          </span>
         </div>
       </footer>
-
-      {/* Ficha tecnica da peca: os dados ja vem do WinThor, so nao eram
-          mostrados em lugar nenhum. */}
-      <Dialog
-        open={Boolean(detalhePeca)}
-        onOpenChange={(aberto) => !aberto && setDetalhePeca(null)}
-      >
-        <DialogContent className="max-w-lg">
-          {detalhePeca && (
-            <>
-              <DialogHeader>
-                <DialogTitle>{detalhePeca.name}</DialogTitle>
-                <DialogDescription>
-                  Cód. {detalhePeca.code} · {detalhePeca.brand}
-                </DialogDescription>
-              </DialogHeader>
-
-              <div className="peca-foto">
-                {detalhePeca.foto ? (
-                  <img src={detalhePeca.foto} alt={detalhePeca.name} />
-                ) : (
-                  (() => {
-                    const Icone =
-                      categories.find((c) => c.id === detalhePeca.category)?.icon ?? Cpu;
-                    return (
-                      <>
-                        <Icone className="w-10 h-10" />
-                        <span>Foto ainda não cadastrada</span>
-                      </>
-                    );
-                  })()
-                )}
-              </div>
-
-              <dl className="peca-ficha">
-                {detalhePeca.socket && (
-                  <>
-                    <dt>Socket</dt>
-                    <dd>{detalhePeca.socket}</dd>
-                  </>
-                )}
-                {detalhePeca.memType && (
-                  <>
-                    <dt>Memória</dt>
-                    <dd>{detalhePeca.memType}</dd>
-                  </>
-                )}
-                {detalhePeca.ramGB !== undefined && (
-                  <>
-                    <dt>Capacidade</dt>
-                    <dd>{detalhePeca.ramGB} GB</dd>
-                  </>
-                )}
-                {detalhePeca.watts !== undefined && (
-                  <>
-                    <dt>{detalhePeca.category === "psu" ? "Potência" : "Consumo"}</dt>
-                    <dd>{detalhePeca.watts} W</dd>
-                  </>
-                )}
-                {detalhePeca.slots !== undefined && (
-                  <>
-                    <dt>Slots de memória</dt>
-                    <dd>{detalhePeca.slots}</dd>
-                  </>
-                )}
-                {detalhePeca.platform && (
-                  <>
-                    <dt>Plataforma</dt>
-                    <dd>{detalhePeca.platform}</dd>
-                  </>
-                )}
-                {detalhePeca.videoIntegrado && (
-                  <>
-                    <dt>Vídeo</dt>
-                    <dd>Integrado no processador</dd>
-                  </>
-                )}
-              </dl>
-
-              {detalhePeca.specs.length > 0 && (
-                <div className="peca-specs">
-                  {detalhePeca.specs.map((spec, i) => (
-                    <span key={i} className="spec-badge">
-                      {spec}
-                    </span>
-                  ))}
-                </div>
-              )}
-
-              <p className="peca-descricao">{detalhePeca.detail}</p>
-
-              <div className="peca-rodape">
-                <div>
-                  <strong>{money.format(detalhePeca.pixPrice)}</strong>
-                  <span>à vista no PIX</span>
-                </div>
-                <Button
-                  onClick={() => {
-                    selectPart(detalhePeca);
-                    setDetalhePeca(null);
-                  }}
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold"
-                >
-                  Adicionar à montagem
-                </Button>
-              </div>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
 
       {sellerDialog}
       {tiDialog}
