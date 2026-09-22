@@ -660,6 +660,7 @@ const stockMachines = [
     id: "BN-1048",
     name: "Binário Start Home & Office",
     spec: "Ryzen 5 5600G · 16 GB DDR4 · SSD 1 TB NVMe · Fonte 550W",
+    ids: ["r5600", "b550", "ram16", "ssd1", "psu550"],
     pixPrice: 2711.5,
     tone: "Pronta entrega em Varginha",
   },
@@ -667,6 +668,7 @@ const stockMachines = [
     id: "BN-1051",
     name: "Binário Arena Gamer RX",
     spec: "Ryzen 5 5600 · RX 6600 8GB · 16 GB DDR4 · SSD 1 TB NVMe",
+    ids: ["r5600", "b550", "ram16", "rx6600", "ssd1", "psu550"],
     pixPrice: 4241.5,
     tone: "Última unidade no estoque",
   },
@@ -674,6 +676,7 @@ const stockMachines = [
     id: "BN-1053",
     name: "Binário Studio RTX DLSS 3",
     spec: "Core i5 14400F · RTX 4060 8GB · 32 GB DDR5 · SSD 1 TB",
+    ids: ["i514400", "b760", "ram32", "rtx4060", "ssd1", "psu650"],
     pixPrice: 5856.5,
     tone: "Pronta entrega em Varginha",
   },
@@ -778,6 +781,26 @@ const FPS_POR_GPU: Record<string, number[]> = {
   rtx4070: [400, 340, 175, 165, 195, 115],
 };
 
+// Resolve os ids de uma build pronta nas pecas do catalogo e reaproveita a
+// mesma estimativa de FPS usada no montador, pra ficha e montador baterem.
+function resumoDaBuild(ids: string[]) {
+  const pecas = ids
+    .map((id) => parts.find((p) => p.id === id))
+    .filter((p): p is Part => Boolean(p));
+  const gpu = pecas.find((p) => p.category === "gpu");
+  const cpu = pecas.find((p) => p.category === "cpu");
+  const fpsPerfil = gpu
+    ? FPS_POR_GPU[gpu.id]
+    : cpu?.apu
+      ? FPS_POR_GPU["apu"]
+      : undefined;
+  return {
+    pecas,
+    fpsPerfil,
+    fpsFonte: gpu ? gpu.name : cpu?.apu ? "Vídeo integrado (Vega)" : "",
+  };
+}
+
 type NivelTrabalho = { nome: string; nota: 0 | 1 | 2 | 3; obs: string };
 
 const money = new Intl.NumberFormat("pt-BR", {
@@ -810,6 +833,8 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [active, setActive] = useState<Category>("cpu");
+  const [fichasPreset, setFichasPreset] = useState(false);
+  const [fichasEstoque, setFichasEstoque] = useState(false);
   const [selected, setSelected] = useState<Record<string, number>>({});
   const [search, setSearch] = useState("");
   const [precoFaixa, setPrecoFaixa] = useState<
@@ -1324,6 +1349,61 @@ function Index() {
         Math.max(0, Math.min(categories.length - 1, currentIndex + offset))
       ];
     if (target) setActive(target.id);
+  }
+
+  // Ficha que abre dentro do card: o que vem na maquina e como ela roda.
+  function fichaDaBuild(ids: string[]) {
+    const { pecas, fpsPerfil, fpsFonte } = resumoDaBuild(ids);
+    return (
+      <div className="build-ficha">
+        <h4>O que vem nessa máquina</h4>
+        <ul className="build-ficha-pecas">
+          {pecas.map((peca) => (
+            <li key={peca.id}>
+              <span className="build-ficha-cat">
+                {categories.find((c) => c.id === peca.category)?.label ??
+                  peca.category}
+              </span>
+              <span className="build-ficha-nome">{peca.name}</span>
+            </li>
+          ))}
+        </ul>
+        {fpsPerfil && (
+          <>
+            <h4>
+              Como roda nos jogos <small>({fpsFonte})</small>
+            </h4>
+            <div className="build-ficha-fps">
+              {JOGOS.map((jogo, i) => {
+                const fps = fpsPerfil[i] ?? 0;
+                const pct = Math.min(100, (fps / FPS_MAX) * 100);
+                const cor =
+                  fps >= 120
+                    ? "var(--status-ok)"
+                    : fps >= 60
+                      ? "var(--status-alerta)"
+                      : "var(--status-erro)";
+                return (
+                  <div key={jogo} className="build-ficha-fps-row">
+                    <span>{jogo}</span>
+                    <div className="build-ficha-fps-track">
+                      <div
+                        className="build-ficha-fps-fill"
+                        style={{ width: `${pct}%`, backgroundColor: cor }}
+                      />
+                    </div>
+                    <strong className="mono">{fps}</strong>
+                  </div>
+                );
+              })}
+            </div>
+            <p className="build-ficha-nota">
+              Estimativa em 1080p com gráficos altos. Não é benchmark oficial.
+            </p>
+          </>
+        )}
+      </div>
+    );
   }
 
   function loadPreset(ids: string[]) {
@@ -2415,7 +2495,7 @@ function Index() {
                             ))}
                           </div>
                           <span className="stock-status-tag">
-                            Em estoque em Varginha · {part.stock} unidades
+                            Disponível em Varginha
                           </span>
                         </div>
 
@@ -2860,9 +2940,28 @@ function Index() {
                       </span>
                     </div>
 
+                    <button
+                      type="button"
+                      className="build-ficha-toggle"
+                      aria-expanded={fichasPreset}
+                      onClick={() => setFichasPreset((v) => !v)}
+                    >
+                      {fichasPreset
+                        ? "Esconder as peças"
+                        : "Ver peças e como roda"}
+                      <ChevronDown
+                        className="w-4 h-4"
+                        style={{
+                          transform: fichasPreset ? "rotate(180deg)" : undefined,
+                        }}
+                      />
+                    </button>
+
+                    {fichasPreset && fichaDaBuild(preset.ids)}
+
                     <Button
                       onClick={() => loadPreset(preset.ids)}
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs h-10"
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs h-10 mt-3"
                     >
                       Carregar esta Build no Montador{" "}
                       <ArrowRight className="w-4 h-4 ml-1" />
@@ -2920,6 +3019,27 @@ function Index() {
                     <h3>{machine.name}</h3>
                     <p>{machine.spec}</p>
                     <span className="stock-machine-tone">{machine.tone}</span>
+
+                    <button
+                      type="button"
+                      className="build-ficha-toggle"
+                      aria-expanded={fichasEstoque}
+                      onClick={() => setFichasEstoque((v) => !v)}
+                    >
+                      {fichasEstoque
+                        ? "Esconder as peças"
+                        : "Ver peças e como roda"}
+                      <ChevronDown
+                        className="w-4 h-4"
+                        style={{
+                          transform: fichasEstoque
+                            ? "rotate(180deg)"
+                            : undefined,
+                        }}
+                      />
+                    </button>
+
+                    {fichasEstoque && fichaDaBuild(machine.ids)}
                   </div>
 
                   <div className="stock-machine-foot">

@@ -1108,6 +1108,18 @@
   }
   body {
     background: #ffffff !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+  }
+  /* Na impressao as secoes somem, mas o wrapper flex continuava esticando
+     e jogava o orcamento pro meio da folha. */
+  body > div {
+    min-height: 0 !important;
+    display: block !important;
+  }
+  main {
+    flex: none !important;
+    min-height: 0 !important;
   }
   .print-budget {
     display: block;
@@ -1187,7 +1199,7 @@
     font-weight: 700;
   }
   @page {
-    margin: 14mm;
+    margin: 10mm 14mm 14mm;
   }
 }
 
@@ -2783,4 +2795,119 @@ button:not(:disabled):active,
 }
 .dark .history-card button:hover {
   background: rgba(59, 130, 246, 0.14);
+}
+
+/* =====================================================================
+   Ficha que abre dentro do card de build pronta (recomendadas e estoque):
+   lista as pecas e a estimativa de FPS sem tirar o cliente da secao.
+   ===================================================================== */
+.build-ficha-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: 0.75rem;
+  padding: 0.55rem 0.75rem;
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--foreground);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+.build-ficha-toggle:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.build-ficha-toggle svg {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+.build-ficha {
+  margin-top: 0.75rem;
+  padding: 0.85rem;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: left;
+}
+.build-ficha h4 {
+  margin: 0 0 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--muted-foreground);
+}
+.build-ficha h4 small {
+  font-weight: 600;
+  opacity: 0.85;
+}
+.build-ficha h4:not(:first-child) {
+  margin-top: 0.9rem;
+}
+.build-ficha-pecas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+.build-ficha-pecas li {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+.build-ficha-cat {
+  color: var(--muted-foreground);
+  font-weight: 600;
+}
+.build-ficha-nome {
+  color: var(--foreground);
+  font-weight: 600;
+}
+.build-ficha-fps {
+  display: grid;
+  gap: 0.35rem;
+}
+.build-ficha-fps-row {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr) 2.2rem;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+}
+.build-ficha-fps-track {
+  height: 6px;
+  background: var(--secondary);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.build-ficha-fps-fill {
+  height: 100%;
+  border-radius: 999px;
+}
+.build-ficha-fps-row strong {
+  text-align: right;
+  font-size: 0.72rem;
+}
+.build-ficha-nota {
+  margin: 0.6rem 0 0;
+  font-size: 0.68rem;
+  line-height: 1.4;
+  color: var(--muted-foreground);
+}
+@media (max-width: 480px) {
+  .build-ficha-pecas li,
+  .build-ficha-fps-row {
+    grid-template-columns: 4.5rem minmax(0, 1fr) auto;
+  }
+  .build-ficha-pecas li {
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+  }
 }
