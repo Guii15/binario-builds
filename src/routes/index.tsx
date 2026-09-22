@@ -72,16 +72,11 @@ type Part = {
   pixPrice: number;
   stock: number;
   platform?: "AMD" | "Intel";
-  socket?:
-    | "AM4"
-    | "AM5"
-    | "LGA1700"
-    | "LGA1200"
-    | "LGA1151"
-    | "LGA1150"
-    | "LGA1155"
-    | "LGA1156";
+  socket?: "AM4" | "AM5" | "LGA1700" | "LGA1200" | "LGA1151" | "LGA1150" | "LGA1155" | "LGA1156";
   memType?: "DDR3" | "DDR4" | "DDR5";
+  // slots = quantos pentes de memoria a placa aceita. So preenchido onde a
+  // descricao do WinThor diz; sem valor, o montador nao limita.
+  slots?: number;
   watts?: number;
   specs: string[];
   detail: string;
@@ -90,6 +85,10 @@ type Part = {
   foto?: string;
   // apu = processador com vídeo integrado que roda jogos leves sem placa.
   apu?: boolean;
+  // videoIntegrado = da imagem no monitor sem placa. Todo apu tem, mas nem
+  // todo processador com video integrado roda jogos. Ryzen AM4 so tem nos
+  // modelos terminados em "G"; os Intel terminados em "F" nao tem.
+  videoIntegrado?: boolean;
   // ramGB = capacidade do pente/kit, usada pra estimar desempenho.
   ramGB?: number;
 };
@@ -161,8 +160,7 @@ const categories: {
 
 // Etapas que contam como "montagem completa".
 const CATEGORIAS_PECA = categories.filter((item) => !item.periferico);
-const isMulti = (cat: Category) =>
-  categories.find((item) => item.id === cat)?.multi ?? false;
+const isMulti = (cat: Category) => categories.find((item) => item.id === cat)?.multi ?? false;
 
 const parts: Part[] = [
   // Processadores
@@ -178,6 +176,7 @@ const parts: Part[] = [
     socket: "AM4",
     watts: 65,
     apu: true,
+    videoIntegrado: true,
     specs: ["Socket AM4", "Video integrado", "Amd"],
     detail: "PROCESSADOR AMD AM4 RYZEN 3 3200G OEM",
   },
@@ -277,6 +276,7 @@ const parts: Part[] = [
     socket: "AM4",
     watts: 105,
     apu: true,
+    videoIntegrado: true,
     specs: ["Socket AM4", "Video integrado", "Clock 4.6 GHz"],
     detail: "L-PROCESSADOR RYZEN7 5700G 4.6GHZAM4 BOX",
   },
@@ -319,6 +319,7 @@ const parts: Part[] = [
     platform: "Intel",
     socket: "LGA1155",
     memType: "DDR3",
+    slots: 2,
     specs: ["Socket LGA1155", "Memoria DDR3", "Hayom"],
     detail: "PLACA MAE H61 LGA1155 DDR3 HAYOM PLM2300",
   },
@@ -3286,21 +3287,42 @@ const LOGO_DARK = "/logo-binario-dark.png";
 // uma noção ao cliente — não são benchmark oficial. Ajuste à vontade.
 // A chave é o id da GPU; "apu" é o vídeo integrado do Ryzen 5 5600G.
 // ---------------------------------------------------------------------
-const JOGOS = [
-  "Valorant",
-  "CS2",
-  "Fortnite",
-  "GTA V",
-  "EA FC 25",
-  "Cyberpunk 2077",
-];
+const JOGOS = ["Valorant", "CS2", "Fortnite", "GTA V", "EA FC 25", "Cyberpunk 2077"];
 const FPS_MAX = 400;
+// Estimativa em 1080p, graficos altos. A chave e o id da peca no catalogo.
+// "apu" e o video integrado dos Ryzen "G".
+// >>> NUMEROS ESTIMADOS: conferir com teste real antes de prometer pro
+// cliente. GPU que nao estiver aqui simplesmente nao mostra estimativa. <<<
 const FPS_POR_GPU: Record<string, number[]> = {
   apu: [70, 75, 45, 50, 60, 22],
-  rx6600: [240, 190, 110, 130, 140, 65],
-  rtx4060: [300, 230, 140, 145, 165, 85],
-  rtx4070: [400, 340, 175, 165, 195, 115],
+  w17063: [25, 20, 0, 0, 20, 0], // GT 610 2GB: video basico, nao e de jogo
+  w17103: [45, 35, 20, 22, 35, 0], // GT 730 4GB
+  w21635: [45, 35, 20, 22, 35, 0], // GT 730 4GB
+  w19296: [50, 40, 25, 28, 40, 0], // GT 740 4GB
+  w20485: [90, 75, 45, 45, 65, 0], // GTX 750 Ti 4GB
+  w19209: [100, 85, 50, 50, 75, 20], // RX 560 4GB
+  w20957: [120, 95, 60, 60, 90, 25], // GTX 1050 Ti 4GB
+  w20166: [160, 130, 80, 85, 120, 35], // RX 580 8GB
 };
+
+// Os 3 jogos que viram badge no card da build.
+const JOGOS_DESTAQUE = [0, 1, 5]; // Valorant, CS2, Cyberpunk
+
+// Resolve os ids de uma build pronta nas pecas do catalogo e reaproveita a
+// mesma estimativa de FPS do montador, pra ficha e montador baterem.
+function resumoDaBuild(ids: string[]) {
+  const pecas = ids
+    .map((id) => parts.find((p) => p.id === id))
+    .filter((p): p is Part => Boolean(p));
+  const gpu = pecas.find((p) => p.category === "gpu");
+  const cpu = pecas.find((p) => p.category === "cpu");
+  const fpsPerfil = gpu ? FPS_POR_GPU[gpu.id] : cpu?.apu ? FPS_POR_GPU["apu"] : undefined;
+  return {
+    pecas,
+    fpsPerfil,
+    fpsFonte: gpu ? gpu.name : cpu?.apu ? "Vídeo integrado" : "",
+  };
+}
 
 type NivelTrabalho = { nome: string; nota: 0 | 1 | 2 | 3; obs: string };
 
@@ -3334,6 +3356,8 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [active, setActive] = useState<Category>("cpu");
+  const [fichasPreset, setFichasPreset] = useState(false);
+  const [fichasEstoque, setFichasEstoque] = useState(false);
   const [selected, setSelected] = useState<Record<string, number>>({});
   const [search, setSearch] = useState("");
   const [precoFaixa, setPrecoFaixa] = useState<
@@ -3352,9 +3376,7 @@ function Index() {
   const [tiAberto, setTiAberto] = useState(false);
   // Pecas que o cliente pediu e a loja nao tem em estoque — vao como "a cotar".
   const [cotacoes, setCotacoes] = useState<Cotacao[]>([]);
-  const [cotacaoCategoria, setCotacaoCategoria] = useState<
-    Category | "outro" | ""
-  >("");
+  const [cotacaoCategoria, setCotacaoCategoria] = useState<Category | "outro" | "">("");
   const [cotacaoDescricao, setCotacaoDescricao] = useState("");
   const [cotacaoErro, setCotacaoErro] = useState("");
   // Observacao livre do cliente/vendedor (ex: "cliente quer gabinete branco",
@@ -3408,22 +3430,16 @@ function Index() {
   useEffect(() => {
     document.documentElement.classList.toggle("dark", temaEscuro);
     try {
-      window.localStorage.setItem(
-        TEMA_STORAGE_KEY,
-        temaEscuro ? "dark" : "light",
-      );
+      window.localStorage.setItem(TEMA_STORAGE_KEY, temaEscuro ? "dark" : "light");
     } catch {
       // navegador sem storage — a preferência só vale pra essa visita
     }
   }, [temaEscuro]);
 
   useEffect(() => {
-    const ids =
-      new URLSearchParams(window.location.search).get("pc")?.split(",") ?? [];
+    const ids = new URLSearchParams(window.location.search).get("pc")?.split(",") ?? [];
     const restored = Object.fromEntries(
-      ids
-        .filter((id) => parts.some((part) => part.id === id))
-        .map((id) => [id, 1]),
+      ids.filter((id) => parts.some((part) => part.id === id)).map((id) => [id, 1]),
     );
     const rawObs = new URLSearchParams(window.location.search).get("obs");
     if (rawObs) setObservacao(decodeURIComponent(rawObs).slice(0, 400));
@@ -3436,10 +3452,7 @@ function Index() {
           restoredCot = parsed
             .filter(
               (item): item is { c: string; d: string } =>
-                !!item &&
-                typeof item === "object" &&
-                "c" in item &&
-                "d" in item,
+                !!item && typeof item === "object" && "c" in item && "d" in item,
             )
             .map((item, i) => ({
               id: `cot-url-${i}`,
@@ -3470,21 +3483,12 @@ function Index() {
             const validSelected = Object.fromEntries(
               Object.entries(obj.selected ?? {}).filter(
                 ([id, qtd]) =>
-                  parts.some((part) => part.id === id) &&
-                  typeof qtd === "number" &&
-                  qtd > 0,
+                  parts.some((part) => part.id === id) && typeof qtd === "number" && qtd > 0,
               ),
             );
             const validCot = Array.isArray(obj.cotacoes) ? obj.cotacoes : [];
-            const validObs =
-              typeof obj.observacao === "string"
-                ? obj.observacao.slice(0, 400)
-                : "";
-            if (
-              Object.keys(validSelected).length ||
-              validCot.length ||
-              validObs
-            ) {
+            const validObs = typeof obj.observacao === "string" ? obj.observacao.slice(0, 400) : "";
+            if (Object.keys(validSelected).length || validCot.length || validObs) {
               setSelected(validSelected);
               setCotacoes(validCot);
               if (validObs) setObservacao(validObs);
@@ -3515,8 +3519,7 @@ function Index() {
     // Ninguém pode esquecer de se identificar: sem link compartilhado e sem
     // vendedor/cliente salvo, a janela abre sozinha e não deixa fechar sem
     // escolher (evita mandar coisa pro T.I. sem saber quem pediu).
-    const linkCompartilhado =
-      Object.keys(restored).length > 0 || restoredCot.length > 0;
+    const linkCompartilhado = Object.keys(restored).length > 0 || restoredCot.length > 0;
     if (!temIdentidade && !linkCompartilhado) {
       setSellerIntent({ kind: "obrigatorio" });
     }
@@ -3527,11 +3530,7 @@ function Index() {
   useEffect(() => {
     if (reviewMode) return;
     try {
-      if (
-        !Object.keys(selected).length &&
-        !cotacoes.length &&
-        !observacao.trim()
-      ) {
+      if (!Object.keys(selected).length && !cotacoes.length && !observacao.trim()) {
         window.localStorage.removeItem(BUILD_STORAGE_KEY);
         return;
       }
@@ -3592,9 +3591,7 @@ function Index() {
 
   function rotuloCotacao(item: Cotacao) {
     if (item.categoria === "outro") return "Outro";
-    return (
-      categories.find((cat) => cat.id === item.categoria)?.label ?? "Outro"
-    );
+    return categories.find((cat) => cat.id === item.categoria)?.label ?? "Outro";
   }
 
   // Linhas "a cotar" que entram no WhatsApp, no PDF e no pedido pro T.I.
@@ -3602,14 +3599,8 @@ function Index() {
     (item) => `• [A COTAR] ${rotuloCotacao(item)}: ${item.descricao}`,
   );
 
-  const chosen = useMemo(
-    () => parts.filter((part) => selected[part.id]),
-    [selected],
-  );
-  const totalPix = chosen.reduce(
-    (sum, part) => sum + part.pixPrice * (selected[part.id] ?? 0),
-    0,
-  );
+  const chosen = useMemo(() => parts.filter((part) => selected[part.id]), [selected]);
+  const totalPix = chosen.reduce((sum, part) => sum + part.pixPrice * (selected[part.id] ?? 0), 0);
   const totalCard = totalPix / 0.85;
   const installmentVal = totalCard / 10;
   const pixSavings = totalCard - totalPix;
@@ -3619,11 +3610,13 @@ function Index() {
   const psu = chosen.find((part) => part.category === "psu");
   const mobo = chosen.find((part) => part.category === "motherboard");
   const rams = chosen.filter((part) => part.category === "memory");
+  // Pentes ja escolhidos x slots da placa. Placa sem o dado nao limita.
+  const slotsDaPlaca = mobo?.slots;
+  const pentesUsados = rams.reduce((sum, r) => sum + (selected[r.id] ?? 1), 0);
+  const slotsCheios = slotsDaPlaca !== undefined && pentesUsados >= slotsDaPlaca;
 
   const requiredWatts =
-    cpu && gpu
-      ? Math.ceil(((cpu.watts ?? 65) + (gpu.watts ?? 0) + 220) / 50) * 50
-      : 0;
+    cpu && gpu ? Math.ceil(((cpu.watts ?? 65) + (gpu.watts ?? 0) + 220) / 50) * 50 : 0;
   const currentPsuWatts = psu?.watts ?? 0;
   const powerOk = !requiredWatts || !psu || currentPsuWatts >= requiredWatts;
   const wattsPct =
@@ -3636,15 +3629,8 @@ function Index() {
   // O tipo de memoria e ditado pela placa-mae. Enquanto ela nao for escolhida,
   // deduzimos pelo socket do processador (AM4 -> DDR4, AM5 -> DDR5).
   const boardMemType: "DDR3" | "DDR4" | "DDR5" | undefined =
-    mobo?.memType ??
-    (cpu?.socket === "AM5"
-      ? "DDR5"
-      : cpu?.socket === "AM4"
-        ? "DDR4"
-        : undefined);
-  const ramOk =
-    !boardMemType ||
-    rams.every((r) => !r.memType || r.memType === boardMemType);
+    mobo?.memType ?? (cpu?.socket === "AM5" ? "DDR5" : cpu?.socket === "AM4" ? "DDR4" : undefined);
+  const ramOk = !boardMemType || rams.every((r) => !r.memType || r.memType === boardMemType);
 
   // ----- Checklist de compatibilidade -----
   type Check = { estado: "ok" | "warn" | "pending"; texto: string };
@@ -3656,9 +3642,24 @@ function Index() {
         : { estado: "warn", texto: "Socket da placa não bate com a CPU" },
     !boardMemType || !rams.length
       ? { estado: "pending", texto: "Memória compatível" }
-      : ramOk
-        ? { estado: "ok", texto: `Memória ${boardMemType} compatível` }
-        : { estado: "warn", texto: `Troque a memória para ${boardMemType}` },
+      : !ramOk
+        ? { estado: "warn", texto: `Troque a memória para ${boardMemType}` }
+        : slotsDaPlaca !== undefined
+          ? {
+              estado: "ok",
+              texto: `Memória ${boardMemType}, ${pentesUsados} de ${slotsDaPlaca} slots`,
+            }
+          : { estado: "ok", texto: `Memória ${boardMemType} compatível` },
+    !cpu
+      ? { estado: "pending", texto: "Saída de vídeo" }
+      : gpu
+        ? { estado: "ok", texto: `Vídeo pela ${gpu.name}` }
+        : cpu.videoIntegrado
+          ? { estado: "ok", texto: "Vídeo integrado no processador" }
+          : {
+              estado: "warn",
+              texto: "Processador sem vídeo integrado, precisa de placa",
+            },
     !requiredWatts
       ? { estado: "pending", texto: "Fonte adequada ao consumo" }
       : !psu
@@ -3673,20 +3674,9 @@ function Index() {
   const tudoOk = checks.every((c) => c.estado === "ok");
 
   // ----- "Falta pouco" -----
-  const ESSENCIAIS: Category[] = [
-    "cpu",
-    "motherboard",
-    "memory",
-    "storage",
-    "psu",
-    "case",
-  ];
-  const faltando = ESSENCIAIS.filter(
-    (id) => !chosen.some((p) => p.category === id),
-  );
-  const faltandoLabels = faltando.map(
-    (id) => categories.find((c) => c.id === id)?.short ?? id,
-  );
+  const ESSENCIAIS: Category[] = ["cpu", "motherboard", "memory", "storage", "psu", "case"];
+  const faltando = ESSENCIAIS.filter((id) => !chosen.some((p) => p.category === id));
+  const faltandoLabels = faltando.map((id) => categories.find((c) => c.id === id)?.short ?? id);
 
   // ----- Sugestão de upgrade -----
   // Pra categoria de escolha única (memória/SSD ficam de fora, são multi),
@@ -3700,17 +3690,9 @@ function Index() {
         if (candidato.id === part.id) return false;
         if (candidato.stock === 0) return false;
         if (candidato.pixPrice <= part.pixPrice) return false;
-        if (
-          part.category === "motherboard" &&
-          cpu?.socket &&
-          candidato.socket !== cpu.socket
-        )
+        if (part.category === "motherboard" && cpu?.socket && candidato.socket !== cpu.socket)
           return false;
-        if (
-          part.category === "cpu" &&
-          mobo?.socket &&
-          candidato.socket !== mobo.socket
-        )
+        if (part.category === "cpu" && mobo?.socket && candidato.socket !== mobo.socket)
           return false;
         if (
           part.category === "psu" &&
@@ -3741,15 +3723,8 @@ function Index() {
   ).length;
 
   // ----- Desempenho estimado da montagem atual -----
-  const ramTotal = rams.reduce(
-    (sum, r) => sum + (r.ramGB ?? 0) * (selected[r.id] ?? 1),
-    0,
-  );
-  const fpsPerfil = gpu
-    ? FPS_POR_GPU[gpu.id]
-    : cpu?.apu
-      ? FPS_POR_GPU["apu"]
-      : undefined;
+  const ramTotal = rams.reduce((sum, r) => sum + (r.ramGB ?? 0) * (selected[r.id] ?? 1), 0);
+  const fpsPerfil = gpu ? FPS_POR_GPU[gpu.id] : cpu?.apu ? FPS_POR_GPU["apu"] : undefined;
   const fpsFonte = gpu ? gpu.name : cpu?.apu ? "Vídeo integrado (Vega)" : "";
   const temDesempenho = Boolean(cpu || gpu);
 
@@ -3774,30 +3749,14 @@ function Index() {
   const visibleParts = parts.filter((part) => {
     if (part.category !== active) return false;
     if (part.stock === 0) return false;
-    if (platform !== "all" && part.platform && part.platform !== platform)
+    if (platform !== "all" && part.platform && part.platform !== platform) return false;
+    if (active === "motherboard" && cpu?.socket && part.socket !== cpu.socket) return false;
+    if (active === "memory" && boardMemType && part.memType && part.memType !== boardMemType)
       return false;
-    if (active === "motherboard" && cpu?.socket && part.socket !== cpu.socket)
-      return false;
-    if (
-      active === "memory" &&
-      boardMemType &&
-      part.memType &&
-      part.memType !== boardMemType
-    )
-      return false;
-    if (active === "psu" && requiredWatts && (part.watts ?? 0) < requiredWatts)
-      return false;
+    if (active === "psu" && requiredWatts && (part.watts ?? 0) < requiredWatts) return false;
     if (precoFaixa === "ate500" && part.pixPrice > 500) return false;
-    if (
-      precoFaixa === "500a1000" &&
-      (part.pixPrice < 500 || part.pixPrice > 1000)
-    )
-      return false;
-    if (
-      precoFaixa === "1000a2000" &&
-      (part.pixPrice < 1000 || part.pixPrice > 2000)
-    )
-      return false;
+    if (precoFaixa === "500a1000" && (part.pixPrice < 500 || part.pixPrice > 1000)) return false;
+    if (precoFaixa === "1000a2000" && (part.pixPrice < 1000 || part.pixPrice > 2000)) return false;
     if (precoFaixa === "acima2000" && part.pixPrice < 2000) return false;
     return `${part.name} ${part.brand} ${part.code} ${part.specs.join(" ")}`
       .toLowerCase()
@@ -3805,14 +3764,14 @@ function Index() {
   });
 
   function selectPart(part: Part) {
+    if (part.category === "memory" && slotsCheios) return;
     const multi = isMulti(part.category);
     setSelected((current) => {
       const next = { ...current };
       if (!multi) {
         // categoria de escolha unica: troca a peca da mesma categoria
         for (const selectedPart of parts)
-          if (selectedPart.category === part.category)
-            delete next[selectedPart.id];
+          if (selectedPart.category === part.category) delete next[selectedPart.id];
         next[part.id] = 1;
       } else {
         // memoria / SSD: soma uma unidade, permitindo varios itens juntos
@@ -3823,15 +3782,16 @@ function Index() {
     // so avanca sozinho nas etapas de escolha unica; em multi o vendedor
     // decide quando terminou e clica em "Proxima etapa".
     if (!multi) {
-      const index = categories.findIndex(
-        (category) => category.id === part.category,
-      );
+      const index = categories.findIndex((category) => category.id === part.category);
       const nextCategory = categories[index + 1];
       if (nextCategory) setActive(nextCategory.id);
     }
   }
 
   function mudarQtd(id: string, delta: number) {
+    // Memoria nao pode passar do numero de slots da placa escolhida.
+    const peca = parts.find((p) => p.id === id);
+    if (delta > 0 && peca?.category === "memory" && slotsCheios) return;
     setSelected((current) => {
       const next = { ...current };
       const q = (next[id] ?? 0) + delta;
@@ -3843,11 +3803,62 @@ function Index() {
 
   function moveStep(offset: -1 | 1) {
     const currentIndex = categories.findIndex((item) => item.id === active);
-    const target =
-      categories[
-        Math.max(0, Math.min(categories.length - 1, currentIndex + offset))
-      ];
+    const target = categories[Math.max(0, Math.min(categories.length - 1, currentIndex + offset))];
     if (target) setActive(target.id);
+  }
+
+  // Ficha que abre dentro do card: o que vem na maquina e como ela roda.
+  function fichaDaBuild(ids: string[]) {
+    const { pecas, fpsPerfil, fpsFonte } = resumoDaBuild(ids);
+    return (
+      <div className="build-ficha">
+        <h4>O que vem nessa máquina</h4>
+        <ul className="build-ficha-pecas">
+          {pecas.map((peca) => (
+            <li key={peca.id}>
+              <span className="build-ficha-cat">
+                {categories.find((c) => c.id === peca.category)?.label ?? peca.category}
+              </span>
+              <span className="build-ficha-nome">{peca.name}</span>
+            </li>
+          ))}
+        </ul>
+        {fpsPerfil && (
+          <>
+            <h4>
+              Como roda nos jogos <small>({fpsFonte})</small>
+            </h4>
+            <div className="build-ficha-fps">
+              {JOGOS.map((jogo, i) => {
+                const fps = fpsPerfil[i] ?? 0;
+                const pct = Math.min(100, (fps / FPS_MAX) * 100);
+                const cor =
+                  fps >= 120
+                    ? "var(--status-ok)"
+                    : fps >= 60
+                      ? "var(--status-alerta)"
+                      : "var(--status-erro)";
+                return (
+                  <div key={jogo} className="build-ficha-fps-row">
+                    <span>{jogo}</span>
+                    <div className="build-ficha-fps-track">
+                      <div
+                        className="build-ficha-fps-fill"
+                        style={{ width: `${pct}%`, backgroundColor: cor }}
+                      />
+                    </div>
+                    <strong className="mono">{fps || "-"}</strong>
+                  </div>
+                );
+              })}
+            </div>
+            <p className="build-ficha-nota">
+              Estimativa em 1080p com gráficos altos. Não é benchmark oficial.
+            </p>
+          </>
+        )}
+      </div>
+    );
   }
 
   function loadPreset(ids: string[]) {
@@ -3886,9 +3897,7 @@ function Index() {
       url.searchParams.set(
         "cot",
         encodeURIComponent(
-          JSON.stringify(
-            cotacoes.map((item) => ({ c: item.categoria, d: item.descricao })),
-          ),
+          JSON.stringify(cotacoes.map((item) => ({ c: item.categoria, d: item.descricao }))),
         ),
       );
     } else {
@@ -3904,10 +3913,7 @@ function Index() {
       setCopied(true);
       window.setTimeout(() => setCopied(false), 1800);
     } else {
-      window.prompt(
-        "Não consegui copiar sozinho. Copie o link abaixo:",
-        url.toString(),
-      );
+      window.prompt("Não consegui copiar sozinho. Copie o link abaixo:", url.toString());
     }
   }
 
@@ -3950,10 +3956,7 @@ function Index() {
     setHistorico((current) => {
       const next = [entry, ...current].slice(0, HISTORICO_MAX);
       try {
-        window.localStorage.setItem(
-          HISTORICO_STORAGE_KEY,
-          JSON.stringify(next),
-        );
+        window.localStorage.setItem(HISTORICO_STORAGE_KEY, JSON.stringify(next));
       } catch {
         // navegador sem storage — o histórico só vale pra essa visita
       }
@@ -3977,17 +3980,14 @@ function Index() {
   function enviarOrcamento(item: Vendedor) {
     const linhas = [
       ...chosen.map(
-        (part) =>
-          `• [${part.code}] *${part.name}* — ${money.format(part.pixPrice)} (PIX)`,
+        (part) => `• [${part.code}] *${part.name}* — ${money.format(part.pixPrice)} (PIX)`,
       ),
       ...linhasCotacao,
     ].join("\n");
     const aviso = cotacoes.length
       ? `\n\n_${cotacoes.length} item(ns) marcado(s) como A COTAR ainda não entram no total._`
       : "";
-    const obs = observacao.trim()
-      ? `\n\n*Observação:* ${observacao.trim()}`
-      : "";
+    const obs = observacao.trim() ? `\n\n*Observação:* ${observacao.trim()}` : "";
     const text = `Olá, ${item.nome}! Gostaria de consultar este orçamento de PC:\n\n${linhas || "Ainda estou montando minhas peças."}\n\n*Total no PIX (com 15% OFF)*: ${money.format(totalPix)}\n*Parcelado*: 10x de ${money.format(installmentVal)}${aviso}${obs}\n\nMontagem inclusa. Podem verificar disponibilidade em Varginha?`;
     registrarHistorico(item.nome);
     abrirWhats(item.numero, text);
@@ -4004,15 +4004,11 @@ function Index() {
   // Texto da lista de separacao, assinado por quem pediu.
   function textoSeparacao() {
     const list = [
-      ...chosen.map(
-        (part) => `• [${part.code}] ${part.name} — ${selected[part.id] ?? 1}un`,
-      ),
+      ...chosen.map((part) => `• [${part.code}] ${part.name} — ${selected[part.id] ?? 1}un`),
       ...linhasCotacao,
     ].join("\n");
     const quem = vendedor?.nome ?? "Vendedor";
-    const obs = observacao.trim()
-      ? `\n\n*Observação:* ${observacao.trim()}`
-      : "";
+    const obs = observacao.trim() ? `\n\n*Observação:* ${observacao.trim()}` : "";
     return `*MONTAGEM PARA O T.I.*\n\nSolicitado por: *${quem}*\nLocal: Loja Varginha\n\n${list}${obs}`;
   }
 
@@ -4088,17 +4084,11 @@ function Index() {
 
         {(sellerIntent?.kind === "identificar" ||
           sellerIntent?.kind === "trocar" ||
-          identificacaoObrigatoria) && (
-          <span className="seller-group-label">Vendedores</span>
-        )}
+          identificacaoObrigatoria) && <span className="seller-group-label">Vendedores</span>}
 
         <div className="seller-grid">
           {VENDEDORES.map((item) => (
-            <button
-              key={item.nome}
-              onClick={() => onEscolherVendedor(item)}
-              className="seller-btn"
-            >
+            <button key={item.nome} onClick={() => onEscolherVendedor(item)} className="seller-btn">
               <span className="seller-avatar">{item.nome.charAt(0)}</span>
               <span className="seller-name">{item.nome}</span>
               <MessageCircle className="w-4 h-4 text-emerald-600 shrink-0" />
@@ -4150,8 +4140,8 @@ function Index() {
         </div>
 
         <p className="seller-dica">
-          Dica: um grupo do WhatsApp com Estoque + T.I. deixaria isso em um
-          clique só. Se criarem, me passa o link do grupo.
+          Dica: um grupo do WhatsApp com Estoque + T.I. deixaria isso em um clique só. Se criarem,
+          me passa o link do grupo.
         </p>
       </DialogContent>
     </Dialog>
@@ -4166,15 +4156,13 @@ function Index() {
             Últimos orçamentos enviados
           </DialogTitle>
           <DialogDescription className="text-slate-600 text-xs">
-            Os {HISTORICO_MAX} últimos orçamentos mandados pro WhatsApp neste
-            computador. Carregar substitui a montagem atual.
+            Os {HISTORICO_MAX} últimos orçamentos mandados pro WhatsApp neste computador. Carregar
+            substitui a montagem atual.
           </DialogDescription>
         </DialogHeader>
 
         {historico.length === 0 ? (
-          <p className="history-empty">
-            Nenhum orçamento enviado ainda por aqui.
-          </p>
+          <p className="history-empty">Nenhum orçamento enviado ainda por aqui.</p>
         ) : (
           <div className="history-list">
             {historico.map((entry) => (
@@ -4193,22 +4181,14 @@ function Index() {
                 <div className="history-card-itens">
                   {entry.itens.length
                     ? entry.itens
-                        .map(
-                          (item) =>
-                            `${item.name}${item.qty > 1 ? ` (${item.qty}x)` : ""}`,
-                        )
+                        .map((item) => `${item.name}${item.qty > 1 ? ` (${item.qty}x)` : ""}`)
                         .join(" · ")
                     : "Só itens a cotar"}
-                  {entry.cotacoes.length > 0 &&
-                    ` · ${entry.cotacoes.length} a cotar`}
+                  {entry.cotacoes.length > 0 && ` · ${entry.cotacoes.length} a cotar`}
                 </div>
                 <div className="history-card-foot">
-                  <span className="history-card-total">
-                    {money.format(entry.totalPix)}
-                  </span>
-                  <button onClick={() => carregarHistorico(entry)}>
-                    Carregar de novo
-                  </button>
+                  <span className="history-card-total">{money.format(entry.totalPix)}</span>
+                  <button onClick={() => carregarHistorico(entry)}>Carregar de novo</button>
                 </div>
               </div>
             ))}
@@ -4242,9 +4222,7 @@ function Index() {
           {chosen.map((part) => (
             <tr key={part.id}>
               <td className="print-thumb-cell">
-                {part.foto ? (
-                  <img src={part.foto} alt="" className="print-thumb" />
-                ) : null}
+                {part.foto ? <img src={part.foto} alt="" className="print-thumb" /> : null}
               </td>
               <td className="mono">{part.code}</td>
               <td>{part.name}</td>
@@ -4272,8 +4250,7 @@ function Index() {
         <span>ou 10x de {money.format(installmentVal)}</span>
       </div>
       <p className="print-budget-note">
-        Valores sujeitos a confirmação de estoque. Peças separadas pelo código
-        informado acima.
+        Valores sujeitos a confirmação de estoque. Peças separadas pelo código informado acima.
         {cotacoes.length > 0 &&
           " Itens marcados como A COTAR não estão em estoque e não entram no total."}
       </p>
@@ -4336,9 +4313,7 @@ function Index() {
                     <em className="summary-item-code">Cód. {part.code}</em>
                   </div>
                 </div>
-                <span className="summary-item-price">
-                  {money.format(part.pixPrice * qtd)}
-                </span>
+                <span className="summary-item-price">{money.format(part.pixPrice * qtd)}</span>
               </div>
             );
           });
@@ -4368,9 +4343,8 @@ function Index() {
 
       {cotacoes.length > 0 && (
         <p className="cotacao-aviso">
-          {cotacoes.length === 1 ? "1 item" : `${cotacoes.length} itens`} sob
-          encomenda — o valor entra depois que o vendedor cotar com o
-          fornecedor.
+          {cotacoes.length === 1 ? "1 item" : `${cotacoes.length} itens`} sob encomenda — o valor
+          entra depois que o vendedor cotar com o fornecedor.
         </p>
       )}
 
@@ -4416,11 +4390,7 @@ function Index() {
             className="watts-progress-fill"
             style={{
               width: `${wattsPct}%`,
-              backgroundColor: !powerOk
-                ? "#ef4444"
-                : wattsPct > 80
-                  ? "#d97706"
-                  : "#059669",
+              backgroundColor: !powerOk ? "#ef4444" : wattsPct > 80 ? "#d97706" : "#059669",
             }}
           />
         </div>
@@ -4464,14 +4434,9 @@ function Index() {
             <span>PC completo! É só finalizar o orçamento aqui embaixo.</span>
           </div>
         ) : faltando.length <= 2 ? (
-          <button
-            className="falta-pouco is-near"
-            onClick={() => setActive(faltando[0]!)}
-          >
+          <button className="falta-pouco is-near" onClick={() => setActive(faltando[0]!)}>
             <Sparkles className="w-4 h-4 shrink-0" />
-            <span>
-              Falta só {faltandoLabels.join(" e ")} pra fechar seu PC!
-            </span>
+            <span>Falta só {faltandoLabels.join(" e ")} pra fechar seu PC!</span>
           </button>
         ) : null)}
     </>
@@ -4498,15 +4463,9 @@ function Index() {
                 className="theme-toggle-btn"
                 onClick={() => setTemaEscuro((v) => !v)}
                 title={temaEscuro ? "Modo claro" : "Modo escuro"}
-                aria-label={
-                  temaEscuro ? "Ativar modo claro" : "Ativar modo escuro"
-                }
+                aria-label={temaEscuro ? "Ativar modo claro" : "Ativar modo escuro"}
               >
-                {temaEscuro ? (
-                  <Sun className="w-4 h-4" />
-                ) : (
-                  <Moon className="w-4 h-4" />
-                )}
+                {temaEscuro ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
               </button>
               <Button
                 onClick={() => setSellerIntent({ kind: "orcamento" })}
@@ -4525,9 +4484,7 @@ function Index() {
               <div>
                 <span className="review-kicker">Orçamento compartilhado</span>
                 <h1>Montagem selecionada</h1>
-                <p>
-                  Confira as peças abaixo. Montagem inclusa, sem taxa adicional.
-                </p>
+                <p>Confira as peças abaixo. Montagem inclusa, sem taxa adicional.</p>
               </div>
             </div>
 
@@ -4546,8 +4503,7 @@ function Index() {
               </div>
 
               <div className="credit-total-line">
-                ou em até <strong>10x de {money.format(installmentVal)}</strong>{" "}
-                sem juros
+                ou em até <strong>10x de {money.format(installmentVal)}</strong> sem juros
               </div>
 
               <button
@@ -4612,22 +4568,13 @@ function Index() {
           </a>
 
           <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-700">
-            <a
-              href="#montador"
-              className="hover:text-blue-600 transition-colors"
-            >
+            <a href="#montador" className="hover:text-blue-600 transition-colors">
               Montador de PC
             </a>
-            <a
-              href="#prontas"
-              className="hover:text-blue-600 transition-colors"
-            >
+            <a href="#prontas" className="hover:text-blue-600 transition-colors">
               PCs Recomendados
             </a>
-            <a
-              href="#estoque"
-              className="hover:text-blue-600 transition-colors"
-            >
+            <a href="#estoque" className="hover:text-blue-600 transition-colors">
               Pronta Entrega
             </a>
           </nav>
@@ -4638,15 +4585,9 @@ function Index() {
               className="theme-toggle-btn"
               onClick={() => setTemaEscuro((v) => !v)}
               title={temaEscuro ? "Modo claro" : "Modo escuro"}
-              aria-label={
-                temaEscuro ? "Ativar modo claro" : "Ativar modo escuro"
-              }
+              aria-label={temaEscuro ? "Ativar modo claro" : "Ativar modo escuro"}
             >
-              {temaEscuro ? (
-                <Sun className="w-4 h-4" />
-              ) : (
-                <Moon className="w-4 h-4" />
-              )}
+              {temaEscuro ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
             {!ehCliente && (
               <button
@@ -4666,21 +4607,11 @@ function Index() {
               title="Quem está montando"
             >
               <span className="vendedor-chip-avatar">
-                {vendedor ? (
-                  vendedor.nome.charAt(0)
-                ) : (
-                  <UserRound className="w-3.5 h-3.5" />
-                )}
+                {vendedor ? vendedor.nome.charAt(0) : <UserRound className="w-3.5 h-3.5" />}
               </span>
               <span className="vendedor-chip-texto">
                 <small>{ehCliente ? "Montando" : "Vendedor"}</small>
-                <strong>
-                  {vendedor
-                    ? vendedor.nome
-                    : ehCliente
-                      ? "Cliente"
-                      : "Escolher"}
-                </strong>
+                <strong>{vendedor ? vendedor.nome : ehCliente ? "Cliente" : "Escolher"}</strong>
               </span>
               <ChevronDown className="w-3.5 h-3.5 opacity-60 shrink-0" />
             </button>
@@ -4707,27 +4638,23 @@ function Index() {
               </div>
               <h1>Monte seu PC Gamer ou de Trabalho Sob Medida</h1>
               <p>
-                Escolha os componentes ideais para a sua necessidade. Todas as
-                máquinas montadas na Binário saem da loja com
+                Escolha os componentes ideais para a sua necessidade. Todas as máquinas montadas na
+                Binário saem da loja com
                 <strong>
                   {" "}
-                  cabos organizados, BIOS atualizada gratuitamente e 24h de
-                  teste de estresse
+                  cabos organizados, BIOS atualizada gratuitamente e 24h de teste de estresse
                 </strong>
                 .
               </p>
               <div className="hero-proof-pills">
                 <span className="hero-pill">
-                  <Check className="w-4 h-4 text-emerald-600" /> Compatibilidade
-                  100% Garantida
+                  <Check className="w-4 h-4 text-emerald-600" /> Compatibilidade 100% Garantida
                 </span>
                 <span className="hero-pill">
-                  <ShieldCheck className="w-4 h-4 text-emerald-600" /> 1 Ano de
-                  Garantia Local
+                  <ShieldCheck className="w-4 h-4 text-emerald-600" /> 1 Ano de Garantia Local
                 </span>
                 <span className="hero-pill">
-                  <Truck className="w-4 h-4 text-emerald-600" /> Retirada
-                  Imediata em Varginha
+                  <Truck className="w-4 h-4 text-emerald-600" /> Retirada Imediata em Varginha
                 </span>
               </div>
             </div>
@@ -4738,15 +4665,9 @@ function Index() {
         <section id="montador" className="builder-layout no-print">
           <div className="shell">
             {/* Step Category Rail */}
-            <div
-              className="step-rail-container"
-              role="tablist"
-              aria-label="Categorias de peças"
-            >
+            <div className="step-rail-container" role="tablist" aria-label="Categorias de peças">
               {categories.map((category, index) => {
-                const done = chosen.some(
-                  (part) => part.category === category.id,
-                );
+                const done = chosen.some((part) => part.category === category.id);
                 const Icon = category.icon;
                 return (
                   <button
@@ -4759,11 +4680,7 @@ function Index() {
                     onClick={() => setActive(category.id)}
                   >
                     <span className="tab-status-icon">
-                      {done ? (
-                        <Check className="w-3.5 h-3.5" />
-                      ) : (
-                        String(index + 1)
-                      )}
+                      {done ? <Check className="w-3.5 h-3.5" /> : String(index + 1)}
                     </span>
                     <Icon className="w-4 h-4" />
                     <span>{category.short}</span>
@@ -4778,15 +4695,11 @@ function Index() {
               <div className="catalog-card">
                 <div className="catalog-header">
                   <div>
-                    <h2>
-                      Escolha o seu{" "}
-                      {categories.find((item) => item.id === active)?.label}
-                    </h2>
+                    <h2>Escolha o seu {categories.find((item) => item.id === active)?.label}</h2>
                     <span>Exibindo peças compatíveis em estoque na loja</span>
                   </div>
                   <span className="catalog-step-pill">
-                    ETAPA{" "}
-                    {categories.findIndex((item) => item.id === active) + 1} DE{" "}
+                    ETAPA {categories.findIndex((item) => item.id === active) + 1} DE{" "}
                     {categories.length}
                   </span>
                 </div>
@@ -4801,20 +4714,11 @@ function Index() {
                       placeholder="Buscar por modelo, marca (ex: Ryzen, RTX, Kingston)..."
                     />
                   </div>
-                  <div
-                    className="platform-segmented"
-                    aria-label="Filtrar por fabricante"
-                  >
-                    <button
-                      aria-pressed={platform === "all"}
-                      onClick={() => setPlatform("all")}
-                    >
+                  <div className="platform-segmented" aria-label="Filtrar por fabricante">
+                    <button aria-pressed={platform === "all"} onClick={() => setPlatform("all")}>
                       Todas
                     </button>
-                    <button
-                      aria-pressed={platform === "AMD"}
-                      onClick={() => setPlatform("AMD")}
-                    >
+                    <button aria-pressed={platform === "AMD"} onClick={() => setPlatform("AMD")}>
                       AMD
                     </button>
                     <button
@@ -4828,9 +4732,7 @@ function Index() {
                     className="preco-filtro-select"
                     aria-label="Filtrar por faixa de preço"
                     value={precoFaixa}
-                    onChange={(e) =>
-                      setPrecoFaixa(e.target.value as typeof precoFaixa)
-                    }
+                    onChange={(e) => setPrecoFaixa(e.target.value as typeof precoFaixa)}
                   >
                     <option value="todos">Qualquer preço</option>
                     <option value="ate500">Até R$ 500</option>
@@ -4847,19 +4749,12 @@ function Index() {
                     <div>
                       <strong>
                         Por mais{" "}
-                        {money.format(
-                          upgradeAtivo.sugestao.pixPrice -
-                            upgradeAtivo.atual.pixPrice,
-                        )}
+                        {money.format(upgradeAtivo.sugestao.pixPrice - upgradeAtivo.atual.pixPrice)}
                         , leve o {upgradeAtivo.sugestao.name}
                       </strong>
-                      <span>
-                        {upgradeAtivo.sugestao.specs.slice(0, 2).join(" · ")}
-                      </span>
+                      <span>{upgradeAtivo.sugestao.specs.slice(0, 2).join(" · ")}</span>
                     </div>
-                    <button onClick={() => selectPart(upgradeAtivo.sugestao)}>
-                      Trocar
-                    </button>
+                    <button onClick={() => selectPart(upgradeAtivo.sugestao)}>Trocar</button>
                   </div>
                 )}
 
@@ -4870,8 +4765,7 @@ function Index() {
                     const chosenPart = qtd > 0;
                     const partMulti = isMulti(part.category);
                     const CategoryIcon =
-                      categories.find((cat) => cat.id === part.category)
-                        ?.icon ?? Cpu;
+                      categories.find((cat) => cat.id === part.category)?.icon ?? Cpu;
 
                     return (
                       <article
@@ -4891,9 +4785,7 @@ function Index() {
                           ) : (
                             <>
                               <CategoryIcon />
-                              <span className="hardware-thumb-badge">
-                                {part.brand}
-                              </span>
+                              <span className="hardware-thumb-badge">{part.brand}</span>
                             </>
                           )}
                         </div>
@@ -4904,23 +4796,11 @@ function Index() {
                             <span className="brand-badge">{part.brand}</span>
                             <span className="code-badge">Cód. {part.code}</span>
                             {part.socket && (
-                              <span className="spec-badge">
-                                Socket {part.socket}
-                              </span>
+                              <span className="spec-badge">Socket {part.socket}</span>
                             )}
-                            {part.memType && (
-                              <span className="spec-badge">{part.memType}</span>
-                            )}
-                            {part.platform && (
-                              <span className="spec-badge">
-                                {part.platform}
-                              </span>
-                            )}
-                            {part.watts && (
-                              <span className="spec-badge">
-                                {part.watts}W TDP
-                              </span>
-                            )}
+                            {part.memType && <span className="spec-badge">{part.memType}</span>}
+                            {part.platform && <span className="spec-badge">{part.platform}</span>}
+                            {part.watts && <span className="spec-badge">{part.watts}W TDP</span>}
                           </div>
                           <h3>{part.name}</h3>
                           <p>{part.detail}</p>
@@ -4934,18 +4814,14 @@ function Index() {
                               </span>
                             ))}
                           </div>
-                          <span className="stock-status-tag">
-                            Em estoque em Varginha · {part.stock} unidades
-                          </span>
+                          <span className="stock-status-tag">Disponível em Varginha</span>
                         </div>
 
                         {/* Price & Action */}
                         <div className="product-price-col">
                           <div className="pix-price-highlight">
                             <strong>{money.format(part.pixPrice)}</strong>
-                            <span className="pix-badge-small">
-                              15% OFF NO PIX
-                            </span>
+                            <span className="pix-badge-small">15% OFF NO PIX</span>
                           </div>
                           <span className="credit-price-small">
                             ou 10x de {money.format(part.pixPrice / 0.85 / 10)}
@@ -4964,6 +4840,7 @@ function Index() {
                               <button
                                 type="button"
                                 aria-label="Adicionar mais um"
+                                disabled={part.category === "memory" && slotsCheios}
                                 onClick={() => mudarQtd(part.id, 1)}
                               >
                                 <Plus className="w-3.5 h-3.5" />
@@ -4988,8 +4865,7 @@ function Index() {
                             >
                               {chosenPart && !partMulti ? (
                                 <>
-                                  <Check className="w-3.5 h-3.5 mr-1" />{" "}
-                                  Selecionado
+                                  <Check className="w-3.5 h-3.5 mr-1" /> Selecionado
                                 </>
                               ) : (
                                 <>
@@ -5028,8 +4904,8 @@ function Index() {
                     <div>
                       <strong>Não achou a peça que o cliente quer?</strong>
                       <span>
-                        A loja encomenda do fornecedor. Descreva a peça e ela
-                        entra no orçamento como <em>a cotar</em>.
+                        A loja encomenda do fornecedor. Descreva a peça e ela entra no orçamento
+                        como <em>a cotar</em>.
                       </span>
                     </div>
                   </div>
@@ -5038,9 +4914,7 @@ function Index() {
                     <select
                       value={cotacaoCategoria}
                       onChange={(e) => {
-                        setCotacaoCategoria(
-                          e.target.value as Category | "outro" | "",
-                        );
+                        setCotacaoCategoria(e.target.value as Category | "outro" | "");
                         setCotacaoErro("");
                       }}
                       className="cotacao-select"
@@ -5074,9 +4948,7 @@ function Index() {
                     </button>
                   </div>
 
-                  {cotacaoErro && (
-                    <span className="cotacao-erro">{cotacaoErro}</span>
-                  )}
+                  {cotacaoErro && <span className="cotacao-erro">{cotacaoErro}</span>}
                 </div>
 
                 {/* Step Navigation Bar */}
@@ -5132,14 +5004,8 @@ function Index() {
                 {orcamentoRestaurado && (
                   <div className="orcamento-restaurado-aviso">
                     <Sparkles className="w-3.5 h-3.5" />
-                    <span>
-                      Recuperamos seu orçamento salvo. Pode continuar de onde
-                      parou.
-                    </span>
-                    <button
-                      onClick={() => setOrcamentoRestaurado(false)}
-                      aria-label="Fechar aviso"
-                    >
+                    <span>Recuperamos seu orçamento salvo. Pode continuar de onde parou.</span>
+                    <button onClick={() => setOrcamentoRestaurado(false)} aria-label="Fechar aviso">
                       ×
                     </button>
                   </div>
@@ -5161,9 +5027,7 @@ function Index() {
                   </div>
 
                   <div className="credit-total-line">
-                    ou em até{" "}
-                    <strong>10x de {money.format(installmentVal)}</strong> sem
-                    juros
+                    ou em até <strong>10x de {money.format(installmentVal)}</strong> sem juros
                   </div>
 
                   <button
@@ -5222,9 +5086,8 @@ function Index() {
               <div className="section-title-head">
                 <h2>Como esse PC se sai</h2>
                 <p>
-                  Estimativa em 1080p com gráficos altos, baseada nas peças
-                  escolhidas. Valores aproximados para dar uma ideia — não são
-                  benchmark oficial.
+                  Estimativa em 1080p com gráficos altos, baseada nas peças escolhidas. Valores
+                  aproximados para dar uma ideia — não são benchmark oficial.
                 </p>
               </div>
 
@@ -5243,12 +5106,7 @@ function Index() {
                         {JOGOS.map((jogo, i) => {
                           const fps = fpsPerfil[i] ?? 0;
                           const pct = Math.min(100, (fps / FPS_MAX) * 100);
-                          const cor =
-                            fps >= 120
-                              ? "#059669"
-                              : fps >= 60
-                                ? "#d97706"
-                                : "#dc2626";
+                          const cor = fps >= 120 ? "#059669" : fps >= 60 ? "#d97706" : "#dc2626";
                           return (
                             <div key={jogo} className="perf-jogo-row">
                               <span className="perf-jogo-nome">{jogo}</span>
@@ -5261,10 +5119,7 @@ function Index() {
                                   }}
                                 />
                               </div>
-                              <span
-                                className="perf-jogo-fps"
-                                style={{ color: cor }}
-                              >
+                              <span className="perf-jogo-fps" style={{ color: cor }}>
                                 {fps} FPS
                               </span>
                             </div>
@@ -5274,14 +5129,13 @@ function Index() {
                       <span className="perf-legenda">
                         <b style={{ color: "#059669" }}>120+</b> muito fluido ·
                         <b style={{ color: "#d97706" }}> 60+</b> joga bem ·
-                        <b style={{ color: "#dc2626" }}> abaixo</b> precisa
-                        baixar gráficos
+                        <b style={{ color: "#dc2626" }}> abaixo</b> precisa baixar gráficos
                       </span>
                     </>
                   ) : (
                     <p className="perf-vazio">
-                      Escolha uma placa de vídeo (ou um processador com vídeo
-                      integrado) para ver o desempenho nos jogos.
+                      Escolha uma placa de vídeo (ou um processador com vídeo integrado) para ver o
+                      desempenho nos jogos.
                     </p>
                   )}
                 </div>
@@ -5298,16 +5152,9 @@ function Index() {
                           <strong>{t.nome}</strong>
                           <small>{t.obs}</small>
                         </div>
-                        <div
-                          className="perf-dots"
-                          aria-label={`${t.nota} de 3`}
-                        >
+                        <div className="perf-dots" aria-label={`${t.nota} de 3`}>
                           {[1, 2, 3].map((n) => (
-                            <span
-                              key={n}
-                              className="perf-dot"
-                              data-on={n <= t.nota}
-                            />
+                            <span key={n} className="perf-dot" data-on={n <= t.nota} />
                           ))}
                           <span className="perf-nota-txt">
                             {t.nota === 0
@@ -5339,8 +5186,8 @@ function Index() {
             <div className="section-title-head">
               <h2>Configurações Recomendadas pelos Nossos Técnicos</h2>
               <p>
-                Modelos montados e testados pela equipe da Binário. Você pode
-                carregar uma build e alterar qualquer peça.
+                Modelos montados e testados pela equipe da Binário. Você pode carregar uma build e
+                alterar qualquer peça.
               </p>
             </div>
 
@@ -5353,16 +5200,19 @@ function Index() {
                 >
                   <span className="preset-kicker">{preset.kicker}</span>
                   <h3>{preset.name}</h3>
-                  <p className="text-slate-600 text-xs leading-relaxed mb-3">
-                    {preset.note}
-                  </p>
+                  <p className="text-slate-600 text-xs leading-relaxed mb-3">{preset.note}</p>
 
                   <div className="preset-fps-badges">
-                    {preset.fps.map((item, i) => (
-                      <span key={i} className="fps-badge">
-                        {item}
-                      </span>
-                    ))}
+                    {(() => {
+                      const { fpsPerfil } = resumoDaBuild(preset.ids);
+                      if (!fpsPerfil)
+                        return <span className="fps-badge">Sem placa de vídeo dedicada</span>;
+                      return JOGOS_DESTAQUE.map((i) => (
+                        <span key={i} className="fps-badge">
+                          {JOGOS[i]}: {fpsPerfil[i] || "-"} FPS
+                        </span>
+                      ));
+                    })()}
                   </div>
 
                   <div className="mt-auto pt-4 border-t border-slate-200">
@@ -5380,12 +5230,28 @@ function Index() {
                       </span>
                     </div>
 
+                    <button
+                      type="button"
+                      className="build-ficha-toggle"
+                      aria-expanded={fichasPreset}
+                      onClick={() => setFichasPreset((v) => !v)}
+                    >
+                      {fichasPreset ? "Esconder as peças" : "Ver peças e como roda"}
+                      <ChevronDown
+                        className="w-4 h-4"
+                        style={{
+                          transform: fichasPreset ? "rotate(180deg)" : undefined,
+                        }}
+                      />
+                    </button>
+
+                    {fichasPreset && fichaDaBuild(preset.ids)}
+
                     <Button
                       onClick={() => loadPreset(preset.ids)}
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs h-10"
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs h-10 mt-3"
                     >
-                      Carregar esta Build no Montador{" "}
-                      <ArrowRight className="w-4 h-4 ml-1" />
+                      Carregar esta Build no Montador <ArrowRight className="w-4 h-4 ml-1" />
                     </Button>
                   </div>
                 </div>
@@ -5396,14 +5262,15 @@ function Index() {
 
         {/* Galeria de montagens — DESATIVADA por enquanto.
             Pra reativar: troque "false" por "true" na linha abaixo. */}
+        {/* eslint-disable-next-line no-constant-binary-expression -- interruptor proposital */}
         {false && (
           <section className="galeria-section no-print">
             <div className="shell">
               <div className="section-title-head">
                 <h2>Montagens que saíram da nossa bancada</h2>
                 <p>
-                  Cada PC é montado, testado por 24h e organizado por dentro
-                  aqui em Varginha antes de ir pra casa do cliente.
+                  Cada PC é montado, testado por 24h e organizado por dentro aqui em Varginha antes
+                  de ir pra casa do cliente.
                 </p>
               </div>
               <div className="galeria-grid">
@@ -5427,8 +5294,7 @@ function Index() {
             <div className="section-title-head">
               <h2>Computadores Pronta Entrega na Loja em Varginha</h2>
               <p>
-                Já saem montados, formatados com Windows de avaliação e prontos
-                para uso imediato.
+                Já saem montados, formatados com Windows de avaliação e prontos para uso imediato.
               </p>
             </div>
 
@@ -5473,14 +5339,10 @@ function Index() {
       <footer className="site-footer no-print">
         <div className="shell footer-grid">
           <div className="footer-brand">
-            <img
-              src={LOGO_LIGHT}
-              alt="Binário Tecnologia"
-              className="footer-logo-img"
-            />
+            <img src={LOGO_LIGHT} alt="Binário Tecnologia" className="footer-logo-img" />
             <p>
-              Distribuidora e assistência técnica em Varginha - MG. Montagem,
-              configuração e garantia local para o Sul de Minas.
+              Distribuidora e assistência técnica em Varginha - MG. Montagem, configuração e
+              garantia local para o Sul de Minas.
             </p>
           </div>
 
@@ -5506,12 +5368,8 @@ function Index() {
         </div>
 
         <div className="shell footer-bottom">
-          <span>
-            © {new Date().getFullYear()} Binário Tecnologia · Desde 1997
-          </span>
-          <span>
-            Valores sujeitos a confirmação de estoque com a equipe de vendas.
-          </span>
+          <span>© {new Date().getFullYear()} Binário Tecnologia · Desde 1997</span>
+          <span>Valores sujeitos a confirmação de estoque com a equipe de vendas.</span>
         </div>
       </footer>
 
