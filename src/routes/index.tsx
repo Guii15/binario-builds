@@ -82,6 +82,10 @@ type Part = {
   foto?: string;
   // apu = processador com vídeo integrado que roda jogos leves sem placa.
   apu?: boolean;
+  // videoIntegrado = da imagem no monitor sem placa de video. Todo apu tem,
+  // mas nem todo processador com video integrado roda jogos (ex: Ryzen 7600).
+  // Os Intel terminados em "F" nao tem: sem placa, nao sobe imagem.
+  videoIntegrado?: boolean;
   // ramGB = capacidade do pente/kit, usada pra estimar desempenho.
   ramGB?: number;
 };
@@ -171,6 +175,7 @@ const parts: Part[] = [
     socket: "AM4",
     watts: 65,
     apu: true,
+    videoIntegrado: true,
     specs: ["6 Núcleos / 12 Threads", "Vídeo Vega 7", "Cooler Wraith Stealth"],
     detail:
       "Ideal para PCs sem placa de vídeo dedicada inicial. Excelente desempenho em tarefas diárias e eSports leves.",
@@ -187,6 +192,7 @@ const parts: Part[] = [
     platform: "AMD",
     socket: "AM5",
     watts: 65,
+    videoIntegrado: true,
     specs: ["Plataforma AM5", "DDR5 Native", "Boost até 5.1 GHz"],
     detail:
       "Nova geração de altíssimo desempenho em jogos competitivos e longevidade de plataforma.",
@@ -1160,6 +1166,16 @@ function Index() {
       : ramOk
         ? { estado: "ok", texto: `Memória ${boardMemType} compatível` }
         : { estado: "warn", texto: `Troque a memória para ${boardMemType}` },
+    !cpu
+      ? { estado: "pending", texto: "Saída de vídeo" }
+      : gpu
+        ? { estado: "ok", texto: `Vídeo pela ${gpu.name}` }
+        : cpu.videoIntegrado
+          ? { estado: "ok", texto: "Vídeo integrado no processador" }
+          : {
+              estado: "warn",
+              texto: `${cpu.name} não tem vídeo integrado, precisa de placa`,
+            },
     !requiredWatts
       ? { estado: "pending", texto: "Fonte adequada ao consumo" }
       : !psu
