@@ -2911,3 +2911,10 @@ button:not(:disabled):active,
     grid-template-columns: 4.5rem minmax(0, 1fr);
   }
 }
+
+/* Slots cheios: o "+" da memoria fica apagado em vez de sumir, pra ficar
+   claro que o limite e da placa e nao um bug. */
+.qty-stepper button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

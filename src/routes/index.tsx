@@ -74,6 +74,9 @@ type Part = {
   platform?: "AMD" | "Intel";
   socket?: "AM4" | "AM5" | "LGA1700";
   memType?: "DDR4" | "DDR5";
+  // slots = quantos pentes de memoria a placa aceita. CONFERIR com a ficha
+  // do fabricante antes de subir pra producao.
+  slots?: number;
   watts?: number;
   specs: string[];
   detail: string;
@@ -227,6 +230,7 @@ const parts: Part[] = [
     platform: "AMD",
     socket: "AM4",
     memType: "DDR4",
+    slots: 4,
     specs: ["Socket AM4", "Wi-Fi + Bluetooth", "VRM Robusto com Dissipador"],
     detail:
       "Placa completa com conexão sem fio e suporte total a overclock de memória DDR4.",
@@ -243,6 +247,7 @@ const parts: Part[] = [
     platform: "AMD",
     socket: "AM5",
     memType: "DDR5",
+    slots: 2,
     specs: ["Socket AM5", "PCIe 4.0", "Suporte DDR5 6000MHz+"],
     detail:
       "Construção de alta durabilidade pronta para a linha Ryzen 7000 e upgrades futuros.",
@@ -259,6 +264,7 @@ const parts: Part[] = [
     platform: "Intel",
     socket: "LGA1700",
     memType: "DDR4",
+    slots: 4,
     specs: ["Socket LGA1700", "Dual M.2 NVMe", "Rede 2.5GbE"],
     detail:
       "Estabilidade e conexão ultrarrápida para processadores Intel de 12ª, 13ª e 14ª geração.",
@@ -636,7 +642,6 @@ const presets = [
     kicker: "Competitivo & Trabalho",
     pixPrice: 2379.15,
     cardPrice: 2799,
-    fps: ["Valorant: 220+ FPS", "CS2: 140+ FPS", "Fortnite: 120+ FPS"],
     note: "PC super rápido para estudos, trabalho e jogos competitivos leves. Preparado para receber placa de vídeo dedicada no futuro.",
     ids: ["r5600", "b550", "ram16", "ssd1", "psu550"],
   },
@@ -645,7 +650,6 @@ const presets = [
     kicker: "Mais Vendido da Loja",
     pixPrice: 4164.15,
     cardPrice: 4899,
-    fps: ["Valorant: 320+ FPS", "CS2: 240+ FPS", "GTA V: 140+ FPS"],
     note: "Equilíbrio perfeito de alta taxa de quadros em 1080p com processador moderno de longevidade AM5.",
     ids: ["r5600", "b550", "ram16", "rx6600", "ssd1", "psu550"],
     featured: true,
@@ -655,7 +659,6 @@ const presets = [
     kicker: "Alta Performance & Criação",
     pixPrice: 6544.15,
     cardPrice: 7699,
-    fps: ["Cyberpunk 2077: 90+ FPS", "AAA Ultra: 110+ FPS", "Edição & Live 4K"],
     note: "Plataforma AM5 topo de linha com 32 GB DDR5 e RTX 4060 para criadores de conteúdo e gamers exigentes.",
     ids: ["r7600", "b650", "ram32", "rtx4060", "ssd1", "psu650"],
   },
@@ -786,6 +789,10 @@ const FPS_POR_GPU: Record<string, number[]> = {
   rtx4060: [300, 230, 140, 145, 165, 85],
   rtx4070: [400, 340, 175, 165, 195, 115],
 };
+
+// Os 3 jogos que viram badge no card da build. Sai do mesmo perfil de FPS
+// da ficha, pra promessa do card bater com o hardware que a build tem.
+const JOGOS_DESTAQUE = [0, 1, 5]; // Valorant, CS2, Cyberpunk
 
 // Resolve os ids de uma build pronta nas pecas do catalogo e reaproveita a
 // mesma estimativa de FPS usada no montador, pra ficha e montador baterem.
@@ -1126,6 +1133,11 @@ function Index() {
   const psu = chosen.find((part) => part.category === "psu");
   const mobo = chosen.find((part) => part.category === "motherboard");
   const rams = chosen.filter((part) => part.category === "memory");
+  // Pentes ja escolhidos x slots da placa. Sem placa escolhida nao trava.
+  const slotsDaPlaca = mobo?.slots;
+  const pentesUsados = rams.reduce((sum, r) => sum + (selected[r.id] ?? 1), 0);
+  const slotsCheios =
+    slotsDaPlaca !== undefined && pentesUsados >= slotsDaPlaca;
 
   const requiredWatts =
     cpu && gpu
@@ -1163,9 +1175,14 @@ function Index() {
         : { estado: "warn", texto: "Socket da placa não bate com a CPU" },
     !boardMemType || !rams.length
       ? { estado: "pending", texto: "Memória compatível" }
-      : ramOk
-        ? { estado: "ok", texto: `Memória ${boardMemType} compatível` }
-        : { estado: "warn", texto: `Troque a memória para ${boardMemType}` },
+      : !ramOk
+        ? { estado: "warn", texto: `Troque a memória para ${boardMemType}` }
+        : slotsDaPlaca !== undefined
+          ? {
+              estado: "ok",
+              texto: `Memória ${boardMemType}, ${pentesUsados} de ${slotsDaPlaca} slots`,
+            }
+          : { estado: "ok", texto: `Memória ${boardMemType} compatível` },
     !cpu
       ? { estado: "pending", texto: "Saída de vídeo" }
       : gpu
@@ -1323,6 +1340,7 @@ function Index() {
 
   function selectPart(part: Part) {
     const multi = isMulti(part.category);
+    if (part.category === "memory" && slotsCheios) return;
     setSelected((current) => {
       const next = { ...current };
       if (!multi) {
@@ -1349,6 +1367,9 @@ function Index() {
   }
 
   function mudarQtd(id: string, delta: number) {
+    // Memoria nao pode passar do numero de slots da placa escolhida.
+    const peca = parts.find((p) => p.id === id);
+    if (delta > 0 && peca?.category === "memory" && slotsCheios) return;
     setSelected((current) => {
       const next = { ...current };
       const q = (next[id] ?? 0) + delta;
@@ -2540,6 +2561,9 @@ function Index() {
                               <button
                                 type="button"
                                 aria-label="Adicionar mais um"
+                                disabled={
+                                  part.category === "memory" && slotsCheios
+                                }
                                 onClick={() => mudarQtd(part.id, 1)}
                               >
                                 <Plus className="w-3.5 h-3.5" />
@@ -2934,11 +2958,20 @@ function Index() {
                   </p>
 
                   <div className="preset-fps-badges">
-                    {preset.fps.map((item, i) => (
-                      <span key={i} className="fps-badge">
-                        {item}
-                      </span>
-                    ))}
+                    {(() => {
+                      const { fpsPerfil } = resumoDaBuild(preset.ids);
+                      if (!fpsPerfil)
+                        return (
+                          <span className="fps-badge">
+                            Sem placa de vídeo dedicada
+                          </span>
+                        );
+                      return JOGOS_DESTAQUE.map((i) => (
+                        <span key={i} className="fps-badge">
+                          {JOGOS[i]}: {fpsPerfil[i]} FPS
+                        </span>
+                      ));
+                    })()}
                   </div>
 
                   <div className="mt-auto pt-4 border-t border-slate-200">
