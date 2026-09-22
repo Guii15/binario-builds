@@ -3458,12 +3458,40 @@ const LOGO_DARK = "/logo-binario-dark.png";
 // ---------------------------------------------------------------------
 const JOGOS = ["Valorant", "CS2", "Fortnite", "GTA V", "EA FC 25", "Cyberpunk 2077"];
 const FPS_MAX = 400;
+// Estimativa em 1080p, graficos altos. A chave e o id da peca no catalogo.
+// "apu" e o video integrado dos Ryzen "G".
+// >>> NUMEROS ESTIMADOS: conferir antes de prometer pro cliente. GPU fora
+// da lista simplesmente nao mostra estimativa. <<<
 const FPS_POR_GPU: Record<string, number[]> = {
   apu: [70, 75, 45, 50, 60, 22],
-  rx6600: [240, 190, 110, 130, 140, 65],
-  rtx4060: [300, 230, 140, 145, 165, 85],
-  rtx4070: [400, 340, 175, 165, 195, 115],
+  w17063: [25, 20, 0, 0, 20, 0], // GT 610 2GB
+  w17103: [45, 35, 20, 22, 35, 0], // GT 730 4GB
+  w21635: [45, 35, 20, 22, 35, 0], // GT 730 4GB
+  w19296: [50, 40, 25, 28, 40, 0], // GT 740 4GB
+  w20485: [90, 75, 45, 45, 65, 0], // GTX 750 Ti 4GB
+  w19209: [100, 85, 50, 50, 75, 20], // RX 560 4GB
+  w20957: [120, 95, 60, 60, 90, 25], // GTX 1050 Ti 4GB
+  w20166: [160, 130, 80, 85, 120, 35], // RX 580 8GB
 };
+
+// Os 3 jogos que viram badge no card da build.
+const JOGOS_DESTAQUE = [0, 1, 5]; // Valorant, CS2, Cyberpunk
+
+// Resolve os ids de uma build pronta nas pecas do catalogo e reaproveita a
+// mesma estimativa de FPS do montador, pra ficha e montador baterem.
+function resumoDaBuild(ids: string[]) {
+  const pecas = ids
+    .map((id) => parts.find((p) => p.id === id))
+    .filter((p): p is Part => Boolean(p));
+  const gpu = pecas.find((p) => p.category === "gpu");
+  const cpu = pecas.find((p) => p.category === "cpu");
+  const fpsPerfil = gpu ? FPS_POR_GPU[gpu.id] : cpu?.apu ? FPS_POR_GPU["apu"] : undefined;
+  return {
+    pecas,
+    fpsPerfil,
+    fpsFonte: gpu ? gpu.name : cpu?.apu ? "Vídeo integrado" : "",
+  };
+}
 
 type NivelTrabalho = { nome: string; nota: 0 | 1 | 2 | 3; obs: string };
 
@@ -3749,6 +3777,10 @@ function Index() {
   const psu = chosen.find((part) => part.category === "psu");
   const mobo = chosen.find((part) => part.category === "motherboard");
   const rams = chosen.filter((part) => part.category === "memory");
+  // Pentes ja escolhidos x slots da placa. Placa sem o dado nao limita.
+  const slotsDaPlaca = mobo?.slots;
+  const pentesUsados = rams.reduce((sum, r) => sum + (selected[r.id] ?? 1), 0);
+  const slotsCheios = slotsDaPlaca !== undefined && pentesUsados >= slotsDaPlaca;
 
   const requiredWatts =
     cpu && gpu ? Math.ceil(((cpu.watts ?? 65) + (gpu.watts ?? 0) + 220) / 50) * 50 : 0;
@@ -3777,9 +3809,24 @@ function Index() {
         : { estado: "warn", texto: "Socket da placa não bate com a CPU" },
     !boardMemType || !rams.length
       ? { estado: "pending", texto: "Memória compatível" }
-      : ramOk
-        ? { estado: "ok", texto: `Memória ${boardMemType} compatível` }
-        : { estado: "warn", texto: `Troque a memória para ${boardMemType}` },
+      : !ramOk
+        ? { estado: "warn", texto: `Troque a memória para ${boardMemType}` }
+        : slotsDaPlaca !== undefined
+          ? {
+              estado: "ok",
+              texto: `Memória ${boardMemType}, ${pentesUsados} de ${slotsDaPlaca} slots`,
+            }
+          : { estado: "ok", texto: `Memória ${boardMemType} compatível` },
+    !cpu
+      ? { estado: "pending", texto: "Saída de vídeo" }
+      : gpu
+        ? { estado: "ok", texto: `Vídeo pela ${gpu.name}` }
+        : cpu.videoIntegrado
+          ? { estado: "ok", texto: "Vídeo integrado no processador" }
+          : {
+              estado: "warn",
+              texto: "Processador sem vídeo integrado, precisa de placa",
+            },
     !requiredWatts
       ? { estado: "pending", texto: "Fonte adequada ao consumo" }
       : !psu
@@ -3884,6 +3931,7 @@ function Index() {
   });
 
   function selectPart(part: Part) {
+    if (part.category === "memory" && slotsCheios) return;
     const multi = isMulti(part.category);
     setSelected((current) => {
       const next = { ...current };
@@ -3908,6 +3956,9 @@ function Index() {
   }
 
   function mudarQtd(id: string, delta: number) {
+    // Memoria nao pode passar do numero de slots da placa escolhida.
+    const peca = parts.find((p) => p.id === id);
+    if (delta > 0 && peca?.category === "memory" && slotsCheios) return;
     setSelected((current) => {
       const next = { ...current };
       const q = (next[id] ?? 0) + delta;
