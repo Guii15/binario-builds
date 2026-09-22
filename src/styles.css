@@ -3063,3 +3063,40 @@ button:not(:disabled):active,
 .peca-foto span {
   font-size: 0.72rem;
 }
+
+/* ---------------------------------------------------------------------
+   Botoes que seguem o tema. Antes usavam slate-200/slate-700 fixos, que
+   no modo escuro viravam um bloco branco ilegivel.
+   --------------------------------------------------------------------- */
+.btn-selecionado {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  border: 1px solid var(--border);
+}
+.btn-selecionado:hover {
+  background: var(--accent);
+}
+.dark .btn-selecionado {
+  background: #1c2942;
+  color: var(--foreground);
+  border-color: var(--border);
+}
+.dark .btn-selecionado:hover {
+  background: #263453;
+}
+
+.btn-tema-outline {
+  border-color: var(--input);
+  color: var(--foreground);
+  background: transparent;
+}
+.btn-tema-outline:hover {
+  background: var(--secondary);
+}
+.dark .btn-tema-outline {
+  border-color: var(--border);
+  color: var(--foreground);
+}
+.dark .btn-tema-outline:hover {
+  background: #1c2942;
+}

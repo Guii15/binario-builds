@@ -4676,14 +4676,14 @@ function Index() {
                 <Button
                   variant="outline"
                   onClick={editBuild}
-                  className="border-slate-300 hover:bg-slate-100 text-slate-700 text-xs h-9"
+                  className="btn-tema-outline text-xs h-9"
                 >
                   <Pencil className="w-3.5 h-3.5 mr-1" /> Editar montagem
                 </Button>
                 <Button
                   variant="outline"
                   onClick={() => window.print()}
-                  className="border-slate-300 hover:bg-slate-100 text-slate-700 text-xs h-9"
+                  className="btn-tema-outline text-xs h-9"
                 >
                   <Download className="w-3.5 h-3.5 mr-1" /> PDF / Imprimir
                 </Button>
@@ -4983,7 +4983,7 @@ function Index() {
                               }
                               className={
                                 chosenPart && !partMulti
-                                  ? "w-full bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold text-xs h-9"
+                                  ? "w-full btn-selecionado font-semibold text-xs h-9"
                                   : "w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs h-9"
                               }
                             >
@@ -5085,7 +5085,7 @@ function Index() {
                     variant="outline"
                     disabled={categories[0]?.id === active}
                     onClick={() => moveStep(-1)}
-                    className="border-slate-300 hover:bg-slate-100 text-slate-700 text-xs"
+                    className="btn-tema-outline text-xs"
                   >
                     <ChevronLeft className="w-4 h-4 mr-1" />{" "}
                     <span className="hidden sm:inline">Etapa</span> Anterior
@@ -5162,7 +5162,7 @@ function Index() {
                       variant="outline"
                       disabled={!chosen.length && !cotacoes.length}
                       onClick={shareBuild}
-                      className="border-slate-300 hover:bg-slate-100 text-slate-700 text-xs h-9"
+                      className="btn-tema-outline text-xs h-9"
                     >
                       {copied ? (
                         <Check className="w-3.5 h-3.5 mr-1 text-emerald-600" />
@@ -5175,7 +5175,7 @@ function Index() {
                       variant="outline"
                       disabled={!chosen.length && !cotacoes.length}
                       onClick={() => window.print()}
-                      className="border-slate-300 hover:bg-slate-100 text-slate-700 text-xs h-9"
+                      className="btn-tema-outline text-xs h-9"
                     >
                       <Download className="w-3.5 h-3.5 mr-1" /> PDF / Imprimir
                     </Button>
