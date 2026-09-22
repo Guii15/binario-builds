@@ -1454,7 +1454,7 @@ function Index() {
     const linhas = [
       ...chosen.map(
         (part) =>
-          `• [${part.code}] *${part.name}* — ${money.format(part.pixPrice)} (PIX)`,
+          `• [${part.code}] *${part.name}*: ${money.format(part.pixPrice)} (PIX)`,
       ),
       ...linhasCotacao,
     ].join("\n");
@@ -1481,7 +1481,7 @@ function Index() {
   function textoSeparacao() {
     const list = [
       ...chosen.map(
-        (part) => `• [${part.code}] ${part.name} — ${selected[part.id] ?? 1}un`,
+        (part) => `• [${part.code}] ${part.name}: ${selected[part.id] ?? 1}un`,
       ),
       ...linhasCotacao,
     ].join("\n");
@@ -1553,7 +1553,7 @@ function Index() {
           </DialogTitle>
           <DialogDescription className="text-slate-600 text-xs">
             {identificacaoObrigatoria
-              ? 'Antes de começar, escolha seu nome (ou "sou cliente") — isso identifica quem pediu a montagem quando a lista for pro T.I.'
+              ? 'Antes de começar, escolha seu nome (ou "sou cliente"). Isso identifica quem pediu a montagem quando a lista for pro T.I.'
               : sellerIntent?.kind === "identificar"
                 ? "Escolha seu nome para o T.I. e o Estoque saberem quem pediu a separação das peças."
                 : sellerIntent?.kind === "trocar"
@@ -1604,7 +1604,7 @@ function Index() {
           </DialogTitle>
           <DialogDescription className="text-slate-600 text-xs">
             {vendedor
-              ? `Assinado como ${vendedor.nome}. Clique em cada destino para abrir a conversa — o WhatsApp bloqueia se tentar abrir os dois de uma vez.`
+              ? `Assinado como ${vendedor.nome}. Clique em cada destino para abrir a conversa. O WhatsApp bloqueia se tentar abrir os dois de uma vez.`
               : "Clique em cada destino para abrir a conversa."}
           </DialogDescription>
         </DialogHeader>
@@ -1845,7 +1845,7 @@ function Index() {
       {cotacoes.length > 0 && (
         <p className="cotacao-aviso">
           {cotacoes.length === 1 ? "1 item" : `${cotacoes.length} itens`} sob
-          encomenda — o valor entra depois que o vendedor cotar com o
+          encomenda. O valor entra depois que o vendedor cotar com o
           fornecedor.
         </p>
       )}
@@ -2703,7 +2703,7 @@ function Index() {
                 <h2>Como esse PC se sai</h2>
                 <p>
                   Estimativa em 1080p com gráficos altos, baseada nas peças
-                  escolhidas. Valores aproximados para dar uma ideia — não são
+                  escolhidas. Valores aproximados para dar uma ideia, não são
                   benchmark oficial.
                 </p>
               </div>
@@ -2791,7 +2791,7 @@ function Index() {
                           ))}
                           <span className="perf-nota-txt">
                             {t.nota === 0
-                              ? "—"
+                              ? "-"
                               : t.nota === 1
                                 ? "Básico"
                                 : t.nota === 2
