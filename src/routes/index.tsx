@@ -3323,7 +3323,6 @@ const presets = [
     name: "Binário Essencial AM4",
     kicker: "Escritório & Estudo",
     pixPrice: 1299.4,
-    fps: ["Valorant: 60+ FPS", "CS2: 50+ FPS", "Sem placa de vídeo"],
     note: "Ryzen com vídeo integrado Vega — roda o dia a dia, pacote Office e jogos leves sem precisar de placa dedicada. Todas as peças em estoque na loja.",
     ids: ["w15380", "w12375", "w19384", "w25878", "w19069", "w21476"],
   },
@@ -3331,7 +3330,6 @@ const presets = [
     name: "Binário Arena 1050 Ti",
     kicker: "Mais Equilibrado da Loja",
     pixPrice: 2789.3,
-    fps: ["Valorant: 140+ FPS", "CS2: 120+ FPS", "Fortnite: 70+ FPS"],
     note: "Ryzen 5 de 6 núcleos com GTX 1050 Ti. O melhor custo-benefício com o que está disponível hoje em Varginha.",
     ids: ["w17867", "w12375", "w19384", "w20957", "w25878", "w19069", "w21577"],
     featured: true,
@@ -3340,33 +3338,39 @@ const presets = [
     name: "Binário Studio RX 560",
     kicker: "Trabalho Pesado & Criação",
     pixPrice: 3279.3,
-    fps: ["Edição de vídeo", "Render 3D leve", "Multitarefa pesada"],
     note: "Ryzen 7 de 8 núcleos com SSD NVMe de 480 GB. Focado em quem edita, renderiza ou trabalha com muitas abas e programas abertos.",
     ids: ["w18599", "w12375", "w19384", "w19209", "w25940", "w19069", "w21577"],
   },
 ];
 
+// ATENCAO: montadas a partir das pecas que existem no catalogo da 860,
+// porque as specs antigas citavam RX 6600 / RTX 4060 / DDR5, que a loja
+// nao tem. Os precos sao a soma das pecas.
+// >>> CONFERIR com o que esta montado de verdade na bancada. <<<
 const stockMachines = [
   {
     id: "BN-1048",
     name: "Binário Start Home & Office",
-    spec: "Ryzen 5 5600G · 16 GB DDR4 · SSD 1 TB NVMe · Fonte 550W",
-    pixPrice: 2711.5,
+    spec: "Ryzen 3 3200G · 8 GB DDR4 · SSD 240 GB · Fonte 500W",
+    ids: ["w15380", "w12375", "w19145", "w25877", "w19069", "w21476"],
+    pixPrice: 1559.4,
     tone: "Pronta entrega em Varginha",
   },
   {
     id: "BN-1051",
-    name: "Binário Arena Gamer RX",
-    spec: "Ryzen 5 5600 · RX 6600 8GB · 16 GB DDR4 · SSD 1 TB NVMe",
-    pixPrice: 4241.5,
-    tone: "Última unidade no estoque",
+    name: "Binário Arena GTX 1050 Ti",
+    spec: "Ryzen 5 5500 · GTX 1050 Ti 4GB · 8 GB DDR4 · SSD 480 GB",
+    ids: ["w17867", "w12375", "w19145", "w20957", "w25940", "w21062", "w21577"],
+    pixPrice: 3319.3,
+    tone: "Pronta entrega em Varginha",
   },
   {
     id: "BN-1053",
-    name: "Binário Studio RTX DLSS 3",
-    spec: "Core i5 14400F · RTX 4060 8GB · 32 GB DDR5 · SSD 1 TB",
-    pixPrice: 5856.5,
-    tone: "Pronta entrega em Varginha",
+    name: "Binário Studio RX 580",
+    spec: "Ryzen 7 5700X · RX 580 8GB · 8 GB DDR4 · SSD 480 GB",
+    ids: ["w18599", "w19577", "w19145", "w20166", "w25940", "w19942", "w19087"],
+    pixPrice: 4179.3,
+    tone: "Última unidade no estoque",
   },
 ];
 
@@ -3971,6 +3975,60 @@ function Index() {
     const currentIndex = categories.findIndex((item) => item.id === active);
     const target = categories[Math.max(0, Math.min(categories.length - 1, currentIndex + offset))];
     if (target) setActive(target.id);
+  }
+
+  // Ficha que abre dentro do card: o que vem na maquina e como ela roda.
+  function fichaDaBuild(ids: string[]) {
+    const { pecas, fpsPerfil, fpsFonte } = resumoDaBuild(ids);
+    return (
+      <div className="build-ficha">
+        <h4>O que vem nessa máquina</h4>
+        <ul className="build-ficha-pecas">
+          {pecas.map((peca) => (
+            <li key={peca.id}>
+              <span className="build-ficha-cat">
+                {categories.find((c) => c.id === peca.category)?.label ?? peca.category}
+              </span>
+              <span className="build-ficha-nome">{peca.name}</span>
+            </li>
+          ))}
+        </ul>
+        {fpsPerfil && (
+          <>
+            <h4>
+              Como roda nos jogos <small>({fpsFonte})</small>
+            </h4>
+            <div className="build-ficha-fps">
+              {JOGOS.map((jogo, i) => {
+                const fps = fpsPerfil[i] ?? 0;
+                const pct = Math.min(100, (fps / FPS_MAX) * 100);
+                const cor =
+                  fps >= 120
+                    ? "var(--status-ok)"
+                    : fps >= 60
+                      ? "var(--status-alerta)"
+                      : "var(--status-erro)";
+                return (
+                  <div key={jogo} className="build-ficha-fps-row">
+                    <span>{jogo}</span>
+                    <div className="build-ficha-fps-track">
+                      <div
+                        className="build-ficha-fps-fill"
+                        style={{ width: `${pct}%`, backgroundColor: cor }}
+                      />
+                    </div>
+                    <strong className="mono">{fps || "-"}</strong>
+                  </div>
+                );
+              })}
+            </div>
+            <p className="build-ficha-nota">
+              Estimativa em 1080p com gráficos altos. Não é benchmark oficial.
+            </p>
+          </>
+        )}
+      </div>
+    );
   }
 
   function loadPreset(ids: string[]) {
@@ -5263,11 +5321,16 @@ function Index() {
                   <p className="text-slate-600 text-xs leading-relaxed mb-3">{preset.note}</p>
 
                   <div className="preset-fps-badges">
-                    {preset.fps.map((item, i) => (
-                      <span key={i} className="fps-badge">
-                        {item}
-                      </span>
-                    ))}
+                    {(() => {
+                      const { fpsPerfil } = resumoDaBuild(preset.ids);
+                      if (!fpsPerfil)
+                        return <span className="fps-badge">Sem placa de vídeo dedicada</span>;
+                      return JOGOS_DESTAQUE.map((i) => (
+                        <span key={i} className="fps-badge">
+                          {JOGOS[i]}: {fpsPerfil[i] || "-"} FPS
+                        </span>
+                      ));
+                    })()}
                   </div>
 
                   <div className="mt-auto pt-4 border-t border-slate-200">
@@ -5282,9 +5345,26 @@ function Index() {
                       </div>
                     </div>
 
+                    <button
+                      type="button"
+                      className="build-ficha-toggle"
+                      aria-expanded={fichasPreset}
+                      onClick={() => setFichasPreset((v) => !v)}
+                    >
+                      {fichasPreset ? "Esconder as peças" : "Ver peças e como roda"}
+                      <ChevronDown
+                        className="w-4 h-4"
+                        style={{
+                          transform: fichasPreset ? "rotate(180deg)" : undefined,
+                        }}
+                      />
+                    </button>
+
+                    {fichasPreset && fichaDaBuild(preset.ids)}
+
                     <Button
                       onClick={() => loadPreset(preset.ids)}
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs h-10"
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs h-10 mt-3"
                     >
                       Carregar esta Build no Montador <ArrowRight className="w-4 h-4 ml-1" />
                     </Button>
@@ -5341,6 +5421,23 @@ function Index() {
                     <h3>{machine.name}</h3>
                     <p>{machine.spec}</p>
                     <span className="stock-machine-tone">{machine.tone}</span>
+
+                    <button
+                      type="button"
+                      className="build-ficha-toggle"
+                      aria-expanded={fichasEstoque}
+                      onClick={() => setFichasEstoque((v) => !v)}
+                    >
+                      {fichasEstoque ? "Esconder as peças" : "Ver peças e como roda"}
+                      <ChevronDown
+                        className="w-4 h-4"
+                        style={{
+                          transform: fichasEstoque ? "rotate(180deg)" : undefined,
+                        }}
+                      />
+                    </button>
+
+                    {fichasEstoque && fichaDaBuild(machine.ids)}
                   </div>
 
                   <div className="stock-machine-foot">
