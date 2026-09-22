@@ -4304,7 +4304,13 @@ function Index() {
                 }
               >
                 <div className="flex items-center gap-2 min-w-0">
-                  <CategoryIcon className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span className="summary-item-thumb">
+                    {part.foto ? (
+                      <img src={part.foto} alt="" loading="lazy" />
+                    ) : (
+                      <CategoryIcon className="w-4 h-4" />
+                    )}
+                  </span>
                   <div className="summary-item-label">
                     <small>
                       {category.short}
@@ -5396,6 +5402,23 @@ function Index() {
                   Cód. {detalhePeca.code} · {detalhePeca.brand}
                 </DialogDescription>
               </DialogHeader>
+
+              <div className="peca-foto">
+                {detalhePeca.foto ? (
+                  <img src={detalhePeca.foto} alt={detalhePeca.name} />
+                ) : (
+                  (() => {
+                    const Icone =
+                      categories.find((c) => c.id === detalhePeca.category)?.icon ?? Cpu;
+                    return (
+                      <>
+                        <Icone className="w-10 h-10" />
+                        <span>Foto ainda não cadastrada</span>
+                      </>
+                    );
+                  })()
+                )}
+              </div>
 
               <dl className="peca-ficha">
                 {detalhePeca.socket && (
