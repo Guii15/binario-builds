@@ -479,81 +479,92 @@
   }
 
   /* Product List & Cards */
-  /* Dois produtos por linha: o catalogo real tem centenas de itens e uma
-     coluna so obrigava a rolar demais pra comparar. */
+  /* Vitrine: card enxuto com foto grande. O resto da ficha tecnica vive
+     no modal do "Ver detalhes", senao com 226 pecas a lista vira ruido. */
   .products-list-wrapper {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0;
+    grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+    gap: 1rem;
+    padding: 1.25rem;
   }
 
   .product-item-card {
-    display: grid;
-    grid-template-columns: 104px minmax(0, 1fr);
-    grid-template-areas:
-      "foto info"
-      "acao acao";
-    gap: 1rem 1.25rem;
-    align-items: start;
-    padding: 1.5rem;
-    border-right: 1px solid #d7dde8;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1rem;
+    border: 1px solid #d7dde8;
+    border-radius: 0.6rem;
+    background: #ffffff;
     transition:
-      background 0.15s ease,
       border-color 0.15s ease,
       box-shadow 0.15s ease,
       transform 0.15s ease;
-    border-bottom: 1px solid #d7dde8;
-    background: #ffffff;
-    animation: fade-in-up 0.35s ease backwards;
   }
   .product-item-card:hover {
-    background: #f5f7fb;
-    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
-    transform: translateY(-1px);
+    border-color: var(--primary);
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+    transform: translateY(-2px);
   }
-  .product-item-card:hover .hardware-thumb-box img {
-    transform: scale(1.06);
+  .product-item-card:hover .hardware-thumb-img {
+    transform: scale(1.04);
   }
   .product-item-card[data-selected="true"] {
-    background: #eef4fd;
-    border-left: 3px solid #0b4fa8;
+    border-color: var(--primary);
+    box-shadow: inset 0 0 0 1px var(--primary);
   }
-
-  /* Hardware Thumbnail Visual */
-  .product-item-card .hardware-thumb-box {
-    grid-area: foto;
+  .product-nome {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--foreground);
+    /* tres linhas no maximo, pra todos os cards fecharem na mesma altura */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
-  .product-item-card .product-info-col {
-    grid-area: info;
-  }
-  .product-item-card .product-price-col {
-    grid-area: acao;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 0.75rem;
+  .product-preco {
     margin-top: auto;
-    padding-top: 0.9rem;
-    border-top: 1px solid #e9eef7;
-    text-align: left;
   }
-  /* Cards da mesma linha com a mesma altura, senao um fica flutuando */
-  .products-list-wrapper > .product-item-card {
-    height: 100%;
+  .product-preco strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--foreground);
+    line-height: 1.2;
   }
-  /* Abre a ficha do produto; o card inteiro nao vira botao pra nao
-     atrapalhar quem so quer clicar em adicionar. */
+  .product-acao {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.4rem;
+  }
+  .product-acao .qty-stepper {
+    justify-content: center;
+  }
   .product-ver-mais {
     background: none;
     border: none;
     padding: 0;
-    margin-top: 0.35rem;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--primary);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--muted-foreground);
     cursor: pointer;
     text-decoration: underline;
+  }
+  .product-ver-mais:hover {
+    color: var(--primary);
+  }
+
+  .product-item-card .hardware-thumb-box {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    border-radius: 0.4rem;
   }
   .hardware-thumb-box {
     position: relative;
@@ -995,9 +1006,6 @@
   .summary-sidebar-card {
     position: static;
   }
-  .product-item-card {
-    grid-template-columns: 64px minmax(0, 1fr);
-  }
   .product-price-col {
     grid-column: 1 / -1;
     align-items: flex-start;
@@ -1284,9 +1292,6 @@
   .hardware-thumb-box {
     width: 3.25rem;
     height: 3.25rem;
-  }
-  .product-item-card {
-    grid-template-columns: 3.25rem minmax(0, 1fr);
   }
   .product-price-col {
     flex-direction: column;
@@ -2998,23 +3003,20 @@ button:not(:disabled):active,
   border-top: 1px solid var(--border);
 }
 .peca-rodape strong {
-  display: block;
   font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 800;
-  color: var(--pix-green);
+  color: var(--foreground);
 }
-.peca-rodape span {
-  font-size: 0.72rem;
-  color: var(--muted-foreground);
-}
-/* Catalogo volta pra uma coluna no celular */
-@media (max-width: 900px) {
+/* Celular: dois por linha ainda cabem, so apertam o passo */
+@media (max-width: 640px) {
   .products-list-wrapper {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.75rem;
+    padding: 0.75rem;
   }
   .product-item-card {
-    border-right: none;
+    padding: 0.75rem;
   }
 }
 

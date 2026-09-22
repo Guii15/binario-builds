@@ -3323,7 +3323,6 @@ const presets = [
     name: "Binário Essencial AM4",
     kicker: "Escritório & Estudo",
     pixPrice: 1299.4,
-    cardPrice: 1299.4,
     fps: ["Valorant: 60+ FPS", "CS2: 50+ FPS", "Sem placa de vídeo"],
     note: "Ryzen com vídeo integrado Vega — roda o dia a dia, pacote Office e jogos leves sem precisar de placa dedicada. Todas as peças em estoque na loja.",
     ids: ["w15380", "w12375", "w19384", "w25878", "w19069", "w21476"],
@@ -3332,7 +3331,6 @@ const presets = [
     name: "Binário Arena 1050 Ti",
     kicker: "Mais Equilibrado da Loja",
     pixPrice: 2789.3,
-    cardPrice: 2789.3,
     fps: ["Valorant: 140+ FPS", "CS2: 120+ FPS", "Fortnite: 70+ FPS"],
     note: "Ryzen 5 de 6 núcleos com GTX 1050 Ti. O melhor custo-benefício com o que está disponível hoje em Varginha.",
     ids: ["w17867", "w12375", "w19384", "w20957", "w25878", "w19069", "w21577"],
@@ -3342,7 +3340,6 @@ const presets = [
     name: "Binário Studio RX 560",
     kicker: "Trabalho Pesado & Criação",
     pixPrice: 3279.3,
-    cardPrice: 3279.3,
     fps: ["Edição de vídeo", "Render 3D leve", "Multitarefa pesada"],
     note: "Ryzen 7 de 8 núcleos com SSD NVMe de 480 GB. Focado em quem edita, renderiza ou trabalha com muitas abas e programas abertos.",
     ids: ["w18599", "w12375", "w19384", "w19209", "w25940", "w19069", "w21577"],
@@ -3525,6 +3522,9 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [active, setActive] = useState<Category>("cpu");
+  const [detalhePeca, setDetalhePeca] = useState<Part | null>(null);
+  const [fichasPreset, setFichasPreset] = useState(false);
+  const [fichasEstoque, setFichasEstoque] = useState(false);
   const [selected, setSelected] = useState<Record<string, number>>({});
   const [search, setSearch] = useState("");
   const [precoFaixa, setPrecoFaixa] = useState<
@@ -3770,7 +3770,6 @@ function Index() {
   const totalPix = chosen.reduce((sum, part) => sum + part.pixPrice * (selected[part.id] ?? 0), 0);
   // Preco de venda do WinThor (PCTABPR.PVENDA), sem desconto de PIX por ora.
   const totalCard = totalPix;
-  const installmentVal = totalCard / 10;
 
   const cpu = chosen.find((part) => part.category === "cpu");
   const gpu = chosen.find((part) => part.category === "gpu");
@@ -4099,7 +4098,7 @@ function Index() {
       ? `\n\n_${cotacoes.length} item(ns) marcado(s) como A COTAR ainda não entram no total._`
       : "";
     const obs = observacao.trim() ? `\n\n*Observação:* ${observacao.trim()}` : "";
-    const text = `Olá, ${item.nome}! Gostaria de consultar este orçamento de PC:\n\n${linhas || "Ainda estou montando minhas peças."}\n\n*Total*: ${money.format(totalPix)}\n*Parcelado*: 10x de ${money.format(installmentVal)}${aviso}${obs}\n\nMontagem inclusa. Podem verificar disponibilidade em Varginha?`;
+    const text = `Olá, ${item.nome}! Gostaria de consultar este orçamento de PC:\n\n${linhas || "Ainda estou montando minhas peças."}\n\n*Total*: ${money.format(totalPix)}${aviso}${obs}\n\nMontagem inclusa. Podem verificar disponibilidade em Varginha?`;
     registrarHistorico(item.nome);
     abrirWhats(item.numero, text);
   }
@@ -4108,7 +4107,7 @@ function Index() {
   function enviarMontada(item: Vendedor, machineId: string) {
     const machine = stockMachines.find((m) => m.id === machineId);
     if (!machine) return;
-    const text = `Olá, ${item.nome}! Tenho interesse nesta máquina pronta entrega:\n\n*${machine.name}*\nCódigo: ${machine.id}\n${machine.spec}\n\nValor no PIX: ${money.format(machine.pixPrice)}\n\nAinda está disponível?`;
+    const text = `Olá, ${item.nome}! Tenho interesse nesta máquina pronta entrega:\n\n*${machine.name}*\nCódigo: ${machine.id}\n${machine.spec}\n\nValor: ${money.format(machine.pixPrice)}\n\nAinda está disponível?`;
     abrirWhats(item.numero, text);
   }
 
@@ -4358,7 +4357,6 @@ function Index() {
         <span>
           Total: <strong>{money.format(totalPix)}</strong>
         </span>
-        <span>ou 10x de {money.format(installmentVal)}</span>
       </div>
       <p className="print-budget-note">
         Valores sujeitos a confirmação de estoque. Peças separadas pelo código informado acima.
@@ -4605,10 +4603,6 @@ function Index() {
               <div className="pix-total-block">
                 <span>Total</span>
                 <strong>{money.format(totalPix)}</strong>
-              </div>
-
-              <div className="credit-total-line">
-                ou em até <strong>10x de {money.format(installmentVal)}</strong> sem juros
               </div>
 
               <button
@@ -4888,51 +4882,17 @@ function Index() {
                               loading="lazy"
                             />
                           ) : (
-                            <>
-                              <CategoryIcon />
-                              <span className="hardware-thumb-badge">{part.brand}</span>
-                            </>
+                            <CategoryIcon />
                           )}
                         </div>
 
-                        {/* Hardware Details */}
-                        <div className="product-info-col">
-                          <div className="product-brand-tags">
-                            <span className="brand-badge">{part.brand}</span>
-                            <span className="code-badge">Cód. {part.code}</span>
-                            {part.socket && (
-                              <span className="spec-badge">Socket {part.socket}</span>
-                            )}
-                            {part.memType && <span className="spec-badge">{part.memType}</span>}
-                            {part.platform && <span className="spec-badge">{part.platform}</span>}
-                            {part.watts && <span className="spec-badge">{part.watts}W TDP</span>}
-                          </div>
-                          <h3>{part.name}</h3>
-                          <p>{part.detail}</p>
-                          <div className="flex flex-wrap gap-1.5 my-1.5">
-                            {part.specs.map((spec, idx) => (
-                              <span
-                                key={idx}
-                                className="text-[11px] font-mono bg-slate-100 text-slate-700 px-2 py-0.5 rounded border border-slate-200"
-                              >
-                                {spec}
-                              </span>
-                            ))}
-                          </div>
-                          <span className="stock-status-tag">
-                            Em estoque em Varginha · {part.stock} unidades
-                          </span>
+                        <h3 className="product-nome">{part.name}</h3>
+
+                        <div className="product-preco">
+                          <strong>{money.format(part.pixPrice)}</strong>
                         </div>
 
-                        {/* Price & Action */}
-                        <div className="product-price-col">
-                          <div className="pix-price-highlight">
-                            <strong>{money.format(part.pixPrice)}</strong>
-                          </div>
-                          <span className="credit-price-small">
-                            ou 10x de {money.format(part.pixPrice / 10)}
-                          </span>
-
+                        <div className="product-acao">
                           {partMulti && chosenPart ? (
                             <div className="qty-stepper">
                               <button
@@ -4946,6 +4906,7 @@ function Index() {
                               <button
                                 type="button"
                                 aria-label="Adicionar mais um"
+                                disabled={part.category === "memory" && slotsCheios}
                                 onClick={() => mudarQtd(part.id, 1)}
                               >
                                 <Plus className="w-3.5 h-3.5" />
@@ -4964,8 +4925,8 @@ function Index() {
                               }
                               className={
                                 chosenPart && !partMulti
-                                  ? "bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold text-xs h-9 px-4"
-                                  : "bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs h-9 px-4 shadow-md shadow-blue-600/20"
+                                  ? "w-full bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold text-xs h-9"
+                                  : "w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs h-9"
                               }
                             >
                               {chosenPart && !partMulti ? (
@@ -4973,13 +4934,17 @@ function Index() {
                                   <Check className="w-3.5 h-3.5 mr-1" /> Selecionado
                                 </>
                               ) : (
-                                <>
-                                  {partMulti ? "Adicionar" : "Adicionar"}{" "}
-                                  <ArrowRight className="w-3.5 h-3.5 ml-1" />
-                                </>
+                                "Adicionar"
                               )}
                             </Button>
                           )}
+                          <button
+                            type="button"
+                            className="product-ver-mais"
+                            onClick={() => setDetalhePeca(part)}
+                          >
+                            Ver detalhes
+                          </button>
                         </div>
                       </article>
                     );
@@ -5123,10 +5088,6 @@ function Index() {
                   <div className="pix-total-block">
                     <span>Total</span>
                     <strong>{money.format(totalPix)}</strong>
-                  </div>
-
-                  <div className="credit-total-line">
-                    ou em até <strong>10x de {money.format(installmentVal)}</strong> sem juros
                   </div>
 
                   <button
@@ -5319,9 +5280,6 @@ function Index() {
                           {money.format(preset.pixPrice)}
                         </strong>
                       </div>
-                      <span className="text-xs text-slate-500">
-                        ou 10x de {money.format(preset.cardPrice / 10)}
-                      </span>
                     </div>
 
                     <Button
@@ -5339,6 +5297,7 @@ function Index() {
 
         {/* Galeria de montagens — DESATIVADA por enquanto.
             Pra reativar: troque "false" por "true" na linha abaixo. */}
+        {/* eslint-disable-next-line no-constant-binary-expression -- interruptor proposital */}
         {false && (
           <section className="galeria-section no-print">
             <div className="shell">
@@ -5437,8 +5396,6 @@ function Index() {
 
           <div className="footer-col">
             <strong>Pagamento</strong>
-            <span>PIX à vista</span>
-            <span>Cartão em até 10x sem juros</span>
             <span>Montagem inclusa, sem taxa</span>
           </div>
         </div>
@@ -5448,6 +5405,115 @@ function Index() {
           <span>Valores sujeitos a confirmação de estoque com a equipe de vendas.</span>
         </div>
       </footer>
+
+      {/* Ficha tecnica da peca: os dados ja vem do WinThor, so nao eram
+          mostrados em lugar nenhum. */}
+      <Dialog
+        open={Boolean(detalhePeca)}
+        onOpenChange={(aberto) => !aberto && setDetalhePeca(null)}
+      >
+        <DialogContent className="max-w-lg">
+          {detalhePeca && (
+            <>
+              <DialogHeader>
+                <DialogTitle>{detalhePeca.name}</DialogTitle>
+                <DialogDescription>
+                  Cód. {detalhePeca.code} · {detalhePeca.brand}
+                </DialogDescription>
+              </DialogHeader>
+
+              <div className="peca-foto">
+                {detalhePeca.foto ? (
+                  <img src={detalhePeca.foto} alt={detalhePeca.name} />
+                ) : (
+                  (() => {
+                    const Icone =
+                      categories.find((c) => c.id === detalhePeca.category)?.icon ?? Cpu;
+                    return (
+                      <>
+                        <Icone className="w-10 h-10" />
+                        <span>Foto ainda não cadastrada</span>
+                      </>
+                    );
+                  })()
+                )}
+              </div>
+
+              <dl className="peca-ficha">
+                {detalhePeca.socket && (
+                  <>
+                    <dt>Socket</dt>
+                    <dd>{detalhePeca.socket}</dd>
+                  </>
+                )}
+                {detalhePeca.memType && (
+                  <>
+                    <dt>Memória</dt>
+                    <dd>{detalhePeca.memType}</dd>
+                  </>
+                )}
+                {detalhePeca.ramGB !== undefined && (
+                  <>
+                    <dt>Capacidade</dt>
+                    <dd>{detalhePeca.ramGB} GB</dd>
+                  </>
+                )}
+                {detalhePeca.watts !== undefined && (
+                  <>
+                    <dt>{detalhePeca.category === "psu" ? "Potência" : "Consumo"}</dt>
+                    <dd>{detalhePeca.watts} W</dd>
+                  </>
+                )}
+                {detalhePeca.slots !== undefined && (
+                  <>
+                    <dt>Slots de memória</dt>
+                    <dd>{detalhePeca.slots}</dd>
+                  </>
+                )}
+                {detalhePeca.platform && (
+                  <>
+                    <dt>Plataforma</dt>
+                    <dd>{detalhePeca.platform}</dd>
+                  </>
+                )}
+                {detalhePeca.videoIntegrado && (
+                  <>
+                    <dt>Vídeo</dt>
+                    <dd>Integrado no processador</dd>
+                  </>
+                )}
+                <dt>Estoque</dt>
+                <dd>Disponível em Varginha</dd>
+              </dl>
+
+              {detalhePeca.specs.length > 0 && (
+                <div className="peca-specs">
+                  {detalhePeca.specs.map((spec, i) => (
+                    <span key={i} className="spec-badge">
+                      {spec}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              <p className="peca-descricao">{detalhePeca.detail}</p>
+
+              <div className="peca-rodape">
+                <strong>{money.format(detalhePeca.pixPrice)}</strong>
+                <Button
+                  onClick={() => {
+                    selectPart(detalhePeca);
+                    setDetalhePeca(null);
+                  }}
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold"
+                >
+                  Adicionar à montagem
+                </Button>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
 
       {sellerDialog}
       {tiDialog}
