@@ -1893,10 +1893,10 @@ function Index() {
             style={{
               width: `${wattsPct}%`,
               backgroundColor: !powerOk
-                ? "#ef4444"
+                ? "var(--status-erro)"
                 : wattsPct > 80
-                  ? "#d97706"
-                  : "#059669",
+                  ? "var(--status-alerta)"
+                  : "var(--status-ok)",
             }}
           />
         </div>
@@ -2725,10 +2725,10 @@ function Index() {
                           const pct = Math.min(100, (fps / FPS_MAX) * 100);
                           const cor =
                             fps >= 120
-                              ? "#059669"
+                              ? "var(--status-ok)"
                               : fps >= 60
-                                ? "#d97706"
-                                : "#dc2626";
+                                ? "var(--status-alerta)"
+                                : "var(--status-erro)";
                           return (
                             <div key={jogo} className="perf-jogo-row">
                               <span className="perf-jogo-nome">{jogo}</span>
@@ -2752,9 +2752,9 @@ function Index() {
                         })}
                       </div>
                       <span className="perf-legenda">
-                        <b style={{ color: "#059669" }}>120+</b> muito fluido ·
-                        <b style={{ color: "#d97706" }}> 60+</b> joga bem ·
-                        <b style={{ color: "#dc2626" }}> abaixo</b> precisa
+                        <b style={{ color: "var(--status-ok)" }}>120+</b> muito fluido ·
+                        <b style={{ color: "var(--status-alerta)" }}> 60+</b> joga bem ·
+                        <b style={{ color: "var(--status-erro)" }}> abaixo</b> precisa
                         baixar gráficos
                       </span>
                     </>

@@ -81,6 +81,9 @@
   --pix-border: rgba(5, 150, 105, 0.25);
   --warning-gold: #d97706;
   --warning-soft: rgba(217, 119, 6, 0.1);
+  --status-ok: #1a7f4b;
+  --status-alerta: #b06a00;
+  --status-erro: #b3212c;
   --brand-navy: #101724;
 }
 
@@ -110,6 +113,9 @@
   --pix-border: rgba(52, 211, 153, 0.3);
   --warning-gold: #fbbf24;
   --warning-soft: rgba(217, 119, 6, 0.18);
+  --status-ok: #34d399;
+  --status-alerta: #fbbf24;
+  --status-erro: #f87171;
   --brand-navy: #0b1220;
 }
 
