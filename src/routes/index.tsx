@@ -3356,6 +3356,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [active, setActive] = useState<Category>("cpu");
+  const [detalhePeca, setDetalhePeca] = useState<Part | null>(null);
   const [fichasPreset, setFichasPreset] = useState(false);
   const [fichasEstoque, setFichasEstoque] = useState(false);
   const [selected, setSelected] = useState<Record<string, number>>({});
@@ -4815,6 +4816,13 @@ function Index() {
                             ))}
                           </div>
                           <span className="stock-status-tag">Disponível em Varginha</span>
+                          <button
+                            type="button"
+                            className="product-ver-mais"
+                            onClick={() => setDetalhePeca(part)}
+                          >
+                            Ver detalhes
+                          </button>
                         </div>
 
                         {/* Price & Action */}
@@ -5372,6 +5380,99 @@ function Index() {
           <span>Valores sujeitos a confirmação de estoque com a equipe de vendas.</span>
         </div>
       </footer>
+
+      {/* Ficha tecnica da peca: os dados ja vem do WinThor, so nao eram
+          mostrados em lugar nenhum. */}
+      <Dialog
+        open={Boolean(detalhePeca)}
+        onOpenChange={(aberto) => !aberto && setDetalhePeca(null)}
+      >
+        <DialogContent className="max-w-lg">
+          {detalhePeca && (
+            <>
+              <DialogHeader>
+                <DialogTitle>{detalhePeca.name}</DialogTitle>
+                <DialogDescription>
+                  Cód. {detalhePeca.code} · {detalhePeca.brand}
+                </DialogDescription>
+              </DialogHeader>
+
+              <dl className="peca-ficha">
+                {detalhePeca.socket && (
+                  <>
+                    <dt>Socket</dt>
+                    <dd>{detalhePeca.socket}</dd>
+                  </>
+                )}
+                {detalhePeca.memType && (
+                  <>
+                    <dt>Memória</dt>
+                    <dd>{detalhePeca.memType}</dd>
+                  </>
+                )}
+                {detalhePeca.ramGB !== undefined && (
+                  <>
+                    <dt>Capacidade</dt>
+                    <dd>{detalhePeca.ramGB} GB</dd>
+                  </>
+                )}
+                {detalhePeca.watts !== undefined && (
+                  <>
+                    <dt>{detalhePeca.category === "psu" ? "Potência" : "Consumo"}</dt>
+                    <dd>{detalhePeca.watts} W</dd>
+                  </>
+                )}
+                {detalhePeca.slots !== undefined && (
+                  <>
+                    <dt>Slots de memória</dt>
+                    <dd>{detalhePeca.slots}</dd>
+                  </>
+                )}
+                {detalhePeca.platform && (
+                  <>
+                    <dt>Plataforma</dt>
+                    <dd>{detalhePeca.platform}</dd>
+                  </>
+                )}
+                {detalhePeca.videoIntegrado && (
+                  <>
+                    <dt>Vídeo</dt>
+                    <dd>Integrado no processador</dd>
+                  </>
+                )}
+              </dl>
+
+              {detalhePeca.specs.length > 0 && (
+                <div className="peca-specs">
+                  {detalhePeca.specs.map((spec, i) => (
+                    <span key={i} className="spec-badge">
+                      {spec}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              <p className="peca-descricao">{detalhePeca.detail}</p>
+
+              <div className="peca-rodape">
+                <div>
+                  <strong>{money.format(detalhePeca.pixPrice)}</strong>
+                  <span>à vista no PIX</span>
+                </div>
+                <Button
+                  onClick={() => {
+                    selectPart(detalhePeca);
+                    setDetalhePeca(null);
+                  }}
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold"
+                >
+                  Adicionar à montagem
+                </Button>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
 
       {sellerDialog}
       {tiDialog}

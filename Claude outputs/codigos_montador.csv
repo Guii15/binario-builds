@@ -1,0 +1,227 @@
+﻿CODPROD;CATEGORIA;NOME;MARCA;PRECO_PIX;ESTOQUE
+15380;cpu;Processador AMD AM4 Ryzen 3 3200G OEM;Amd;389.9;291
+17507;cpu;Processador AMD Ryzen 7 1700 3.0GHZ AM4;Amd;429.9;9
+12634;cpu;Processador AMD Ryzen 3 4100 3.8 AM4;Amd;629.9;26
+15849;cpu;Processador Ryzen 3 4100 AM4 - Sem BOX;Amd;779.9;33
+17867;cpu;Processador Ryzen 5 5500 3.6GH AM4 BOX;Amd;799.9;34
+18861;cpu;Processador Ryzen 7 3700X 3.6GHZ;Amd;1159.9;1
+18599;cpu;Processador Ryzen 7 5700X 3.4GHZ AM4 OEM;Amd;1189.9;14
+23388;cpu;Processador Ryzen 7 5700G 4.6GHZ AM4 BOX;Amd;1529.9;2
+13281;cpu;Processador AMD Ryzen 7 5800X 3.8GHZ;Amd;1779.9;1
+13164;motherboard;Placa Mae Desk 1155 G-H61/K Knup (2xddr3;Knup;129.9;4
+21561;motherboard;Placa Mae H61 LGA1155 DDR3 Hayom Plm2300;Hayom;129.9;191
+19679;motherboard;Placa Mae B75 LGA1155 DDR3 Hayom Plm2301;Hayom;149.9;15
+25492;motherboard;Placa Mae H61-m2pro 1155 Diamond Clanm;Haoquing;149.9;501
+25779;motherboard;Placa Mae LGA1155 Delta-h61m2k H61;Delta;149.9;340
+12405;motherboard;Placa Mae G-H81/M Desk Knup DDR3 Lga 115;Knup;159.9;3
+25764;motherboard;Placa Mae Delta LGA1150 H81;Delta;169.9;20
+25780;motherboard;Placa Mae LGA1150 Delta-h81m2k H81;Delta;169.9;103
+13656;motherboard;Placa Mae H81m.2-tg DDR3 LGA1150;Brazil Pc;179.9;3
+11414;motherboard;Placa Mae Hm55-nt DDR3 LGA1156;Sem marca;189.9;19
+26062;motherboard;Placa Mae Delta Gaming X79-mkii;Delta;229.9;880
+20838;motherboard;Placa Mae Vxmbb250 M.2 LGA1151 DDR4;Duex;299.9;260
+17705;motherboard;Placa Mae A320 Mainboard Haoquing;Haoquing;339.9;60
+20430;motherboard;Placa Mae Vxpro Vxmbh110 LGA1151 DDR4;Duex;339.9;1
+22333;motherboard;Placa Mae H310 LGA1151 M2 Delta-h310m2k;Delta;349.9;1388
+12375;motherboard;Placa Mae G-A520 Desk DDR4 AM4;Revenger;359.9;30
+13525;motherboard;Placa Mae Dx H110ZG Duex DDR4 LGA1151;Intel;359.9;9
+15334;motherboard;Placa Mae Desk 1151 DDR4 G-B250 Knup;Revenger;359.9;20
+21563;motherboard;Placa Mae Dxmbh110s M2 LGA1151 DDR4 Duex;Duex;359.9;35
+15479;motherboard;Placa Mae Bpc-h310/b250m.2-tg Bpc DDR4;Bpc;369.9;1
+17412;motherboard;Placa Mae G-H310 LGA1151 Revenger;Revenger;389.9;20
+13715;motherboard;Placa Mae G-H470 Revenger DDR4 LGA1200;Revenger;399.9;3
+18314;motherboard;Placa Mae Lga 1200 G-H511 Revenger;Revenger;429.9;20
+18308;motherboard;Placa Mae Lga 1200 DDR4 G-H511 Revenger;Revenger;439.9;2
+19577;motherboard;Placa Mae Delta-a520m2k AM4;Delta;449.9;9
+14224;motherboard;Placa Mae G-H610 Revenger DDR4 LGA1700;Revenger;469.9;33
+19632;motherboard;Placa Mae Delta H510M2K;Delta;479.9;20
+26090;motherboard;Placa Mae Delta H510M2K;Delta;479.9;160
+11439;motherboard;Placa Mae G-H510 DDR4 Lga 1200;Knup;489.9;1
+10491;motherboard;Placa Mae H310MHP S1151 Biostar DDR4 Lga;Biostar;499.9;2
+18884;motherboard;Placa Mae H610 Revenger DDR4 LGA1700;Revenger;499.9;23
+20491;motherboard;Placa Mae Bpc-h510pm.2-g LGA1200;Bpc;499.9;9
+19941;motherboard;Placa Mae H610 M.2 SSD Delta-h610m2k;Delta;519.9;14
+21131;motherboard;Placa Mae Lga 1700 G-B760 Revenger;Revenger;579.9;14
+18307;motherboard;Placa Mae Lga 1700 G-B760 Revenger;Revenger;589.9;17
+19486;motherboard;Placa Mae B450M-A DDR4 Angthumb;Binario;629.9;1
+13927;motherboard;Placa Mae c/ Processador I7 G11800H DDR4;Knup;1579.9;3
+16472;motherboard;Placa Mae c/ Processador I7 G10870H DDR4;Knup;1579.9;17
+19978;motherboard;Placa Mae c/ Processador I5 G11500H DDR4;Knup;1579.9;9
+19367;motherboard;Placa Mae 9mx87eg7-00-g11 X870 Eagle;Gigabyte;2379.9;13
+9388;memory;Memoria PC 4GB DDR4 Smart 2133MHZ;Smart;79.9;17
+16642;memory;Memoria PC 8GB DDR4 Axpro 3200MHZ;Axpro;99.9;1
+17211;memory;Memoria PC 8GB DDR4 Kgt 2400MHZ;Kingston;99.9;1
+20959;memory;Memoria PC 8GB DDR4 Hyperx 2400MHZ;Hyperx;99.9;1
+17849;memory;Memoria PC 8GB DDR3 Clanm 1600MHZ;Clainm;109.9;8
+8173;memory;Memoria PC 8GB DDR3 1600MHZ OEM;Sem marca;159.9;482
+19932;memory;Memoria PC 8GB DDR3 1600 MHZ Prodrive;Prodrive;159.9;253
+19384;memory;Memoria PC 4GB DDR4 Teikon 2133MHZ;Smart;189.9;77
+19385;memory;Memoria PC 4GB DDR4 Goldkey 2400 MHZ;Kingston;189.9;71
+19685;memory;Memoria PC 8GB DDR3 1600 MHZ Ara-1608p;Aitek;189.9;79
+19871;memory;Memoria PC 4GB DDR4 Adata 2400MHZ;Adata ;189.9;68
+20072;memory;Memoria PC 4GB DDR4 Adata 2133MHZ;Adata ;189.9;73
+9390;memory;Memoria PC 4GB DDR4 2666MHZ;Smart;209.9;1
+17610;memory;Memoria PC 16GB DDR4 Kgt 2666MHZ;Kingston;229.9;1
+7855;memory;Memoria PC 8GB DDR4 Netcore 2666MHZ;Netcore;329.9;119
+1396;memory;Memoria PC 8GB DDR4 2666 MHZ;Kingston;359.9;74
+16120;memory;Memoria PC 8GB DDR4 Desk 3200MHZ;Bpc;359.9;1
+19145;memory;Memoria PC 8GB DDR4 Kgt 3200MHZ;Kingston;359.9;170
+19865;memory;Memoria PC 8GB DDR4 3200MHZ Fury;Kingston;389.9;1
+21336;memory;Memoria PC 8GB DDR4 Keepdata 2666HZ;Keepdata;389.9;50
+20049;memory;Memoria PC 8GB DDR4 Keepdata 2666HZ;Keepdata;469.9;235
+18345;memory;Memoria 8GB DDR4 Hayom 2666 MHZ;Hayom;599.9;15
+19346;memory;Memoria PC 16GB DDR4 Kgt 3200MHZ;Kingston;919.9;2
+15523;memory;Memoria PC 16GB DDR4 3200MHZ Hyperx Fury;Hyperx;990.9;1
+20704;memory;Memoria PC 16GB DDR5 Adata 6400MHZ Br;Adata ;1859.9;4
+20707;memory;Memoria PC 16GB DDR5 Kgt 6400MHZ Pr;Kingston;1979.9;12
+17063;gpu;Placa de Video Geforce G-GT610/2G Reven;Knup;209.9;45
+17103;gpu;Placa de Video NVIDIA Geforce GT730/4G;Nvidia;309.9;100
+21635;gpu;Placa de Video NVIDIA Geforce GT730/4GB;Knup;369.9;35
+19296;gpu;Placa de Video 4GB DDR5 GT740/4G Aitek;Aitek;529.9;15
+20485;gpu;Placa de Video 4GB DDR5 G-GTX750TI;Revenger;719.9;7
+19209;gpu;Placa de Video 4GB DDR5 Delta-rx560;Aitek;799.9;10
+20957;gpu;Placa de Video 4GB DDR5 GTX1050TI;Nvidia;1019.9;15
+20166;gpu;Placa de Video 8GB DDR5 Delta-rx580;Delta;1189.9;1
+25878;storage;SSD Pro-ultra Rapido 120GB Flashdrive;Flash Drive;149.9;40
+26047;storage;SSD M.2 NVME 256GB Pny Cs1031 OEM;Pny;159.9;1
+26064;storage;SSD M2 NVME Cl4-8d256 256GB OEM;Sem marca;169.9;2
+26065;storage;SSD M2 NVME Bc901 256GB Hana OEM;Hana Eletronics;169.9;1
+26067;storage;Mini SSD M2nvmecl1-4d256 256GB Ssstc OEM;Solid State Storage Technology Corporati;169.9;6
+26068;storage;Mini SSD M2 SATA 00up651 256GB OEM;Sem Marca;169.9;5
+10731;storage;HD SSD 120GB Masterdrive;Masterdrive;179.9;13
+26063;storage;SSD M.2 2280 PCIE 256GB Gen3 Adata OEM;Adata ;209.9;1
+21550;storage;SSD 240GB SATA 3.0 Masterdrive;Masterdrive;239.9;291
+25877;storage;SSD Pro-ultra Rapido 240 GB Flashdrive;Flash Drive;239.9;41
+26166;storage;SSD SATA 3 Gamer Black 256GB Cartelado;Gamer Black;249.9;64
+19336;storage;SSD M2 256GB NVME PCIE Gen3x4 Keepdata;Keepdata;349.9;2
+21655;storage;SSD NVME 256GB Kgt;Kingston;399.9;97
+15316;storage;SSD 240GB Sata3 2.5 Burst Elite Patriot;Patriot;449.9;1
+26049;storage;SSD NVME 512GB M.2 PCIE 4.0 Hawking OEM;Hawquing;449.9;2
+25940;storage;SSD Pro-ultra Rapido 480GB Flashdrive;Flash Drive;469.9;201
+3251;storage;SSD SATA 240GB A400;Kingston;479.9;19
+10733;storage;HD SSD 480GB Masterdrive;Masterdrive;479.9;204
+19334;storage;SSD 512GB Onex X-ssd-512;Markvision ;489.9;11
+21521;storage;SSD 480GB SATA 3 Crucial;Crucial;529.9;270
+21321;storage;SSD NVME Nv1 M.2 512GB;Binario;599.9;5
+19149;storage;SSD M2 512GB NVME PCIE Gen3x4 Keepdata;Keepdata;639.9;3
+16874;storage;SSD 500GB M.2 2280 NVME Nm610 Pro Lexar;Lexar;679.9;26
+14103;storage;SSD NVME M.2 Nv3 500GB PCIE 4.0 Kingston;Kingston;869.9;1
+26124;storage;SSD M.2 NVME Wd Green Sn350 1TB;Western Digital;1319.9;4
+20155;psu;Fonte ATX Vx Pro 230W Vx230se;Duex;39.9;11
+10774;psu;Fonte ATX 200W Px300dng 110/220v K-mex S;K-Mex;59.9;22
+11096;psu;Fonte Real 500W 20+4 Pinos Hdw-004 Fonen;Knup;89.9;1
+19686;psu;Fonte LED Power 300W Df-300w-24v;Rohs;89.9;1
+15708;psu;Fonte Tfx 350W 110v/220v Kp-cb202;Knup;99.9;3
+16999;psu;Fonte Afx Slim 350W Bivolt Kp-cb203;Knup;99.9;2
+17555;psu;Fonte ATX 400W Bpc-427v1.0 24 Pinos OEM;Tronos;99.9;1
+19069;psu;Fonte ATX 500W Bpc/5350b-m 24pinos BOX;Tronos;99.9;108
+21062;psu;Fonte para PC 500W Delta-ef500;Delta;139.9;59
+15884;psu;Fonte ATX 500W para PC Ft-500;F3;179.9;1
+15154;psu;Fonte Ez8828c Eztfx 300W 80 Plus Bronze;K-Mex;209.9;14
+13097;psu;Fonte Real 550W Fo-max01 80plus;Knup;259.9;6
+19942;psu;Fonte 650W 80plus Bronze Delta-f650;Delta;259.9;18
+13098;psu;Fonte Gamer 650W Fo-max02 80plus Bronze;Knup;309.9;4
+21080;psu;Fonte ATX 750W Plus Bronze Fo-max03;Revenger;319.9;10
+20854;psu;Fonte ATX 650W 80 Plus Gold Fo-max07;Revenger;399.9;3
+1067;cooler;Cooler Fan 8x8 Dx-8c 80MM Dex C/conector;Dex;12.9;63
+13986;cooler;Cooler G-VR300 Knup;Knup;19.9;1
+15397;cooler;Cooler para Processador INTEL;Brazil Pc;19.9;3
+17041;cooler;Cooler Duex 115X Dx C1;Knup;19.9;4266
+20830;cooler;Cooler p/ Processador INTEL Akfan D85;Intel;19.9;92
+18225;cooler;Cooler RGB 120MM Delta-c1261p;Delta;29.9;7
+18226;cooler;Cooler RGB 120MM Delta-c1261b;Delta;29.9;37
+15507;cooler;Cooler G-VR348 Knup Universal;Knup;39.9;50
+21122;cooler;Cooler RGB 120MM Delta-c0107;Delta;39.9;1
+20990;cooler;Cooler G-VR357 Knup Universal;Knup;79.9;9
+17230;cooler;Fan Cooler G-VR352K P/gabinete;Knup;109.9;7
+19721;cooler;Cooler RGB 180W Delta-c4218;Delta;109.9;19
+25904;cooler;KIT Cooler RGB 120MM Delta-c1263b;Delta;139.9;1
+20951;cooler;Cooler RGB 200W Delta-c6220;Delta;159.9;19
+6074;cooler;KIT Ventilacao c/ 02 Coolers 12V Padrao;Knup;249.9;11
+21476;case;Gabinete Matx Bpc-n114matx M255 C/fonte;Bpc;109.9;20
+21562;case;Gabinete Gb1751 Hayom+fonte 230W Vxpro;Hayom;109.9;1
+19308;case;Gabinete Matx Bpc-n110matx- Bm255 C/fo;Bpc;119.9;29
+21577;case;Gabinete Gamer c/ 3 Fans Gb1727 Hayom;Hayom;169.9;23
+19087;case;Gabinete Gamer Gb1710 com 3 Fans Hayom;Hayom;259.9;3
+13549;case;Gabinete ATX Cx-2d67 S/fonte Preto;K-Mex;299.9;22
+18824;case;Gabinete Slim Matx Tfx Q5M Sff C/fonte;K-Mex;359.9;111
+19001;case;Gabinete Gamer c/ 5 Fans D-matx11;Grasep;439.9;1
+18998;case;Gabinete Gamer c/ 7 Fans D-atx08;Grasep;529.9;1
+18999;case;Gabinete Gamer c/ 7 Fans D-atx09;Grasep;549.9;1
+19324;case;Gabinete Gamer 4 Fans D-matx05;Grasep;589.9;1
+19002;case;Gabinete Gamer c/ 6 Fans D-atx12;Grasep;609.9;1
+1203;monitor;Switch de Monitor Kvm 2 Portas Sem Os Ca;Sem marca;39.9;40
+1216;monitor;Switch de Monitor Kvm 4 Portas Sem Os Ca;Sem marca;59.9;46
+19669;monitor;Luminaria de LED para Monitor Ald-ac3065;Aitek;89.9;13
+14884;monitor;Coluna Pedestal para Monitor D-zj01-1;Pix ;99.9;15
+14282;monitor;Monitor LED 19tronos Trs-hk19wy Preto;Tronos;209.9;70
+16042;monitor;Monitor 19 TN - 60HZ - 5-8ms - Axpro;Axpro;269.9;38
+16043;monitor;Monitor 21,5 TN - 60HZ - 5-8ms - Axpro;Binario;329.9;19
+16044;monitor;Monitor 23 TN - 60HZ - 5-8ms - Axpro;Binario;349.9;1
+17954;monitor;Delta-m3220a Pro Monitor Gamer 32P;Aitek;1629.9;2
+17953;monitor;Delta-m3240a Pro Monitor 75HZ Gamer 32P;Aitek;1919.9;3
+17952;monitor;Delta-m3820auc Pro Monitor Gamer 38P;Aitek;2439.9;1
+17951;monitor;Monitor Gamer 49P Delta-m4922auc Pro;Aitek;4529.9;2
+14565;keyboard;Teclado USB Padrao com Fio Kb110 Duex;C3 Tech;19.9;1
+16270;keyboard;Teclado Office USB Fio Santana 015-0041;Santana;19.9;40
+16592;keyboard;Teclado com Fio USB 5VDC Abnt2 Kp-te148;Knup;22.9;4
+13271;keyboard;KIT Teclado/mouse C/fio Office Kc-500 5+;Santana;29.9;13
+13675;keyboard;Teclado Basico USB Tf100 Tc193 Mult;Multilaser;29.9;1
+18063;keyboard;Teclado Sem Fio Kp-2048;Knup;29.9;14
+18724;keyboard;KIT Teclado e Mouse C/fio Kapbom Ka-670;Kap Bom;29.9;28
+18725;keyboard;Teclado C/fio Abnt2 Kapbom Ka-691;Kap Bom;29.9;480
+26171;keyboard;Teclado Multimidia Keyboard-km-3928;Ninja;29.9;262
+16425;keyboard;Combo Wireless 2.4GHZ Offi Mouse/teclado;Santana;39.9;20
+18831;keyboard;Teclado Multimidia Km3928u;Ninja;39.9;182
+19608;keyboard;Teclado Gamer Single Hand Kp-te133;Knup;39.9;1
+17895;keyboard;KIT Teclado Emouse S Fio Haoqing Hq-1633;Haoquing;49.9;2
+15632;keyboard;Mini Teclado Sem Fio Bluetooth Kp-te109;Knup;59.9;7
+25371;keyboard;Teclado Bluetooth Fr-3001;Peining;59.9;1
+26170;keyboard;KIT Mouse Mo-236+teclado Km-3928;Ninja;59.9;194
+24946;keyboard;KIT Mouse/teclado S/fio 2.4G Pei-fr-3022;Peining;79.9;1
+25362;keyboard;Teclado Sem Fio Pei-fr-3023;Peining;79.9;1
+25366;keyboard;KIT de Teclado Sem Fio Pei-fr12;Peining;79.9;1
+18371;keyboard;KIT Teclado e Mouse Gamer Kp-te147;Knup;109.9;1
+25358;keyboard;Teclado Semi Mercanico Pei-fr01;Peining;109.9;1
+25361;keyboard;Teclado Mercanico Pei-fr03;Peining;109.9;1
+19238;keyboard;Teclado Gamer com Fio RGB Ate-m8701;Aitek;119.9;4
+25370;keyboard;KIT de Teclado Sem Fio Pei-fr09;Peining;119.9;1
+25376;keyboard;KIT de Teclado Sem Fio Pei-fr08;Peining;119.9;1
+25854;keyboard;KIT Teclado e Mouse Sem Fio Pei-mk01;Peining;119.9;1
+21624;keyboard;Teclado Mecanico RGB LED Delta-tm1071;Delta;130.9;17
+25368;keyboard;KIT Teclado Sem Fio Pei-mk02;Peining;139.9;1
+25369;keyboard;Teclado com Fio Mecanico Pei-fr-3025;Peining;139.9;1
+21623;keyboard;Teclado Mecanico RGB LED Delta-tm1111;Delta;149.9;8
+25372;keyboard;KIT de Teclado Sem Fio Pei-fr10;Peining;149.9;1
+15665;keyboard;Mini Teclado Dobravel C Touchpad Ims-950;Imenso;159.9;4
+25365;keyboard;Teclado com Fio Mecanico Pei-fr07;Peining;219.9;1
+25375;keyboard;Teclado com Fio Mecanico Pei-fr06;Peining;229.9;1
+14566;mouse;Mouse USB Padrao com Fio M365 Duex;Duex;5.9;3546
+16632;mouse;Mouse USB Office Pr 1000DPI 015-0043 5+;Santana;5.9;12175
+18978;mouse;Mouse Optico USB com Fio Ka-601 Kapbom;Kap Bom;5.9;323
+18806;mouse;Mouse 5+gamer Start 2.0 Preto/vermelho;Santana;6.9;480
+20452;mouse;Mouse 5+gamer RGB 1200DPI C/fio 015-0086;Santana;8.9;3
+13830;mouse;Mouse com Fio Multi Mf100 1200DPI;Multilaser;9.9;1745
+19697;mouse;Mouse Sem Fio USB Office 015-0080;Santana;9.9;658
+17654;mouse;Mouse Gamer C/fio 3 Botoes Knup Kp-mu003;Knup;11.9;4
+11411;mouse;Mouse Optico Ninja Mo-m236 1200DPI USB;Ninja;15.9;60
+15633;mouse;Mouse Gamer USB LED Kp-mu013 Knup;Knup;19.9;100
+16996;mouse;Controle Remoto Air Mouse Le-7716;Lelong;19.9;93
+25821;mouse;Mouse com Fio Pei-jt08;Peining;19.9;1
+12905;mouse;Mouse Optico Gamer 3200DPI Kp-v4 Knup;Knup;29.9;75
+16444;mouse;Mouse Optico C/fiousb Acer M117 Branco;Acer;29.9;20
+25264;mouse;Mouse com Fio Game Peining Pei-me04;Peining;29.9;1
+25819;mouse;Mouse com Fio Pei-jt07;Peining;29.9;1
+16739;mouse;Mouse S/ Fio Bluetooth 2400DPI Kp-mu023;Knup;39.9;1
+17957;mouse;Mouse Sem Fio Kp-mu029;Knup;39.9;45
+18186;mouse;Mouse Gamer Aura Sync 7D Delta-vm7048;Delta;39.9;44
+25267;mouse;Mouse com Fio Game Peining Pei-me07;Peining;49.9;1
+17956;mouse;Mouse Gamer com Fio Kp-mu007;Knup;59.9;47
+18187;mouse;Mouse Gamer Aura Sync 9D Delta-vm9128;Delta;59.9;74
+21850;mouse;Mouse Sem Fio Peining Pei-me12;Peining;59.9;1
+25274;mouse;Mouse Sem Fio Peining Pei-me10;Peining;59.9;1
+16446;mouse;Mouse Optico com Fio USB Acer Emw130;Acer;69.9;55
+19512;chair;Cadeira Escritorio Smart Fixa;Jgm;309.9;1
+21369;chair;Conjunto Mesa e Cadeira Oif-7640;Oasis;429.9;1
+18391;chair;Cadeira Escritorio Ergonomica Mcc-p021;Tomate;649.9;1
+17984;chair;Cadeira de Balanco Reclinavel Mcc-p025;Tomate;689.9;1

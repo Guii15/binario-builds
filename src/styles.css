@@ -479,18 +479,24 @@
   }
 
   /* Product List & Cards */
+  /* Dois produtos por linha: o catalogo real tem centenas de itens e uma
+     coluna so obrigava a rolar demais pra comparar. */
   .products-list-wrapper {
-    display: flex;
-    flex-direction: column;
-    divide-y: 1px solid #d7dde8;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
   }
 
   .product-item-card {
     display: grid;
-    grid-template-columns: 88px minmax(0, 1fr) auto;
-    gap: 1.25rem;
+    grid-template-columns: 88px minmax(0, 1fr);
+    grid-template-areas:
+      "foto info"
+      "acao acao";
+    gap: 0.75rem 1.25rem;
     align-items: center;
-    padding: 1.25rem 1.5rem;
+    padding: 1.25rem;
+    border-right: 1px solid #d7dde8;
     transition:
       background 0.15s ease,
       border-color 0.15s ease,
@@ -514,6 +520,36 @@
   }
 
   /* Hardware Thumbnail Visual */
+  .product-item-card .hardware-thumb-box {
+    grid-area: foto;
+  }
+  .product-item-card .product-info-col {
+    grid-area: info;
+  }
+  .product-item-card .product-price-col {
+    grid-area: acao;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #e9eef7;
+    text-align: left;
+  }
+  /* Abre a ficha do produto; o card inteiro nao vira botao pra nao
+     atrapalhar quem so quer clicar em adicionar. */
+  .product-ver-mais {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-top: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--primary);
+    cursor: pointer;
+    text-decoration: underline;
+  }
   .hardware-thumb-box {
     position: relative;
     display: flex;
@@ -2915,4 +2951,64 @@ button:not(:disabled):active,
 .qty-stepper button:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+}
+
+/* ---- Ficha tecnica da peca (modal do "Ver detalhes") ---- */
+.peca-ficha {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr);
+  gap: 0.4rem 0.75rem;
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+}
+.peca-ficha dt {
+  color: var(--muted-foreground);
+  font-weight: 600;
+}
+.peca-ficha dd {
+  margin: 0;
+  color: var(--foreground);
+  font-weight: 600;
+}
+.peca-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.85rem;
+}
+.peca-descricao {
+  margin: 0.85rem 0 0;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+}
+.peca-rodape {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border);
+}
+.peca-rodape strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--pix-green);
+}
+.peca-rodape span {
+  font-size: 0.72rem;
+  color: var(--muted-foreground);
+}
+/* Catalogo volta pra uma coluna no celular */
+@media (max-width: 900px) {
+  .products-list-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .product-item-card {
+    border-right: none;
+  }
 }
