@@ -3100,3 +3100,86 @@ button:not(:disabled):active,
 .dark .btn-tema-outline:hover {
   background: #1c2942;
 }
+
+/* ---------------------------------------------------------------------
+   Envio do orcamento em PDF.
+   O link do WhatsApp so carrega texto, entao o PDF vai pelo menu de
+   compartilhamento do celular (que aceita arquivo). No PC nao existe esse
+   menu: o arquivo baixa e o vendedor anexa na conversa.
+   --------------------------------------------------------------------- */
+.btn-pdf-cliente {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--primary);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    opacity 0.2s ease;
+}
+.btn-pdf-cliente:hover:not(:disabled) {
+  background: var(--accent);
+}
+.btn-pdf-cliente:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.pdf-dica {
+  margin: 0.5rem 0 0;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: var(--muted-foreground);
+}
+
+/* Destino do T.I.: abrir conversa + mandar com PDF */
+.destino-linha {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.4rem;
+  align-items: stretch;
+}
+.btn-com-pdf {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--secondary);
+  color: var(--foreground);
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.btn-com-pdf:hover:not(:disabled) {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.btn-com-pdf:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* O bloco do orcamento fica escondido na tela; durante a captura do PDF
+   ele precisa existir com tamanho real, mas fora do campo de visao. */
+.print-budget-capturando {
+  display: block !important;
+  position: fixed;
+  left: -10000px;
+  top: 0;
+  width: 794px; /* A4 a 96dpi */
+  background: #ffffff;
+  color: #101724;
+  padding: 24px;
+  z-index: -1;
+}

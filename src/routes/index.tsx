@@ -38,7 +38,7 @@ import {
   Moon,
   History,
 } from "lucide-react";
-import { useEffect, useMemo, useState, type ComponentType } from "react";
+import { useEffect, useMemo, useRef, useState, type ComponentType } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -3527,6 +3527,9 @@ export const Route = createFileRoute("/")({
 function Index() {
   const [active, setActive] = useState<Category>("cpu");
   const [detalhePeca, setDetalhePeca] = useState<Part | null>(null);
+  const [gerandoPdf, setGerandoPdf] = useState(false);
+  const [pdfBaixado, setPdfBaixado] = useState(false);
+  const printRef = useRef<HTMLDivElement>(null);
   const [fichasPreset, setFichasPreset] = useState(false);
   const [fichasEstoque, setFichasEstoque] = useState(false);
   const [selected, setSelected] = useState<Record<string, number>>({});
@@ -4096,6 +4099,82 @@ function Index() {
     setReviewMode(false);
   }
 
+  // ---- PDF do orcamento -------------------------------------------------
+  // O bloco .print-budget ja existe pra impressao; aqui ele vira imagem e
+  // entra num PDF A4, pra poder ser anexado no WhatsApp.
+  async function gerarPdf(): Promise<File | null> {
+    const alvo = printRef.current;
+    if (!alvo) return null;
+    setGerandoPdf(true);
+    try {
+      const [{ default: html2canvas }, { jsPDF }] = await Promise.all([
+        import("html2canvas"),
+        import("jspdf"),
+      ]);
+      // O bloco fica escondido na tela; mostra so pro print e esconde de novo.
+      alvo.classList.add("print-budget-capturando");
+      const canvas = await html2canvas(alvo, {
+        scale: 2,
+        backgroundColor: "#ffffff",
+        useCORS: true,
+      });
+      alvo.classList.remove("print-budget-capturando");
+
+      const pdf = new jsPDF({ unit: "mm", format: "a4" });
+      const larguraPagina = pdf.internal.pageSize.getWidth();
+      const alturaPagina = pdf.internal.pageSize.getHeight();
+      const margem = 10;
+      const largura = larguraPagina - margem * 2;
+      const altura = (canvas.height * largura) / canvas.width;
+      const img = canvas.toDataURL("image/jpeg", 0.92);
+
+      // Orcamento longo quebra em varias paginas.
+      let restante = altura;
+      let posicao = margem;
+      pdf.addImage(img, "JPEG", margem, posicao, largura, altura);
+      restante -= alturaPagina - margem * 2;
+      while (restante > 0) {
+        posicao = restante - altura + margem;
+        pdf.addPage();
+        pdf.addImage(img, "JPEG", margem, posicao, largura, altura);
+        restante -= alturaPagina - margem * 2;
+      }
+
+      const nome = `orcamento-binario-${new Date().toISOString().slice(0, 10)}.pdf`;
+      return new File([pdf.output("blob")], nome, { type: "application/pdf" });
+    } catch {
+      return null;
+    } finally {
+      setGerandoPdf(false);
+    }
+  }
+
+  // Compartilha o PDF. No celular abre o menu do sistema (da pra escolher o
+  // WhatsApp e o arquivo vai anexado). No PC o menu nao existe, entao baixa.
+  async function compartilharPdf(texto: string) {
+    const arquivo = await gerarPdf();
+    if (!arquivo) return false;
+    const nav = navigator as Navigator & {
+      canShare?: (d: { files?: File[] }) => boolean;
+    };
+    if (nav.share && nav.canShare?.({ files: [arquivo] })) {
+      try {
+        await nav.share({ files: [arquivo], text: texto });
+        return true;
+      } catch {
+        // usuario fechou o menu: nao baixa por cima
+        return false;
+      }
+    }
+    const url = URL.createObjectURL(arquivo);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = arquivo.name;
+    a.click();
+    URL.revokeObjectURL(url);
+    return false;
+  }
+
   function abrirWhats(numero: string, texto: string) {
     window.open(
       `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`,
@@ -4147,6 +4226,31 @@ function Index() {
   }
 
   // Orcamento montado peca a peca -> vai pro WhatsApp do vendedor escolhido.
+  // Mesmo texto do orcamento, sem destinatario fixo: serve pro PDF que vai
+  // pro cliente.
+  function textoOrcamento(saudacao: string) {
+    const linhas = [
+      ...chosen.map((part) => `• [${part.code}] *${part.name}* - ${money.format(part.pixPrice)}`),
+      ...linhasCotacao,
+    ].join("\n");
+    const aviso = cotacoes.length
+      ? `\n\n_${cotacoes.length} item(ns) marcado(s) como A COTAR ainda não entram no total._`
+      : "";
+    const obs = observacao.trim() ? `\n\n*Observação:* ${observacao.trim()}` : "";
+    return `${saudacao}\n\n${linhas || "Montagem em andamento."}\n\n*Total*: ${money.format(totalPix)}${aviso}${obs}\n\nMontagem inclusa, feita aqui em Varginha.`;
+  }
+
+  // Manda o orcamento em PDF pro cliente. No celular abre o menu do sistema
+  // com o arquivo anexado; no PC baixa pra anexar na conversa.
+  async function enviarPdfCliente() {
+    if (!chosen.length && !cotacoes.length) return;
+    const quem = vendedor && !ehCliente ? `, ${vendedor.nome} da Binário` : "";
+    const compartilhou = await compartilharPdf(
+      textoOrcamento(`Segue o orçamento do seu PC${quem}:`),
+    );
+    if (!compartilhou) setPdfBaixado(true);
+  }
+
   function enviarOrcamento(item: Vendedor) {
     const linhas = [
       ...chosen.map((part) => `• [${part.code}] *${part.name}* — ${money.format(part.pixPrice)}`),
@@ -4184,6 +4288,15 @@ function Index() {
   // o navegador nao bloquear como pop-up (era o motivo de so ir pro Estoque).
   function enviarDestinoTI(contato: Vendedor) {
     abrirWhats(contato.numero, textoSeparacao());
+  }
+
+  // Mesma lista, mas levando o PDF junto.
+  async function enviarDestinoTIComPdf(contato: Vendedor) {
+    const texto = textoSeparacao();
+    const compartilhou = await compartilharPdf(texto);
+    // Sem menu de compartilhamento (PC): o PDF baixou, abre a conversa pra
+    // o vendedor anexar o arquivo que acabou de cair na pasta.
+    if (!compartilhou) abrirWhats(contato.numero, texto);
   }
 
   function sendToTI() {
@@ -4293,17 +4406,24 @@ function Index() {
 
         <div className="seller-grid">
           {CONTATOS_TI.map((contato) => (
-            <button
-              key={contato.numero}
-              onClick={() => enviarDestinoTI(contato)}
-              className="seller-btn"
-            >
-              <span className="seller-avatar">
-                <Package className="w-4 h-4" />
-              </span>
-              <span className="seller-name">{contato.nome}</span>
-              <MessageCircle className="w-4 h-4 text-emerald-600 shrink-0" />
-            </button>
+            <div key={contato.numero} className="destino-linha">
+              <button onClick={() => enviarDestinoTI(contato)} className="seller-btn">
+                <span className="seller-avatar">
+                  <Package className="w-4 h-4" />
+                </span>
+                <span className="seller-name">{contato.nome}</span>
+                <MessageCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+              </button>
+              <button
+                onClick={() => enviarDestinoTIComPdf(contato)}
+                className="btn-com-pdf"
+                disabled={gerandoPdf}
+                title="Abre o compartilhamento com o PDF anexado"
+              >
+                <Download className="w-3.5 h-3.5" />
+                {gerandoPdf ? "Gerando..." : "Com PDF"}
+              </button>
+            </div>
           ))}
         </div>
 
@@ -4368,7 +4488,7 @@ function Index() {
 
   // Bloco que sai no PDF / impressao. Fica escondido na tela.
   const printBudget = (
-    <div className="print-budget">
+    <div className="print-budget" ref={printRef}>
       <div className="print-budget-head">
         <img src={LOGO_DARK} alt="Binário Tecnologia" />
         <div>
@@ -4671,6 +4791,22 @@ function Index() {
                 <MessageCircle className="w-5 h-5 fill-current" />
                 <span>Finalizar no WhatsApp</span>
               </button>
+
+              <button
+                disabled={(!chosen.length && !cotacoes.length) || gerandoPdf}
+                onClick={enviarPdfCliente}
+                className="btn-pdf-cliente no-print"
+              >
+                <Download className="w-4 h-4" />
+                <span>{gerandoPdf ? "Gerando PDF..." : "Enviar PDF pro cliente"}</span>
+              </button>
+
+              {pdfBaixado && (
+                <p className="pdf-dica no-print">
+                  PDF baixado. Abra a conversa do cliente no WhatsApp e anexe o arquivo. No celular
+                  ele vai anexado sozinho.
+                </p>
+              )}
 
               <div className="grid grid-cols-2 gap-2 mt-3 no-print">
                 <Button
