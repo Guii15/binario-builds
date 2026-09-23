@@ -5293,6 +5293,22 @@ function Index() {
                     <span>Finalizar no WhatsApp</span>
                   </button>
 
+                  <button
+                    disabled={(!chosen.length && !cotacoes.length) || gerandoPdf}
+                    onClick={enviarPdfCliente}
+                    className="btn-pdf-cliente"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>{gerandoPdf ? "Gerando PDF..." : "Enviar PDF pro cliente"}</span>
+                  </button>
+
+                  {pdfBaixado && (
+                    <p className="pdf-dica">
+                      PDF baixado. Abra a conversa do cliente e anexe o arquivo. No celular ele vai
+                      anexado sozinho.
+                    </p>
+                  )}
+
                   <div className="grid grid-cols-2 gap-2 mt-3">
                     <Button
                       variant="outline"
