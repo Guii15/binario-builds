@@ -49,6 +49,12 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import catalogo from "@/data/catalogo.json";
+import {
+  fonteNecessaria,
+  memoriaDaPlaca,
+  memoriasCompativeis,
+  socketCompativel,
+} from "@/lib/compatibilidade";
 
 type Category =
   | "cpu"
@@ -652,8 +658,7 @@ function Index() {
   const pentesUsados = rams.reduce((sum, r) => sum + (selected[r.id] ?? 1), 0);
   const slotsCheios = slotsDaPlaca !== undefined && pentesUsados >= slotsDaPlaca;
 
-  const requiredWatts =
-    cpu && gpu ? Math.ceil(((cpu.watts ?? 65) + (gpu.watts ?? 0) + 220) / 50) * 50 : 0;
+  const requiredWatts = fonteNecessaria(cpu, gpu);
   const currentPsuWatts = psu?.watts ?? 0;
   const powerOk = !requiredWatts || !psu || currentPsuWatts >= requiredWatts;
   const wattsPct =
@@ -661,13 +666,9 @@ function Index() {
       ? Math.min(100, Math.round((requiredWatts / currentPsuWatts) * 100))
       : 0;
 
-  const socketOk = !cpu?.socket || !mobo?.socket || cpu.socket === mobo.socket;
-
-  // O tipo de memoria e ditado pela placa-mae. Enquanto ela nao for escolhida,
-  // deduzimos pelo socket do processador (AM4 -> DDR4, AM5 -> DDR5).
-  const boardMemType: "DDR3" | "DDR4" | "DDR5" | undefined =
-    mobo?.memType ?? (cpu?.socket === "AM5" ? "DDR5" : cpu?.socket === "AM4" ? "DDR4" : undefined);
-  const ramOk = !boardMemType || rams.every((r) => !r.memType || r.memType === boardMemType);
+  const socketOk = socketCompativel(cpu, mobo);
+  const boardMemType = memoriaDaPlaca(mobo, cpu);
+  const ramOk = memoriasCompativeis(boardMemType, rams);
 
   // ----- Checklist de compatibilidade -----
   type Check = { estado: "ok" | "warn" | "pending"; texto: string };
