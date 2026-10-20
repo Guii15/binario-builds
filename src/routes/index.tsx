@@ -1821,9 +1821,6 @@ function Index() {
             <a href="#estoque" className="hover:text-blue-600 transition-colors">
               Pronta Entrega
             </a>
-            <a href="#empresas" className="hover:text-blue-600 transition-colors">
-              Empresas e Órgãos
-            </a>
           </nav>
 
           <div className="flex items-center gap-3">
@@ -2452,8 +2449,8 @@ function Index() {
             <div className="section-title-head">
               <h2>Configurações Recomendadas pelos Nossos Técnicos</h2>
               <p>
-                Modelos montados e testados pela equipe da Binário. Você pode carregar uma build e
-                alterar qualquer peça.
+                Modelos montados e testados pela equipe da Binário, incluindo os mais pedidos por
+                empresas e órgãos públicos. Você pode carregar uma build e alterar qualquer peça.
               </p>
             </div>
 
@@ -2519,22 +2516,6 @@ function Index() {
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Modelos para empresas e orgaos publicos (base: orcamentos de licitacao) */}
-        <section id="empresas" className="presets-section empresas-section no-print">
-          <div className="shell">
-            <div className="section-title-head">
-              <h2>Modelos para Empresas e Órgãos Públicos</h2>
-              <p>
-                As configurações que mais pedem nas licitações. Carregue um modelo, ajuste as peças
-                e peça a cotação do que está marcado como "a cotar".
-              </p>
-            </div>
-
-            <div className="presets-cards-grid">
               {modelosEmpresa.map((modelo) => {
                 const itens = Object.entries(modelo.pecas).flatMap(([id, qtd]) => {
                   const peca = parts.find((p) => p.id === id);
