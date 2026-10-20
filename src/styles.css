@@ -3183,3 +3183,200 @@ button:not(:disabled):active,
   padding: 24px;
   z-index: -1;
 }
+
+/* =====================================================================
+   Ajustes 20/10/2026 — trilha de etapas numa linha só, resumo enxuto,
+   peça sem foto e total fixo no celular.
+   ===================================================================== */
+
+/* --- Trilha: as 12 etapas numa linha, ícone em cima do nome ----------- */
+.tab-icone {
+  position: relative;
+  display: inline-flex;
+}
+.tab-feito {
+  position: absolute;
+  top: -0.35rem;
+  right: -0.45rem;
+  display: grid;
+  width: 0.85rem;
+  height: 0.85rem;
+  place-items: center;
+  border-radius: 9999px;
+  background: #1a7f4b;
+  color: #ffffff;
+}
+.category-tab-btn[data-done="true"]:not([aria-selected="true"]) {
+  border-color: #1a7f4b;
+}
+
+@media (min-width: 1100px) {
+  .step-rail-container {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+  }
+  .category-tab-btn {
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.6rem 0.25rem;
+    font-size: 0.76rem;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.15;
+  }
+}
+
+/* --- Barra de progresso das peças essenciais ------------------------ */
+.progresso-montagem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.progresso-trilho {
+  flex: 1;
+  height: 0.3rem;
+  border-radius: 9999px;
+  background: #e9eef7;
+  overflow: hidden;
+}
+.progresso-trilho span {
+  display: block;
+  height: 100%;
+  background: #1a7f4b;
+  transition: width 0.3s ease;
+}
+.progresso-texto {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #3d4859;
+  white-space: nowrap;
+}
+.dark .progresso-trilho {
+  background: var(--border);
+}
+.dark .progresso-texto {
+  color: var(--muted-foreground);
+}
+
+/* --- Resumo: o que falta vira uma linha de atalhos ------------------ */
+.falta-escolher {
+  padding: 0.75rem 0.5rem 0.25rem;
+}
+.falta-escolher small {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #6a7689;
+}
+.falta-escolher-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.falta-escolher-lista button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.6rem;
+  border: 1px dashed #b9c3d3;
+  border-radius: 9999px;
+  background: transparent;
+  color: #3d4859;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.falta-escolher-lista button:hover {
+  border-color: #0b4fa8;
+  color: #0b4fa8;
+}
+.dark .falta-escolher-lista button {
+  border-color: var(--border);
+  color: var(--foreground);
+}
+
+/* --- Peça sem foto: mesma moldura azul e vermelha das fotos reais ---- */
+.hardware-thumb-box[data-sem-foto="true"] {
+  background: #ffffff;
+  gap: 0.4rem;
+  color: #8f9bac;
+}
+.hardware-thumb-box[data-sem-foto="true"]::before,
+.hardware-thumb-box[data-sem-foto="true"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 6%;
+}
+.hardware-thumb-box[data-sem-foto="true"]::before {
+  top: 0;
+  background: linear-gradient(90deg, #07213f 0 38%, #c62230 38% 100%);
+}
+.hardware-thumb-box[data-sem-foto="true"]::after {
+  bottom: 0;
+  background: linear-gradient(90deg, #c62230 0 62%, #07213f 62% 100%);
+}
+.sem-foto-texto {
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+.dark .hardware-thumb-box[data-sem-foto="true"] {
+  background: var(--card);
+}
+
+/* --- Celular: total sempre à vista ---------------------------------- */
+.barra-total-celular {
+  display: none;
+}
+@media (max-width: 1024px) {
+  .barra-total-celular {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom));
+    background: #07213f;
+    color: #ffffff;
+    box-shadow: 0 -6px 20px rgba(7, 33, 63, 0.25);
+  }
+  .barra-total-celular small {
+    display: block;
+    font-size: 0.72rem;
+    color: #8fb3dd;
+  }
+  .barra-total-celular strong {
+    font-size: 1.1rem;
+  }
+  .barra-total-celular a {
+    padding: 0.55rem 1rem;
+    border-radius: 0.5rem;
+    background: #ffffff;
+    color: #07213f;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  /* espaço pra barra não cobrir o rodapé */
+  .site-footer {
+    padding-bottom: 5rem;
+  }
+}
+
+/* No escuro o codigo da peca no resumo ganha fundo; sem isso ele esticava a linha toda. */
+.dark .summary-item-code {
+  width: fit-content;
+  max-width: 100%;
+  padding: 0 0.3rem;
+  border-radius: 0.25rem;
+}

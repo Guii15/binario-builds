@@ -715,6 +715,10 @@ function Index() {
   const ESSENCIAIS: Category[] = ["cpu", "motherboard", "memory", "storage", "psu", "case"];
   const faltando = ESSENCIAIS.filter((id) => !chosen.some((p) => p.category === id));
   const faltandoLabels = faltando.map((id) => categories.find((c) => c.id === id)?.short ?? id);
+  // Peças da máquina (não periféricos) que ainda não foram escolhidas.
+  const pendentes = categories.filter(
+    (c) => !c.periferico && !chosen.some((p) => p.category === c.id),
+  );
 
   // ----- Sugestão de upgrade -----
   // Pra categoria de escolha única (memória/SSD ficam de fora, são multi),
@@ -1421,26 +1425,9 @@ function Index() {
           const itens = chosen.filter((item) => item.category === category.id);
           const CategoryIcon = category.icon;
 
-          // Categoria sem peça: no modo resumo e nos periféricos, some.
-          // Nas peças obrigatórias, mostra uma linha "clique para escolher".
-          if (!itens.length) {
-            if (reviewMode || category.periferico) return null;
-            return (
-              <div
-                key={category.id}
-                onClick={() => setActive(category.id)}
-                className="summary-item-row cursor-pointer hover:bg-slate-50 px-2 rounded transition-colors"
-              >
-                <div className="flex items-center gap-2 min-w-0">
-                  <CategoryIcon className="w-4 h-4 text-slate-400 shrink-0" />
-                  <div className="summary-item-label">
-                    <small>{category.short}</small>
-                    <strong>Clique para escolher</strong>
-                  </div>
-                </div>
-              </div>
-            );
-          }
+          // Categoria sem peça some daqui; as obrigatórias que faltam
+          // aparecem juntas no bloco "Falta escolher" logo abaixo.
+          if (!itens.length) return null;
 
           return itens.map((part) => {
             const qtd = selected[part.id] ?? 1;
@@ -1470,6 +1457,23 @@ function Index() {
             );
           });
         })}
+
+        {!reviewMode && pendentes.length > 0 && (
+          <div className="falta-escolher">
+            <small>{chosen.length ? "Falta escolher" : "Comece pelo processador"}</small>
+            <div className="falta-escolher-lista">
+              {pendentes.map((category) => {
+                const Icon = category.icon;
+                return (
+                  <button key={category.id} type="button" onClick={() => setActive(category.id)}>
+                    <Icon className="w-3.5 h-3.5" />
+                    {category.short}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         {cotacoes.map((item) => (
           <div key={item.id} className="summary-item-row px-2">
@@ -1824,7 +1828,7 @@ function Index() {
           <div className="shell">
             {/* Step Category Rail */}
             <div className="step-rail-container" role="tablist" aria-label="Categorias de peças">
-              {categories.map((category, index) => {
+              {categories.map((category) => {
                 const done = chosen.some((part) => part.category === category.id);
                 const Icon = category.icon;
                 return (
@@ -1837,14 +1841,33 @@ function Index() {
                     className="category-tab-btn"
                     onClick={() => setActive(category.id)}
                   >
-                    <span className="tab-status-icon">
-                      {done ? <Check className="w-3.5 h-3.5" /> : String(index + 1)}
+                    <span className="tab-icone">
+                      <Icon className="w-4 h-4" />
+                      {done && (
+                        <span className="tab-feito" aria-label="escolhido">
+                          <Check className="w-2.5 h-2.5" />
+                        </span>
+                      )}
                     </span>
-                    <Icon className="w-4 h-4" />
                     <span>{category.short}</span>
                   </button>
                 );
               })}
+            </div>
+
+            <div className="progresso-montagem" aria-live="polite">
+              <div className="progresso-trilho">
+                <span
+                  style={{
+                    width: `${((ESSENCIAIS.length - faltando.length) / ESSENCIAIS.length) * 100}%`,
+                  }}
+                />
+              </div>
+              <span className="progresso-texto">
+                {faltando.length === 0
+                  ? "Peças essenciais escolhidas"
+                  : `${ESSENCIAIS.length - faltando.length} de ${ESSENCIAIS.length} peças essenciais`}
+              </span>
             </div>
 
             {/* Main Builder Catalog & Summary Grid */}
@@ -1938,7 +1961,7 @@ function Index() {
                         key={part.id}
                       >
                         {/* Foto real do produto; se não tiver, mostra o ícone */}
-                        <div className="hardware-thumb-box">
+                        <div className="hardware-thumb-box" data-sem-foto={!part.foto}>
                           {part.foto ? (
                             <img
                               src={part.foto}
@@ -1947,7 +1970,10 @@ function Index() {
                               loading="lazy"
                             />
                           ) : (
-                            <CategoryIcon />
+                            <>
+                              <CategoryIcon />
+                              <span className="sem-foto-texto">Sem foto</span>
+                            </>
                           )}
                         </div>
 
@@ -2113,7 +2139,7 @@ function Index() {
               </div>
 
               {/* Sticky Summary Sidebar */}
-              <aside className="summary-sidebar-card">
+              <aside className="summary-sidebar-card" id="sua-montagem">
                 <div className="summary-sidebar-header">
                   <h3>
                     <PackageCheck className="w-5 h-5 text-emerald-400" />
@@ -2219,6 +2245,20 @@ function Index() {
             </div>
           </div>
         </section>
+
+        {/* No celular o resumo fica lá embaixo; esta barra mantém o total à vista. */}
+        {(chosen.length > 0 || cotacoes.length > 0) && (
+          <div className="barra-total-celular no-print">
+            <div>
+              <small>
+                {chosen.length === 1 ? "1 peça" : `${chosen.length} peças`}
+                {cotacoes.length > 0 && ` + ${cotacoes.length} a cotar`}
+              </small>
+              <strong>{money.format(totalPix)}</strong>
+            </div>
+            <a href="#sua-montagem">Ver montagem</a>
+          </div>
+        )}
 
         {/* Desempenho estimado da montagem */}
         {temDesempenho && (
