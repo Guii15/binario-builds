@@ -72,7 +72,8 @@
       "Socket AM4",
       "Amd"
     ],
-    "detail": "L-PROCESSADOR RYZEN 3 4100 AM4 - SEM BOX"
+    "detail": "L-PROCESSADOR RYZEN 3 4100 AM4 - SEM BOX",
+    "foto": "/fotos/15849.jpg"
   },
   {
     "id": "w17867",
@@ -408,7 +409,8 @@
       "Memoria DDR4",
       "Duex"
     ],
-    "detail": "PLACA MAE VXPRO VXMBH110 LGA1151 DDR4"
+    "detail": "PLACA MAE VXPRO VXMBH110 LGA1151 DDR4",
+    "foto": "/fotos/20430.jpg"
   },
   {
     "id": "w22333",
@@ -481,7 +483,8 @@
       "Memoria DDR4",
       "Revenger"
     ],
-    "detail": "S-PLACA MAE DESK 1151 DDR4 G-B250 KNUP"
+    "detail": "S-PLACA MAE DESK 1151 DDR4 G-B250 KNUP",
+    "foto": "/fotos/15334.jpg"
   },
   {
     "id": "w21563",
@@ -643,7 +646,8 @@
       "Socket LGA1200",
       "Delta"
     ],
-    "detail": "PLACA MAE DELTA H510M2K"
+    "detail": "PLACA MAE DELTA H510M2K",
+    "foto": "/fotos/19632.jpg"
   },
   {
     "id": "w26090",
@@ -732,7 +736,8 @@
       "Socket LGA1200",
       "Bpc"
     ],
-    "detail": "L-PLACA MAE BPC-H510PM.2-G LGA1200"
+    "detail": "L-PLACA MAE BPC-H510PM.2-G LGA1200",
+    "foto": "/fotos/20491.jpg"
   },
   {
     "id": "w19941",
@@ -748,7 +753,8 @@
       "Socket LGA1700",
       "Delta"
     ],
-    "detail": "L-PLACA MAE H610 M.2 SSD DELTA-H610M2K"
+    "detail": "L-PLACA MAE H610 M.2 SSD DELTA-H610M2K",
+    "foto": "/fotos/19941.jpg"
   },
   {
     "id": "w21131",
@@ -848,7 +854,8 @@
       "Memoria DDR4",
       "Knup"
     ],
-    "detail": "PLACA MAE C/ PROCESSADOR I5 G11500H DDR4"
+    "detail": "PLACA MAE C/ PROCESSADOR I5 G11500H DDR4",
+    "foto": "/fotos/19978.jpg"
   },
   {
     "id": "w19367",
@@ -861,7 +868,8 @@
     "specs": [
       "Gigabyte"
     ],
-    "detail": "E-PLACA MAE 9MX87EG7-00-G11 X870 EAGLE"
+    "detail": "E-PLACA MAE 9MX87EG7-00-G11 X870 EAGLE",
+    "foto": "/fotos/19367.jpg"
   },
   {
     "id": "w9388",
@@ -878,7 +886,8 @@
       "DDR4",
       "2133 MHz"
     ],
-    "detail": "MEMORIA PC 4GB DDR4 SMART 2133MHZ"
+    "detail": "MEMORIA PC 4GB DDR4 SMART 2133MHZ",
+    "foto": "/fotos/9388.jpg"
   },
   {
     "id": "w16642",
@@ -1002,7 +1011,8 @@
       "DDR4",
       "2133 MHz"
     ],
-    "detail": "MEMORIA PC 4GB DDR4 TEIKON 2133MHZ"
+    "detail": "MEMORIA PC 4GB DDR4 TEIKON 2133MHZ",
+    "foto": "/fotos/19384.jpg"
   },
   {
     "id": "w19385",
@@ -1019,7 +1029,8 @@
       "DDR4",
       "2400 MHz"
     ],
-    "detail": "MEMORIA PC 4GB DDR4 GOLDKEY 2400 MHZ"
+    "detail": "MEMORIA PC 4GB DDR4 GOLDKEY 2400 MHZ",
+    "foto": "/fotos/19385.jpg"
   },
   {
     "id": "w19685",
@@ -1072,7 +1083,8 @@
       "DDR4",
       "2133 MHz"
     ],
-    "detail": "MEMORIA PC 4GB DDR4 ADATA 2133MHZ"
+    "detail": "MEMORIA PC 4GB DDR4 ADATA 2133MHZ",
+    "foto": "/fotos/20072.jpg"
   },
   {
     "id": "w9390",
@@ -1232,7 +1244,8 @@
       "DDR4",
       "Keepdata"
     ],
-    "detail": "MEMORIA PC 8GB DDR4 KEEPDATA 2666HZ"
+    "detail": "MEMORIA PC 8GB DDR4 KEEPDATA 2666HZ",
+    "foto": "/fotos/20049.jpg"
   },
   {
     "id": "w18345",
@@ -1400,7 +1413,8 @@
       "~60.0 W de consumo",
       "Revenger"
     ],
-    "detail": "L-PLACA DE VIDEO 4GB DDR5 G-GTX750TI"
+    "detail": "L-PLACA DE VIDEO 4GB DDR5 G-GTX750TI",
+    "foto": "/fotos/20485.jpg"
   },
   {
     "id": "w19209",
@@ -1450,7 +1464,8 @@
       "~185.0 W de consumo",
       "Delta"
     ],
-    "detail": "L-PLACA DE VIDEO 8GB DDR5 DELTA-RX580"
+    "detail": "L-PLACA DE VIDEO 8GB DDR5 DELTA-RX580",
+    "foto": "/fotos/20166.jpg"
   },
   {
     "id": "w25878",
@@ -1859,7 +1874,8 @@
       "230.0 W",
       "Duex"
     ],
-    "detail": "FONTE ATX VX PRO 230W VX230SE"
+    "detail": "FONTE ATX VX PRO 230W VX230SE",
+    "foto": "/fotos/20155.jpg"
   },
   {
     "id": "w10774",
@@ -2172,7 +2188,8 @@
     "specs": [
       "Intel"
     ],
-    "detail": "COOLER P/ PROCESSADOR INTEL AKFAN D85"
+    "detail": "COOLER P/ PROCESSADOR INTEL AKFAN D85",
+    "foto": "/fotos/20830.jpg"
   },
   {
     "id": "w18225",
@@ -2227,7 +2244,8 @@
     "specs": [
       "Delta"
     ],
-    "detail": "COOLER RGB 120MM  DELTA-C0107"
+    "detail": "COOLER RGB 120MM  DELTA-C0107",
+    "foto": "/fotos/21122.jpg"
   },
   {
     "id": "w20990",
@@ -2240,7 +2258,8 @@
     "specs": [
       "Knup"
     ],
-    "detail": "COOLER G-VR357 KNUP UNIVERSAL"
+    "detail": "COOLER G-VR357 KNUP UNIVERSAL",
+    "foto": "/fotos/20990.jpg"
   },
   {
     "id": "w17230",
@@ -2267,7 +2286,8 @@
     "specs": [
       "Delta"
     ],
-    "detail": "COOLER RGB 180W  DELTA-C4218"
+    "detail": "COOLER RGB 180W  DELTA-C4218",
+    "foto": "/fotos/19721.jpg"
   },
   {
     "id": "w25904",
@@ -2293,7 +2313,8 @@
     "specs": [
       "Delta"
     ],
-    "detail": "COOLER RGB 200W  DELTA-C6220"
+    "detail": "COOLER RGB 200W  DELTA-C6220",
+    "foto": "/fotos/20951.jpg"
   },
   {
     "id": "w6074",
@@ -2320,7 +2341,8 @@
     "specs": [
       "Bpc"
     ],
-    "detail": "GABINETE MATX BPC-N114MATX M255 C/FONTE"
+    "detail": "GABINETE MATX BPC-N114MATX M255 C/FONTE",
+    "foto": "/fotos/21476.jpg"
   },
   {
     "id": "w21562",
@@ -2333,7 +2355,8 @@
     "specs": [
       "Hayom"
     ],
-    "detail": "GABINETE GB1751 HAYOM+FONTE 230W VXPRO"
+    "detail": "GABINETE GB1751 HAYOM+FONTE 230W VXPRO",
+    "foto": "/fotos/21562.jpg"
   },
   {
     "id": "w19308",
@@ -2402,7 +2425,8 @@
     "specs": [
       "K-Mex"
     ],
-    "detail": "L-GABINETE SLIM MATX TFX Q5M SFF C/FONTE"
+    "detail": "L-GABINETE SLIM MATX TFX Q5M SFF C/FONTE",
+    "foto": "/fotos/18824.jpg"
   },
   {
     "id": "w19001",
@@ -2792,7 +2816,8 @@
     "specs": [
       "Aoc"
     ],
-    "detail": "L-MONITOR LED 21.5\" AOC LED 22B30HM23"
+    "detail": "L-MONITOR LED 21.5\" AOC LED 22B30HM23",
+    "foto": "/fotos/18829.jpg"
   },
   {
     "id": "w25894",
@@ -2833,7 +2858,8 @@
       "24 polegadas",
       "Axpro"
     ],
-    "detail": "MONITOR LED 24\" IPS100HZ GIRATORIO AXPRO"
+    "detail": "MONITOR LED 24\" IPS100HZ GIRATORIO AXPRO",
+    "foto": "/fotos/20584.jpg"
   },
   {
     "id": "w17443",
@@ -3536,7 +3562,8 @@
     "specs": [
       "Santana"
     ],
-    "detail": "MOUSE 5+GAMER RGB 1200DPI C/FIO 015-0086"
+    "detail": "MOUSE 5+GAMER RGB 1200DPI C/FIO 015-0086",
+    "foto": "/fotos/20452.jpg"
   },
   {
     "id": "w13830",
@@ -3838,7 +3865,8 @@
     "specs": [
       "Oasis"
     ],
-    "detail": "CONJUNTO MESA E CADEIRA OIF-7640"
+    "detail": "CONJUNTO MESA E CADEIRA OIF-7640",
+    "foto": "/fotos/21369.jpg"
   },
   {
     "id": "w18391",
