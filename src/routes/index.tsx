@@ -92,6 +92,22 @@ type Part = {
   ramGB?: number;
 };
 
+// Artigo do titulo da etapa ("Escolha o seu Processador", "Escolha a sua Memoria RAM").
+const ARTIGO_CATEGORIA: Record<Category, string> = {
+  cpu: "o seu",
+  motherboard: "a sua",
+  memory: "a sua",
+  gpu: "a sua",
+  storage: "o seu",
+  psu: "a sua",
+  cooler: "o seu",
+  case: "o seu",
+  monitor: "o seu",
+  keyboard: "o seu",
+  mouse: "o seu",
+  chair: "a sua",
+};
+
 const categories: {
   id: Category;
   label: string;
@@ -4988,7 +5004,10 @@ function Index() {
               <div className="catalog-card">
                 <div className="catalog-header">
                   <div>
-                    <h2>Escolha o seu {categories.find((item) => item.id === active)?.label}</h2>
+                    <h2>
+                      Escolha {ARTIGO_CATEGORIA[active]}{" "}
+                      {categories.find((item) => item.id === active)?.label}
+                    </h2>
                     <span>Exibindo peças compatíveis em estoque na loja</span>
                   </div>
                   <span className="catalog-step-pill">
@@ -5007,20 +5026,23 @@ function Index() {
                       placeholder="Buscar por modelo, marca (ex: Ryzen, RTX, Kingston)..."
                     />
                   </div>
-                  <div className="platform-segmented" aria-label="Filtrar por fabricante">
-                    <button aria-pressed={platform === "all"} onClick={() => setPlatform("all")}>
-                      Todas
-                    </button>
-                    <button aria-pressed={platform === "AMD"} onClick={() => setPlatform("AMD")}>
-                      AMD
-                    </button>
-                    <button
-                      aria-pressed={platform === "Intel"}
-                      onClick={() => setPlatform("Intel")}
-                    >
-                      Intel
-                    </button>
-                  </div>
+                  {/* AMD/Intel so faz sentido onde a peca depende da plataforma. */}
+                  {(active === "cpu" || active === "motherboard") && (
+                    <div className="platform-segmented" aria-label="Filtrar por fabricante">
+                      <button aria-pressed={platform === "all"} onClick={() => setPlatform("all")}>
+                        Todas
+                      </button>
+                      <button aria-pressed={platform === "AMD"} onClick={() => setPlatform("AMD")}>
+                        AMD
+                      </button>
+                      <button
+                        aria-pressed={platform === "Intel"}
+                        onClick={() => setPlatform("Intel")}
+                      >
+                        Intel
+                      </button>
+                    </div>
+                  )}
                   <select
                     className="preco-filtro-select"
                     aria-label="Filtrar por faixa de preço"
