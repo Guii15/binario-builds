@@ -1,0 +1,5610 @@
+[
+  {
+    "id": "w15380",
+    "category": "cpu",
+    "name": "Processador AMD AM4 Ryzen 3 3200G OEM",
+    "brand": "Amd",
+    "code": "15380",
+    "foto": "/fotos/15380.jpg",
+    "pixPrice": 389.9,
+    "stock": 289,
+    "platform": "AMD",
+    "socket": "AM4",
+    "watts": 65,
+    "apu": true,
+    "videoIntegrado": true,
+    "specs": [
+      "Socket AM4",
+      "Video integrado",
+      "Amd"
+    ],
+    "detail": "PROCESSADOR AMD AM4 RYZEN 3 3200G OEM"
+  },
+  {
+    "id": "w17507",
+    "category": "cpu",
+    "name": "Processador AMD Ryzen 7 1700 3.0GHZ AM4",
+    "brand": "Amd",
+    "code": "17507",
+    "foto": "/fotos/17507.jpg",
+    "pixPrice": 429.9,
+    "stock": 9,
+    "platform": "AMD",
+    "socket": "AM4",
+    "watts": 105,
+    "specs": [
+      "Socket AM4",
+      "Clock 3.0 GHz",
+      "Amd"
+    ],
+    "detail": "PROCESSADOR AMD RYZEN 7 1700 3.0GHZ AM4"
+  },
+  {
+    "id": "w12634",
+    "category": "cpu",
+    "name": "Processador AMD Ryzen 3 4100 3.8 AM4",
+    "brand": "Amd",
+    "code": "12634",
+    "foto": "/fotos/12634.jpg",
+    "pixPrice": 629.9,
+    "stock": 26,
+    "platform": "AMD",
+    "socket": "AM4",
+    "watts": 65,
+    "specs": [
+      "Socket AM4",
+      "Amd"
+    ],
+    "detail": "L-PROCESSADOR AMD RYZEN 3 4100 3.8 AM4"
+  },
+  {
+    "id": "w15849",
+    "category": "cpu",
+    "name": "Processador Ryzen 3 4100 AM4 - Sem BOX",
+    "brand": "Amd",
+    "code": "15849",
+    "pixPrice": 779.9,
+    "stock": 33,
+    "platform": "AMD",
+    "socket": "AM4",
+    "watts": 65,
+    "specs": [
+      "Socket AM4",
+      "Amd"
+    ],
+    "detail": "L-PROCESSADOR RYZEN 3 4100 AM4 - SEM BOX",
+    "foto": "/fotos/15849.jpg"
+  },
+  {
+    "id": "w17867",
+    "category": "cpu",
+    "name": "Processador Ryzen 5 5500 3.6GH AM4 BOX",
+    "brand": "Amd",
+    "code": "17867",
+    "foto": "/fotos/17867.jpg",
+    "pixPrice": 799.9,
+    "stock": 32,
+    "platform": "AMD",
+    "socket": "AM4",
+    "watts": 65,
+    "specs": [
+      "Socket AM4",
+      "Amd"
+    ],
+    "detail": "L-PROCESSADOR RYZEN 5 5500 3.6GH AM4 BOX"
+  },
+  {
+    "id": "w18861",
+    "category": "cpu",
+    "name": "Processador Ryzen 7 3700X 3.6GHZ",
+    "brand": "Amd",
+    "code": "18861",
+    "foto": "/fotos/18861.jpg",
+    "pixPrice": 1159.9,
+    "stock": 1,
+    "platform": "AMD",
+    "socket": "AM4",
+    "watts": 105,
+    "specs": [
+      "Socket AM4",
+      "Clock 3.6 GHz",
+      "Amd"
+    ],
+    "detail": "L-PROCESSADOR RYZEN 7 3700X 3.6GHZ"
+  },
+  {
+    "id": "w18599",
+    "category": "cpu",
+    "name": "Processador Ryzen 7 5700X 3.4GHZ AM4 OEM",
+    "brand": "Amd",
+    "code": "18599",
+    "foto": "/fotos/18599.jpg",
+    "pixPrice": 1189.9,
+    "stock": 0,
+    "platform": "AMD",
+    "socket": "AM4",
+    "watts": 105,
+    "specs": [
+      "Socket AM4",
+      "Clock 3.4 GHz",
+      "Amd"
+    ],
+    "detail": "PROCESSADOR RYZEN7 5700X 3.4GHZ AM4 OEM"
+  },
+  {
+    "id": "w23388",
+    "category": "cpu",
+    "name": "Processador Ryzen 7 5700G 4.6GHZ AM4 BOX",
+    "brand": "Amd",
+    "code": "23388",
+    "foto": "/fotos/23388.jpg",
+    "pixPrice": 1529.9,
+    "stock": 2,
+    "platform": "AMD",
+    "socket": "AM4",
+    "watts": 105,
+    "apu": true,
+    "videoIntegrado": true,
+    "specs": [
+      "Socket AM4",
+      "Video integrado",
+      "Clock 4.6 GHz"
+    ],
+    "detail": "L-PROCESSADOR RYZEN7 5700G 4.6GHZAM4 BOX"
+  },
+  {
+    "id": "w13281",
+    "category": "cpu",
+    "name": "Processador AMD Ryzen 7 5800X 3.8GHZ",
+    "brand": "Amd",
+    "code": "13281",
+    "foto": "/fotos/13281.jpg",
+    "pixPrice": 1779.9,
+    "stock": 1,
+    "platform": "AMD",
+    "socket": "AM4",
+    "watts": 105,
+    "specs": [
+      "Socket AM4",
+      "Clock 3.8 GHz",
+      "Amd"
+    ],
+    "detail": "PROCESSADOR AMD RYZEN 7 5800X 3.8GHZ"
+  },
+  {
+    "id": "w20145",
+    "category": "cpu",
+    "name": "Processador I7-4790 3.60GHZ Lga 1150",
+    "brand": "Intel",
+    "code": "20145",
+    "pixPrice": 419.9,
+    "stock": 12,
+    "platform": "Intel",
+    "socket": "LGA1150",
+    "specs": [
+      "Socket LGA1150",
+      "Intel"
+    ],
+    "detail": "L-PROCESSADOR  I7-4790 3.60GHZ LGA 1150"
+  },
+  {
+    "id": "w20596",
+    "category": "cpu",
+    "name": "Processador I7-6700 3.40GHZ Lga 1151",
+    "brand": "Intel",
+    "code": "20596",
+    "pixPrice": 389.9,
+    "stock": 39,
+    "platform": "Intel",
+    "socket": "LGA1151",
+    "specs": [
+      "Socket LGA1151",
+      "Intel"
+    ],
+    "detail": "L-PROCESSADOR  I7-6700 3.40GHZ LGA 1151"
+  },
+  {
+    "id": "w19326",
+    "category": "cpu",
+    "name": "Processador I3-12100 3.3GHZ Lga 1700",
+    "brand": "Intel",
+    "code": "19326",
+    "pixPrice": 1889.9,
+    "stock": 2,
+    "platform": "Intel",
+    "socket": "LGA1700",
+    "specs": [
+      "Socket LGA1700",
+      "Intel"
+    ],
+    "detail": "L-PROCESSADOR I3-12100 3.3GHZ LGA 1700"
+  },
+  {
+    "id": "w19348",
+    "category": "cpu",
+    "name": "Processador I5-10400 2.9GHZ Lga 1200",
+    "brand": "Intel",
+    "code": "19348",
+    "pixPrice": 949.9,
+    "stock": 2,
+    "platform": "Intel",
+    "socket": "LGA1200",
+    "specs": [
+      "Socket LGA1200",
+      "Intel"
+    ],
+    "detail": "L-PROCESSADOR I5-10400 2.9GHZ LGA 1200"
+  },
+  {
+    "id": "w21338",
+    "category": "cpu",
+    "name": "Processador I5-10400T 2.0GHZ Lga 1200",
+    "brand": "Intel",
+    "code": "21338",
+    "pixPrice": 869.9,
+    "stock": 7,
+    "platform": "Intel",
+    "socket": "LGA1200",
+    "specs": [
+      "Socket LGA1200",
+      "Intel"
+    ],
+    "detail": "L-PROCESSADOR I5-10400T 2.0GHZ LGA 1200"
+  },
+  {
+    "id": "w19111",
+    "category": "cpu",
+    "name": "Processador I5-10500 3.10GHZ Lga 1200",
+    "brand": "Intel",
+    "code": "19111",
+    "pixPrice": 919.9,
+    "stock": 39,
+    "platform": "Intel",
+    "socket": "LGA1200",
+    "specs": [
+      "Socket LGA1200",
+      "Intel"
+    ],
+    "detail": "L-PROCESSADOR I5-10500 3.10GHZ LGA 1200"
+  },
+  {
+    "id": "w19112",
+    "category": "cpu",
+    "name": "Processador I5-10505 3.2GHZ Lga 1200",
+    "brand": "Intel",
+    "code": "19112",
+    "pixPrice": 1339.9,
+    "stock": 41,
+    "platform": "Intel",
+    "socket": "LGA1200",
+    "specs": [
+      "Socket LGA1200",
+      "Intel"
+    ],
+    "detail": "L-PROCESSADOR I5-10505 3.2GHZ LGA 1200"
+  },
+  {
+    "id": "w19113",
+    "category": "cpu",
+    "name": "Processador I5-10600 3.3GHZ Lga 1200",
+    "brand": "Intel",
+    "code": "19113",
+    "pixPrice": 1039.9,
+    "stock": 2,
+    "platform": "Intel",
+    "socket": "LGA1200",
+    "specs": [
+      "Socket LGA1200",
+      "Intel"
+    ],
+    "detail": "L-PROCESSADOR I5-10600 3.3GHZ LGA 1200"
+  },
+  {
+    "id": "w23315",
+    "category": "cpu",
+    "name": "Processador I5-14400 3.5ghzlga1700 OEM",
+    "brand": "Intel",
+    "code": "23315",
+    "pixPrice": 1929.9,
+    "stock": 10,
+    "platform": "Intel",
+    "socket": "LGA1700",
+    "specs": [
+      "Socket LGA1700",
+      "Intel"
+    ],
+    "detail": "L-PROCESSADOR I5-14400 3.5GHZLGA1700 OEM"
+  },
+  {
+    "id": "w15308",
+    "category": "cpu",
+    "name": "Processador I7-12700 Lga 1700 3.6GHZ",
+    "brand": "Intel",
+    "code": "15308",
+    "pixPrice": 2499.9,
+    "stock": 6,
+    "platform": "Intel",
+    "socket": "LGA1700",
+    "specs": [
+      "Socket LGA1700",
+      "Intel"
+    ],
+    "detail": "L-PROCESSADOR I7-12700 LGA 1700 3.6GHZ"
+  },
+  {
+    "id": "w23317",
+    "category": "cpu",
+    "name": "Processador I7-12700 LGA17003.6GHZ BOX",
+    "brand": "Intel",
+    "code": "23317",
+    "pixPrice": 3069.9,
+    "stock": 36,
+    "platform": "Intel",
+    "socket": "LGA1700",
+    "specs": [
+      "Socket LGA1700",
+      "Intel"
+    ],
+    "detail": "L-PROCESSADOR I7-12700 LGA17003.6GHZ BOX"
+  },
+  {
+    "id": "w19943",
+    "category": "cpu",
+    "name": "Processador I7-12700K 3.6GHZ Lga 1700",
+    "brand": "Intel",
+    "code": "19943",
+    "pixPrice": 2499.9,
+    "stock": 9,
+    "platform": "Intel",
+    "socket": "LGA1700",
+    "specs": [
+      "Socket LGA1700",
+      "Intel"
+    ],
+    "detail": "L-PROCESSADOR I7-12700K 3.6GHZ LGA 1700"
+  },
+  {
+    "id": "w20443",
+    "category": "cpu",
+    "name": "Processador I7-4770 3.4GHZ Lga 1150",
+    "brand": "Intel",
+    "code": "20443",
+    "pixPrice": 419.9,
+    "stock": 9,
+    "platform": "Intel",
+    "socket": "LGA1150",
+    "specs": [
+      "Socket LGA1150",
+      "Intel"
+    ],
+    "detail": "L-PROCESSADOR I7-4770 3.4GHZ LGA 1150"
+  },
+  {
+    "id": "w26066",
+    "category": "cpu",
+    "name": "Processador Int I5 9400 Oem-proci59400",
+    "brand": "Intel",
+    "code": "26066",
+    "pixPrice": 509.9,
+    "stock": 21,
+    "specs": [
+      "Intel"
+    ],
+    "detail": "L-PROCESSADOR INT I5 9400 OEM-PROCI59400"
+  },
+  {
+    "id": "w12855",
+    "category": "cpu",
+    "name": "Processador Pentium G5400 3.7GHZ",
+    "brand": "Intel",
+    "code": "12855",
+    "pixPrice": 399.9,
+    "stock": 9,
+    "platform": "Intel",
+    "specs": [
+      "Intel"
+    ],
+    "detail": "L-PROCESSADOR PENTIUM G5400 3.7GHZ"
+  },
+  {
+    "id": "w19148",
+    "category": "cpu",
+    "name": "Processador Ryzen 5 5600GT 3.6GHZ AM4",
+    "brand": "Amd",
+    "code": "19148",
+    "pixPrice": 1519.9,
+    "stock": 25,
+    "platform": "AMD",
+    "socket": "AM4",
+    "watts": 65,
+    "specs": [
+      "Socket AM4",
+      "Amd"
+    ],
+    "detail": "L-PROCESSADOR RYZEN 5 5600GT 3.6GHZ AM4"
+  },
+  {
+    "id": "w21477",
+    "category": "cpu",
+    "name": "Mini Processador Portatil Oih-2581",
+    "brand": "Oasis",
+    "code": "21477",
+    "pixPrice": 39.9,
+    "stock": 51,
+    "specs": [
+      "Oasis"
+    ],
+    "detail": "MINI PROCESSADOR PORTATIL OIH-2581"
+  },
+  {
+    "id": "w21409",
+    "category": "cpu",
+    "name": "Mini Processador Portatil On-ud101",
+    "brand": "Onistek",
+    "code": "21409",
+    "pixPrice": 29.9,
+    "stock": 29,
+    "specs": [
+      "Onistek"
+    ],
+    "detail": "MINI PROCESSADOR PORTATIL ON-UD101"
+  },
+  {
+    "id": "w15653",
+    "category": "cpu",
+    "name": "Placa M?e DDR4 C/processador G-PC6300HQ",
+    "brand": "Knup",
+    "code": "15653",
+    "pixPrice": 469.9,
+    "stock": 2,
+    "specs": [
+      "Knup"
+    ],
+    "detail": "PLACA M?E DDR4 C/PROCESSADOR G-PC6300HQ"
+  },
+  {
+    "id": "w15652",
+    "category": "cpu",
+    "name": "Placa M?e DDR4 C/processador G-PC6700HQ",
+    "brand": "Knup",
+    "code": "15652",
+    "pixPrice": 599.9,
+    "stock": 6,
+    "specs": [
+      "Knup"
+    ],
+    "detail": "PLACA M?E DDR4 C/PROCESSADOR G-PC6700HQ"
+  },
+  {
+    "id": "w14765",
+    "category": "cpu",
+    "name": "Processador G4930 3.20MHZ Lga 1151",
+    "brand": "Intel",
+    "code": "14765",
+    "pixPrice": 269.9,
+    "stock": 1,
+    "platform": "Intel",
+    "socket": "LGA1151",
+    "specs": [
+      "Socket LGA1151",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR  G4930 3.20MHZ LGA 1151"
+  },
+  {
+    "id": "w9857",
+    "category": "cpu",
+    "name": "Processador I3-6100 3.70GHZ LGA1151",
+    "brand": "Intel",
+    "code": "9857",
+    "pixPrice": 139.9,
+    "stock": 198,
+    "platform": "Intel",
+    "socket": "LGA1151",
+    "specs": [
+      "Socket LGA1151",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR  I3-6100 3.70GHZ LGA1151"
+  },
+  {
+    "id": "w11549",
+    "category": "cpu",
+    "name": "Processador I5-11400 2.6GHZ Lga 1200",
+    "brand": "Intel",
+    "code": "11549",
+    "pixPrice": 1389.9,
+    "stock": 29,
+    "platform": "Intel",
+    "socket": "LGA1200",
+    "specs": [
+      "Socket LGA1200",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR  I5-11400 2.6GHZ LGA 1200"
+  },
+  {
+    "id": "w25752",
+    "category": "cpu",
+    "name": "Processador I5-14600K 3.5ghzlga1700 OEM",
+    "brand": "Intel",
+    "code": "25752",
+    "pixPrice": 1989.9,
+    "stock": 2,
+    "platform": "Intel",
+    "socket": "LGA1700",
+    "specs": [
+      "Socket LGA1700",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR  I5-14600K 3.5GHZLGA1700 OEM"
+  },
+  {
+    "id": "w3401",
+    "category": "cpu",
+    "name": "Processador I5-2400 3.10GHZ Lga 1155",
+    "brand": "Intel",
+    "code": "3401",
+    "pixPrice": 99.9,
+    "stock": 1,
+    "platform": "Intel",
+    "socket": "LGA1155",
+    "specs": [
+      "Socket LGA1155",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR  I5-2400 3.10GHZ LGA  1155"
+  },
+  {
+    "id": "w19063",
+    "category": "cpu",
+    "name": "Processador I5-9500 3.0GHZ OEM",
+    "brand": "Intel",
+    "code": "19063",
+    "pixPrice": 519.9,
+    "stock": 40,
+    "specs": [
+      "Intel"
+    ],
+    "detail": "PROCESSADOR  I5-9500 3.0GHZ OEM"
+  },
+  {
+    "id": "w19339",
+    "category": "cpu",
+    "name": "Processador I7-2600K 3.40ghzlga1155 OEM",
+    "brand": "Intel",
+    "code": "19339",
+    "pixPrice": 249.9,
+    "stock": 1,
+    "platform": "Intel",
+    "socket": "LGA1155",
+    "specs": [
+      "Socket LGA1155",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR  I7-2600K 3.40GHZLGA1155 OEM"
+  },
+  {
+    "id": "w15382",
+    "category": "cpu",
+    "name": "Processador Dual Core G4400T 2.90GHZ",
+    "brand": "Intel",
+    "code": "15382",
+    "pixPrice": 259.9,
+    "stock": 1,
+    "specs": [
+      "Intel"
+    ],
+    "detail": "PROCESSADOR DUAL CORE G4400T 2.90GHZ"
+  },
+  {
+    "id": "w9265",
+    "category": "cpu",
+    "name": "Processador I3-10100 3.6GHZ Lga 1200",
+    "brand": "Intel",
+    "code": "9265",
+    "pixPrice": 869.9,
+    "stock": 13,
+    "platform": "Intel",
+    "socket": "LGA1200",
+    "specs": [
+      "Socket LGA1200",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I3-10100 3.6GHZ LGA 1200"
+  },
+  {
+    "id": "w12008",
+    "category": "cpu",
+    "name": "Processador I3-10100F 3.6GHZ Lga 1200",
+    "brand": "Intel",
+    "code": "12008",
+    "pixPrice": 711.01,
+    "stock": 4,
+    "platform": "Intel",
+    "socket": "LGA1200",
+    "specs": [
+      "Socket LGA1200",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I3-10100F 3.6GHZ LGA 1200"
+  },
+  {
+    "id": "w11389",
+    "category": "cpu",
+    "name": "Processador I3-10105 3.7GHZ Lga 1200",
+    "brand": "Intel",
+    "code": "11389",
+    "pixPrice": 1069.9,
+    "stock": 1,
+    "platform": "Intel",
+    "socket": "LGA1200",
+    "specs": [
+      "Socket LGA1200",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I3-10105 3.7GHZ  LGA 1200"
+  },
+  {
+    "id": "w12007",
+    "category": "cpu",
+    "name": "Processador I3-10105F 3.70GHZ LGA1200",
+    "brand": "Intel",
+    "code": "12007",
+    "pixPrice": 829.9,
+    "stock": 2,
+    "platform": "Intel",
+    "socket": "LGA1200",
+    "specs": [
+      "Socket LGA1200",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I3-10105F 3.70GHZ LGA1200"
+  },
+  {
+    "id": "w4512",
+    "category": "cpu",
+    "name": "Processador I3-4130 3.40GHZ Lga 1150",
+    "brand": "Intel",
+    "code": "4512",
+    "pixPrice": 49.9,
+    "stock": 77,
+    "platform": "Intel",
+    "socket": "LGA1150",
+    "specs": [
+      "Socket LGA1150",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I3-4130 3.40GHZ LGA 1150"
+  },
+  {
+    "id": "w7357",
+    "category": "cpu",
+    "name": "Processador I3-4150 3.5GHZ Lga 1150",
+    "brand": "Intel",
+    "code": "7357",
+    "pixPrice": 49.9,
+    "stock": 137,
+    "platform": "Intel",
+    "socket": "LGA1150",
+    "specs": [
+      "Socket LGA1150",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I3-4150  3.5GHZ LGA 1150"
+  },
+  {
+    "id": "w19341",
+    "category": "cpu",
+    "name": "Processador I3-4160 3.60ghzlga1150 OEM",
+    "brand": "Intel",
+    "code": "19341",
+    "pixPrice": 79.9,
+    "stock": 66,
+    "platform": "Intel",
+    "socket": "LGA1150",
+    "specs": [
+      "Socket LGA1150",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I3-4160 3.60GHZLGA1150 OEM"
+  },
+  {
+    "id": "w19340",
+    "category": "cpu",
+    "name": "Processador I3-540 3.2ghzlga1156 OEM",
+    "brand": "Intel",
+    "code": "19340",
+    "pixPrice": 59.9,
+    "stock": 56,
+    "platform": "Intel",
+    "socket": "LGA1156",
+    "specs": [
+      "Socket LGA1156",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I3-540 3.2GHZLGA1156 OEM"
+  },
+  {
+    "id": "w7360",
+    "category": "cpu",
+    "name": "Processador I3-550 3.2GHZ LGA1156",
+    "brand": "Intel",
+    "code": "7360",
+    "pixPrice": 82.85,
+    "stock": 25,
+    "platform": "Intel",
+    "socket": "LGA1156",
+    "specs": [
+      "Socket LGA1156",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I3-550 3.2GHZ LGA1156"
+  },
+  {
+    "id": "w15796",
+    "category": "cpu",
+    "name": "Processador I3-6100T 3.20GHZ 1150 - OEM",
+    "brand": "Intel",
+    "code": "15796",
+    "pixPrice": 109.9,
+    "stock": 2,
+    "specs": [
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I3-6100T 3.20GHZ 1150 - OEM"
+  },
+  {
+    "id": "w17431",
+    "category": "cpu",
+    "name": "Processador I3-7100T 3.40GHZ LGA1151",
+    "brand": "Intel",
+    "code": "17431",
+    "pixPrice": 119.9,
+    "stock": 84,
+    "platform": "Intel",
+    "socket": "LGA1151",
+    "specs": [
+      "Socket LGA1151",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I3-7100T 3.40GHZ LGA1151"
+  },
+  {
+    "id": "w18085",
+    "category": "cpu",
+    "name": "Processador I3-8100 3.6GHZ LGA1151",
+    "brand": "Binario",
+    "code": "18085",
+    "pixPrice": 189.9,
+    "stock": 98,
+    "platform": "Intel",
+    "socket": "LGA1151",
+    "specs": [
+      "Socket LGA1151",
+      "Binario"
+    ],
+    "detail": "PROCESSADOR I3-8100 3.6GHZ LGA1151"
+  },
+  {
+    "id": "w19338",
+    "category": "cpu",
+    "name": "Processador I5-10500T 2.30ghzlga1200 OEM",
+    "brand": "Intel",
+    "code": "19338",
+    "pixPrice": 1179.9,
+    "stock": 1,
+    "platform": "Intel",
+    "socket": "LGA1200",
+    "specs": [
+      "Socket LGA1200",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I5-10500T 2.30GHZLGA1200 OEM"
+  },
+  {
+    "id": "w13818",
+    "category": "cpu",
+    "name": "Processador I5-13400 2.50GHZ Lga 1700",
+    "brand": "Intel",
+    "code": "13818",
+    "pixPrice": 1779.9,
+    "stock": 2,
+    "platform": "Intel",
+    "socket": "LGA1700",
+    "specs": [
+      "Socket LGA1700",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I5-13400 2.50GHZ LGA 1700"
+  },
+  {
+    "id": "w21542",
+    "category": "cpu",
+    "name": "Processador I5-13400T 2.5GHZ LGA1700 OEM",
+    "brand": "Intel",
+    "code": "21542",
+    "pixPrice": 1379.9,
+    "stock": 2,
+    "platform": "Intel",
+    "socket": "LGA1700",
+    "specs": [
+      "Socket LGA1700",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I5-13400T 2.5GHZ LGA1700 OEM"
+  },
+  {
+    "id": "w15305",
+    "category": "cpu",
+    "name": "Processador I5-3450 3.1GHZ LGA1155 -",
+    "brand": "Intel",
+    "code": "15305",
+    "pixPrice": 99.9,
+    "stock": 1,
+    "platform": "Intel",
+    "socket": "LGA1155",
+    "specs": [
+      "Socket LGA1155",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I5-3450 3.1GHZ LGA1155 -"
+  },
+  {
+    "id": "w16045",
+    "category": "cpu",
+    "name": "Processador I5-3470 3.2GHZ LGA1155",
+    "brand": "Intel",
+    "code": "16045",
+    "pixPrice": 129.9,
+    "stock": 7,
+    "platform": "Intel",
+    "socket": "LGA1155",
+    "specs": [
+      "Socket LGA1155",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I5-3470 3.2GHZ LGA1155"
+  },
+  {
+    "id": "w13801",
+    "category": "cpu",
+    "name": "Processador I5-3550 3.30GHZ Lga 1155 OEM",
+    "brand": "Intel",
+    "code": "13801",
+    "pixPrice": 109.9,
+    "stock": 231,
+    "platform": "Intel",
+    "socket": "LGA1155",
+    "specs": [
+      "Socket LGA1155",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I5-3550 3.30GHZ LGA 1155 OEM"
+  },
+  {
+    "id": "w13802",
+    "category": "cpu",
+    "name": "Processador I5-3570 3.40GHZ Lga 1155 OEM",
+    "brand": "Intel",
+    "code": "13802",
+    "pixPrice": 99.9,
+    "stock": 232,
+    "platform": "Intel",
+    "socket": "LGA1155",
+    "specs": [
+      "Socket LGA1155",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I5-3570 3.40GHZ LGA 1155 OEM"
+  },
+  {
+    "id": "w8869",
+    "category": "cpu",
+    "name": "Processador I5-4570 3.20GHZ Lga 1150",
+    "brand": "Intel",
+    "code": "8869",
+    "pixPrice": 149.9,
+    "stock": 17,
+    "platform": "Intel",
+    "socket": "LGA1150",
+    "specs": [
+      "Socket LGA1150",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I5-4570 3.20GHZ LGA 1150"
+  },
+  {
+    "id": "w25909",
+    "category": "cpu",
+    "name": "Processador I5-4570S 2.90GHZ Lga 1150",
+    "brand": "Intel",
+    "code": "25909",
+    "pixPrice": 139.9,
+    "stock": 40,
+    "platform": "Intel",
+    "socket": "LGA1150",
+    "specs": [
+      "Socket LGA1150",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I5-4570S 2.90GHZ LGA 1150"
+  },
+  {
+    "id": "w13950",
+    "category": "cpu",
+    "name": "Processador I5-4570T 2.90GHZ Lga 1150",
+    "brand": "Intel",
+    "code": "13950",
+    "pixPrice": 139.9,
+    "stock": 3,
+    "platform": "Intel",
+    "socket": "LGA1150",
+    "specs": [
+      "Socket LGA1150",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I5-4570T 2.90GHZ LGA 1150"
+  },
+  {
+    "id": "w4969",
+    "category": "cpu",
+    "name": "Processador I5-4590 3.3GHZ Lga 1150",
+    "brand": "Intel",
+    "code": "4969",
+    "pixPrice": 139.9,
+    "stock": 1,
+    "platform": "Intel",
+    "socket": "LGA1150",
+    "specs": [
+      "Socket LGA1150",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I5-4590 3.3GHZ LGA 1150"
+  },
+  {
+    "id": "w14581",
+    "category": "cpu",
+    "name": "Processador I5-4590S 3.00GHZ OEM",
+    "brand": "Intel",
+    "code": "14581",
+    "pixPrice": 139.9,
+    "stock": 78,
+    "specs": [
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I5-4590S 3.00GHZ OEM"
+  },
+  {
+    "id": "w13949",
+    "category": "cpu",
+    "name": "Processador I5-4590T 2.00GHZ Lga 1150",
+    "brand": "Intel",
+    "code": "13949",
+    "pixPrice": 139.9,
+    "stock": 13,
+    "platform": "Intel",
+    "socket": "LGA1150",
+    "specs": [
+      "Socket LGA1150",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I5-4590T 2.00GHZ LGA 1150"
+  },
+  {
+    "id": "w13730",
+    "category": "cpu",
+    "name": "Processador I5-6600 3.3GHZ 1151 OEM",
+    "brand": "Intel",
+    "code": "13730",
+    "pixPrice": 139.9,
+    "stock": 1,
+    "specs": [
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I5-6600 3.3GHZ 1151 OEM"
+  },
+  {
+    "id": "w26041",
+    "category": "cpu",
+    "name": "Processador I5-7400T 2.40GHZ Lga OEM",
+    "brand": "Intel",
+    "code": "26041",
+    "pixPrice": 159.9,
+    "stock": 59,
+    "specs": [
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I5-7400T 2.40GHZ LGA  OEM"
+  },
+  {
+    "id": "w18131",
+    "category": "cpu",
+    "name": "Processador I5-7500 3.4GHZ LGA1151",
+    "brand": "Intel",
+    "code": "18131",
+    "pixPrice": 169.9,
+    "stock": 48,
+    "platform": "Intel",
+    "socket": "LGA1151",
+    "specs": [
+      "Socket LGA1151",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I5-7500 3.4GHZ LGA1151"
+  },
+  {
+    "id": "w26042",
+    "category": "cpu",
+    "name": "Processador I5-7500T 2.70GHZ OEM",
+    "brand": "Intel",
+    "code": "26042",
+    "pixPrice": 159.9,
+    "stock": 142,
+    "specs": [
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I5-7500T 2.70GHZ OEM"
+  },
+  {
+    "id": "w19846",
+    "category": "cpu",
+    "name": "Processador I5-7600 3.5GHZ OEM",
+    "brand": "Intel",
+    "code": "19846",
+    "pixPrice": 169.9,
+    "stock": 123,
+    "specs": [
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I5-7600 3.5GHZ OEM"
+  },
+  {
+    "id": "w26282",
+    "category": "cpu",
+    "name": "Processador I5-7600T 2.80GHZ OEM",
+    "brand": "Intel",
+    "code": "26282",
+    "pixPrice": 159.9,
+    "stock": 4,
+    "specs": [
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I5-7600T 2.80GHZ OEM"
+  },
+  {
+    "id": "w10295",
+    "category": "cpu",
+    "name": "Processador I7-10700 2.90GHZ LGA1200 OEM",
+    "brand": "Intel",
+    "code": "10295",
+    "pixPrice": 1689.9,
+    "stock": 20,
+    "platform": "Intel",
+    "socket": "LGA1200",
+    "specs": [
+      "Socket LGA1200",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I7-10700 2.90GHZ LGA1200 OEM"
+  },
+  {
+    "id": "w18634",
+    "category": "cpu",
+    "name": "Processador I7-14700 2.10GHZ LGA1700 OEM",
+    "brand": "Intel",
+    "code": "18634",
+    "pixPrice": 2889.9,
+    "stock": 6,
+    "platform": "Intel",
+    "socket": "LGA1700",
+    "specs": [
+      "Socket LGA1700",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I7-14700 2.10GHZ LGA1700 OEM"
+  },
+  {
+    "id": "w13832",
+    "category": "cpu",
+    "name": "Processador I7-2600 3.40GHZ Lga 1155",
+    "brand": "Intel",
+    "code": "13832",
+    "pixPrice": 259.9,
+    "stock": 10,
+    "platform": "Intel",
+    "socket": "LGA1155",
+    "specs": [
+      "Socket LGA1155",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I7-2600 3.40GHZ LGA 1155"
+  },
+  {
+    "id": "w8758",
+    "category": "cpu",
+    "name": "Processador I7-3770K 3.50GHZ Lga 1155",
+    "brand": "Intel",
+    "code": "8758",
+    "pixPrice": 438.41,
+    "stock": 1,
+    "platform": "Intel",
+    "socket": "LGA1155",
+    "specs": [
+      "Socket LGA1155",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I7-3770K 3.50GHZ LGA 1155"
+  },
+  {
+    "id": "w26705",
+    "category": "cpu",
+    "name": "Processador I7-7700 3.60GHZ OEM",
+    "brand": "Intel",
+    "code": "26705",
+    "pixPrice": 409.9,
+    "stock": 170,
+    "specs": [
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I7-7700 3.60GHZ OEM"
+  },
+  {
+    "id": "w15795",
+    "category": "cpu",
+    "name": "Processador I7-8700 3.20GHZ LGA1150 OEM",
+    "brand": "Intel",
+    "code": "15795",
+    "pixPrice": 989.9,
+    "stock": 3,
+    "platform": "Intel",
+    "socket": "LGA1150",
+    "specs": [
+      "Socket LGA1150",
+      "Intel"
+    ],
+    "detail": "PROCESSADOR I7-8700 3.20GHZ LGA1150 OEM"
+  },
+  {
+    "id": "w26285",
+    "category": "cpu",
+    "name": "Processador INTEL I5 6600K OEM",
+    "brand": "Intel",
+    "code": "26285",
+    "pixPrice": 149.9,
+    "stock": 12,
+    "platform": "Intel",
+    "specs": [
+      "Intel"
+    ],
+    "detail": "PROCESSADOR INTEL I5 6600K OEM"
+  },
+  {
+    "id": "w3921",
+    "category": "cpu",
+    "name": "Processador INTEL I5-3470 3.2ghz1155 OEM",
+    "brand": "Intel",
+    "code": "3921",
+    "pixPrice": 99.9,
+    "stock": 100,
+    "platform": "Intel",
+    "specs": [
+      "Intel"
+    ],
+    "detail": "PROCESSADOR INTEL I5-3470 3.2GHZ1155 OEM"
+  },
+  {
+    "id": "w13164",
+    "category": "motherboard",
+    "name": "Placa Mae Desk 1155 G-H61/K Knup (2xddr3",
+    "brand": "Knup",
+    "code": "13164",
+    "foto": "/fotos/13164.jpg",
+    "pixPrice": 129.9,
+    "stock": 4,
+    "platform": "Intel",
+    "socket": "LGA1155",
+    "specs": [
+      "Socket LGA1155",
+      "Knup"
+    ],
+    "detail": "PLACA MAE DESK 1155 G-H61/K KNUP (2XDDR3"
+  },
+  {
+    "id": "w21561",
+    "category": "motherboard",
+    "name": "Placa Mae H61 LGA1155 DDR3 Hayom Plm2300",
+    "brand": "Hayom",
+    "code": "21561",
+    "foto": "/fotos/21561.jpg",
+    "pixPrice": 129.9,
+    "stock": 0,
+    "platform": "Intel",
+    "socket": "LGA1155",
+    "memType": "DDR3",
+    "slots": 2,
+    "specs": [
+      "Socket LGA1155",
+      "Memoria DDR3",
+      "Hayom"
+    ],
+    "detail": "PLACA MAE H61 LGA1155 DDR3 HAYOM PLM2300"
+  },
+  {
+    "id": "w19679",
+    "category": "motherboard",
+    "name": "Placa Mae B75 LGA1155 DDR3 Hayom Plm2301",
+    "brand": "Hayom",
+    "code": "19679",
+    "foto": "/fotos/19679.jpg",
+    "pixPrice": 149.9,
+    "stock": 15,
+    "platform": "Intel",
+    "socket": "LGA1155",
+    "memType": "DDR3",
+    "specs": [
+      "Socket LGA1155",
+      "Memoria DDR3",
+      "Hayom"
+    ],
+    "detail": "PLACA MAE B75 LGA1155 DDR3 HAYOM PLM2301"
+  },
+  {
+    "id": "w25492",
+    "category": "motherboard",
+    "name": "Placa Mae H61-m2pro 1155 Diamond Clanm",
+    "brand": "Haoquing",
+    "code": "25492",
+    "foto": "/fotos/25492.jpg",
+    "pixPrice": 149.9,
+    "stock": 1,
+    "platform": "Intel",
+    "socket": "LGA1155",
+    "specs": [
+      "Socket LGA1155",
+      "Haoquing"
+    ],
+    "detail": "PLACA MAE H61-M2PRO 1155 DIAMOND CLANM"
+  },
+  {
+    "id": "w25779",
+    "category": "motherboard",
+    "name": "Placa Mae LGA1155 Delta-h61m2k H61",
+    "brand": "Delta",
+    "code": "25779",
+    "foto": "/fotos/25779.jpg",
+    "pixPrice": 149.9,
+    "stock": 20,
+    "platform": "Intel",
+    "socket": "LGA1155",
+    "specs": [
+      "Socket LGA1155",
+      "Delta"
+    ],
+    "detail": "PLACA MAE LGA1155 DELTA-H61M2K H61"
+  },
+  {
+    "id": "w12405",
+    "category": "motherboard",
+    "name": "Placa Mae G-H81/M Desk Knup DDR3 Lga 115",
+    "brand": "Knup",
+    "code": "12405",
+    "foto": "/fotos/12405.jpg",
+    "pixPrice": 159.9,
+    "stock": 3,
+    "platform": "Intel",
+    "socket": "LGA1150",
+    "memType": "DDR3",
+    "specs": [
+      "Socket LGA1150",
+      "Memoria DDR3",
+      "Knup"
+    ],
+    "detail": "PLACA MAE G-H81/M DESK KNUP DDR3 LGA 115"
+  },
+  {
+    "id": "w25764",
+    "category": "motherboard",
+    "name": "Placa Mae Delta LGA1150 H81",
+    "brand": "Delta",
+    "code": "25764",
+    "foto": "/fotos/25764.jpg",
+    "pixPrice": 169.9,
+    "stock": 0,
+    "platform": "Intel",
+    "socket": "LGA1150",
+    "specs": [
+      "Socket LGA1150",
+      "Delta"
+    ],
+    "detail": "S-PLACA MAE DELTA LGA1150 H81"
+  },
+  {
+    "id": "w25780",
+    "category": "motherboard",
+    "name": "Placa Mae LGA1150 Delta-h81m2k H81",
+    "brand": "Delta",
+    "code": "25780",
+    "foto": "/fotos/25780.jpg",
+    "pixPrice": 169.9,
+    "stock": 0,
+    "platform": "Intel",
+    "socket": "LGA1150",
+    "specs": [
+      "Socket LGA1150",
+      "Delta"
+    ],
+    "detail": "PLACA MAE LGA1150 DELTA-H81M2K H81"
+  },
+  {
+    "id": "w13656",
+    "category": "motherboard",
+    "name": "Placa Mae H81m.2-tg DDR3 LGA1150",
+    "brand": "Brazil Pc",
+    "code": "13656",
+    "foto": "/fotos/13656.jpg",
+    "pixPrice": 179.9,
+    "stock": 3,
+    "platform": "Intel",
+    "socket": "LGA1150",
+    "memType": "DDR3",
+    "specs": [
+      "Socket LGA1150",
+      "Memoria DDR3",
+      "Brazil Pc"
+    ],
+    "detail": "PLACA MAE H81M.2-TG DDR3 LGA1150"
+  },
+  {
+    "id": "w11414",
+    "category": "motherboard",
+    "name": "Placa Mae Hm55-nt DDR3 LGA1156",
+    "brand": "Sem marca",
+    "code": "11414",
+    "foto": "/fotos/11414.jpg",
+    "pixPrice": 189.9,
+    "stock": 19,
+    "platform": "Intel",
+    "socket": "LGA1156",
+    "memType": "DDR3",
+    "specs": [
+      "Socket LGA1156",
+      "Memoria DDR3"
+    ],
+    "detail": "PLACA MAE HM55-NT DDR3 LGA1156"
+  },
+  {
+    "id": "w26062",
+    "category": "motherboard",
+    "name": "Placa Mae Delta Gaming X79-mkii",
+    "brand": "Delta",
+    "code": "26062",
+    "foto": "/fotos/26062.jpg",
+    "pixPrice": 229.9,
+    "stock": 0,
+    "specs": [
+      "Delta"
+    ],
+    "detail": "PLACA MAE DELTA GAMING X79-MKII"
+  },
+  {
+    "id": "w20838",
+    "category": "motherboard",
+    "name": "Placa Mae Vxmbb250 M.2 LGA1151 DDR4",
+    "brand": "Duex",
+    "code": "20838",
+    "foto": "/fotos/20838.jpg",
+    "pixPrice": 299.9,
+    "stock": 36,
+    "platform": "Intel",
+    "socket": "LGA1151",
+    "memType": "DDR4",
+    "specs": [
+      "Socket LGA1151",
+      "Memoria DDR4",
+      "Duex"
+    ],
+    "detail": "PLACA MAE VXMBB250 M.2 LGA1151 DDR4"
+  },
+  {
+    "id": "w17705",
+    "category": "motherboard",
+    "name": "Placa Mae A320 Mainboard Haoquing",
+    "brand": "Haoquing",
+    "code": "17705",
+    "foto": "/fotos/17705.jpg",
+    "pixPrice": 339.9,
+    "stock": 8,
+    "platform": "AMD",
+    "socket": "AM4",
+    "specs": [
+      "Socket AM4",
+      "Haoquing"
+    ],
+    "detail": "PLACA MAE A320 MAINBOARD HAOQUING"
+  },
+  {
+    "id": "w20430",
+    "category": "motherboard",
+    "name": "Placa Mae Vxpro Vxmbh110 LGA1151 DDR4",
+    "brand": "Duex",
+    "code": "20430",
+    "pixPrice": 339.9,
+    "stock": 1,
+    "platform": "Intel",
+    "socket": "LGA1151",
+    "memType": "DDR4",
+    "specs": [
+      "Socket LGA1151",
+      "Memoria DDR4",
+      "Duex"
+    ],
+    "detail": "PLACA MAE VXPRO VXMBH110 LGA1151 DDR4",
+    "foto": "/fotos/20430.jpg"
+  },
+  {
+    "id": "w22333",
+    "category": "motherboard",
+    "name": "Placa Mae H310 LGA1151 M2 Delta-h310m2k",
+    "brand": "Delta",
+    "code": "22333",
+    "foto": "/fotos/22333.jpg",
+    "pixPrice": 349.9,
+    "stock": 547,
+    "platform": "Intel",
+    "socket": "LGA1151",
+    "specs": [
+      "Socket LGA1151",
+      "Delta"
+    ],
+    "detail": "PLACA MAE H310 LGA1151 M2 DELTA-H310M2K"
+  },
+  {
+    "id": "w12375",
+    "category": "motherboard",
+    "name": "Placa Mae G-A520 Desk DDR4 AM4",
+    "brand": "Revenger",
+    "code": "12375",
+    "foto": "/fotos/12375.jpg",
+    "pixPrice": 359.9,
+    "stock": 398,
+    "platform": "AMD",
+    "socket": "AM4",
+    "memType": "DDR4",
+    "specs": [
+      "Socket AM4",
+      "Memoria DDR4",
+      "Revenger"
+    ],
+    "detail": "PLACA MAE G-A520 DESK DDR4 AM4"
+  },
+  {
+    "id": "w13525",
+    "category": "motherboard",
+    "name": "Placa Mae Dx H110ZG Duex DDR4 LGA1151",
+    "brand": "Intel",
+    "code": "13525",
+    "foto": "/fotos/13525.jpg",
+    "pixPrice": 359.9,
+    "stock": 7,
+    "platform": "Intel",
+    "socket": "LGA1151",
+    "memType": "DDR4",
+    "specs": [
+      "Socket LGA1151",
+      "Memoria DDR4",
+      "Intel"
+    ],
+    "detail": "PLACA MAE DX H110ZG DUEX DDR4 LGA1151"
+  },
+  {
+    "id": "w15334",
+    "category": "motherboard",
+    "name": "Placa Mae Desk 1151 DDR4 G-B250 Knup",
+    "brand": "Revenger",
+    "code": "15334",
+    "pixPrice": 359.9,
+    "stock": 0,
+    "platform": "Intel",
+    "socket": "LGA1151",
+    "memType": "DDR4",
+    "specs": [
+      "Socket LGA1151",
+      "Memoria DDR4",
+      "Revenger"
+    ],
+    "detail": "S-PLACA MAE DESK 1151 DDR4 G-B250 KNUP",
+    "foto": "/fotos/15334.jpg"
+  },
+  {
+    "id": "w21563",
+    "category": "motherboard",
+    "name": "Placa Mae Dxmbh110s M2 LGA1151 DDR4 Duex",
+    "brand": "Duex",
+    "code": "21563",
+    "foto": "/fotos/21563.jpg",
+    "pixPrice": 359.9,
+    "stock": 0,
+    "platform": "Intel",
+    "socket": "LGA1151",
+    "memType": "DDR4",
+    "specs": [
+      "Socket LGA1151",
+      "Memoria DDR4",
+      "Duex"
+    ],
+    "detail": "PLACA MAE DXMBH110S M2 LGA1151 DDR4 DUEX"
+  },
+  {
+    "id": "w15479",
+    "category": "motherboard",
+    "name": "Placa Mae Bpc-h310/b250m.2-tg Bpc DDR4",
+    "brand": "Bpc",
+    "code": "15479",
+    "foto": "/fotos/15479.jpg",
+    "pixPrice": 369.9,
+    "stock": 1,
+    "platform": "Intel",
+    "socket": "LGA1151",
+    "memType": "DDR4",
+    "specs": [
+      "Socket LGA1151",
+      "Memoria DDR4",
+      "Bpc"
+    ],
+    "detail": "PLACA MAE BPC-H310/B250M.2-TG BPC DDR4"
+  },
+  {
+    "id": "w17412",
+    "category": "motherboard",
+    "name": "Placa Mae G-H310 LGA1151 Revenger",
+    "brand": "Revenger",
+    "code": "17412",
+    "foto": "/fotos/17412.jpg",
+    "pixPrice": 389.9,
+    "stock": 20,
+    "platform": "Intel",
+    "socket": "LGA1151",
+    "specs": [
+      "Socket LGA1151",
+      "Revenger"
+    ],
+    "detail": "PLACA MAE G-H310 LGA1151 REVENGER"
+  },
+  {
+    "id": "w13715",
+    "category": "motherboard",
+    "name": "Placa Mae G-H470 Revenger DDR4 LGA1200",
+    "brand": "Revenger",
+    "code": "13715",
+    "foto": "/fotos/13715.jpg",
+    "pixPrice": 399.9,
+    "stock": 0,
+    "platform": "Intel",
+    "socket": "LGA1200",
+    "memType": "DDR4",
+    "specs": [
+      "Socket LGA1200",
+      "Memoria DDR4",
+      "Revenger"
+    ],
+    "detail": "PLACA MAE G-H470 REVENGER DDR4 LGA1200"
+  },
+  {
+    "id": "w18314",
+    "category": "motherboard",
+    "name": "Placa Mae Lga 1200 G-H511 Revenger",
+    "brand": "Revenger",
+    "code": "18314",
+    "foto": "/fotos/18314.jpg",
+    "pixPrice": 429.9,
+    "stock": 0,
+    "platform": "Intel",
+    "socket": "LGA1200",
+    "specs": [
+      "Socket LGA1200",
+      "Revenger"
+    ],
+    "detail": "S-PLACA MAE  LGA 1200 G-H511 REVENGER"
+  },
+  {
+    "id": "w18308",
+    "category": "motherboard",
+    "name": "Placa Mae Lga 1200 DDR4 G-H511 Revenger",
+    "brand": "Revenger",
+    "code": "18308",
+    "foto": "/fotos/18308.jpg",
+    "pixPrice": 439.9,
+    "stock": 0,
+    "platform": "Intel",
+    "socket": "LGA1200",
+    "memType": "DDR4",
+    "specs": [
+      "Socket LGA1200",
+      "Memoria DDR4",
+      "Revenger"
+    ],
+    "detail": "PLACA MAE  LGA 1200 DDR4 G-H511 REVENGER"
+  },
+  {
+    "id": "w19577",
+    "category": "motherboard",
+    "name": "Placa Mae Delta-a520m2k AM4",
+    "brand": "Delta",
+    "code": "19577",
+    "foto": "/fotos/19577.jpg",
+    "pixPrice": 449.9,
+    "stock": 9,
+    "platform": "AMD",
+    "socket": "AM4",
+    "specs": [
+      "Socket AM4",
+      "Delta"
+    ],
+    "detail": "PLACA MAE DELTA-A520M2K AM4"
+  },
+  {
+    "id": "w14224",
+    "category": "motherboard",
+    "name": "Placa Mae G-H610 Revenger DDR4 LGA1700",
+    "brand": "Revenger",
+    "code": "14224",
+    "foto": "/fotos/14224.jpg",
+    "pixPrice": 469.9,
+    "stock": 36,
+    "platform": "Intel",
+    "socket": "LGA1700",
+    "memType": "DDR4",
+    "specs": [
+      "Socket LGA1700",
+      "Memoria DDR4",
+      "Revenger"
+    ],
+    "detail": "PLACA MAE G-H610 REVENGER DDR4 LGA1700"
+  },
+  {
+    "id": "w19632",
+    "category": "motherboard",
+    "name": "Placa Mae Delta H510M2K",
+    "brand": "Delta",
+    "code": "19632",
+    "pixPrice": 479.9,
+    "stock": 0,
+    "platform": "Intel",
+    "socket": "LGA1200",
+    "specs": [
+      "Socket LGA1200",
+      "Delta"
+    ],
+    "detail": "PLACA MAE DELTA H510M2K",
+    "foto": "/fotos/19632.jpg"
+  },
+  {
+    "id": "w26090",
+    "category": "motherboard",
+    "name": "Placa Mae Delta H510M2K",
+    "brand": "Delta",
+    "code": "26090",
+    "foto": "/fotos/26090.jpg",
+    "pixPrice": 479.9,
+    "stock": 53,
+    "platform": "Intel",
+    "socket": "LGA1200",
+    "specs": [
+      "Socket LGA1200",
+      "Delta"
+    ],
+    "detail": "L-PLACA MAE DELTA H510M2K"
+  },
+  {
+    "id": "w11439",
+    "category": "motherboard",
+    "name": "Placa Mae G-H510 DDR4 Lga 1200",
+    "brand": "Knup",
+    "code": "11439",
+    "foto": "/fotos/11439.jpg",
+    "pixPrice": 489.9,
+    "stock": 1,
+    "platform": "Intel",
+    "socket": "LGA1200",
+    "memType": "DDR4",
+    "specs": [
+      "Socket LGA1200",
+      "Memoria DDR4",
+      "Knup"
+    ],
+    "detail": "PLACA MAE G-H510 DDR4 LGA 1200"
+  },
+  {
+    "id": "w10491",
+    "category": "motherboard",
+    "name": "Placa Mae H310MHP S1151 Biostar DDR4 Lga",
+    "brand": "Biostar",
+    "code": "10491",
+    "foto": "/fotos/10491.jpg",
+    "pixPrice": 499.9,
+    "stock": 2,
+    "platform": "Intel",
+    "socket": "LGA1151",
+    "memType": "DDR4",
+    "specs": [
+      "Socket LGA1151",
+      "Memoria DDR4",
+      "Biostar"
+    ],
+    "detail": "PLACA MAE H310MHP S1151 BIOSTAR DDR4 LGA"
+  },
+  {
+    "id": "w18884",
+    "category": "motherboard",
+    "name": "Placa Mae H610 Revenger DDR4 LGA1700",
+    "brand": "Revenger",
+    "code": "18884",
+    "foto": "/fotos/18884.jpg",
+    "pixPrice": 499.9,
+    "stock": 23,
+    "platform": "Intel",
+    "socket": "LGA1700",
+    "memType": "DDR4",
+    "specs": [
+      "Socket LGA1700",
+      "Memoria DDR4",
+      "Revenger"
+    ],
+    "detail": "L-PLACA MAE H610 REVENGER DDR4 LGA1700"
+  },
+  {
+    "id": "w20491",
+    "category": "motherboard",
+    "name": "Placa Mae Bpc-h510pm.2-g LGA1200",
+    "brand": "Bpc",
+    "code": "20491",
+    "pixPrice": 499.9,
+    "stock": 7,
+    "platform": "Intel",
+    "socket": "LGA1200",
+    "specs": [
+      "Socket LGA1200",
+      "Bpc"
+    ],
+    "detail": "L-PLACA MAE BPC-H510PM.2-G LGA1200",
+    "foto": "/fotos/20491.jpg"
+  },
+  {
+    "id": "w19941",
+    "category": "motherboard",
+    "name": "Placa Mae H610 M.2 SSD Delta-h610m2k",
+    "brand": "Delta",
+    "code": "19941",
+    "pixPrice": 519.9,
+    "stock": 14,
+    "platform": "Intel",
+    "socket": "LGA1700",
+    "specs": [
+      "Socket LGA1700",
+      "Delta"
+    ],
+    "detail": "L-PLACA MAE H610 M.2 SSD DELTA-H610M2K",
+    "foto": "/fotos/19941.jpg"
+  },
+  {
+    "id": "w21131",
+    "category": "motherboard",
+    "name": "Placa Mae Lga 1700 G-B760 Revenger",
+    "brand": "Revenger",
+    "code": "21131",
+    "foto": "/fotos/21131.jpg",
+    "pixPrice": 579.9,
+    "stock": 14,
+    "platform": "Intel",
+    "socket": "LGA1700",
+    "specs": [
+      "Socket LGA1700",
+      "Revenger"
+    ],
+    "detail": "L-PLACA MAE  LGA 1700 G-B760 REVENGER"
+  },
+  {
+    "id": "w18307",
+    "category": "motherboard",
+    "name": "Placa Mae Lga 1700 G-B760 Revenger",
+    "brand": "Revenger",
+    "code": "18307",
+    "foto": "/fotos/18307.jpg",
+    "pixPrice": 589.9,
+    "stock": 15,
+    "platform": "Intel",
+    "socket": "LGA1700",
+    "specs": [
+      "Socket LGA1700",
+      "Revenger"
+    ],
+    "detail": "PLACA MAE  LGA 1700 G-B760 REVENGER"
+  },
+  {
+    "id": "w19486",
+    "category": "motherboard",
+    "name": "Placa Mae B450M-A DDR4 Angthumb",
+    "brand": "Binario",
+    "code": "19486",
+    "foto": "/fotos/19486.jpg",
+    "pixPrice": 629.9,
+    "stock": 1,
+    "platform": "AMD",
+    "socket": "AM4",
+    "memType": "DDR4",
+    "specs": [
+      "Socket AM4",
+      "Memoria DDR4",
+      "Binario"
+    ],
+    "detail": "L-PLACA MAE B450M-A DDR4 ANGTHUMB"
+  },
+  {
+    "id": "w13927",
+    "category": "motherboard",
+    "name": "Placa Mae c/ Processador I7 G11800H DDR4",
+    "brand": "Knup",
+    "code": "13927",
+    "foto": "/fotos/13927.jpg",
+    "pixPrice": 1579.9,
+    "stock": 3,
+    "memType": "DDR4",
+    "specs": [
+      "Memoria DDR4",
+      "Knup"
+    ],
+    "detail": "PLACA MAE C/ PROCESSADOR I7 G11800H DDR4"
+  },
+  {
+    "id": "w16472",
+    "category": "motherboard",
+    "name": "Placa Mae c/ Processador I7 G10870H DDR4",
+    "brand": "Knup",
+    "code": "16472",
+    "foto": "/fotos/16472.jpg",
+    "pixPrice": 1579.9,
+    "stock": 17,
+    "memType": "DDR4",
+    "specs": [
+      "Memoria DDR4",
+      "Knup"
+    ],
+    "detail": "PLACA MAE C/ PROCESSADOR I7 G10870H DDR4"
+  },
+  {
+    "id": "w19978",
+    "category": "motherboard",
+    "name": "Placa Mae c/ Processador I5 G11500H DDR4",
+    "brand": "Knup",
+    "code": "19978",
+    "pixPrice": 1579.9,
+    "stock": 3,
+    "memType": "DDR4",
+    "specs": [
+      "Memoria DDR4",
+      "Knup"
+    ],
+    "detail": "PLACA MAE C/ PROCESSADOR I5 G11500H DDR4",
+    "foto": "/fotos/19978.jpg"
+  },
+  {
+    "id": "w19367",
+    "category": "motherboard",
+    "name": "Placa Mae 9mx87eg7-00-g11 X870 Eagle",
+    "brand": "Gigabyte",
+    "code": "19367",
+    "pixPrice": 2379.9,
+    "stock": 13,
+    "specs": [
+      "Gigabyte"
+    ],
+    "detail": "E-PLACA MAE 9MX87EG7-00-G11 X870 EAGLE",
+    "foto": "/fotos/19367.jpg"
+  },
+  {
+    "id": "w26287",
+    "category": "motherboard",
+    "name": "Placa Mae Delta-a520m2k AM4 OEM",
+    "brand": "Delta",
+    "code": "26287",
+    "pixPrice": 399.9,
+    "stock": 75,
+    "platform": "AMD",
+    "socket": "AM4",
+    "specs": [
+      "Socket AM4",
+      "Delta"
+    ],
+    "detail": "L-PLACA MAE DELTA-A520M2K AM4 OEM"
+  },
+  {
+    "id": "w15588",
+    "category": "motherboard",
+    "name": "Placa Mae H110B4U Mainboard Haoquing",
+    "brand": "Haoquing",
+    "code": "15588",
+    "pixPrice": 389.9,
+    "stock": 26,
+    "platform": "Intel",
+    "socket": "LGA1151",
+    "specs": [
+      "Socket LGA1151",
+      "Haoquing"
+    ],
+    "detail": "PLACA MAE H110B4U MAINBOARD HAOQUING"
+  },
+  {
+    "id": "w13636",
+    "category": "motherboard",
+    "name": "Placa Mae C/processador DDR4 G-PC11400H",
+    "brand": "Knup",
+    "code": "13636",
+    "pixPrice": 1049.9,
+    "stock": 7,
+    "memType": "DDR4",
+    "specs": [
+      "DDR4",
+      "Knup"
+    ],
+    "detail": "PLACA MAE C/PROCESSADOR DDR4 G-PC11400H"
+  },
+  {
+    "id": "w9388",
+    "category": "memory",
+    "name": "Memoria PC 4GB DDR4 Smart 2133MHZ",
+    "brand": "Smart",
+    "code": "9388",
+    "pixPrice": 91.92,
+    "stock": 17,
+    "memType": "DDR4",
+    "ramGB": 4,
+    "specs": [
+      "4.0 GB",
+      "DDR4",
+      "2133 MHz"
+    ],
+    "detail": "MEMORIA PC 4GB DDR4 SMART 2133MHZ",
+    "foto": "/fotos/9388.jpg"
+  },
+  {
+    "id": "w16642",
+    "category": "memory",
+    "name": "Memoria PC 8GB DDR4 Axpro 3200MHZ",
+    "brand": "Axpro",
+    "code": "16642",
+    "foto": "/fotos/16642.jpg",
+    "pixPrice": 99.9,
+    "stock": 0,
+    "memType": "DDR4",
+    "ramGB": 8,
+    "specs": [
+      "8.0 GB",
+      "DDR4",
+      "3200 MHz"
+    ],
+    "detail": "MEMORIA PC 8GB DDR4 AXPRO 3200MHZ"
+  },
+  {
+    "id": "w17211",
+    "category": "memory",
+    "name": "Memoria PC 8GB DDR4 Kgt 2400MHZ",
+    "brand": "Kingston",
+    "code": "17211",
+    "foto": "/fotos/17211.jpg",
+    "pixPrice": 99.9,
+    "stock": 0,
+    "memType": "DDR4",
+    "ramGB": 8,
+    "specs": [
+      "8.0 GB",
+      "DDR4",
+      "2400 MHz"
+    ],
+    "detail": "MEMORIA PC 8GB DDR4 KGT 2400MHZ"
+  },
+  {
+    "id": "w20959",
+    "category": "memory",
+    "name": "Memoria PC 8GB DDR4 Hyperx 2400MHZ",
+    "brand": "Hyperx",
+    "code": "20959",
+    "foto": "/fotos/20959.jpg",
+    "pixPrice": 99.9,
+    "stock": 0,
+    "memType": "DDR4",
+    "ramGB": 8,
+    "specs": [
+      "8.0 GB",
+      "DDR4",
+      "2400 MHz"
+    ],
+    "detail": "MEMORIA PC 8GB DDR4 HYPERX 2400MHZ"
+  },
+  {
+    "id": "w17849",
+    "category": "memory",
+    "name": "Memoria PC 8GB DDR3 Clanm 1600MHZ",
+    "brand": "Clainm",
+    "code": "17849",
+    "foto": "/fotos/17849.jpg",
+    "pixPrice": 109.9,
+    "stock": 0,
+    "memType": "DDR3",
+    "ramGB": 8,
+    "specs": [
+      "8.0 GB",
+      "DDR3",
+      "1600 MHz"
+    ],
+    "detail": "MEMORIA PC 8GB DDR3 CLANM 1600MHZ"
+  },
+  {
+    "id": "w8173",
+    "category": "memory",
+    "name": "Memoria PC 8GB DDR3 1600MHZ OEM",
+    "brand": "Sem marca",
+    "code": "8173",
+    "foto": "/fotos/8173.jpg",
+    "pixPrice": 159.9,
+    "stock": 2,
+    "memType": "DDR3",
+    "ramGB": 8,
+    "specs": [
+      "8.0 GB",
+      "DDR3",
+      "1600 MHz"
+    ],
+    "detail": "MEMORIA PC 8GB DDR3 1600MHZ OEM"
+  },
+  {
+    "id": "w19932",
+    "category": "memory",
+    "name": "Memoria PC 8GB DDR3 1600 MHZ Prodrive",
+    "brand": "Prodrive",
+    "code": "19932",
+    "foto": "/fotos/19932.jpg",
+    "pixPrice": 159.9,
+    "stock": 0,
+    "memType": "DDR3",
+    "ramGB": 8,
+    "specs": [
+      "8.0 GB",
+      "DDR3",
+      "1600 MHz"
+    ],
+    "detail": "MEMORIA PC 8GB DDR3 1600 MHZ PRODRIVE"
+  },
+  {
+    "id": "w19384",
+    "category": "memory",
+    "name": "Memoria PC 4GB DDR4 Teikon 2133MHZ",
+    "brand": "Smart",
+    "code": "19384",
+    "pixPrice": 189.9,
+    "stock": 77,
+    "memType": "DDR4",
+    "ramGB": 4,
+    "specs": [
+      "4.0 GB",
+      "DDR4",
+      "2133 MHz"
+    ],
+    "detail": "MEMORIA PC 4GB DDR4 TEIKON 2133MHZ",
+    "foto": "/fotos/19384.jpg"
+  },
+  {
+    "id": "w19385",
+    "category": "memory",
+    "name": "Memoria PC 4GB DDR4 Goldkey 2400 MHZ",
+    "brand": "Kingston",
+    "code": "19385",
+    "pixPrice": 189.9,
+    "stock": 71,
+    "memType": "DDR4",
+    "ramGB": 4,
+    "specs": [
+      "4.0 GB",
+      "DDR4",
+      "2400 MHz"
+    ],
+    "detail": "MEMORIA PC 4GB DDR4 GOLDKEY 2400 MHZ",
+    "foto": "/fotos/19385.jpg"
+  },
+  {
+    "id": "w19685",
+    "category": "memory",
+    "name": "Memoria PC 8GB DDR3 1600 MHZ Ara-1608p",
+    "brand": "Aitek",
+    "code": "19685",
+    "foto": "/fotos/19685.jpg",
+    "pixPrice": 189.9,
+    "stock": 79,
+    "memType": "DDR3",
+    "ramGB": 8,
+    "specs": [
+      "8.0 GB",
+      "DDR3",
+      "1600 MHz"
+    ],
+    "detail": "S-MEMORIA PC 8GB DDR3 1600 MHZ ARA-1608P"
+  },
+  {
+    "id": "w19871",
+    "category": "memory",
+    "name": "Memoria PC 4GB DDR4 Adata 2400MHZ",
+    "brand": "Adata ",
+    "code": "19871",
+    "foto": "/fotos/19871.jpg",
+    "pixPrice": 189.9,
+    "stock": 68,
+    "memType": "DDR4",
+    "ramGB": 4,
+    "specs": [
+      "4.0 GB",
+      "DDR4",
+      "2400 MHz"
+    ],
+    "detail": "MEMORIA PC 4GB DDR4 ADATA 2400MHZ"
+  },
+  {
+    "id": "w20072",
+    "category": "memory",
+    "name": "Memoria PC 4GB DDR4 Adata 2133MHZ",
+    "brand": "Adata ",
+    "code": "20072",
+    "pixPrice": 189.9,
+    "stock": 72,
+    "memType": "DDR4",
+    "ramGB": 4,
+    "specs": [
+      "4.0 GB",
+      "DDR4",
+      "2133 MHz"
+    ],
+    "detail": "MEMORIA PC 4GB DDR4 ADATA 2133MHZ",
+    "foto": "/fotos/20072.jpg"
+  },
+  {
+    "id": "w9390",
+    "category": "memory",
+    "name": "Memoria PC 4GB DDR4 2666MHZ",
+    "brand": "Smart",
+    "code": "9390",
+    "foto": "/fotos/9390.jpg",
+    "pixPrice": 209.9,
+    "stock": 1,
+    "memType": "DDR4",
+    "ramGB": 4,
+    "specs": [
+      "4.0 GB",
+      "DDR4",
+      "2666 MHz"
+    ],
+    "detail": "MEMORIA PC 4GB DDR4 2666MHZ"
+  },
+  {
+    "id": "w17610",
+    "category": "memory",
+    "name": "Memoria PC 16GB DDR4 Kgt 2666MHZ",
+    "brand": "Kingston",
+    "code": "17610",
+    "foto": "/fotos/17610.jpg",
+    "pixPrice": 229.9,
+    "stock": 1,
+    "memType": "DDR4",
+    "ramGB": 16,
+    "specs": [
+      "16.0 GB",
+      "DDR4",
+      "2666 MHz"
+    ],
+    "detail": "MEMORIA PC 16GB DDR4 KGT 2666MHZ"
+  },
+  {
+    "id": "w7855",
+    "category": "memory",
+    "name": "Memoria PC 8GB DDR4 Netcore 2666MHZ",
+    "brand": "Netcore",
+    "code": "7855",
+    "foto": "/fotos/7855.jpg",
+    "pixPrice": 329.9,
+    "stock": 3,
+    "memType": "DDR4",
+    "ramGB": 8,
+    "specs": [
+      "8.0 GB",
+      "DDR4",
+      "2666 MHz"
+    ],
+    "detail": "MEMORIA PC 8GB DDR4 NETCORE 2666MHZ"
+  },
+  {
+    "id": "w1396",
+    "category": "memory",
+    "name": "Memoria PC 8GB DDR4 2666 MHZ",
+    "brand": "Kingston",
+    "code": "1396",
+    "foto": "/fotos/1396.jpg",
+    "pixPrice": 359.9,
+    "stock": 0,
+    "memType": "DDR4",
+    "ramGB": 8,
+    "specs": [
+      "8.0 GB",
+      "DDR4",
+      "2666 MHz"
+    ],
+    "detail": "MEMORIA PC 8GB DDR4 2666 MHZ"
+  },
+  {
+    "id": "w16120",
+    "category": "memory",
+    "name": "Memoria PC 8GB DDR4 Desk 3200MHZ",
+    "brand": "Bpc",
+    "code": "16120",
+    "foto": "/fotos/16120.jpg",
+    "pixPrice": 359.9,
+    "stock": 0,
+    "memType": "DDR4",
+    "ramGB": 8,
+    "specs": [
+      "8.0 GB",
+      "DDR4",
+      "3200 MHz"
+    ],
+    "detail": "MEMORIA PC 8GB DDR4 DESK 3200MHZ"
+  },
+  {
+    "id": "w19145",
+    "category": "memory",
+    "name": "Memoria PC 8GB DDR4 Kgt 3200MHZ",
+    "brand": "Kingston",
+    "code": "19145",
+    "foto": "/fotos/19145.jpg",
+    "pixPrice": 359.9,
+    "stock": 28,
+    "memType": "DDR4",
+    "ramGB": 8,
+    "specs": [
+      "8.0 GB",
+      "DDR4",
+      "3200 MHz"
+    ],
+    "detail": "L-MEMORIA PC 8GB DDR4 KGT 3200MHZ"
+  },
+  {
+    "id": "w19865",
+    "category": "memory",
+    "name": "Memoria PC 8GB DDR4 3200MHZ Fury",
+    "brand": "Kingston",
+    "code": "19865",
+    "foto": "/fotos/19865.jpg",
+    "pixPrice": 389.9,
+    "stock": 0,
+    "memType": "DDR4",
+    "ramGB": 8,
+    "specs": [
+      "8.0 GB",
+      "DDR4",
+      "3200 MHz"
+    ],
+    "detail": "MEMORIA PC 8GB DDR4 3200MHZ FURY"
+  },
+  {
+    "id": "w21336",
+    "category": "memory",
+    "name": "Memoria PC 8GB DDR4 Keepdata 2666HZ",
+    "brand": "Keepdata",
+    "code": "21336",
+    "foto": "/fotos/21336.jpg",
+    "pixPrice": 389.9,
+    "stock": 255,
+    "memType": "DDR4",
+    "ramGB": 8,
+    "specs": [
+      "8.0 GB",
+      "DDR4",
+      "Keepdata"
+    ],
+    "detail": "L-MEMORIA PC 8GB DDR4 KEEPDATA 2666HZ"
+  },
+  {
+    "id": "w20049",
+    "category": "memory",
+    "name": "Memoria PC 8GB DDR4 Keepdata 2666HZ",
+    "brand": "Keepdata",
+    "code": "20049",
+    "pixPrice": 469.9,
+    "stock": 25,
+    "memType": "DDR4",
+    "ramGB": 8,
+    "specs": [
+      "8.0 GB",
+      "DDR4",
+      "Keepdata"
+    ],
+    "detail": "MEMORIA PC 8GB DDR4 KEEPDATA 2666HZ",
+    "foto": "/fotos/20049.jpg"
+  },
+  {
+    "id": "w18345",
+    "category": "memory",
+    "name": "Memoria 8GB DDR4 Hayom 2666 MHZ",
+    "brand": "Hayom",
+    "code": "18345",
+    "foto": "/fotos/18345.jpg",
+    "pixPrice": 599.9,
+    "stock": 15,
+    "memType": "DDR4",
+    "ramGB": 8,
+    "specs": [
+      "8.0 GB",
+      "DDR4",
+      "2666 MHz"
+    ],
+    "detail": "MEMORIA 8GB DDR4 HAYOM 2666 MHZ"
+  },
+  {
+    "id": "w19346",
+    "category": "memory",
+    "name": "Memoria PC 16GB DDR4 Kgt 3200MHZ",
+    "brand": "Kingston",
+    "code": "19346",
+    "foto": "/fotos/19346.jpg",
+    "pixPrice": 919.9,
+    "stock": 2,
+    "memType": "DDR4",
+    "ramGB": 16,
+    "specs": [
+      "16.0 GB",
+      "DDR4",
+      "3200 MHz"
+    ],
+    "detail": "L-MEMORIA PC 16GB DDR4 KGT 3200MHZ"
+  },
+  {
+    "id": "w15523",
+    "category": "memory",
+    "name": "Memoria PC 16GB DDR4 3200MHZ Hyperx Fury",
+    "brand": "Hyperx",
+    "code": "15523",
+    "foto": "/fotos/15523.jpg",
+    "pixPrice": 990.9,
+    "stock": 1,
+    "memType": "DDR4",
+    "ramGB": 16,
+    "specs": [
+      "16.0 GB",
+      "DDR4",
+      "3200 MHz"
+    ],
+    "detail": "E-MEMORIAPC 16GB DDR43200MHZ HYPERX FURY"
+  },
+  {
+    "id": "w20704",
+    "category": "memory",
+    "name": "Memoria PC 16GB DDR5 Adata 6400MHZ Br",
+    "brand": "Adata ",
+    "code": "20704",
+    "foto": "/fotos/20704.jpg",
+    "pixPrice": 1859.9,
+    "stock": 0,
+    "memType": "DDR5",
+    "ramGB": 16,
+    "specs": [
+      "16.0 GB",
+      "DDR5",
+      "6400 MHz"
+    ],
+    "detail": "MEMORIA PC 16GB DDR5 ADATA 6400MHZ BR"
+  },
+  {
+    "id": "w20707",
+    "category": "memory",
+    "name": "Memoria PC 16GB DDR5 Kgt 6400MHZ Pr",
+    "brand": "Kingston",
+    "code": "20707",
+    "foto": "/fotos/20707.jpg",
+    "pixPrice": 1979.9,
+    "stock": 0,
+    "memType": "DDR5",
+    "ramGB": 16,
+    "specs": [
+      "16.0 GB",
+      "DDR5",
+      "6400 MHz"
+    ],
+    "detail": "MEMORIA PC 16GB DDR5 KGT 6400MHZ PR"
+  },
+  {
+    "id": "w26531",
+    "category": "memory",
+    "name": "Memoria PC 16GB DDR4 2666MHZ Keepdata",
+    "brand": "Keepdata",
+    "code": "26531",
+    "pixPrice": 789.9,
+    "stock": 100,
+    "memType": "DDR4",
+    "ramGB": 16,
+    "specs": [
+      "DDR4",
+      "16 GB",
+      "Keepdata"
+    ],
+    "detail": "MEMORIA PC 16GB DDR4 2666MHZ KEEPDATA"
+  },
+  {
+    "id": "w26532",
+    "category": "memory",
+    "name": "Memoria PC 16GB DDR4 2666MHZ Macrovip",
+    "brand": "Macrovip",
+    "code": "26532",
+    "pixPrice": 789.9,
+    "stock": 100,
+    "memType": "DDR4",
+    "ramGB": 16,
+    "specs": [
+      "DDR4",
+      "16 GB",
+      "Macrovip"
+    ],
+    "detail": "MEMORIA PC 16GB DDR4 2666MHZ MACROVIP"
+  },
+  {
+    "id": "w26484",
+    "category": "memory",
+    "name": "Memoria PC 8GB DDR4 Clanm 3200MHZ",
+    "brand": "Clainm",
+    "code": "26484",
+    "pixPrice": 319.9,
+    "stock": 3,
+    "memType": "DDR4",
+    "ramGB": 8,
+    "specs": [
+      "DDR4",
+      "8 GB",
+      "Clainm"
+    ],
+    "detail": "MEMORIA PC 8GB DDR4 CLANM 3200MHZ"
+  },
+  {
+    "id": "w26486",
+    "category": "memory",
+    "name": "Memoria PC 8GB DDR4 Clanm 3200MHZ Br",
+    "brand": "Clainm",
+    "code": "26486",
+    "pixPrice": 329.9,
+    "stock": 3,
+    "memType": "DDR4",
+    "ramGB": 8,
+    "specs": [
+      "DDR4",
+      "8 GB",
+      "Clainm"
+    ],
+    "detail": "MEMORIA PC 8GB DDR4 CLANM 3200MHZ BR"
+  },
+  {
+    "id": "w26485",
+    "category": "memory",
+    "name": "Memoria PC 8GB DDR4 Clanm 3200MHZ Pr",
+    "brand": "Clainm",
+    "code": "26485",
+    "pixPrice": 329.9,
+    "stock": 5,
+    "memType": "DDR4",
+    "ramGB": 8,
+    "specs": [
+      "DDR4",
+      "8 GB",
+      "Clainm"
+    ],
+    "detail": "MEMORIA PC 8GB DDR4 CLANM 3200MHZ PR"
+  },
+  {
+    "id": "w18403",
+    "category": "memory",
+    "name": "Memoria PC 16GB DDR4 Kgt 2666MHZ",
+    "brand": "Kingston",
+    "code": "18403",
+    "pixPrice": 779.9,
+    "stock": 50,
+    "memType": "DDR4",
+    "ramGB": 16,
+    "specs": [
+      "DDR4",
+      "16 GB",
+      "Kingston"
+    ],
+    "detail": "S-MEMORIA PC 16GB DDR4 KGT 2666MHZ"
+  },
+  {
+    "id": "w17063",
+    "category": "gpu",
+    "name": "Placa de Video Geforce G-GT610/2G Reven",
+    "brand": "Knup",
+    "code": "17063",
+    "foto": "/fotos/17063.jpg",
+    "pixPrice": 209.9,
+    "stock": 0,
+    "watts": 30,
+    "specs": [
+      "~30.0 W de consumo",
+      "Knup"
+    ],
+    "detail": "PLACA DE VIDEO GEFORCE G-GT610/2G  REVEN"
+  },
+  {
+    "id": "w17103",
+    "category": "gpu",
+    "name": "Placa de Video NVIDIA Geforce GT730/4G",
+    "brand": "Nvidia",
+    "code": "17103",
+    "foto": "/fotos/17103.jpg",
+    "pixPrice": 309.9,
+    "stock": 0,
+    "watts": 50,
+    "specs": [
+      "~50.0 W de consumo",
+      "Nvidia"
+    ],
+    "detail": "S-PLACA DE VIDEO NVIDIA GEFORCE GT730/4G"
+  },
+  {
+    "id": "w21635",
+    "category": "gpu",
+    "name": "Placa de Video NVIDIA Geforce GT730/4GB",
+    "brand": "Knup",
+    "code": "21635",
+    "foto": "/fotos/21635.jpg",
+    "pixPrice": 369.9,
+    "stock": 35,
+    "watts": 50,
+    "specs": [
+      "4 GB de video",
+      "~50.0 W de consumo",
+      "Knup"
+    ],
+    "detail": "L-PLACA DEVIDEO NVIDIA GEFORCE GT730/4GB"
+  },
+  {
+    "id": "w19296",
+    "category": "gpu",
+    "name": "Placa de Video 4GB DDR5 GT740/4G Aitek",
+    "brand": "Aitek",
+    "code": "19296",
+    "foto": "/fotos/19296.jpg",
+    "pixPrice": 529.9,
+    "stock": 0,
+    "watts": 65,
+    "specs": [
+      "4 GB de video",
+      "~65.0 W de consumo",
+      "Aitek"
+    ],
+    "detail": "PLACA DE VIDEO 4GB DDR5 GT740/4G AITEK"
+  },
+  {
+    "id": "w20485",
+    "category": "gpu",
+    "name": "Placa de Video 4GB DDR5 G-GTX750TI",
+    "brand": "Revenger",
+    "code": "20485",
+    "pixPrice": 719.9,
+    "stock": 7,
+    "watts": 60,
+    "specs": [
+      "4 GB de video",
+      "~60.0 W de consumo",
+      "Revenger"
+    ],
+    "detail": "L-PLACA DE VIDEO 4GB DDR5 G-GTX750TI",
+    "foto": "/fotos/20485.jpg"
+  },
+  {
+    "id": "w19209",
+    "category": "gpu",
+    "name": "Placa de Video 4GB DDR5 Delta-rx560",
+    "brand": "Aitek",
+    "code": "19209",
+    "foto": "/fotos/19209.jpg",
+    "pixPrice": 799.9,
+    "stock": 9,
+    "watts": 80,
+    "specs": [
+      "4 GB de video",
+      "~80.0 W de consumo",
+      "Aitek"
+    ],
+    "detail": "L-PLACA DE VIDEO 4GB DDR5 DELTA-RX560"
+  },
+  {
+    "id": "w20957",
+    "category": "gpu",
+    "name": "Placa de Video 4GB DDR5 GTX1050TI",
+    "brand": "Nvidia",
+    "code": "20957",
+    "foto": "/fotos/20957.jpg",
+    "pixPrice": 1019.9,
+    "stock": 15,
+    "watts": 75,
+    "specs": [
+      "4 GB de video",
+      "~75.0 W de consumo",
+      "Nvidia"
+    ],
+    "detail": "PLACA DE VIDEO 4GB DDR5 GTX1050TI"
+  },
+  {
+    "id": "w20166",
+    "category": "gpu",
+    "name": "Placa de Video 8GB DDR5 Delta-rx580",
+    "brand": "Delta",
+    "code": "20166",
+    "pixPrice": 1189.9,
+    "stock": 1,
+    "watts": 185,
+    "specs": [
+      "8 GB de video",
+      "~185.0 W de consumo",
+      "Delta"
+    ],
+    "detail": "L-PLACA DE VIDEO 8GB DDR5 DELTA-RX580",
+    "foto": "/fotos/20166.jpg"
+  },
+  {
+    "id": "w26468",
+    "category": "gpu",
+    "name": "Placa de Video GT610 2GB DDR3 Delta-gt610",
+    "brand": "Delta",
+    "code": "26468",
+    "pixPrice": 229.9,
+    "stock": 30,
+    "watts": 30,
+    "specs": [
+      "Delta"
+    ],
+    "detail": "PLACA DEVIDEO GT610 2GB DDR3 DELTA-GT610"
+  },
+  {
+    "id": "w26410",
+    "category": "gpu",
+    "name": "Placa de Video G-GTX1660S/6G 6GB",
+    "brand": "Revenger",
+    "code": "26410",
+    "pixPrice": 1569.9,
+    "stock": 18,
+    "specs": [
+      "Revenger"
+    ],
+    "detail": "L-PLACA DE VIDEO G-GTX1660S/6G 6GB"
+  },
+  {
+    "id": "w19862",
+    "category": "gpu",
+    "name": "Placa de Video RX5600XT 6GB Gddr6",
+    "brand": "Delta",
+    "code": "19862",
+    "pixPrice": 1829.9,
+    "stock": 15,
+    "watts": 80,
+    "specs": [
+      "Delta"
+    ],
+    "detail": "L-PLACA DE VIDEO RX5600XT 6GB GDDR6"
+  },
+  {
+    "id": "w26412",
+    "category": "gpu",
+    "name": "Placa de Video 4GB DDR5 Delta-rx550",
+    "brand": "Delta",
+    "code": "26412",
+    "pixPrice": 669.9,
+    "stock": 8,
+    "specs": [
+      "Delta"
+    ],
+    "detail": "PLACA DE VIDEO 4GB DDR5 DELTA-RX550"
+  },
+  {
+    "id": "w19027",
+    "category": "gpu",
+    "name": "Placa de Video Rtx 5070 X2 Oc 12GB Gddr7",
+    "brand": "Inno3D",
+    "code": "19027",
+    "pixPrice": 6317.06,
+    "stock": 2,
+    "specs": [
+      "Inno3D"
+    ],
+    "detail": "PLACA DE VIDEO RTX 5070 X2 OC 12GB GDDR7"
+  },
+  {
+    "id": "w26544",
+    "category": "gpu",
+    "name": "Placa de Video RTX3060 12GBDDR6 Pr Clanm",
+    "brand": "Clanm",
+    "code": "26544",
+    "pixPrice": 3259.9,
+    "stock": 10,
+    "specs": [
+      "Clanm"
+    ],
+    "detail": "PLACA DE VIDEO RTX3060 12GBDDR6 PR CLANM"
+  },
+  {
+    "id": "w21412",
+    "category": "gpu",
+    "name": "Placa de Video Rx 7600 8GB Blizzards",
+    "brand": "Haoquing",
+    "code": "21412",
+    "pixPrice": 2209.9,
+    "stock": 1,
+    "specs": [
+      "Haoquing"
+    ],
+    "detail": "PLACA DE VIDEO RX 7600 8GB BLIZZARDS"
+  },
+  {
+    "id": "w26088",
+    "category": "gpu",
+    "name": "Placa de Video Vx Pro Vx GT730-4GD3-A",
+    "brand": "Vx Pro",
+    "code": "26088",
+    "pixPrice": 319.9,
+    "stock": 432,
+    "watts": 50,
+    "specs": [
+      "Vx Pro"
+    ],
+    "detail": "PLACA DE VIDEO VX PRO VX GT730-4GD3-A"
+  },
+  {
+    "id": "w17285",
+    "category": "gpu",
+    "name": "Placa de Video NVIDIA Gef GT750TI/8G",
+    "brand": "Revenger",
+    "code": "17285",
+    "pixPrice": 679.9,
+    "stock": 6,
+    "specs": [
+      "Revenger"
+    ],
+    "detail": "S-PLACA DE VIDEO NVIDIA GEF GT750TI/8G"
+  },
+  {
+    "id": "w25878",
+    "category": "storage",
+    "name": "SSD Pro-ultra Rapido 120GB Flashdrive",
+    "brand": "Flash Drive",
+    "code": "25878",
+    "foto": "/fotos/25878.jpg",
+    "pixPrice": 149.9,
+    "stock": 0,
+    "specs": [
+      "120 GB",
+      "Flash Drive"
+    ],
+    "detail": "SSD PRO-ULTRA RAPIDO 120GB FLASHDRIVE"
+  },
+  {
+    "id": "w26047",
+    "category": "storage",
+    "name": "SSD M.2 NVME 256GB Pny Cs1031 OEM",
+    "brand": "Pny",
+    "code": "26047",
+    "foto": "/fotos/26047.jpg",
+    "pixPrice": 159.9,
+    "stock": 0,
+    "specs": [
+      "256 GB",
+      "NVMe M.2",
+      "Pny"
+    ],
+    "detail": "SSD M.2 NVME 256GB PNY CS1031 OEM"
+  },
+  {
+    "id": "w26064",
+    "category": "storage",
+    "name": "SSD M2 NVME Cl4-8d256 256GB OEM",
+    "brand": "Sem marca",
+    "code": "26064",
+    "foto": "/fotos/26064.jpg",
+    "pixPrice": 169.9,
+    "stock": 0,
+    "specs": [
+      "256 GB",
+      "NVMe M.2"
+    ],
+    "detail": "SSD M2  NVME CL4-8D256 256GB OEM"
+  },
+  {
+    "id": "w26065",
+    "category": "storage",
+    "name": "SSD M2 NVME Bc901 256GB Hana OEM",
+    "brand": "Hana Eletronics",
+    "code": "26065",
+    "foto": "/fotos/26065.jpg",
+    "pixPrice": 169.9,
+    "stock": 0,
+    "specs": [
+      "256 GB",
+      "NVMe M.2",
+      "Hana Eletronics"
+    ],
+    "detail": "SSD M2  NVME BC901 256GB HANA OEM"
+  },
+  {
+    "id": "w26067",
+    "category": "storage",
+    "name": "Mini SSD M2nvmecl1-4d256 256GB Ssstc OEM",
+    "brand": "Solid State Storage Technology Corporati",
+    "code": "26067",
+    "foto": "/fotos/26067.jpg",
+    "pixPrice": 169.9,
+    "stock": 6,
+    "specs": [
+      "256 GB",
+      "NVMe M.2",
+      "Solid State Storage Technology Corporati"
+    ],
+    "detail": "MINI SSD M2NVMECL1-4D256 256GB SSSTC OEM"
+  },
+  {
+    "id": "w26068",
+    "category": "storage",
+    "name": "Mini SSD M2 SATA 00up651 256GB OEM",
+    "brand": "Sem Marca",
+    "code": "26068",
+    "foto": "/fotos/26068.jpg",
+    "pixPrice": 169.9,
+    "stock": 5,
+    "specs": [
+      "256 GB",
+      "SATA",
+      "Sem Marca"
+    ],
+    "detail": "MINI SSD M2 SATA 00UP651 256GB OEM"
+  },
+  {
+    "id": "w10731",
+    "category": "storage",
+    "name": "HD SSD 120GB Masterdrive",
+    "brand": "Masterdrive",
+    "code": "10731",
+    "foto": "/fotos/10731.jpg",
+    "pixPrice": 179.9,
+    "stock": 0,
+    "specs": [
+      "120 GB",
+      "Masterdrive"
+    ],
+    "detail": "HD SSD 120GB MASTERDRIVE"
+  },
+  {
+    "id": "w26063",
+    "category": "storage",
+    "name": "SSD M.2 2280 PCIE 256GB Gen3 Adata OEM",
+    "brand": "Adata ",
+    "code": "26063",
+    "foto": "/fotos/26063.jpg",
+    "pixPrice": 209.9,
+    "stock": 0,
+    "specs": [
+      "256 GB",
+      "Adata "
+    ],
+    "detail": "SSD M.2 2280 PCIE 256GB GEN3 ADATA OEM"
+  },
+  {
+    "id": "w21550",
+    "category": "storage",
+    "name": "SSD 240GB SATA 3.0 Masterdrive",
+    "brand": "Masterdrive",
+    "code": "21550",
+    "foto": "/fotos/21550.jpg",
+    "pixPrice": 239.9,
+    "stock": 290,
+    "specs": [
+      "240 GB",
+      "SATA",
+      "Masterdrive"
+    ],
+    "detail": "L-SSD 240GB SATA 3.0 MASTERDRIVE"
+  },
+  {
+    "id": "w25877",
+    "category": "storage",
+    "name": "SSD Pro-ultra Rapido 240 GB Flashdrive",
+    "brand": "Flash Drive",
+    "code": "25877",
+    "foto": "/fotos/25877.jpg",
+    "pixPrice": 239.9,
+    "stock": 146,
+    "specs": [
+      "240 GB",
+      "Flash Drive"
+    ],
+    "detail": "SSD PRO-ULTRA RAPIDO 240 GB FLASHDRIVE"
+  },
+  {
+    "id": "w26166",
+    "category": "storage",
+    "name": "SSD SATA 3 Gamer Black 256GB Cartelado",
+    "brand": "Gamer Black",
+    "code": "26166",
+    "foto": "/fotos/26166.jpg",
+    "pixPrice": 249.9,
+    "stock": 0,
+    "specs": [
+      "256 GB",
+      "SATA",
+      "Gamer Black"
+    ],
+    "detail": "SSD SATA 3 GAMER BLACK 256GB CARTELADO"
+  },
+  {
+    "id": "w19336",
+    "category": "storage",
+    "name": "SSD M2 256GB NVME PCIE Gen3x4 Keepdata",
+    "brand": "Keepdata",
+    "code": "19336",
+    "foto": "/fotos/19336.jpg",
+    "pixPrice": 349.9,
+    "stock": 1,
+    "specs": [
+      "256 GB",
+      "NVMe M.2",
+      "Keepdata"
+    ],
+    "detail": "L-SSD M2 256GB NVME PCIE GEN3X4 KEEPDATA"
+  },
+  {
+    "id": "w21655",
+    "category": "storage",
+    "name": "SSD NVME 256GB Kgt",
+    "brand": "Kingston",
+    "code": "21655",
+    "foto": "/fotos/21655.jpg",
+    "pixPrice": 399.9,
+    "stock": 87,
+    "specs": [
+      "256 GB",
+      "NVMe M.2",
+      "Kingston"
+    ],
+    "detail": "L-SSD NVME 256GB KGT"
+  },
+  {
+    "id": "w15316",
+    "category": "storage",
+    "name": "SSD 240GB Sata3 2.5 Burst Elite Patriot",
+    "brand": "Patriot",
+    "code": "15316",
+    "foto": "/fotos/15316.jpg",
+    "pixPrice": 449.9,
+    "stock": 1,
+    "specs": [
+      "240 GB",
+      "SATA",
+      "Patriot"
+    ],
+    "detail": "SSD 240GB SATA3 2.5 BURST ELITE PATRIOT"
+  },
+  {
+    "id": "w26049",
+    "category": "storage",
+    "name": "SSD NVME 512GB M.2 PCIE 4.0 Hawking OEM",
+    "brand": "Hawquing",
+    "code": "26049",
+    "foto": "/fotos/26049.jpg",
+    "pixPrice": 449.9,
+    "stock": 1,
+    "specs": [
+      "512 GB",
+      "NVMe M.2",
+      "Hawquing"
+    ],
+    "detail": "SSD NVME 512GB M.2  PCIE 4.0 HAWKING OEM"
+  },
+  {
+    "id": "w25940",
+    "category": "storage",
+    "name": "SSD Pro-ultra Rapido 480GB Flashdrive",
+    "brand": "Flash Drive",
+    "code": "25940",
+    "foto": "/fotos/25940.jpg",
+    "pixPrice": 469.9,
+    "stock": 0,
+    "specs": [
+      "480 GB",
+      "Flash Drive"
+    ],
+    "detail": "SSD PRO-ULTRA RAPIDO 480GB FLASHDRIVE"
+  },
+  {
+    "id": "w3251",
+    "category": "storage",
+    "name": "SSD SATA 240GB A400",
+    "brand": "Kingston",
+    "code": "3251",
+    "foto": "/fotos/3251.jpg",
+    "pixPrice": 479.9,
+    "stock": 16,
+    "specs": [
+      "240 GB",
+      "SATA",
+      "Kingston"
+    ],
+    "detail": "SSD SATA 240GB A400"
+  },
+  {
+    "id": "w10733",
+    "category": "storage",
+    "name": "HD SSD 480GB Masterdrive",
+    "brand": "Masterdrive",
+    "code": "10733",
+    "foto": "/fotos/10733.jpg",
+    "pixPrice": 479.9,
+    "stock": 1,
+    "specs": [
+      "480 GB",
+      "Masterdrive"
+    ],
+    "detail": "HD SSD 480GB MASTERDRIVE"
+  },
+  {
+    "id": "w19332",
+    "category": "storage",
+    "name": "SSD 512GB 3.5\" 550mb/s Markvision",
+    "brand": "Markvision ",
+    "code": "19332",
+    "foto": "/fotos/19332.jpg",
+    "pixPrice": 489.9,
+    "stock": 26,
+    "specs": [
+      "512 GB",
+      "Markvision "
+    ],
+    "detail": "L-SSD 512GB 3.5\" 550MB/S MARKVISION"
+  },
+  {
+    "id": "w19334",
+    "category": "storage",
+    "name": "SSD 512GB Onex X-ssd-512",
+    "brand": "Markvision ",
+    "code": "19334",
+    "foto": "/fotos/19334.jpg",
+    "pixPrice": 489.9,
+    "stock": 11,
+    "specs": [
+      "512 GB",
+      "Markvision "
+    ],
+    "detail": "L-SSD 512GB ONEX X-SSD-512"
+  },
+  {
+    "id": "w21521",
+    "category": "storage",
+    "name": "SSD 480GB SATA 3 Crucial",
+    "brand": "Crucial",
+    "code": "21521",
+    "foto": "/fotos/21521.jpg",
+    "pixPrice": 529.9,
+    "stock": 197,
+    "specs": [
+      "480 GB",
+      "SATA",
+      "Crucial"
+    ],
+    "detail": "L-SSD 480GB SATA 3 CRUCIAL"
+  },
+  {
+    "id": "w21321",
+    "category": "storage",
+    "name": "SSD NVME Nv1 M.2 512GB",
+    "brand": "Binario",
+    "code": "21321",
+    "foto": "/fotos/21321.jpg",
+    "pixPrice": 599.9,
+    "stock": 5,
+    "specs": [
+      "512 GB",
+      "NVMe M.2",
+      "Binario"
+    ],
+    "detail": "S-SSD NVME NV1 M.2 512GB"
+  },
+  {
+    "id": "w19149",
+    "category": "storage",
+    "name": "SSD M2 512GB NVME PCIE Gen3x4 Keepdata",
+    "brand": "Keepdata",
+    "code": "19149",
+    "foto": "/fotos/19149.jpg",
+    "pixPrice": 639.9,
+    "stock": 3,
+    "specs": [
+      "512 GB",
+      "NVMe M.2",
+      "Keepdata"
+    ],
+    "detail": "L-SSD M2 512GB NVME PCIE GEN3X4 KEEPDATA"
+  },
+  {
+    "id": "w16874",
+    "category": "storage",
+    "name": "SSD 500GB M.2 2280 NVME Nm610 Pro Lexar",
+    "brand": "Lexar",
+    "code": "16874",
+    "foto": "/fotos/16874.jpg",
+    "pixPrice": 679.9,
+    "stock": 22,
+    "specs": [
+      "500 GB",
+      "NVMe M.2",
+      "Lexar"
+    ],
+    "detail": "SSD 500GB M.2 2280 NVME NM610 PRO LEXAR"
+  },
+  {
+    "id": "w14103",
+    "category": "storage",
+    "name": "SSD NVME M.2 Nv3 500GB PCIE 4.0 Kingston",
+    "brand": "Kingston",
+    "code": "14103",
+    "foto": "/fotos/14103.jpg",
+    "pixPrice": 869.9,
+    "stock": 1,
+    "specs": [
+      "500 GB",
+      "NVMe M.2",
+      "Kingston"
+    ],
+    "detail": "SSD NVME M.2 NV3 500GB PCIE 4.0 KINGSTON"
+  },
+  {
+    "id": "w26124",
+    "category": "storage",
+    "name": "SSD M.2 NVME Wd Green Sn350 1TB",
+    "brand": "Western Digital",
+    "code": "26124",
+    "foto": "/fotos/26124.jpg",
+    "pixPrice": 1319.9,
+    "stock": 4,
+    "specs": [
+      "1 TB",
+      "NVMe M.2",
+      "Western Digital"
+    ],
+    "detail": "L-SSD M.2 NVME WD GREEN SN350 1TB"
+  },
+  {
+    "id": "w26052",
+    "category": "storage",
+    "name": "Mini M.2 NVME 256GB Kingspec",
+    "brand": "Kingspec",
+    "code": "26052",
+    "pixPrice": 109.9,
+    "stock": 1,
+    "specs": [
+      "Kingspec"
+    ],
+    "detail": "MINI M.2 NVME 256GB KINGSPEC"
+  },
+  {
+    "id": "w18436",
+    "category": "storage",
+    "name": "NVME 512GB Phison OEM",
+    "brand": "Sem Marca",
+    "code": "18436",
+    "pixPrice": 229.9,
+    "stock": 2,
+    "specs": [
+      "Sem Marca"
+    ],
+    "detail": "NVME 512GB PHISON OEM"
+  },
+  {
+    "id": "w17439",
+    "category": "storage",
+    "name": "Placa PCIE NVME M.2 Kp-ad135",
+    "brand": "Knup",
+    "code": "17439",
+    "pixPrice": 29.9,
+    "stock": 75,
+    "specs": [
+      "Knup"
+    ],
+    "detail": "PLACA PCIE NVME M.2 KP-AD135"
+  },
+  {
+    "id": "w25944",
+    "category": "storage",
+    "name": "SSD 256GB Flashdrive",
+    "brand": "Flash Drive",
+    "code": "25944",
+    "pixPrice": 249.9,
+    "stock": 40,
+    "specs": [
+      "Flash Drive"
+    ],
+    "detail": "S-SSD 256GB FLASHDRIVE"
+  },
+  {
+    "id": "w26330",
+    "category": "storage",
+    "name": "SSD Pro-ultra Rapido 120GB Flashdrive",
+    "brand": "Flash Drive",
+    "code": "26330",
+    "pixPrice": 149.9,
+    "stock": 40,
+    "specs": [
+      "Flash Drive"
+    ],
+    "detail": "S-SSD PRO-ULTRA RAPIDO 120GB FLASHDRIVE"
+  },
+  {
+    "id": "w26516",
+    "category": "storage",
+    "name": "SSD Pro-ultra Rapido 240 GB Flashdrive",
+    "brand": "Flash Drive",
+    "code": "26516",
+    "pixPrice": 239.9,
+    "stock": 80,
+    "specs": [
+      "Flash Drive"
+    ],
+    "detail": "S-SSD PRO-ULTRA RAPIDO 240 GB FLASHDRIVE"
+  },
+  {
+    "id": "w20493",
+    "category": "storage",
+    "name": "SSD 2.5 960GB Lexar SATA 3 5.5''",
+    "brand": "Lexar",
+    "code": "20493",
+    "pixPrice": 839.9,
+    "stock": 18,
+    "specs": [
+      "Lexar"
+    ],
+    "detail": "SSD 2.5 960GB LEXAR  SATA 3 5.5''"
+  },
+  {
+    "id": "w26283",
+    "category": "storage",
+    "name": "SSD Plus M.2 NVME 1TB 3200mb/s Sandisk",
+    "brand": "Sandisk",
+    "code": "26283",
+    "pixPrice": 1109.9,
+    "stock": 105,
+    "specs": [
+      "Sandisk"
+    ],
+    "detail": "SSD PLUS M.2 NVME 1TB 3200MB/S SANDISK"
+  },
+  {
+    "id": "w26473",
+    "category": "storage",
+    "name": "SSD SATA 3 Gamer Black 128GB Cartelado",
+    "brand": "Gamer Black",
+    "code": "26473",
+    "pixPrice": 169.9,
+    "stock": 3,
+    "specs": [
+      "Gamer Black"
+    ],
+    "detail": "SSD SATA 3 GAMER BLACK 128GB CARTELADO"
+  },
+  {
+    "id": "w26290",
+    "category": "storage",
+    "name": "SSD SATA 3 Gamer Black 512GB Cartelado",
+    "brand": "Gamer Black",
+    "code": "26290",
+    "pixPrice": 449.9,
+    "stock": 14,
+    "specs": [
+      "Gamer Black"
+    ],
+    "detail": "SSD SATA 3 GAMER BLACK 512GB CARTELADO"
+  },
+  {
+    "id": "w20155",
+    "category": "psu",
+    "name": "Fonte ATX Vx Pro 230W Vx230se",
+    "brand": "Duex",
+    "code": "20155",
+    "pixPrice": 49.9,
+    "stock": 488,
+    "watts": 230,
+    "specs": [
+      "230.0 W",
+      "Duex"
+    ],
+    "detail": "FONTE ATX VX PRO 230W VX230SE",
+    "foto": "/fotos/20155.jpg"
+  },
+  {
+    "id": "w10774",
+    "category": "psu",
+    "name": "Fonte ATX 200W Px300dng 110/220v K-mex S",
+    "brand": "K-Mex",
+    "code": "10774",
+    "foto": "/fotos/10774.jpg",
+    "pixPrice": 59.9,
+    "stock": 22,
+    "watts": 200,
+    "specs": [
+      "200.0 W",
+      "K-Mex"
+    ],
+    "detail": "FONTE ATX 200W PX300DNG 110/220V K-MEX S"
+  },
+  {
+    "id": "w11096",
+    "category": "psu",
+    "name": "Fonte Real 500W 20+4 Pinos Hdw-004 Fonen",
+    "brand": "Knup",
+    "code": "11096",
+    "foto": "/fotos/11096.jpg",
+    "pixPrice": 89.9,
+    "stock": 1,
+    "watts": 500,
+    "specs": [
+      "500.0 W",
+      "Knup"
+    ],
+    "detail": "FONTE REAL 500W 20+4 PINOS HDW-004 FONEN"
+  },
+  {
+    "id": "w19686",
+    "category": "psu",
+    "name": "Fonte LED Power 300W Df-300w-24v",
+    "brand": "Rohs",
+    "code": "19686",
+    "foto": "/fotos/19686.jpg",
+    "pixPrice": 89.9,
+    "stock": 1,
+    "watts": 300,
+    "specs": [
+      "300.0 W",
+      "Rohs"
+    ],
+    "detail": "FONTE LED POWER 300W DF-300W-24V"
+  },
+  {
+    "id": "w15708",
+    "category": "psu",
+    "name": "Fonte Tfx 350W 110v/220v Kp-cb202",
+    "brand": "Knup",
+    "code": "15708",
+    "foto": "/fotos/15708.jpg",
+    "pixPrice": 99.9,
+    "stock": 1,
+    "watts": 350,
+    "specs": [
+      "350.0 W",
+      "Knup"
+    ],
+    "detail": "FONTE TFX 350W 110V/220V KP-CB202"
+  },
+  {
+    "id": "w16999",
+    "category": "psu",
+    "name": "Fonte Afx Slim 350W Bivolt Kp-cb203",
+    "brand": "Knup",
+    "code": "16999",
+    "foto": "/fotos/16999.jpg",
+    "pixPrice": 99.9,
+    "stock": 1,
+    "watts": 350,
+    "specs": [
+      "350.0 W",
+      "Knup"
+    ],
+    "detail": "FONTE AFX SLIM 350W BIVOLT KP-CB203"
+  },
+  {
+    "id": "w17555",
+    "category": "psu",
+    "name": "Fonte ATX 400W Bpc-427v1.0 24 Pinos OEM",
+    "brand": "Tronos",
+    "code": "17555",
+    "foto": "/fotos/17555.jpg",
+    "pixPrice": 99.9,
+    "stock": 1,
+    "watts": 400,
+    "specs": [
+      "400.0 W",
+      "Tronos"
+    ],
+    "detail": "FONTE ATX 400W BPC-427V1.0 24 PINOS OEM"
+  },
+  {
+    "id": "w19069",
+    "category": "psu",
+    "name": "Fonte ATX 500W Bpc/5350b-m 24pinos BOX",
+    "brand": "Tronos",
+    "code": "19069",
+    "foto": "/fotos/19069.jpg",
+    "pixPrice": 99.9,
+    "stock": 44,
+    "watts": 500,
+    "specs": [
+      "500.0 W",
+      "Tronos"
+    ],
+    "detail": "L-FONTE ATX 500W BPC/5350B-M 24PINOS BOX"
+  },
+  {
+    "id": "w21062",
+    "category": "psu",
+    "name": "Fonte para PC 500W Delta-ef500",
+    "brand": "Delta",
+    "code": "21062",
+    "foto": "/fotos/21062.jpg",
+    "pixPrice": 139.9,
+    "stock": 59,
+    "watts": 500,
+    "specs": [
+      "500.0 W",
+      "Delta"
+    ],
+    "detail": "L-FONTE PARA PC  500W DELTA-EF500"
+  },
+  {
+    "id": "w15884",
+    "category": "psu",
+    "name": "Fonte ATX 500W para PC Ft-500",
+    "brand": "F3",
+    "code": "15884",
+    "foto": "/fotos/15884.jpg",
+    "pixPrice": 179.9,
+    "stock": 1,
+    "watts": 500,
+    "specs": [
+      "500.0 W",
+      "F3"
+    ],
+    "detail": "FONTE ATX 500W PARA PC FT-500"
+  },
+  {
+    "id": "w15154",
+    "category": "psu",
+    "name": "Fonte Ez8828c Eztfx 300W 80 Plus Bronze",
+    "brand": "K-Mex",
+    "code": "15154",
+    "foto": "/fotos/15154.jpg",
+    "pixPrice": 209.9,
+    "stock": 14,
+    "watts": 300,
+    "specs": [
+      "300.0 W",
+      "Selo 80 Plus",
+      "K-Mex"
+    ],
+    "detail": "FONTE EZ8828C EZTFX 300W 80 PLUS BRONZE"
+  },
+  {
+    "id": "w13097",
+    "category": "psu",
+    "name": "Fonte Real 550W Fo-max01 80plus",
+    "brand": "Knup",
+    "code": "13097",
+    "foto": "/fotos/13097.jpg",
+    "pixPrice": 259.9,
+    "stock": 6,
+    "watts": 550,
+    "specs": [
+      "550.0 W",
+      "Selo 80 Plus",
+      "Knup"
+    ],
+    "detail": "FONTE REAL 550W FO-MAX01 80PLUS"
+  },
+  {
+    "id": "w19942",
+    "category": "psu",
+    "name": "Fonte 650W 80plus Bronze Delta-f650",
+    "brand": "Delta",
+    "code": "19942",
+    "foto": "/fotos/19942.jpg",
+    "pixPrice": 259.9,
+    "stock": 18,
+    "watts": 650,
+    "specs": [
+      "650.0 W",
+      "Selo 80 Plus",
+      "Delta"
+    ],
+    "detail": "L-FONTE 650W 80PLUS BRONZE DELTA-F650"
+  },
+  {
+    "id": "w13098",
+    "category": "psu",
+    "name": "Fonte Gamer 650W Fo-max02 80plus Bronze",
+    "brand": "Knup",
+    "code": "13098",
+    "foto": "/fotos/13098.jpg",
+    "pixPrice": 309.9,
+    "stock": 0,
+    "watts": 650,
+    "specs": [
+      "650.0 W",
+      "Selo 80 Plus",
+      "Knup"
+    ],
+    "detail": "FONTE GAMER 650W FO-MAX02 80PLUS BRONZE"
+  },
+  {
+    "id": "w21080",
+    "category": "psu",
+    "name": "Fonte ATX 750W Plus Bronze Fo-max03",
+    "brand": "Revenger",
+    "code": "21080",
+    "foto": "/fotos/21080.jpg",
+    "pixPrice": 299.9,
+    "stock": 29,
+    "watts": 750,
+    "specs": [
+      "750.0 W",
+      "Revenger"
+    ],
+    "detail": "L-FONTE ATX 750W PLUS BRONZE FO-MAX03"
+  },
+  {
+    "id": "w20854",
+    "category": "psu",
+    "name": "Fonte ATX 650W 80 Plus Gold Fo-max07",
+    "brand": "Revenger",
+    "code": "20854",
+    "foto": "/fotos/20854.jpg",
+    "pixPrice": 399.9,
+    "stock": 2,
+    "watts": 650,
+    "specs": [
+      "650.0 W",
+      "Selo 80 Plus",
+      "Revenger"
+    ],
+    "detail": "FONTE ATX 650W 80 PLUS GOLD FO-MAX07"
+  },
+  {
+    "id": "w7939",
+    "category": "psu",
+    "name": "Fonte 500W Knup Kp-522",
+    "brand": "Knup",
+    "code": "7939",
+    "pixPrice": 89.9,
+    "stock": 50,
+    "watts": 500,
+    "specs": [
+      "500 W",
+      "Knup"
+    ],
+    "detail": "FONTE 500W KNUP KP-522"
+  },
+  {
+    "id": "w13539",
+    "category": "psu",
+    "name": "Fonte Real 500W Apfc Bpc/500pfca 24 Pino",
+    "brand": "Bpc",
+    "code": "13539",
+    "pixPrice": 169.9,
+    "stock": 2,
+    "watts": 500,
+    "specs": [
+      "500 W",
+      "Bpc"
+    ],
+    "detail": "FONTE REAL 500W APFC BPC/500PFCA 24 PINO"
+  },
+  {
+    "id": "w1067",
+    "category": "cooler",
+    "name": "Cooler Fan 8x8 Dx-8c 80MM Dex C/conector",
+    "brand": "Dex",
+    "code": "1067",
+    "foto": "/fotos/1067.jpg",
+    "pixPrice": 12.9,
+    "stock": 61,
+    "specs": [
+      "Dex"
+    ],
+    "detail": "COOLER FAN 8X8 DX-8C 80MM DEX C/CONECTOR"
+  },
+  {
+    "id": "w13986",
+    "category": "cooler",
+    "name": "Cooler G-VR300 Knup",
+    "brand": "Knup",
+    "code": "13986",
+    "foto": "/fotos/13986.jpg",
+    "pixPrice": 19.9,
+    "stock": 1,
+    "specs": [
+      "Knup"
+    ],
+    "detail": "COOLER G-VR300 KNUP"
+  },
+  {
+    "id": "w15397",
+    "category": "cooler",
+    "name": "Cooler para Processador INTEL",
+    "brand": "Brazil Pc",
+    "code": "15397",
+    "foto": "/fotos/15397.jpg",
+    "pixPrice": 19.9,
+    "stock": 3,
+    "specs": [
+      "Brazil Pc"
+    ],
+    "detail": "COOLER PARA PROCESSADOR INTEL"
+  },
+  {
+    "id": "w17041",
+    "category": "cooler",
+    "name": "Cooler Duex 115X Dx C1",
+    "brand": "Knup",
+    "code": "17041",
+    "foto": "/fotos/17041.jpg",
+    "pixPrice": 19.9,
+    "stock": 949,
+    "specs": [
+      "Knup"
+    ],
+    "detail": "COOLER DUEX 115X DX C1"
+  },
+  {
+    "id": "w20830",
+    "category": "cooler",
+    "name": "Cooler p/ Processador INTEL Akfan D85",
+    "brand": "Intel",
+    "code": "20830",
+    "pixPrice": 19.9,
+    "stock": 92,
+    "specs": [
+      "Intel"
+    ],
+    "detail": "COOLER P/ PROCESSADOR INTEL AKFAN D85",
+    "foto": "/fotos/20830.jpg"
+  },
+  {
+    "id": "w18225",
+    "category": "cooler",
+    "name": "Cooler RGB 120MM Delta-c1261p",
+    "brand": "Delta",
+    "code": "18225",
+    "foto": "/fotos/18225.jpg",
+    "pixPrice": 29.9,
+    "stock": 2,
+    "specs": [
+      "Delta"
+    ],
+    "detail": "COOLER RGB 120MM  DELTA-C1261P"
+  },
+  {
+    "id": "w18226",
+    "category": "cooler",
+    "name": "Cooler RGB 120MM Delta-c1261b",
+    "brand": "Delta",
+    "code": "18226",
+    "foto": "/fotos/18226.jpg",
+    "pixPrice": 29.9,
+    "stock": 22,
+    "specs": [
+      "Delta"
+    ],
+    "detail": "COOLER RGB 120MM  DELTA-C1261B"
+  },
+  {
+    "id": "w15507",
+    "category": "cooler",
+    "name": "Cooler G-VR348 Knup Universal",
+    "brand": "Knup",
+    "code": "15507",
+    "foto": "/fotos/15507.jpg",
+    "pixPrice": 39.9,
+    "stock": 27,
+    "specs": [
+      "Knup"
+    ],
+    "detail": "COOLER G-VR348 KNUP UNIVERSAL"
+  },
+  {
+    "id": "w21122",
+    "category": "cooler",
+    "name": "Cooler RGB 120MM Delta-c0107",
+    "brand": "Delta",
+    "code": "21122",
+    "pixPrice": 39.9,
+    "stock": 1,
+    "specs": [
+      "Delta"
+    ],
+    "detail": "COOLER RGB 120MM  DELTA-C0107",
+    "foto": "/fotos/21122.jpg"
+  },
+  {
+    "id": "w20990",
+    "category": "cooler",
+    "name": "Cooler G-VR357 Knup Universal",
+    "brand": "Knup",
+    "code": "20990",
+    "pixPrice": 79.9,
+    "stock": 0,
+    "specs": [
+      "Knup"
+    ],
+    "detail": "COOLER G-VR357 KNUP UNIVERSAL",
+    "foto": "/fotos/20990.jpg"
+  },
+  {
+    "id": "w17230",
+    "category": "cooler",
+    "name": "Fan Cooler G-VR352K P/gabinete",
+    "brand": "Knup",
+    "code": "17230",
+    "foto": "/fotos/17230.jpg",
+    "pixPrice": 109.9,
+    "stock": 0,
+    "specs": [
+      "Knup"
+    ],
+    "detail": "FAN COOLER G-VR352K P/GABINETE"
+  },
+  {
+    "id": "w19721",
+    "category": "cooler",
+    "name": "Cooler RGB 180W Delta-c4218",
+    "brand": "Delta",
+    "code": "19721",
+    "pixPrice": 109.9,
+    "stock": 18,
+    "specs": [
+      "Delta"
+    ],
+    "detail": "COOLER RGB 180W  DELTA-C4218",
+    "foto": "/fotos/19721.jpg"
+  },
+  {
+    "id": "w25904",
+    "category": "cooler",
+    "name": "KIT Cooler RGB 120MM Delta-c1263b",
+    "brand": "Delta",
+    "code": "25904",
+    "foto": "/fotos/25904.jpg",
+    "pixPrice": 139.9,
+    "stock": 1,
+    "specs": [
+      "Delta"
+    ],
+    "detail": "KIT COOLER RGB 120MM  DELTA-C1263B"
+  },
+  {
+    "id": "w20951",
+    "category": "cooler",
+    "name": "Cooler RGB 200W Delta-c6220",
+    "brand": "Delta",
+    "code": "20951",
+    "pixPrice": 159.9,
+    "stock": 19,
+    "specs": [
+      "Delta"
+    ],
+    "detail": "COOLER RGB 200W  DELTA-C6220",
+    "foto": "/fotos/20951.jpg"
+  },
+  {
+    "id": "w6074",
+    "category": "cooler",
+    "name": "KIT Ventilacao c/ 02 Coolers 12V Padrao",
+    "brand": "Knup",
+    "code": "6074",
+    "foto": "/fotos/6074.jpg",
+    "pixPrice": 249.9,
+    "stock": 11,
+    "specs": [
+      "Knup"
+    ],
+    "detail": "KIT VENTILACAO C/ 02 COOLERS 12V PADRAO"
+  },
+  {
+    "id": "w15725",
+    "category": "cooler",
+    "name": "Cooler G-VR349 Knup Universal",
+    "brand": "Knup",
+    "code": "15725",
+    "pixPrice": 18.9,
+    "stock": 20,
+    "specs": [
+      "Knup"
+    ],
+    "detail": "COOLER G-VR349 KNUP UNIVERSAL"
+  },
+  {
+    "id": "w14269",
+    "category": "cooler",
+    "name": "Cooler Universal Cl-823 65W INTEL AMD",
+    "brand": "",
+    "code": "14269",
+    "pixPrice": 19.9,
+    "stock": 190,
+    "specs": [],
+    "detail": "COOLER UNIVERSAL CL-823 65W INTEL AMD"
+  },
+  {
+    "id": "w19735",
+    "category": "cooler",
+    "name": "KIT 3 Ventoinhas 120MM Delta-c1293",
+    "brand": "Delta",
+    "code": "19735",
+    "pixPrice": 39.9,
+    "stock": 1,
+    "specs": [
+      "Delta"
+    ],
+    "detail": "KIT 3 VENTOINHAS 120MM DELTA-C1293"
+  },
+  {
+    "id": "w21476",
+    "category": "case",
+    "name": "Gabinete Matx Bpc-n114matx M255 C/fonte",
+    "brand": "Bpc",
+    "code": "21476",
+    "pixPrice": 109.9,
+    "stock": 0,
+    "specs": [
+      "Bpc"
+    ],
+    "detail": "GABINETE MATX BPC-N114MATX M255 C/FONTE",
+    "foto": "/fotos/21476.jpg"
+  },
+  {
+    "id": "w21562",
+    "category": "case",
+    "name": "Gabinete Gb1751 Hayom+fonte 230W Vxpro",
+    "brand": "Hayom",
+    "code": "21562",
+    "pixPrice": 109.9,
+    "stock": 1,
+    "specs": [
+      "Hayom"
+    ],
+    "detail": "GABINETE GB1751 HAYOM+FONTE 230W VXPRO",
+    "foto": "/fotos/21562.jpg"
+  },
+  {
+    "id": "w19308",
+    "category": "case",
+    "name": "Gabinete Matx Bpc-n110matx- Bm255 C/fo",
+    "brand": "Bpc",
+    "code": "19308",
+    "foto": "/fotos/19308.jpg",
+    "pixPrice": 119.9,
+    "stock": 25,
+    "specs": [
+      "Bpc"
+    ],
+    "detail": "L-GABINETE MATX BPC-N110MATX- BM255 C/FO"
+  },
+  {
+    "id": "w21577",
+    "category": "case",
+    "name": "Gabinete Gamer c/ 3 Fans Gb1727 Hayom",
+    "brand": "Hayom",
+    "code": "21577",
+    "foto": "/fotos/21577.jpg",
+    "pixPrice": 169.9,
+    "stock": 19,
+    "specs": [
+      "Hayom"
+    ],
+    "detail": "L-GABINETE GAMER C/ 3 FANS  GB1727 HAYOM"
+  },
+  {
+    "id": "w19087",
+    "category": "case",
+    "name": "Gabinete Gamer Gb1710 com 3 Fans Hayom",
+    "brand": "Hayom",
+    "code": "19087",
+    "foto": "/fotos/19087.jpg",
+    "pixPrice": 259.9,
+    "stock": 3,
+    "specs": [
+      "Hayom"
+    ],
+    "detail": "S-GABINETE GAMER GB1710 COM 3 FANS HAYOM"
+  },
+  {
+    "id": "w13549",
+    "category": "case",
+    "name": "Gabinete ATX Cx-2d67 S/fonte Preto",
+    "brand": "K-Mex",
+    "code": "13549",
+    "foto": "/fotos/13549.jpg",
+    "pixPrice": 299.9,
+    "stock": 8,
+    "specs": [
+      "K-Mex"
+    ],
+    "detail": "GABINETE ATX CX-2D67 S/FONTE PRETO"
+  },
+  {
+    "id": "w18824",
+    "category": "case",
+    "name": "Gabinete Slim Matx Tfx Q5M Sff C/fonte",
+    "brand": "K-Mex",
+    "code": "18824",
+    "pixPrice": 359.9,
+    "stock": 109,
+    "specs": [
+      "K-Mex"
+    ],
+    "detail": "L-GABINETE SLIM MATX TFX Q5M SFF C/FONTE",
+    "foto": "/fotos/18824.jpg"
+  },
+  {
+    "id": "w19001",
+    "category": "case",
+    "name": "Gabinete Gamer c/ 5 Fans D-matx11",
+    "brand": "Grasep",
+    "code": "19001",
+    "foto": "/fotos/19001.jpg",
+    "pixPrice": 439.9,
+    "stock": 1,
+    "specs": [
+      "Grasep"
+    ],
+    "detail": "GABINETE GAMER C/ 5 FANS D-MATX11"
+  },
+  {
+    "id": "w18998",
+    "category": "case",
+    "name": "Gabinete Gamer c/ 7 Fans D-atx08",
+    "brand": "Grasep",
+    "code": "18998",
+    "foto": "/fotos/18998.jpg",
+    "pixPrice": 529.9,
+    "stock": 1,
+    "specs": [
+      "Grasep"
+    ],
+    "detail": "GABINETE GAMER C/ 7 FANS D-ATX08"
+  },
+  {
+    "id": "w18999",
+    "category": "case",
+    "name": "Gabinete Gamer c/ 7 Fans D-atx09",
+    "brand": "Grasep",
+    "code": "18999",
+    "foto": "/fotos/18999.jpg",
+    "pixPrice": 579.9,
+    "stock": 1,
+    "specs": [
+      "Grasep"
+    ],
+    "detail": "GABINETE GAMER C/ 7 FANS D-ATX09"
+  },
+  {
+    "id": "w19324",
+    "category": "case",
+    "name": "Gabinete Gamer 4 Fans D-matx05",
+    "brand": "Grasep",
+    "code": "19324",
+    "foto": "/fotos/19324.jpg",
+    "pixPrice": 589.9,
+    "stock": 1,
+    "specs": [
+      "Grasep"
+    ],
+    "detail": "GABINETE GAMER 4 FANS D-MATX05"
+  },
+  {
+    "id": "w19002",
+    "category": "case",
+    "name": "Gabinete Gamer c/ 6 Fans D-atx12",
+    "brand": "Grasep",
+    "code": "19002",
+    "foto": "/fotos/19002.jpg",
+    "pixPrice": 609.9,
+    "stock": 1,
+    "specs": [
+      "Grasep"
+    ],
+    "detail": "GABINETE GAMER C/ 6 FANS D-ATX12"
+  },
+  {
+    "id": "w22959",
+    "category": "case",
+    "name": "KIT Gabinete Office Mn168 +fonte 200W",
+    "brand": "Monocron",
+    "code": "22959",
+    "pixPrice": 99.9,
+    "stock": 21,
+    "specs": [
+      "Monocron"
+    ],
+    "detail": "KIT GABINETE OFFICE MN168 +FONTE 200W"
+  },
+  {
+    "id": "w26164",
+    "category": "case",
+    "name": "Gabinete Matx Brazilpc S/baia Bpc-ls9",
+    "brand": "Bpc",
+    "code": "26164",
+    "pixPrice": 119.9,
+    "stock": 1156,
+    "specs": [
+      "Bpc"
+    ],
+    "detail": "GABINETE MATX BRAZILPC S/BAIA BPC-LS9"
+  },
+  {
+    "id": "w26387",
+    "category": "case",
+    "name": "Gabinete Matx Brazilpc S/baia Bpc-ls9",
+    "brand": "Bpc",
+    "code": "26387",
+    "pixPrice": 109.9,
+    "stock": 145,
+    "specs": [
+      "Bpc"
+    ],
+    "detail": "L-GABINETE MATX BRAZILPC S/BAIA BPC-LS9"
+  },
+  {
+    "id": "w25936",
+    "category": "case",
+    "name": "KIT Gabinete Office +fo-monocron-mn168",
+    "brand": "Monocron",
+    "code": "25936",
+    "pixPrice": 99.9,
+    "stock": 1,
+    "specs": [
+      "Monocron"
+    ],
+    "detail": "S-KIT GABINETE OFFICE +FO-MONOCRON-MN168"
+  },
+  {
+    "id": "w1203",
+    "category": "monitor",
+    "name": "Switch de Monitor Kvm 2 Portas Sem Os Ca",
+    "brand": "Sem marca",
+    "code": "1203",
+    "foto": "/fotos/1203.jpg",
+    "pixPrice": 39.9,
+    "stock": 40,
+    "specs": [
+      "Consulte especificacoes"
+    ],
+    "detail": "SWITCH DE MONITOR KVM 2 PORTAS SEM OS CA"
+  },
+  {
+    "id": "w1216",
+    "category": "monitor",
+    "name": "Switch de Monitor Kvm 4 Portas Sem Os Ca",
+    "brand": "Sem marca",
+    "code": "1216",
+    "foto": "/fotos/1216.jpg",
+    "pixPrice": 59.9,
+    "stock": 46,
+    "specs": [
+      "Consulte especificacoes"
+    ],
+    "detail": "SWITCH DE MONITOR KVM 4 PORTAS SEM OS CA"
+  },
+  {
+    "id": "w19669",
+    "category": "monitor",
+    "name": "Luminaria de LED para Monitor Ald-ac3065",
+    "brand": "Aitek",
+    "code": "19669",
+    "foto": "/fotos/19669.jpg",
+    "pixPrice": 89.9,
+    "stock": 11,
+    "specs": [
+      "Aitek"
+    ],
+    "detail": "LUMINARIA DE LED PARA MONITOR ALD-AC3065"
+  },
+  {
+    "id": "w14884",
+    "category": "monitor",
+    "name": "Coluna Pedestal para Monitor D-zj01-1",
+    "brand": "Pix ",
+    "code": "14884",
+    "foto": "/fotos/14884.jpg",
+    "pixPrice": 99.9,
+    "stock": 15,
+    "specs": [
+      "Pix "
+    ],
+    "detail": "COLUNA PEDESTAL PARA MONITOR D-ZJ01-1"
+  },
+  {
+    "id": "w10883",
+    "category": "monitor",
+    "name": "Monitor LED 19\" Mnbox D-mn002 Preto e",
+    "brand": "Mnbox",
+    "code": "10883",
+    "foto": "/fotos/10883.jpg",
+    "pixPrice": 199.9,
+    "stock": 4,
+    "specs": [
+      "19 polegadas",
+      "Mnbox"
+    ],
+    "detail": "S- MONITOR LED 19\" MNBOX D-MN002 PRETO E"
+  },
+  {
+    "id": "w5335",
+    "category": "monitor",
+    "name": "Monitor LED 19\" Bpc-19we02-b Preto",
+    "brand": "Brazil Pc",
+    "code": "5335",
+    "foto": "/fotos/5335.jpg",
+    "pixPrice": 209.9,
+    "stock": 0,
+    "specs": [
+      "19 polegadas",
+      "Brazil Pc"
+    ],
+    "detail": "MONITOR LED 19\" BPC-19WE02-B PRETO"
+  },
+  {
+    "id": "w14075",
+    "category": "monitor",
+    "name": "Monitor LED 19\" Tronos Trs-hk19wy Preto",
+    "brand": "Tronos",
+    "code": "14075",
+    "foto": "/fotos/14075.jpg",
+    "pixPrice": 209.9,
+    "stock": 3,
+    "specs": [
+      "19 polegadas",
+      "Tronos"
+    ],
+    "detail": "MONITOR LED 19\" TRONOS TRS-HK19WY PRETO"
+  },
+  {
+    "id": "w14282",
+    "category": "monitor",
+    "name": "Monitor LED 19tronos Trs-hk19wy Preto",
+    "brand": "Tronos",
+    "code": "14282",
+    "foto": "/fotos/14282.jpg",
+    "pixPrice": 209.9,
+    "stock": 0,
+    "specs": [
+      "Tronos"
+    ],
+    "detail": "S-MONITOR LED 19TRONOS TRS-HK19WY PRETO"
+  },
+  {
+    "id": "w13828",
+    "category": "monitor",
+    "name": "Monitor LED 20\" Trs-20wv 75HZ Preto",
+    "brand": "Tronos",
+    "code": "13828",
+    "foto": "/fotos/13828.jpg",
+    "pixPrice": 229.9,
+    "stock": 0,
+    "specs": [
+      "20 polegadas",
+      "Tronos"
+    ],
+    "detail": "MONITOR LED 20\" TRS-20WV 75HZ PRETO"
+  },
+  {
+    "id": "w17531",
+    "category": "monitor",
+    "name": "Monitor LED 20\" IPS 75HZ Axpro Ax-20",
+    "brand": "Axpro",
+    "code": "17531",
+    "foto": "/fotos/17531.jpg",
+    "pixPrice": 239.9,
+    "stock": 0,
+    "specs": [
+      "20 polegadas",
+      "Axpro"
+    ],
+    "detail": "MONITOR LED 20\" IPS 75HZ AXPRO AX-20"
+  },
+  {
+    "id": "w14293",
+    "category": "monitor",
+    "name": "Monitor LED 19\" Enterprise 19epr-bv",
+    "brand": "Enterprise Corp",
+    "code": "14293",
+    "foto": "/fotos/14293.jpg",
+    "pixPrice": 269.9,
+    "stock": 1,
+    "specs": [
+      "19 polegadas",
+      "Enterprise Corp"
+    ],
+    "detail": "BH-MONITOR LED 19\" ENTERPRISE 19EPR-BV"
+  },
+  {
+    "id": "w16042",
+    "category": "monitor",
+    "name": "Monitor 19 TN - 60HZ - 5-8ms - Axpro",
+    "brand": "Axpro",
+    "code": "16042",
+    "foto": "/fotos/16042.jpg",
+    "pixPrice": 269.9,
+    "stock": 38,
+    "specs": [
+      "Axpro"
+    ],
+    "detail": "MONITOR 19 TN - 60HZ - 5-8MS - AXPRO"
+  },
+  {
+    "id": "w18904",
+    "category": "monitor",
+    "name": "Monitor LED 22\" IPS 75HZ Axpro Ax-22",
+    "brand": "Axpro",
+    "code": "18904",
+    "foto": "/fotos/18904.jpg",
+    "pixPrice": 279.9,
+    "stock": 105,
+    "specs": [
+      "22 polegadas",
+      "Axpro"
+    ],
+    "detail": "L-MONITOR LED 22\" IPS 75HZ AXPRO AX-22"
+  },
+  {
+    "id": "w17292",
+    "category": "monitor",
+    "name": "Monitor LED 22\" Vga+hdmi Vx220x Vxpro",
+    "brand": "Duex",
+    "code": "17292",
+    "foto": "/fotos/17292.jpg",
+    "pixPrice": 289.9,
+    "stock": 3,
+    "specs": [
+      "22 polegadas",
+      "Duex"
+    ],
+    "detail": "MONITOR LED 22\" VGA+HDMI VX220X VXPRO"
+  },
+  {
+    "id": "w22099",
+    "category": "monitor",
+    "name": "Monitor LED 23\" 23epr-75 Fhd Enterprise",
+    "brand": "Vx Pro",
+    "code": "22099",
+    "foto": "/fotos/22099.jpg",
+    "pixPrice": 319.9,
+    "stock": 0,
+    "specs": [
+      "23 polegadas",
+      "Vx Pro"
+    ],
+    "detail": "MONITOR LED 23\" 23EPR-75 FHD ENTERPRISE"
+  },
+  {
+    "id": "w16043",
+    "category": "monitor",
+    "name": "Monitor 21,5 TN - 60HZ - 5-8ms - Axpro",
+    "brand": "Binario",
+    "code": "16043",
+    "foto": "/fotos/16043.jpg",
+    "pixPrice": 329.9,
+    "stock": 19,
+    "specs": [
+      "Binario"
+    ],
+    "detail": "MONITOR 21,5 TN - 60HZ - 5-8MS - AXPRO"
+  },
+  {
+    "id": "w19306",
+    "category": "monitor",
+    "name": "Monitor LED 24\" IPS 75HZ Axpro Ax-24",
+    "brand": "Axpro",
+    "code": "19306",
+    "foto": "/fotos/19306.jpg",
+    "pixPrice": 329.9,
+    "stock": 37,
+    "specs": [
+      "24 polegadas",
+      "Axpro"
+    ],
+    "detail": "L-MONITOR LED 24\" IPS 75HZ AXPRO AX-24"
+  },
+  {
+    "id": "w17467",
+    "category": "monitor",
+    "name": "Monitor LED 22\" Hq22 Slim 75HZ Haoquing",
+    "brand": "Uniarch",
+    "code": "17467",
+    "foto": "/fotos/17467.jpg",
+    "pixPrice": 339.9,
+    "stock": 1,
+    "specs": [
+      "22 polegadas",
+      "Uniarch"
+    ],
+    "detail": "MONITOR LED 22\" HQ22 SLIM 75HZ HAOQUING"
+  },
+  {
+    "id": "w16044",
+    "category": "monitor",
+    "name": "Monitor 23 TN - 60HZ - 5-8ms - Axpro",
+    "brand": "Binario",
+    "code": "16044",
+    "foto": "/fotos/16044.jpg",
+    "pixPrice": 371.94,
+    "stock": 1,
+    "specs": [
+      "Binario"
+    ],
+    "detail": "MONITOR 23 TN - 60HZ - 5-8MS - AXPRO"
+  },
+  {
+    "id": "w16844",
+    "category": "monitor",
+    "name": "Monitor LED 24\" Bpc-24wr-75 Preto",
+    "brand": "Brazil Pc",
+    "code": "16844",
+    "foto": "/fotos/16844.jpg",
+    "pixPrice": 359.9,
+    "stock": 0,
+    "specs": [
+      "24 polegadas",
+      "Brazil Pc"
+    ],
+    "detail": "MONITOR LED 24\" BPC-24WR-75 PRETO"
+  },
+  {
+    "id": "w9936",
+    "category": "monitor",
+    "name": "Monitor LED 23\" 23WR-75 Fhd VGA HDMI Pr",
+    "brand": "Brazil Pc",
+    "code": "9936",
+    "foto": "/fotos/9936.jpg",
+    "pixPrice": 499.9,
+    "stock": 6,
+    "specs": [
+      "23 polegadas",
+      "Brazil Pc"
+    ],
+    "detail": "MONITOR LED 23\" 23WR-75 FHD VGA HDMI PR"
+  },
+  {
+    "id": "w18829",
+    "category": "monitor",
+    "name": "Monitor LED 21.5\" Aoc LED 22b30hm23",
+    "brand": "Aoc",
+    "code": "18829",
+    "pixPrice": 659.9,
+    "stock": 24,
+    "specs": [
+      "Aoc"
+    ],
+    "detail": "L-MONITOR LED 21.5\" AOC LED 22B30HM23",
+    "foto": "/fotos/18829.jpg"
+  },
+  {
+    "id": "w25894",
+    "category": "monitor",
+    "name": "Monitor Curvo Gamer 23.8\" Delta-m2410ac",
+    "brand": "Aitek",
+    "code": "25894",
+    "foto": "/fotos/25894.jpg",
+    "pixPrice": 659.9,
+    "stock": 0,
+    "specs": [
+      "Aitek"
+    ],
+    "detail": "MONITOR CURVO GAMER 23.8\"  DELTA-M2410AC"
+  },
+  {
+    "id": "w16851",
+    "category": "monitor",
+    "name": "Monitor 19,5\" HD Lg com Tela de Cristal",
+    "brand": "Lg",
+    "code": "16851",
+    "foto": "/fotos/16851.jpg",
+    "pixPrice": 719.9,
+    "stock": 1,
+    "specs": [
+      "Lg"
+    ],
+    "detail": "MONITOR 19,5\" HD LG COM TELA DE CRISTAL"
+  },
+  {
+    "id": "w20584",
+    "category": "monitor",
+    "name": "Monitor LED 24\" Ips100hz Giratorio Axpro",
+    "brand": "Axpro",
+    "code": "20584",
+    "pixPrice": 807.77,
+    "stock": 1630,
+    "specs": [
+      "24 polegadas",
+      "Axpro"
+    ],
+    "detail": "MONITOR LED 24\" IPS100HZ GIRATORIO AXPRO",
+    "foto": "/fotos/20584.jpg"
+  },
+  {
+    "id": "w17443",
+    "category": "monitor",
+    "name": "Monitor LED 21,5\" Bpc22sadp-100 Fhd Pr",
+    "brand": "Brazil Pc",
+    "code": "17443",
+    "foto": "/fotos/17443.jpg",
+    "pixPrice": 789.9,
+    "stock": 24,
+    "specs": [
+      "Brazil Pc"
+    ],
+    "detail": "MONITOR LED 21,5\" BPC22SADP-100 FHD PR"
+  },
+  {
+    "id": "w17001",
+    "category": "monitor",
+    "name": "Monitor LED 23.8\" Bpc24sadp-75 Frameless",
+    "brand": "Bpc",
+    "code": "17001",
+    "foto": "/fotos/17001.jpg",
+    "pixPrice": 869.9,
+    "stock": 18,
+    "specs": [
+      "Bpc"
+    ],
+    "detail": "MONITOR LED 23.8\" BPC24SADP-75 FRAMELESS"
+  },
+  {
+    "id": "w17277",
+    "category": "monitor",
+    "name": "Monitor LED 24.5\" D-245g/100h",
+    "brand": "Grasep",
+    "code": "17277",
+    "foto": "/fotos/17277.jpg",
+    "pixPrice": 869.9,
+    "stock": 1,
+    "specs": [
+      "Grasep"
+    ],
+    "detail": "MONITOR LED 24.5\"  D-245G/100H"
+  },
+  {
+    "id": "w25801",
+    "category": "monitor",
+    "name": "Monitor LED 27\" Vga/hdmi D-270/100h",
+    "brand": "Grasep",
+    "code": "25801",
+    "foto": "/fotos/25801.jpg",
+    "pixPrice": 909.9,
+    "stock": 1,
+    "specs": [
+      "27 polegadas",
+      "Grasep"
+    ],
+    "detail": "MONITOR LED 27\" VGA/HDMI D-270/100H"
+  },
+  {
+    "id": "w18048",
+    "category": "monitor",
+    "name": "Monitor Gamer 27\" 2K 100HZ Delta-m2710ra",
+    "brand": "Aitek",
+    "code": "18048",
+    "foto": "/fotos/18048.jpg",
+    "pixPrice": 1029.9,
+    "stock": 2,
+    "specs": [
+      "27 polegadas",
+      "Aitek"
+    ],
+    "detail": "MONITOR GAMER 27\" 2K 100HZ DELTA-M2710RA"
+  },
+  {
+    "id": "w14974",
+    "category": "monitor",
+    "name": "Monitor LED 27\" 27WFY-75XE 60HZ Bpc",
+    "brand": "Brazil Pc",
+    "code": "14974",
+    "foto": "/fotos/14974.jpg",
+    "pixPrice": 1109.9,
+    "stock": 1,
+    "specs": [
+      "27 polegadas",
+      "Brazil Pc"
+    ],
+    "detail": "MONITOR LED 27\" 27WFY-75XE 60HZ BPC"
+  },
+  {
+    "id": "w11890",
+    "category": "monitor",
+    "name": "Monitor LED 23.8\" Lg 24bl550j Pos Full H",
+    "brand": "Lg",
+    "code": "11890",
+    "foto": "/fotos/11890.jpg",
+    "pixPrice": 1239.9,
+    "stock": 8,
+    "specs": [
+      "Lg"
+    ],
+    "detail": "MONITOR LED 23.8\" LG 24BL550J POS FULL H"
+  },
+  {
+    "id": "w26008",
+    "category": "monitor",
+    "name": "Monitor LED 27\" IPS Ac/dc D-270s/180h",
+    "brand": "Grasep",
+    "code": "26008",
+    "foto": "/fotos/26008.jpg",
+    "pixPrice": 1509.9,
+    "stock": 0,
+    "specs": [
+      "27 polegadas",
+      "Grasep"
+    ],
+    "detail": "MONITOR LED 27\" IPS AC/DC D-270S/180H"
+  },
+  {
+    "id": "w17954",
+    "category": "monitor",
+    "name": "Delta-m3220a Pro Monitor Gamer 32P",
+    "brand": "Aitek",
+    "code": "17954",
+    "foto": "/fotos/17954.jpg",
+    "pixPrice": 1629.9,
+    "stock": 2,
+    "specs": [
+      "32 polegadas",
+      "Aitek"
+    ],
+    "detail": "DELTA-M3220A PRO MONITOR GAMER 32P"
+  },
+  {
+    "id": "w17953",
+    "category": "monitor",
+    "name": "Delta-m3240a Pro Monitor 75HZ Gamer 32P",
+    "brand": "Aitek",
+    "code": "17953",
+    "foto": "/fotos/17953.jpg",
+    "pixPrice": 1919.9,
+    "stock": 3,
+    "specs": [
+      "32 polegadas",
+      "Aitek"
+    ],
+    "detail": "DELTA-M3240A PRO MONITOR 75HZ GAMER 32P"
+  },
+  {
+    "id": "w17952",
+    "category": "monitor",
+    "name": "Delta-m3820auc Pro Monitor Gamer 38P",
+    "brand": "Aitek",
+    "code": "17952",
+    "foto": "/fotos/17952.jpg",
+    "pixPrice": 2439.9,
+    "stock": 1,
+    "specs": [
+      "38 polegadas",
+      "Aitek"
+    ],
+    "detail": "DELTA-M3820AUC PRO MONITOR GAMER 38P"
+  },
+  {
+    "id": "w17951",
+    "category": "monitor",
+    "name": "Monitor Gamer 49P Delta-m4922auc Pro",
+    "brand": "Aitek",
+    "code": "17951",
+    "foto": "/fotos/17951.jpg",
+    "pixPrice": 4529.9,
+    "stock": 2,
+    "specs": [
+      "49 polegadas",
+      "Aitek"
+    ],
+    "detail": "MONITOR GAMER 49P DELTA-M4922AUC PRO"
+  },
+  {
+    "id": "w26159",
+    "category": "monitor",
+    "name": "Delta-m2412a Monitor Gamer 24P",
+    "brand": "Aitek",
+    "code": "26159",
+    "pixPrice": 639.9,
+    "stock": 4,
+    "specs": [
+      "Aitek"
+    ],
+    "detail": "E-DELTA-M2412A MONITOR GAMER 24P"
+  },
+  {
+    "id": "w26741",
+    "category": "monitor",
+    "name": "Delta-m2412ac Monitor Gamer Curvo 24P",
+    "brand": "Aitek",
+    "code": "26741",
+    "pixPrice": 689.9,
+    "stock": 5,
+    "specs": [
+      "Aitek"
+    ],
+    "detail": "E-DELTA-M2412AC MONITOR GAMER CURVO 24P"
+  },
+  {
+    "id": "w26479",
+    "category": "monitor",
+    "name": "Monitor LED 23.8\" Aoc LED 24e3uf",
+    "brand": "Aoc",
+    "code": "26479",
+    "pixPrice": 1079.9,
+    "stock": 4,
+    "specs": [
+      "Aoc"
+    ],
+    "detail": "L-MONITOR LED 23.8\" AOC LED 24E3UF"
+  },
+  {
+    "id": "w21443",
+    "category": "monitor",
+    "name": "Monitorled Curvo34\" Delta-m3422auc Pro",
+    "brand": "Delta",
+    "code": "21443",
+    "pixPrice": 1899.9,
+    "stock": 2,
+    "specs": [
+      "Delta"
+    ],
+    "detail": "L-MONITORLED CURVO34\" DELTA-M3422AUC PRO"
+  },
+  {
+    "id": "w19666",
+    "category": "monitor",
+    "name": "Monitor 27\" 180HZ Qhd Dxpro27a52rm Duex",
+    "brand": "Duex",
+    "code": "19666",
+    "pixPrice": 929.9,
+    "stock": 1,
+    "specs": [
+      "Duex"
+    ],
+    "detail": "MONITOR 27\" 180HZ QHD DXPRO27A52RM DUEX"
+  },
+  {
+    "id": "w26418",
+    "category": "monitor",
+    "name": "Monitor LED 21,5\" Epr22wr-75 Enterprise",
+    "brand": "Enterprise Corp",
+    "code": "26418",
+    "pixPrice": 279.9,
+    "stock": 4,
+    "specs": [
+      "Enterprise Corp"
+    ],
+    "detail": "MONITOR LED 21,5\" EPR22WR-75 ENTERPRISE"
+  },
+  {
+    "id": "w13627",
+    "category": "monitor",
+    "name": "Monitor LED 23.8\" Mnbox D-mn005 Hdmi/vga",
+    "brand": "Mnbox",
+    "code": "13627",
+    "pixPrice": 399.9,
+    "stock": 117,
+    "specs": [
+      "Mnbox"
+    ],
+    "detail": "MONITOR LED 23.8\" MNBOX D-MN005 HDMI/VGA"
+  },
+  {
+    "id": "w22186",
+    "category": "monitor",
+    "name": "Monitor LED 24\" Tronos Trs24wv-75 Fhd Pr",
+    "brand": "Tronos",
+    "code": "22186",
+    "pixPrice": 359.9,
+    "stock": 5,
+    "specs": [
+      "Tronos"
+    ],
+    "detail": "MONITOR LED 24\" TRONOS TRS24WV-75 FHD PR"
+  },
+  {
+    "id": "w14565",
+    "category": "keyboard",
+    "name": "Teclado USB Padrao com Fio Kb110 Duex",
+    "brand": "C3 Tech",
+    "code": "14565",
+    "foto": "/fotos/14565.jpg",
+    "pixPrice": 19.9,
+    "stock": 1,
+    "specs": [
+      "C3 Tech"
+    ],
+    "detail": "TECLADO USB PADRAO COM FIO KB110 DUEX"
+  },
+  {
+    "id": "w16270",
+    "category": "keyboard",
+    "name": "Teclado Office USB Fio Santana 015-0041",
+    "brand": "Santana",
+    "code": "16270",
+    "foto": "/fotos/16270.jpg",
+    "pixPrice": 19.9,
+    "stock": 14,
+    "specs": [
+      "Santana"
+    ],
+    "detail": "TECLADO OFFICE USB FIO SANTANA 015-0041"
+  },
+  {
+    "id": "w16592",
+    "category": "keyboard",
+    "name": "Teclado com Fio USB 5VDC Abnt2 Kp-te148",
+    "brand": "Knup",
+    "code": "16592",
+    "foto": "/fotos/16592.jpg",
+    "pixPrice": 22.9,
+    "stock": 4,
+    "specs": [
+      "Knup"
+    ],
+    "detail": "TECLADO COM FIO USB 5VDC ABNT2 KP-TE148"
+  },
+  {
+    "id": "w13271",
+    "category": "keyboard",
+    "name": "KIT Teclado/mouse C/fio Office Kc-500 5+",
+    "brand": "Santana",
+    "code": "13271",
+    "foto": "/fotos/13271.jpg",
+    "pixPrice": 29.9,
+    "stock": 6,
+    "specs": [
+      "Santana"
+    ],
+    "detail": "KIT TECLADO/MOUSE C/FIO OFFICE KC-500 5+"
+  },
+  {
+    "id": "w13675",
+    "category": "keyboard",
+    "name": "Teclado Basico USB Tf100 Tc193 Mult",
+    "brand": "Multilaser",
+    "code": "13675",
+    "foto": "/fotos/13675.jpg",
+    "pixPrice": 29.9,
+    "stock": 160,
+    "specs": [
+      "Multilaser"
+    ],
+    "detail": "TECLADO BASICO USB TF100 TC193 MULT"
+  },
+  {
+    "id": "w18063",
+    "category": "keyboard",
+    "name": "Teclado Sem Fio Kp-2048",
+    "brand": "Knup",
+    "code": "18063",
+    "foto": "/fotos/18063.jpg",
+    "pixPrice": 29.9,
+    "stock": 0,
+    "specs": [
+      "Knup"
+    ],
+    "detail": "TECLADO SEM FIO KP-2048"
+  },
+  {
+    "id": "w18724",
+    "category": "keyboard",
+    "name": "KIT Teclado e Mouse C/fio Kapbom Ka-670",
+    "brand": "Kap Bom",
+    "code": "18724",
+    "foto": "/fotos/18724.jpg",
+    "pixPrice": 29.9,
+    "stock": 0,
+    "specs": [
+      "Kap Bom"
+    ],
+    "detail": "KIT TECLADO E MOUSE C/FIO KAPBOM KA-670"
+  },
+  {
+    "id": "w18725",
+    "category": "keyboard",
+    "name": "Teclado C/fio Abnt2 Kapbom Ka-691",
+    "brand": "Kap Bom",
+    "code": "18725",
+    "foto": "/fotos/18725.jpg",
+    "pixPrice": 29.9,
+    "stock": 33,
+    "specs": [
+      "Kap Bom"
+    ],
+    "detail": "TECLADO C/FIO ABNT2 KAPBOM KA-691"
+  },
+  {
+    "id": "w26171",
+    "category": "keyboard",
+    "name": "Teclado Multimidia Keyboard-km-3928",
+    "brand": "Ninja",
+    "code": "26171",
+    "foto": "/fotos/26171.jpg",
+    "pixPrice": 29.9,
+    "stock": 262,
+    "specs": [
+      "Ninja"
+    ],
+    "detail": "L-TECLADO MULTIMIDIA KEYBOARD-KM-3928"
+  },
+  {
+    "id": "w16425",
+    "category": "keyboard",
+    "name": "Combo Wireless 2.4GHZ Offi Mouse/teclado",
+    "brand": "Santana",
+    "code": "16425",
+    "foto": "/fotos/16425.jpg",
+    "pixPrice": 39.9,
+    "stock": 26,
+    "specs": [
+      "Santana"
+    ],
+    "detail": "COMBO WIRELESS 2.4GHZ OFFI MOUSE/TECLADO"
+  },
+  {
+    "id": "w18831",
+    "category": "keyboard",
+    "name": "Teclado Multimidia Km3928u",
+    "brand": "Ninja",
+    "code": "18831",
+    "foto": "/fotos/18831.jpg",
+    "pixPrice": 39.9,
+    "stock": 182,
+    "specs": [
+      "Ninja"
+    ],
+    "detail": "L-TECLADO MULTIMIDIA KM3928U"
+  },
+  {
+    "id": "w19608",
+    "category": "keyboard",
+    "name": "Teclado Gamer Single Hand Kp-te133",
+    "brand": "Knup",
+    "code": "19608",
+    "foto": "/fotos/19608.jpg",
+    "pixPrice": 39.9,
+    "stock": 1,
+    "specs": [
+      "Knup"
+    ],
+    "detail": "TECLADO GAMER SINGLE HAND KP-TE133"
+  },
+  {
+    "id": "w17895",
+    "category": "keyboard",
+    "name": "KIT Teclado Emouse S Fio Haoqing Hq-1633",
+    "brand": "Haoquing",
+    "code": "17895",
+    "foto": "/fotos/17895.jpg",
+    "pixPrice": 49.9,
+    "stock": 0,
+    "specs": [
+      "Haoquing"
+    ],
+    "detail": "KIT TECLADO EMOUSE S FIO HAOQING HQ-1633"
+  },
+  {
+    "id": "w15632",
+    "category": "keyboard",
+    "name": "Mini Teclado Sem Fio Bluetooth Kp-te109",
+    "brand": "Knup",
+    "code": "15632",
+    "foto": "/fotos/15632.jpg",
+    "pixPrice": 59.9,
+    "stock": 6,
+    "specs": [
+      "Knup"
+    ],
+    "detail": "MINI TECLADO SEM FIO BLUETOOTH KP-TE109"
+  },
+  {
+    "id": "w25371",
+    "category": "keyboard",
+    "name": "Teclado Bluetooth Fr-3001",
+    "brand": "Peining",
+    "code": "25371",
+    "foto": "/fotos/25371.jpg",
+    "pixPrice": 59.9,
+    "stock": 1,
+    "specs": [
+      "Peining"
+    ],
+    "detail": "TECLADO BLUETOOTH FR-3001"
+  },
+  {
+    "id": "w26170",
+    "category": "keyboard",
+    "name": "KIT Mouse Mo-236+teclado Km-3928",
+    "brand": "Ninja",
+    "code": "26170",
+    "foto": "/fotos/26170.jpg",
+    "pixPrice": 59.9,
+    "stock": 84,
+    "specs": [
+      "Ninja"
+    ],
+    "detail": "L- KIT MOUSE MO-236+TECLADO KM-3928"
+  },
+  {
+    "id": "w24946",
+    "category": "keyboard",
+    "name": "KIT Mouse/teclado S/fio 2.4G Pei-fr-3022",
+    "brand": "Peining",
+    "code": "24946",
+    "foto": "/fotos/24946.jpg",
+    "pixPrice": 79.9,
+    "stock": 1,
+    "specs": [
+      "Peining"
+    ],
+    "detail": "KIT MOUSE/TECLADO S/FIO 2.4G PEI-FR-3022"
+  },
+  {
+    "id": "w25362",
+    "category": "keyboard",
+    "name": "Teclado Sem Fio Pei-fr-3023",
+    "brand": "Peining",
+    "code": "25362",
+    "foto": "/fotos/25362.jpg",
+    "pixPrice": 79.9,
+    "stock": 1,
+    "specs": [
+      "Peining"
+    ],
+    "detail": "TECLADO SEM FIO PEI-FR-3023"
+  },
+  {
+    "id": "w25366",
+    "category": "keyboard",
+    "name": "KIT de Teclado Sem Fio Pei-fr12",
+    "brand": "Peining",
+    "code": "25366",
+    "foto": "/fotos/25366.jpg",
+    "pixPrice": 79.9,
+    "stock": 0,
+    "specs": [
+      "Peining"
+    ],
+    "detail": "KIT DE TECLADO SEM FIO PEI-FR12"
+  },
+  {
+    "id": "w18371",
+    "category": "keyboard",
+    "name": "KIT Teclado e Mouse Gamer Kp-te147",
+    "brand": "Knup",
+    "code": "18371",
+    "foto": "/fotos/18371.jpg",
+    "pixPrice": 109.9,
+    "stock": 0,
+    "specs": [
+      "Knup"
+    ],
+    "detail": "KIT TECLADO E MOUSE GAMER KP-TE147"
+  },
+  {
+    "id": "w25358",
+    "category": "keyboard",
+    "name": "Teclado Semi Mercanico Pei-fr01",
+    "brand": "Peining",
+    "code": "25358",
+    "foto": "/fotos/25358.jpg",
+    "pixPrice": 109.9,
+    "stock": 1,
+    "specs": [
+      "Peining"
+    ],
+    "detail": "TECLADO SEMI MERCANICO PEI-FR01"
+  },
+  {
+    "id": "w25361",
+    "category": "keyboard",
+    "name": "Teclado Mercanico Pei-fr03",
+    "brand": "Peining",
+    "code": "25361",
+    "foto": "/fotos/25361.jpg",
+    "pixPrice": 109.9,
+    "stock": 1,
+    "specs": [
+      "Peining"
+    ],
+    "detail": "TECLADO MERCANICO PEI-FR03"
+  },
+  {
+    "id": "w19238",
+    "category": "keyboard",
+    "name": "Teclado Gamer com Fio RGB Ate-m8701",
+    "brand": "Aitek",
+    "code": "19238",
+    "foto": "/fotos/19238.jpg",
+    "pixPrice": 119.9,
+    "stock": 4,
+    "specs": [
+      "Aitek"
+    ],
+    "detail": "TECLADO GAMER COM FIO RGB ATE-M8701"
+  },
+  {
+    "id": "w25370",
+    "category": "keyboard",
+    "name": "KIT de Teclado Sem Fio Pei-fr09",
+    "brand": "Peining",
+    "code": "25370",
+    "foto": "/fotos/25370.jpg",
+    "pixPrice": 119.9,
+    "stock": 0,
+    "specs": [
+      "Peining"
+    ],
+    "detail": "KIT DE TECLADO SEM FIO PEI-FR09"
+  },
+  {
+    "id": "w25376",
+    "category": "keyboard",
+    "name": "KIT de Teclado Sem Fio Pei-fr08",
+    "brand": "Peining",
+    "code": "25376",
+    "foto": "/fotos/25376.jpg",
+    "pixPrice": 119.9,
+    "stock": 0,
+    "specs": [
+      "Peining"
+    ],
+    "detail": "KIT DE TECLADO SEM FIO PEI-FR08"
+  },
+  {
+    "id": "w25854",
+    "category": "keyboard",
+    "name": "KIT Teclado e Mouse Sem Fio Pei-mk01",
+    "brand": "Peining",
+    "code": "25854",
+    "foto": "/fotos/25854.jpg",
+    "pixPrice": 119.9,
+    "stock": 0,
+    "specs": [
+      "Peining"
+    ],
+    "detail": "KIT TECLADO E MOUSE SEM FIO PEI-MK01"
+  },
+  {
+    "id": "w21624",
+    "category": "keyboard",
+    "name": "Teclado Mecanico RGB LED Delta-tm1071",
+    "brand": "Delta",
+    "code": "21624",
+    "foto": "/fotos/21624.jpg",
+    "pixPrice": 130.9,
+    "stock": 7,
+    "specs": [
+      "Delta"
+    ],
+    "detail": "TECLADO MECANICO RGB LED DELTA-TM1071"
+  },
+  {
+    "id": "w25368",
+    "category": "keyboard",
+    "name": "KIT Teclado Sem Fio Pei-mk02",
+    "brand": "Peining",
+    "code": "25368",
+    "foto": "/fotos/25368.jpg",
+    "pixPrice": 139.9,
+    "stock": 1,
+    "specs": [
+      "Peining"
+    ],
+    "detail": "KIT TECLADO SEM FIO PEI-MK02"
+  },
+  {
+    "id": "w25369",
+    "category": "keyboard",
+    "name": "Teclado com Fio Mecanico Pei-fr-3025",
+    "brand": "Peining",
+    "code": "25369",
+    "foto": "/fotos/25369.jpg",
+    "pixPrice": 139.9,
+    "stock": 1,
+    "specs": [
+      "Peining"
+    ],
+    "detail": "TECLADO COM FIO MECANICO PEI-FR-3025"
+  },
+  {
+    "id": "w21623",
+    "category": "keyboard",
+    "name": "Teclado Mecanico RGB LED Delta-tm1111",
+    "brand": "Delta",
+    "code": "21623",
+    "foto": "/fotos/21623.jpg",
+    "pixPrice": 149.9,
+    "stock": 0,
+    "specs": [
+      "Delta"
+    ],
+    "detail": "TECLADO MECANICO RGB LED DELTA-TM1111"
+  },
+  {
+    "id": "w25372",
+    "category": "keyboard",
+    "name": "KIT de Teclado Sem Fio Pei-fr10",
+    "brand": "Peining",
+    "code": "25372",
+    "foto": "/fotos/25372.jpg",
+    "pixPrice": 149.9,
+    "stock": 1,
+    "specs": [
+      "Peining"
+    ],
+    "detail": "KIT DE TECLADO SEM FIO PEI-FR10"
+  },
+  {
+    "id": "w15665",
+    "category": "keyboard",
+    "name": "Mini Teclado Dobravel C Touchpad Ims-950",
+    "brand": "Imenso",
+    "code": "15665",
+    "foto": "/fotos/15665.jpg",
+    "pixPrice": 159.9,
+    "stock": 4,
+    "specs": [
+      "Imenso"
+    ],
+    "detail": "MINI TECLADO DOBRAVEL C TOUCHPAD IMS-950"
+  },
+  {
+    "id": "w25365",
+    "category": "keyboard",
+    "name": "Teclado com Fio Mecanico Pei-fr07",
+    "brand": "Peining",
+    "code": "25365",
+    "foto": "/fotos/25365.jpg",
+    "pixPrice": 219.9,
+    "stock": 1,
+    "specs": [
+      "Peining"
+    ],
+    "detail": "TECLADO COM FIO MECANICO PEI-FR07"
+  },
+  {
+    "id": "w25375",
+    "category": "keyboard",
+    "name": "Teclado com Fio Mecanico Pei-fr06",
+    "brand": "Peining",
+    "code": "25375",
+    "foto": "/fotos/25375.jpg",
+    "pixPrice": 229.9,
+    "stock": 1,
+    "specs": [
+      "Peining"
+    ],
+    "detail": "TECLADO COM FIO MECANICO PEI-FR06"
+  },
+  {
+    "id": "w17000",
+    "category": "keyboard",
+    "name": "Teclado Usbc/fio Teclasgamerusb Kp-2034a",
+    "brand": "Knup",
+    "code": "17000",
+    "pixPrice": 39.9,
+    "stock": 1,
+    "specs": [
+      "Knup"
+    ],
+    "detail": "TECLADO USBC/FIO TECLASGAMERUSB KP-2034A"
+  },
+  {
+    "id": "w14566",
+    "category": "mouse",
+    "name": "Mouse USB Padrao com Fio M365 Duex",
+    "brand": "Duex",
+    "code": "14566",
+    "foto": "/fotos/14566.jpg",
+    "pixPrice": 5.9,
+    "stock": 3428,
+    "specs": [
+      "Duex"
+    ],
+    "detail": "MOUSE USB PADRAO COM FIO M365 DUEX"
+  },
+  {
+    "id": "w16632",
+    "category": "mouse",
+    "name": "Mouse USB Office Pr 1000DPI 015-0043 5+",
+    "brand": "Santana",
+    "code": "16632",
+    "foto": "/fotos/16632.jpg",
+    "pixPrice": 5.9,
+    "stock": 8568,
+    "specs": [
+      "Santana"
+    ],
+    "detail": "MOUSE USB OFFICE PR 1000DPI 015-0043 5+"
+  },
+  {
+    "id": "w18978",
+    "category": "mouse",
+    "name": "Mouse Optico USB com Fio Ka-601 Kapbom",
+    "brand": "Kap Bom",
+    "code": "18978",
+    "foto": "/fotos/18978.jpg",
+    "pixPrice": 5.9,
+    "stock": 256,
+    "specs": [
+      "Kap Bom"
+    ],
+    "detail": "MOUSE OPTICO USB COM FIO KA-601 KAPBOM"
+  },
+  {
+    "id": "w18806",
+    "category": "mouse",
+    "name": "Mouse 5+gamer Start 2.0 Preto/vermelho",
+    "brand": "Santana",
+    "code": "18806",
+    "foto": "/fotos/18806.jpg",
+    "pixPrice": 6.9,
+    "stock": 0,
+    "specs": [
+      "Santana"
+    ],
+    "detail": "MOUSE 5+GAMER START 2.0 PRETO/VERMELHO"
+  },
+  {
+    "id": "w20452",
+    "category": "mouse",
+    "name": "Mouse 5+gamer RGB 1200DPI C/fio 015-0086",
+    "brand": "Santana",
+    "code": "20452",
+    "pixPrice": 8.9,
+    "stock": 3,
+    "specs": [
+      "Santana"
+    ],
+    "detail": "MOUSE 5+GAMER RGB 1200DPI C/FIO 015-0086",
+    "foto": "/fotos/20452.jpg"
+  },
+  {
+    "id": "w13830",
+    "category": "mouse",
+    "name": "Mouse com Fio Multi Mf100 1200DPI",
+    "brand": "Multilaser",
+    "code": "13830",
+    "foto": "/fotos/13830.jpg",
+    "pixPrice": 9.9,
+    "stock": 2234,
+    "specs": [
+      "Multilaser"
+    ],
+    "detail": "MOUSE COM FIO MULTI MF100 1200DPI"
+  },
+  {
+    "id": "w19697",
+    "category": "mouse",
+    "name": "Mouse Sem Fio USB Office 015-0080",
+    "brand": "Santana",
+    "code": "19697",
+    "foto": "/fotos/19697.jpg",
+    "pixPrice": 9.9,
+    "stock": 0,
+    "specs": [
+      "Santana"
+    ],
+    "detail": "MOUSE SEM FIO USB OFFICE 015-0080"
+  },
+  {
+    "id": "w17654",
+    "category": "mouse",
+    "name": "Mouse Gamer C/fio 3 Botoes Knup Kp-mu003",
+    "brand": "Knup",
+    "code": "17654",
+    "foto": "/fotos/17654.jpg",
+    "pixPrice": 11.9,
+    "stock": 4,
+    "specs": [
+      "Knup"
+    ],
+    "detail": "MOUSE GAMER C/FIO 3 BOTOES KNUP KP-MU003"
+  },
+  {
+    "id": "w11411",
+    "category": "mouse",
+    "name": "Mouse Optico Ninja Mo-m236 1200DPI USB",
+    "brand": "Ninja",
+    "code": "11411",
+    "foto": "/fotos/11411.jpg",
+    "pixPrice": 15.9,
+    "stock": 60,
+    "specs": [
+      "Ninja"
+    ],
+    "detail": "MOUSE OPTICO NINJA MO-M236 1200DPI USB"
+  },
+  {
+    "id": "w15633",
+    "category": "mouse",
+    "name": "Mouse Gamer USB LED Kp-mu013 Knup",
+    "brand": "Knup",
+    "code": "15633",
+    "foto": "/fotos/15633.jpg",
+    "pixPrice": 19.9,
+    "stock": 0,
+    "specs": [
+      "Knup"
+    ],
+    "detail": "MOUSE GAMER USB LED KP-MU013  KNUP"
+  },
+  {
+    "id": "w16996",
+    "category": "mouse",
+    "name": "Controle Remoto Air Mouse Le-7716",
+    "brand": "Lelong",
+    "code": "16996",
+    "foto": "/fotos/16996.jpg",
+    "pixPrice": 19.9,
+    "stock": 83,
+    "specs": [
+      "Lelong"
+    ],
+    "detail": "CONTROLE REMOTO AIR MOUSE LE-7716"
+  },
+  {
+    "id": "w25821",
+    "category": "mouse",
+    "name": "Mouse com Fio Pei-jt08",
+    "brand": "Peining",
+    "code": "25821",
+    "foto": "/fotos/25821.jpg",
+    "pixPrice": 19.9,
+    "stock": 1,
+    "specs": [
+      "Peining"
+    ],
+    "detail": "MOUSE COM FIO PEI-JT08"
+  },
+  {
+    "id": "w12905",
+    "category": "mouse",
+    "name": "Mouse Optico Gamer 3200DPI Kp-v4 Knup",
+    "brand": "Knup",
+    "code": "12905",
+    "foto": "/fotos/12905.jpg",
+    "pixPrice": 29.9,
+    "stock": 65,
+    "specs": [
+      "Knup"
+    ],
+    "detail": "MOUSE OPTICO GAMER 3200DPI KP-V4 KNUP"
+  },
+  {
+    "id": "w16444",
+    "category": "mouse",
+    "name": "Mouse Optico C/fiousb Acer M117 Branco",
+    "brand": "Acer",
+    "code": "16444",
+    "foto": "/fotos/16444.jpg",
+    "pixPrice": 29.9,
+    "stock": 10,
+    "specs": [
+      "Acer"
+    ],
+    "detail": "MOUSE OPTICO C/FIOUSB ACER M117 BRANCO"
+  },
+  {
+    "id": "w25264",
+    "category": "mouse",
+    "name": "Mouse com Fio Game Peining Pei-me04",
+    "brand": "Peining",
+    "code": "25264",
+    "foto": "/fotos/25264.jpg",
+    "pixPrice": 29.9,
+    "stock": 1,
+    "specs": [
+      "Peining"
+    ],
+    "detail": "MOUSE COM FIO GAME PEINING PEI-ME04"
+  },
+  {
+    "id": "w25819",
+    "category": "mouse",
+    "name": "Mouse com Fio Pei-jt07",
+    "brand": "Peining",
+    "code": "25819",
+    "foto": "/fotos/25819.jpg",
+    "pixPrice": 29.9,
+    "stock": 1,
+    "specs": [
+      "Peining"
+    ],
+    "detail": "MOUSE COM FIO PEI-JT07"
+  },
+  {
+    "id": "w16739",
+    "category": "mouse",
+    "name": "Mouse S/ Fio Bluetooth 2400DPI Kp-mu023",
+    "brand": "Knup",
+    "code": "16739",
+    "foto": "/fotos/16739.jpg",
+    "pixPrice": 39.9,
+    "stock": 0,
+    "specs": [
+      "Knup"
+    ],
+    "detail": "MOUSE S/ FIO BLUETOOTH 2400DPI KP-MU023"
+  },
+  {
+    "id": "w17957",
+    "category": "mouse",
+    "name": "Mouse Sem Fio Kp-mu029",
+    "brand": "Knup",
+    "code": "17957",
+    "foto": "/fotos/17957.jpg",
+    "pixPrice": 39.9,
+    "stock": 34,
+    "specs": [
+      "Knup"
+    ],
+    "detail": "MOUSE SEM FIO KP-MU029"
+  },
+  {
+    "id": "w18186",
+    "category": "mouse",
+    "name": "Mouse Gamer Aura Sync 7D Delta-vm7048",
+    "brand": "Delta",
+    "code": "18186",
+    "foto": "/fotos/18186.jpg",
+    "pixPrice": 39.9,
+    "stock": 33,
+    "specs": [
+      "Delta"
+    ],
+    "detail": "MOUSE GAMER AURA SYNC 7D DELTA-VM7048"
+  },
+  {
+    "id": "w25267",
+    "category": "mouse",
+    "name": "Mouse com Fio Game Peining Pei-me07",
+    "brand": "Peining",
+    "code": "25267",
+    "foto": "/fotos/25267.jpg",
+    "pixPrice": 49.9,
+    "stock": 1,
+    "specs": [
+      "Peining"
+    ],
+    "detail": "MOUSE COM FIO GAME PEINING PEI-ME07"
+  },
+  {
+    "id": "w17956",
+    "category": "mouse",
+    "name": "Mouse Gamer com Fio Kp-mu007",
+    "brand": "Knup",
+    "code": "17956",
+    "foto": "/fotos/17956.jpg",
+    "pixPrice": 59.9,
+    "stock": 46,
+    "specs": [
+      "Knup"
+    ],
+    "detail": "MOUSE GAMER COM FIO KP-MU007"
+  },
+  {
+    "id": "w18187",
+    "category": "mouse",
+    "name": "Mouse Gamer Aura Sync 9D Delta-vm9128",
+    "brand": "Delta",
+    "code": "18187",
+    "foto": "/fotos/18187.jpg",
+    "pixPrice": 59.9,
+    "stock": 73,
+    "specs": [
+      "Delta"
+    ],
+    "detail": "MOUSE GAMER AURA SYNC 9D DELTA-VM9128"
+  },
+  {
+    "id": "w21850",
+    "category": "mouse",
+    "name": "Mouse Sem Fio Peining Pei-me12",
+    "brand": "Peining",
+    "code": "21850",
+    "foto": "/fotos/21850.jpg",
+    "pixPrice": 59.9,
+    "stock": 1,
+    "specs": [
+      "Peining"
+    ],
+    "detail": "MOUSE SEM FIO PEINING PEI-ME12"
+  },
+  {
+    "id": "w25274",
+    "category": "mouse",
+    "name": "Mouse Sem Fio Peining Pei-me10",
+    "brand": "Peining",
+    "code": "25274",
+    "foto": "/fotos/25274.jpg",
+    "pixPrice": 59.9,
+    "stock": 1,
+    "specs": [
+      "Peining"
+    ],
+    "detail": "MOUSE SEM FIO PEINING PEI-ME10"
+  },
+  {
+    "id": "w16446",
+    "category": "mouse",
+    "name": "Mouse Optico com Fio USB Acer Emw130",
+    "brand": "Acer",
+    "code": "16446",
+    "foto": "/fotos/16446.jpg",
+    "pixPrice": 69.9,
+    "stock": 43,
+    "specs": [
+      "Acer"
+    ],
+    "detail": "MOUSE OPTICO COM FIO USB ACER EMW130"
+  },
+  {
+    "id": "w19512",
+    "category": "chair",
+    "name": "Cadeira Escritorio Smart Fixa",
+    "brand": "Jgm",
+    "code": "19512",
+    "foto": "/fotos/19512.jpg",
+    "pixPrice": 309.9,
+    "stock": 1,
+    "specs": [
+      "Jgm"
+    ],
+    "detail": "CADEIRA ESCRITORIO SMART FIXA"
+  },
+  {
+    "id": "w21369",
+    "category": "chair",
+    "name": "Conjunto Mesa e Cadeira Oif-7640",
+    "brand": "Oasis",
+    "code": "21369",
+    "pixPrice": 429.9,
+    "stock": 1,
+    "specs": [
+      "Oasis"
+    ],
+    "detail": "CONJUNTO MESA E CADEIRA OIF-7640",
+    "foto": "/fotos/21369.jpg"
+  },
+  {
+    "id": "w18391",
+    "category": "chair",
+    "name": "Cadeira Escritorio Ergonomica Mcc-p021",
+    "brand": "Tomate",
+    "code": "18391",
+    "foto": "/fotos/18391.jpg",
+    "pixPrice": 649.9,
+    "stock": 0,
+    "specs": [
+      "Tomate"
+    ],
+    "detail": "CADEIRA ESCRITORIO ERGONOMICA MCC-P021"
+  },
+  {
+    "id": "w17984",
+    "category": "chair",
+    "name": "Cadeira de Balanco Reclinavel Mcc-p025",
+    "brand": "Tomate",
+    "code": "17984",
+    "foto": "/fotos/17984.jpg",
+    "pixPrice": 689.9,
+    "stock": 1,
+    "specs": [
+      "Tomate"
+    ],
+    "detail": "CADEIRA DE BALANCO RECLINAVEL MCC-P025"
+  }
+]
