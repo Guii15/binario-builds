@@ -192,24 +192,24 @@ const presets = [
   {
     name: "Binário Essencial AM4",
     kicker: "Escritório & Estudo",
-    pixPrice: 1299.4,
+    pixPrice: 1309.4,
     note: "Ryzen com vídeo integrado Vega — roda o dia a dia, pacote Office e jogos leves sem precisar de placa dedicada. Todas as peças em estoque na loja.",
-    ids: ["w15380", "w12375", "w19384", "w25878", "w19069", "w21476"],
+    ids: ["w15380", "w12375", "w19384", "w26330", "w19069", "w19308"],
   },
   {
     name: "Binário Arena 1050 Ti",
     kicker: "Mais Equilibrado da Loja",
     pixPrice: 2789.3,
     note: "Ryzen 5 de 6 núcleos com GTX 1050 Ti. O melhor custo-benefício com o que está disponível hoje em Varginha.",
-    ids: ["w17867", "w12375", "w19384", "w20957", "w25878", "w19069", "w21577"],
+    ids: ["w17867", "w12375", "w19384", "w20957", "w26330", "w19069", "w21577"],
     featured: true,
   },
   {
     name: "Binário Studio RX 560",
     kicker: "Trabalho Pesado & Criação",
-    pixPrice: 3279.3,
-    note: "Ryzen 7 de 8 núcleos com SSD NVMe de 480 GB. Focado em quem edita, renderiza ou trabalha com muitas abas e programas abertos.",
-    ids: ["w18599", "w12375", "w19384", "w19209", "w25940", "w19069", "w21577"],
+    pixPrice: 2579.3,
+    note: "Ryzen 7 de 8 núcleos com SSD de 480 GB. Focado em quem edita, renderiza ou trabalha com muitas abas e programas abertos.",
+    ids: ["w17507", "w12375", "w19384", "w19209", "w21521", "w19069", "w21577"],
   },
 ];
 
@@ -247,8 +247,8 @@ const stockMachines = [
 // Modelos para empresas e orgaos publicos, tirados das configuracoes mais
 // pedidas nos orcamentos de licitacao de 2026 (planilha da equipe de
 // licitacao). Custo, margem, fornecedor e orgao NAO entram aqui: o site e
-// publico. Peca que a loja nao tem no catalogo (processador Intel, Windows)
-// entra como "a cotar" e o vendedor completa o preco.
+// publico. O Windows nao esta no catalogo, entao entra como "a cotar" e o
+// vendedor completa o preco.
 type ModeloEmpresa = {
   name: string;
   kicker: string;
@@ -262,36 +262,54 @@ const modelosEmpresa: ModeloEmpresa[] = [
     name: "Escritório Intel i3",
     kicker: "Atendimento e recepção",
     note: "Core i3 de 12ª geração com SSD e monitor de 22 polegadas. Dá conta de navegador, sistema da prefeitura e pacote Office.",
-    pecas: { w14224: 1, w19145: 1, w21550: 1, w19069: 1, w19308: 1, w18904: 1, w13271: 1 },
-    cotar: [
-      { categoria: "cpu", descricao: "Intel Core i3-12100 ou i3-14100" },
-      { categoria: "outro", descricao: "Windows 11 Pro 64 bits" },
-    ],
+    pecas: {
+      w19326: 1,
+      w14224: 1,
+      w19145: 1,
+      w21550: 1,
+      w19069: 1,
+      w19308: 1,
+      w18904: 1,
+      w13271: 1,
+    },
+    cotar: [{ categoria: "outro", descricao: "Windows 11 Pro 64 bits" }],
   },
   {
     name: "Administrativo Intel i5",
     kicker: "O mais pedido nas licitações",
     note: "Core i5 com 16 GB de memória e SSD NVMe. É a configuração que mais aparece nos editais de 2026.",
-    pecas: { w18884: 1, w19145: 2, w16874: 1, w19069: 1, w19308: 1, w18904: 1, w13271: 1 },
-    cotar: [
-      { categoria: "cpu", descricao: "Intel Core i5-12400 ou i5-14400" },
-      { categoria: "outro", descricao: "Windows 11 Pro 64 bits" },
-    ],
+    pecas: {
+      w23315: 1,
+      w18884: 1,
+      w19145: 2,
+      w16874: 1,
+      w19069: 1,
+      w19308: 1,
+      w18904: 1,
+      w13271: 1,
+    },
+    cotar: [{ categoria: "outro", descricao: "Windows 11 Pro 64 bits" }],
   },
   {
     name: "Desempenho Intel i7",
     kicker: "Projetos, engenharia e saúde",
     note: "Core i7 com placa B760, 16 GB, SSD NVMe e monitor de 24 polegadas, para planilhas pesadas, CAD leve e sistemas de imagem.",
-    pecas: { w18307: 1, w19145: 2, w16874: 1, w13097: 1, w19308: 1, w19306: 1, w13271: 1 },
-    cotar: [
-      { categoria: "cpu", descricao: "Intel Core i7-12700 ou i7-14700" },
-      { categoria: "outro", descricao: "Windows 11 Pro 64 bits" },
-    ],
+    pecas: {
+      w18634: 1,
+      w18307: 1,
+      w19145: 2,
+      w16874: 1,
+      w13097: 1,
+      w19308: 1,
+      w19306: 1,
+      w13271: 1,
+    },
+    cotar: [{ categoria: "outro", descricao: "Windows 11 Pro 64 bits" }],
   },
   {
     name: "Escritório AMD Ryzen 7",
-    kicker: "Tudo em estoque na loja",
-    note: "Ryzen 7 5700G com vídeo integrado, 16 GB e SSD de 480 GB. Só o Windows fica a cotar.",
+    kicker: "Opção AMD",
+    note: "Ryzen 7 5700G com vídeo integrado, 16 GB e SSD de 480 GB, sem precisar de placa de vídeo.",
     pecas: {
       w23388: 1,
       w12375: 1,
@@ -308,11 +326,17 @@ const modelosEmpresa: ModeloEmpresa[] = [
     name: "Econômico DDR3",
     kicker: "Menor preço por máquina",
     note: "Placa H81 com 8 GB DDR3 e SSD, para pregão de menor preço com processador de 4ª geração.",
-    pecas: { w25780: 1, w8173: 1, w21550: 1, w19069: 1, w19308: 1, w17531: 1, w13271: 1 },
-    cotar: [
-      { categoria: "cpu", descricao: "Intel Core i5-4570 ou i7-4770" },
-      { categoria: "outro", descricao: "Windows 10 Pro 64 bits" },
-    ],
+    pecas: {
+      w8869: 1,
+      w13656: 1,
+      w19685: 1,
+      w21550: 1,
+      w19069: 1,
+      w19308: 1,
+      w14075: 1,
+      w13271: 1,
+    },
+    cotar: [{ categoria: "outro", descricao: "Windows 10 Pro 64 bits" }],
   },
 ];
 
