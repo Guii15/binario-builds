@@ -95,3 +95,13 @@ test("builds prontas: so usam pecas que existem no catalogo", () => {
   assert.ok(usados.length > 0);
   for (const id of usados) assert.ok(ids.has(id), `build usa ${id}, que nao esta no catalogo`);
 });
+
+test("modelos de empresa: so usam pecas que existem no catalogo", () => {
+  const pagina = readFileSync(new URL("../routes/index.tsx", import.meta.url), "utf-8");
+  const ids = new Set(catalogo.map((p) => p.id));
+  const usados = [...pagina.matchAll(/pecas: \{([^}]*)\}/g)].flatMap((m) =>
+    [...(m[1] ?? "").matchAll(/(w\d+):/g)].map((x) => x[1] ?? ""),
+  );
+  assert.ok(usados.length > 0);
+  for (const id of usados) assert.ok(ids.has(id), `modelo usa ${id}, que nao esta no catalogo`);
+});

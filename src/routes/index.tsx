@@ -244,6 +244,78 @@ const stockMachines = [
   },
 ];
 
+// Modelos para empresas e orgaos publicos, tirados das configuracoes mais
+// pedidas nos orcamentos de licitacao de 2026 (planilha da equipe de
+// licitacao). Custo, margem, fornecedor e orgao NAO entram aqui: o site e
+// publico. Peca que a loja nao tem no catalogo (processador Intel, Windows)
+// entra como "a cotar" e o vendedor completa o preco.
+type ModeloEmpresa = {
+  name: string;
+  kicker: string;
+  note: string;
+  pecas: Record<string, number>;
+  cotar: Omit<Cotacao, "id">[];
+};
+
+const modelosEmpresa: ModeloEmpresa[] = [
+  {
+    name: "Escritório Intel i3",
+    kicker: "Atendimento e recepção",
+    note: "Core i3 de 12ª geração com SSD e monitor de 22 polegadas. Dá conta de navegador, sistema da prefeitura e pacote Office.",
+    pecas: { w14224: 1, w19145: 1, w21550: 1, w19069: 1, w19308: 1, w18904: 1, w13271: 1 },
+    cotar: [
+      { categoria: "cpu", descricao: "Intel Core i3-12100 ou i3-14100" },
+      { categoria: "outro", descricao: "Windows 11 Pro 64 bits" },
+    ],
+  },
+  {
+    name: "Administrativo Intel i5",
+    kicker: "O mais pedido nas licitações",
+    note: "Core i5 com 16 GB de memória e SSD NVMe. É a configuração que mais aparece nos editais de 2026.",
+    pecas: { w18884: 1, w19145: 2, w16874: 1, w19069: 1, w19308: 1, w18904: 1, w13271: 1 },
+    cotar: [
+      { categoria: "cpu", descricao: "Intel Core i5-12400 ou i5-14400" },
+      { categoria: "outro", descricao: "Windows 11 Pro 64 bits" },
+    ],
+  },
+  {
+    name: "Desempenho Intel i7",
+    kicker: "Projetos, engenharia e saúde",
+    note: "Core i7 com placa B760, 16 GB, SSD NVMe e monitor de 24 polegadas, para planilhas pesadas, CAD leve e sistemas de imagem.",
+    pecas: { w18307: 1, w19145: 2, w16874: 1, w13097: 1, w19308: 1, w19306: 1, w13271: 1 },
+    cotar: [
+      { categoria: "cpu", descricao: "Intel Core i7-12700 ou i7-14700" },
+      { categoria: "outro", descricao: "Windows 11 Pro 64 bits" },
+    ],
+  },
+  {
+    name: "Escritório AMD Ryzen 7",
+    kicker: "Tudo em estoque na loja",
+    note: "Ryzen 7 5700G com vídeo integrado, 16 GB e SSD de 480 GB. Só o Windows fica a cotar.",
+    pecas: {
+      w23388: 1,
+      w12375: 1,
+      w19145: 2,
+      w21521: 1,
+      w19069: 1,
+      w19308: 1,
+      w18904: 1,
+      w13271: 1,
+    },
+    cotar: [{ categoria: "outro", descricao: "Windows 11 Pro 64 bits" }],
+  },
+  {
+    name: "Econômico DDR3",
+    kicker: "Menor preço por máquina",
+    note: "Placa H81 com 8 GB DDR3 e SSD, para pregão de menor preço com processador de 4ª geração.",
+    pecas: { w25780: 1, w8173: 1, w21550: 1, w19069: 1, w19308: 1, w17531: 1, w13271: 1 },
+    cotar: [
+      { categoria: "cpu", descricao: "Intel Core i5-4570 ou i7-4770" },
+      { categoria: "outro", descricao: "Windows 10 Pro 64 bits" },
+    ],
+  },
+];
+
 // ---------------------------------------------------------------------
 // CONTATOS
 // Os numeros foram informados com 8 digitos (ex: 9131-9886). Celular no
@@ -716,8 +788,12 @@ function Index() {
   const faltando = ESSENCIAIS.filter((id) => !chosen.some((p) => p.category === id));
   const faltandoLabels = faltando.map((id) => categories.find((c) => c.id === id)?.short ?? id);
   // Peças da máquina (não periféricos) que ainda não foram escolhidas.
+  // Peca marcada "a cotar" ja tem dono: nao aparece como pendente.
   const pendentes = categories.filter(
-    (c) => !c.periferico && !chosen.some((p) => p.category === c.id),
+    (c) =>
+      !c.periferico &&
+      !chosen.some((p) => p.category === c.id) &&
+      !cotacoes.some((item) => item.categoria === c.id),
   );
 
   // ----- Sugestão de upgrade -----
@@ -905,6 +981,12 @@ function Index() {
 
   function loadPreset(ids: string[]) {
     setSelected(Object.fromEntries(ids.map((id) => [id, 1])));
+    document.querySelector("#montador")?.scrollIntoView({ behavior: "smooth" });
+  }
+
+  function loadModelo(modelo: ModeloEmpresa) {
+    setSelected({ ...modelo.pecas });
+    setCotacoes(modelo.cotar.map((item, i) => ({ ...item, id: `cot-${Date.now()}-${i}` })));
     document.querySelector("#montador")?.scrollIntoView({ behavior: "smooth" });
   }
 
@@ -1739,6 +1821,9 @@ function Index() {
             <a href="#estoque" className="hover:text-blue-600 transition-colors">
               Pronta Entrega
             </a>
+            <a href="#empresas" className="hover:text-blue-600 transition-colors">
+              Empresas e Órgãos
+            </a>
           </nav>
 
           <div className="flex items-center gap-3">
@@ -2434,6 +2519,72 @@ function Index() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Modelos para empresas e orgaos publicos (base: orcamentos de licitacao) */}
+        <section id="empresas" className="presets-section empresas-section no-print">
+          <div className="shell">
+            <div className="section-title-head">
+              <h2>Modelos para Empresas e Órgãos Públicos</h2>
+              <p>
+                As configurações que mais pedem nas licitações. Carregue um modelo, ajuste as peças
+                e peça a cotação do que está marcado como "a cotar".
+              </p>
+            </div>
+
+            <div className="presets-cards-grid">
+              {modelosEmpresa.map((modelo) => {
+                const itens = Object.entries(modelo.pecas).flatMap(([id, qtd]) => {
+                  const peca = parts.find((p) => p.id === id);
+                  return peca ? [{ peca, qtd }] : [];
+                });
+                const total = itens.reduce((soma, { peca, qtd }) => soma + peca.pixPrice * qtd, 0);
+                return (
+                  <div key={modelo.name} className="preset-build-card">
+                    <span className="preset-kicker">{modelo.kicker}</span>
+                    <h3>{modelo.name}</h3>
+                    <p className="text-slate-600 text-xs leading-relaxed mb-3">{modelo.note}</p>
+
+                    <ul className="modelo-pecas">
+                      {modelo.cotar.map((item) => (
+                        <li key={item.descricao} className="modelo-peca-cotar">
+                          <span>{item.descricao}</span>
+                          <em>a cotar</em>
+                        </li>
+                      ))}
+                      {itens.map(({ peca, qtd }) => (
+                        <li key={peca.id}>
+                          <span>
+                            {qtd > 1 ? `${qtd}x ` : ""}
+                            {peca.name}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="mt-auto pt-4 border-t border-slate-200">
+                      <span className="text-[10px] text-emerald-700 uppercase font-bold block">
+                        Peças em estoque, à vista
+                      </span>
+                      <strong className="text-2xl font-extrabold text-emerald-700 font-display">
+                        {money.format(total)}
+                      </strong>
+                      <small className="modelo-mais-cotar">
+                        + {modelo.cotar.length} {modelo.cotar.length > 1 ? "itens" : "item"} a cotar
+                      </small>
+
+                      <Button
+                        onClick={() => loadModelo(modelo)}
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs h-10 mt-3"
+                      >
+                        Carregar no Montador <ArrowRight className="w-4 h-4 ml-1" />
+                      </Button>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
