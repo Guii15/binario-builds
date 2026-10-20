@@ -137,6 +137,7 @@
     "name": "Processador Ryzen 7 5700G 4.6GHZ AM4 BOX",
     "brand": "Amd",
     "code": "23388",
+    "foto": "/fotos/23388.jpg",
     "pixPrice": 1529.9,
     "stock": 2,
     "platform": "AMD",
@@ -1235,6 +1236,7 @@
     "name": "Placa Mae B75 LGA1155 DDR3 Hayom Plm2301",
     "brand": "Hayom",
     "code": "19679",
+    "foto": "/fotos/19679.jpg",
     "pixPrice": 149.9,
     "stock": 15,
     "platform": "Intel",
@@ -1253,6 +1255,7 @@
     "name": "Placa Mae H61-m2pro 1155 Diamond Clanm",
     "brand": "Haoquing",
     "code": "25492",
+    "foto": "/fotos/25492.jpg",
     "pixPrice": 149.9,
     "stock": 1,
     "platform": "Intel",
@@ -1269,6 +1272,7 @@
     "name": "Placa Mae LGA1155 Delta-h61m2k H61",
     "brand": "Delta",
     "code": "25779",
+    "foto": "/fotos/25779.jpg",
     "pixPrice": 149.9,
     "stock": 20,
     "platform": "Intel",
@@ -1304,6 +1308,7 @@
     "name": "Placa Mae Delta LGA1150 H81",
     "brand": "Delta",
     "code": "25764",
+    "foto": "/fotos/25764.jpg",
     "pixPrice": 169.9,
     "stock": 0,
     "platform": "Intel",
@@ -1320,6 +1325,7 @@
     "name": "Placa Mae LGA1150 Delta-h81m2k H81",
     "brand": "Delta",
     "code": "25780",
+    "foto": "/fotos/25780.jpg",
     "pixPrice": 169.9,
     "stock": 0,
     "platform": "Intel",
@@ -1373,6 +1379,7 @@
     "name": "Placa Mae Delta Gaming X79-mkii",
     "brand": "Delta",
     "code": "26062",
+    "foto": "/fotos/26062.jpg",
     "pixPrice": 229.9,
     "stock": 0,
     "specs": [
@@ -1386,6 +1393,7 @@
     "name": "Placa Mae Vxmbb250 M.2 LGA1151 DDR4",
     "brand": "Duex",
     "code": "20838",
+    "foto": "/fotos/20838.jpg",
     "pixPrice": 299.9,
     "stock": 36,
     "platform": "Intel",
@@ -1677,6 +1685,7 @@
     "name": "Placa Mae Delta H510M2K",
     "brand": "Delta",
     "code": "26090",
+    "foto": "/fotos/26090.jpg",
     "pixPrice": 479.9,
     "stock": 53,
     "platform": "Intel",
@@ -2000,6 +2009,7 @@
     "name": "Memoria PC 8GB DDR4 Hyperx 2400MHZ",
     "brand": "Hyperx",
     "code": "20959",
+    "foto": "/fotos/20959.jpg",
     "pixPrice": 99.9,
     "stock": 0,
     "memType": "DDR4",
@@ -2197,6 +2207,7 @@
     "name": "Memoria PC 8GB DDR4 Netcore 2666MHZ",
     "brand": "Netcore",
     "code": "7855",
+    "foto": "/fotos/7855.jpg",
     "pixPrice": 329.9,
     "stock": 3,
     "memType": "DDR4",
@@ -2376,6 +2387,7 @@
     "name": "Memoria PC 16GB DDR5 Adata 6400MHZ Br",
     "brand": "Adata ",
     "code": "20704",
+    "foto": "/fotos/20704.jpg",
     "pixPrice": 1859.9,
     "stock": 0,
     "memType": "DDR5",
@@ -2393,6 +2405,7 @@
     "name": "Memoria PC 16GB DDR5 Kgt 6400MHZ Pr",
     "brand": "Kingston",
     "code": "20707",
+    "foto": "/fotos/20707.jpg",
     "pixPrice": 1979.9,
     "stock": 0,
     "memType": "DDR5",
@@ -2528,6 +2541,7 @@
     "name": "Placa de Video NVIDIA Geforce GT730/4G",
     "brand": "Nvidia",
     "code": "17103",
+    "foto": "/fotos/17103.jpg",
     "pixPrice": 309.9,
     "stock": 0,
     "watts": 50,
@@ -2560,6 +2574,7 @@
     "name": "Placa de Video 4GB DDR5 GT740/4G Aitek",
     "brand": "Aitek",
     "code": "19296",
+    "foto": "/fotos/19296.jpg",
     "pixPrice": 529.9,
     "stock": 0,
     "watts": 65,
@@ -2764,6 +2779,7 @@
     "name": "SSD Pro-ultra Rapido 120GB Flashdrive",
     "brand": "Flash Drive",
     "code": "25878",
+    "foto": "/fotos/25878.jpg",
     "pixPrice": 149.9,
     "stock": 0,
     "specs": [
@@ -2778,6 +2794,7 @@
     "name": "SSD M.2 NVME 256GB Pny Cs1031 OEM",
     "brand": "Pny",
     "code": "26047",
+    "foto": "/fotos/26047.jpg",
     "pixPrice": 159.9,
     "stock": 0,
     "specs": [
@@ -2793,6 +2810,7 @@
     "name": "SSD M2 NVME Cl4-8d256 256GB OEM",
     "brand": "Sem marca",
     "code": "26064",
+    "foto": "/fotos/26064.jpg",
     "pixPrice": 169.9,
     "stock": 0,
     "specs": [
@@ -2807,6 +2825,7 @@
     "name": "SSD M2 NVME Bc901 256GB Hana OEM",
     "brand": "Hana Eletronics",
     "code": "26065",
+    "foto": "/fotos/26065.jpg",
     "pixPrice": 169.9,
     "stock": 0,
     "specs": [
@@ -2822,6 +2841,7 @@
     "name": "Mini SSD M2nvmecl1-4d256 256GB Ssstc OEM",
     "brand": "Solid State Storage Technology Corporati",
     "code": "26067",
+    "foto": "/fotos/26067.jpg",
     "pixPrice": 169.9,
     "stock": 6,
     "specs": [
@@ -2837,6 +2857,7 @@
     "name": "Mini SSD M2 SATA 00up651 256GB OEM",
     "brand": "Sem Marca",
     "code": "26068",
+    "foto": "/fotos/26068.jpg",
     "pixPrice": 169.9,
     "stock": 5,
     "specs": [
@@ -2867,6 +2888,7 @@
     "name": "SSD M.2 2280 PCIE 256GB Gen3 Adata OEM",
     "brand": "Adata ",
     "code": "26063",
+    "foto": "/fotos/26063.jpg",
     "pixPrice": 209.9,
     "stock": 0,
     "specs": [
@@ -2897,6 +2919,7 @@
     "name": "SSD Pro-ultra Rapido 240 GB Flashdrive",
     "brand": "Flash Drive",
     "code": "25877",
+    "foto": "/fotos/25877.jpg",
     "pixPrice": 239.9,
     "stock": 146,
     "specs": [
@@ -2911,6 +2934,7 @@
     "name": "SSD SATA 3 Gamer Black 256GB Cartelado",
     "brand": "Gamer Black",
     "code": "26166",
+    "foto": "/fotos/26166.jpg",
     "pixPrice": 249.9,
     "stock": 0,
     "specs": [
@@ -2974,6 +2998,7 @@
     "name": "SSD NVME 512GB M.2 PCIE 4.0 Hawking OEM",
     "brand": "Hawquing",
     "code": "26049",
+    "foto": "/fotos/26049.jpg",
     "pixPrice": 449.9,
     "stock": 1,
     "specs": [
@@ -2989,6 +3014,7 @@
     "name": "SSD Pro-ultra Rapido 480GB Flashdrive",
     "brand": "Flash Drive",
     "code": "25940",
+    "foto": "/fotos/25940.jpg",
     "pixPrice": 469.9,
     "stock": 0,
     "specs": [
@@ -3080,6 +3106,7 @@
     "name": "SSD NVME Nv1 M.2 512GB",
     "brand": "Binario",
     "code": "21321",
+    "foto": "/fotos/21321.jpg",
     "pixPrice": 599.9,
     "stock": 5,
     "specs": [
@@ -3143,6 +3170,7 @@
     "name": "SSD M.2 NVME Wd Green Sn350 1TB",
     "brand": "Western Digital",
     "code": "26124",
+    "foto": "/fotos/26124.jpg",
     "pixPrice": 1319.9,
     "stock": 4,
     "specs": [
@@ -3532,6 +3560,7 @@
     "name": "Fonte ATX 650W 80 Plus Gold Fo-max07",
     "brand": "Revenger",
     "code": "20854",
+    "foto": "/fotos/20854.jpg",
     "pixPrice": 399.9,
     "stock": 2,
     "watts": 650,
@@ -3746,6 +3775,7 @@
     "name": "KIT Cooler RGB 120MM Delta-c1263b",
     "brand": "Delta",
     "code": "25904",
+    "foto": "/fotos/25904.jpg",
     "pixPrice": 139.9,
     "stock": 1,
     "specs": [
@@ -4365,6 +4395,7 @@
     "name": "Monitor Curvo Gamer 23.8\" Delta-m2410ac",
     "brand": "Aitek",
     "code": "25894",
+    "foto": "/fotos/25894.jpg",
     "pixPrice": 659.9,
     "stock": 0,
     "specs": [
@@ -4449,6 +4480,7 @@
     "name": "Monitor LED 27\" Vga/hdmi D-270/100h",
     "brand": "Grasep",
     "code": "25801",
+    "foto": "/fotos/25801.jpg",
     "pixPrice": 909.9,
     "stock": 1,
     "specs": [
@@ -4507,6 +4539,7 @@
     "name": "Monitor LED 27\" IPS Ac/dc D-270s/180h",
     "brand": "Grasep",
     "code": "26008",
+    "foto": "/fotos/26008.jpg",
     "pixPrice": 1509.9,
     "stock": 0,
     "specs": [
@@ -4797,6 +4830,7 @@
     "name": "Teclado Multimidia Keyboard-km-3928",
     "brand": "Ninja",
     "code": "26171",
+    "foto": "/fotos/26171.jpg",
     "pixPrice": 29.9,
     "stock": 262,
     "specs": [
@@ -4880,6 +4914,7 @@
     "name": "Teclado Bluetooth Fr-3001",
     "brand": "Peining",
     "code": "25371",
+    "foto": "/fotos/25371.jpg",
     "pixPrice": 59.9,
     "stock": 1,
     "specs": [
@@ -4893,6 +4928,7 @@
     "name": "KIT Mouse Mo-236+teclado Km-3928",
     "brand": "Ninja",
     "code": "26170",
+    "foto": "/fotos/26170.jpg",
     "pixPrice": 59.9,
     "stock": 84,
     "specs": [
@@ -4906,6 +4942,7 @@
     "name": "KIT Mouse/teclado S/fio 2.4G Pei-fr-3022",
     "brand": "Peining",
     "code": "24946",
+    "foto": "/fotos/24946.jpg",
     "pixPrice": 79.9,
     "stock": 1,
     "specs": [
@@ -4919,6 +4956,7 @@
     "name": "Teclado Sem Fio Pei-fr-3023",
     "brand": "Peining",
     "code": "25362",
+    "foto": "/fotos/25362.jpg",
     "pixPrice": 79.9,
     "stock": 1,
     "specs": [
@@ -4932,6 +4970,7 @@
     "name": "KIT de Teclado Sem Fio Pei-fr12",
     "brand": "Peining",
     "code": "25366",
+    "foto": "/fotos/25366.jpg",
     "pixPrice": 79.9,
     "stock": 0,
     "specs": [
@@ -4959,6 +4998,7 @@
     "name": "Teclado Semi Mercanico Pei-fr01",
     "brand": "Peining",
     "code": "25358",
+    "foto": "/fotos/25358.jpg",
     "pixPrice": 109.9,
     "stock": 1,
     "specs": [
@@ -4972,6 +5012,7 @@
     "name": "Teclado Mercanico Pei-fr03",
     "brand": "Peining",
     "code": "25361",
+    "foto": "/fotos/25361.jpg",
     "pixPrice": 109.9,
     "stock": 1,
     "specs": [
@@ -4999,6 +5040,7 @@
     "name": "KIT de Teclado Sem Fio Pei-fr09",
     "brand": "Peining",
     "code": "25370",
+    "foto": "/fotos/25370.jpg",
     "pixPrice": 119.9,
     "stock": 0,
     "specs": [
@@ -5012,6 +5054,7 @@
     "name": "KIT de Teclado Sem Fio Pei-fr08",
     "brand": "Peining",
     "code": "25376",
+    "foto": "/fotos/25376.jpg",
     "pixPrice": 119.9,
     "stock": 0,
     "specs": [
@@ -5025,6 +5068,7 @@
     "name": "KIT Teclado e Mouse Sem Fio Pei-mk01",
     "brand": "Peining",
     "code": "25854",
+    "foto": "/fotos/25854.jpg",
     "pixPrice": 119.9,
     "stock": 0,
     "specs": [
@@ -5052,6 +5096,7 @@
     "name": "KIT Teclado Sem Fio Pei-mk02",
     "brand": "Peining",
     "code": "25368",
+    "foto": "/fotos/25368.jpg",
     "pixPrice": 139.9,
     "stock": 1,
     "specs": [
@@ -5065,6 +5110,7 @@
     "name": "Teclado com Fio Mecanico Pei-fr-3025",
     "brand": "Peining",
     "code": "25369",
+    "foto": "/fotos/25369.jpg",
     "pixPrice": 139.9,
     "stock": 1,
     "specs": [
@@ -5092,6 +5138,7 @@
     "name": "KIT de Teclado Sem Fio Pei-fr10",
     "brand": "Peining",
     "code": "25372",
+    "foto": "/fotos/25372.jpg",
     "pixPrice": 149.9,
     "stock": 1,
     "specs": [
@@ -5119,6 +5166,7 @@
     "name": "Teclado com Fio Mecanico Pei-fr07",
     "brand": "Peining",
     "code": "25365",
+    "foto": "/fotos/25365.jpg",
     "pixPrice": 219.9,
     "stock": 1,
     "specs": [
@@ -5132,6 +5180,7 @@
     "name": "Teclado com Fio Mecanico Pei-fr06",
     "brand": "Peining",
     "code": "25375",
+    "foto": "/fotos/25375.jpg",
     "pixPrice": 229.9,
     "stock": 1,
     "specs": [
@@ -5312,6 +5361,7 @@
     "name": "Mouse com Fio Pei-jt08",
     "brand": "Peining",
     "code": "25821",
+    "foto": "/fotos/25821.jpg",
     "pixPrice": 19.9,
     "stock": 1,
     "specs": [
@@ -5353,6 +5403,7 @@
     "name": "Mouse com Fio Game Peining Pei-me04",
     "brand": "Peining",
     "code": "25264",
+    "foto": "/fotos/25264.jpg",
     "pixPrice": 29.9,
     "stock": 1,
     "specs": [
@@ -5366,6 +5417,7 @@
     "name": "Mouse com Fio Pei-jt07",
     "brand": "Peining",
     "code": "25819",
+    "foto": "/fotos/25819.jpg",
     "pixPrice": 29.9,
     "stock": 1,
     "specs": [
@@ -5421,6 +5473,7 @@
     "name": "Mouse com Fio Game Peining Pei-me07",
     "brand": "Peining",
     "code": "25267",
+    "foto": "/fotos/25267.jpg",
     "pixPrice": 49.9,
     "stock": 1,
     "specs": [
@@ -5476,6 +5529,7 @@
     "name": "Mouse Sem Fio Peining Pei-me10",
     "brand": "Peining",
     "code": "25274",
+    "foto": "/fotos/25274.jpg",
     "pixPrice": 59.9,
     "stock": 1,
     "specs": [
