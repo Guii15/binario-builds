@@ -1,8 +1,8 @@
 """
 Atualiza o catalogo do montador (src/data/catalogo.json) a partir do WinThor.
 
-Entrada: o resultado da rotina 860 salvo como .xls/.xlsx, ou o resultado da
-consulta scripts/consulta_860.sql exportado em .csv. Colunas usadas:
+Entrada: o resultado da consulta scripts/itens_em_estoque.sql (ou da rotina
+860) salvo como .xls/.xlsx/.csv. Colunas usadas:
 CODPROD, DESCRICAO, MARCA, PVENDA, ESTOQUE.
 
 Como rodar (na pasta do projeto):
