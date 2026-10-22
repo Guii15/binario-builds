@@ -29,7 +29,9 @@ import {
   Plus,
   Search,
   ShieldCheck,
-  Sparkles,
+  Gamepad2,
+  ListChecks,
+  TrendingUp,
   Trash2,
   Truck,
   UserRound,
@@ -193,7 +195,7 @@ const presets = [
     name: "Binário Essencial AM4",
     kicker: "Escritório & Estudo",
     pixPrice: 1309.4,
-    note: "Ryzen com vídeo integrado Vega — roda o dia a dia, pacote Office e jogos leves sem precisar de placa dedicada. Todas as peças em estoque na loja.",
+    note: "Ryzen com vídeo integrado Vega. Roda o dia a dia, pacote Office e jogos leves sem precisar de placa de vídeo.",
     ids: ["w15380", "w12375", "w19384", "w26330", "w19069", "w19308"],
   },
   {
@@ -471,12 +473,12 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "Monte seu PC Gamer Sob Medida | Binário Tecnologia Varginha-MG",
+        title: "Montador de PC | Binário Tecnologia, Varginha-MG",
       },
       {
         name: "description",
         content:
-          "Monte seu computador com garantia de compatibilidade, preço direto de distribuidora e suporte técnico especializado em Varginha.",
+          "Monte seu computador com as peças em estoque na Binário Tecnologia, em Varginha. O montador confere a compatibilidade e calcula a fonte.",
       },
       { property: "og:title", content: "Montador de PC Binário Tecnologia" },
       {
@@ -1329,7 +1331,7 @@ function Index() {
           </DialogTitle>
           <DialogDescription className="text-slate-600 text-xs">
             {identificacaoObrigatoria
-              ? 'Antes de começar, escolha seu nome (ou "sou cliente") — isso identifica quem pediu a montagem quando a lista for pro T.I.'
+              ? 'Antes de começar, escolha seu nome ou "sou cliente". É assim que o T.I. sabe quem pediu a montagem.'
               : sellerIntent?.kind === "identificar"
                 ? "Escolha seu nome para o T.I. e o Estoque saberem quem pediu a separação das peças."
                 : sellerIntent?.kind === "trocar"
@@ -1374,7 +1376,7 @@ function Index() {
           </DialogTitle>
           <DialogDescription className="text-slate-600 text-xs">
             {vendedor
-              ? `Assinado como ${vendedor.nome}. Clique em cada destino para abrir a conversa — o WhatsApp bloqueia se tentar abrir os dois de uma vez.`
+              ? `Assinado como ${vendedor.nome}. Clique em cada destino para abrir a conversa. O WhatsApp bloqueia se tentar abrir os dois de uma vez.`
               : "Clique em cada destino para abrir a conversa."}
           </DialogDescription>
         </DialogHeader>
@@ -1641,10 +1643,10 @@ function Index() {
       <div className="watts-meter-box">
         <div className="watts-header">
           <span className="flex items-center gap-1 text-slate-800">
-            <Zap className="w-4 h-4 text-amber-600" /> Consumo Estimado
+            <Zap className="w-4 h-4 text-amber-600" /> Fonte recomendada
           </span>
           <span className="font-mono text-slate-800 font-bold">
-            {requiredWatts ? `${requiredWatts} W` : "Sem cálculo"}
+            {requiredWatts ? `${requiredWatts} W` : "a calcular"}
           </span>
         </div>
         <div className="watts-progress-track">
@@ -1693,12 +1695,12 @@ function Index() {
         (faltando.length === 0 ? (
           <div className="falta-pouco is-done">
             <PackageCheck className="w-4 h-4 shrink-0" />
-            <span>PC completo! É só finalizar o orçamento aqui embaixo.</span>
+            <span>PC completo. É só finalizar o orçamento aqui embaixo.</span>
           </div>
         ) : faltando.length <= 2 ? (
           <button className="falta-pouco is-near" onClick={() => setActive(faltando[0]!)}>
-            <Sparkles className="w-4 h-4 shrink-0" />
-            <span>Falta só {faltandoLabels.join(" e ")} pra fechar seu PC!</span>
+            <ListChecks className="w-4 h-4 shrink-0" />
+            <span>Falta só {faltandoLabels.join(" e ")} para fechar o PC.</span>
           </button>
         ) : null)}
     </>
@@ -1840,10 +1842,10 @@ function Index() {
               Montador de PC
             </a>
             <a href="#prontas" className="hover:text-blue-600 transition-colors">
-              PCs Recomendados
+              PCs recomendados
             </a>
             <a href="#estoque" className="hover:text-blue-600 transition-colors">
-              Pronta Entrega
+              Pronta entrega
             </a>
           </nav>
 
@@ -1888,7 +1890,7 @@ function Index() {
               className="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold gap-2 text-xs sm:text-sm px-4 h-10 shadow-md shadow-emerald-600/20"
             >
               <MessageCircle className="w-4 h-4 fill-current" />
-              <span className="hidden sm:inline">Falar com Vendedor</span>
+              <span className="hidden sm:inline">Falar com vendedor</span>
               <span className="sm:hidden">Falar</span>
             </Button>
           </div>
@@ -1900,29 +1902,22 @@ function Index() {
         <section id="inicio" className="hero-banner no-print">
           <div className="shell hero-grid">
             <div className="hero-headline">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold mb-3">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>MONTAGEM DE ALTA PERFORMANCE EM VARGINHA</span>
-              </div>
-              <h1>Monte seu PC Gamer ou de Trabalho Sob Medida</h1>
+              <h1>Monte seu PC com as peças que temos na loja</h1>
               <p>
-                Escolha os componentes ideais para a sua necessidade. Todas as máquinas montadas na
-                Binário saem da loja com
-                <strong>
-                  {" "}
-                  cabos organizados, BIOS atualizada gratuitamente e 24h de teste de estresse
-                </strong>
-                .
+                Escolha peça por peça e o montador avisa quando alguma não encaixa. Todo PC montado
+                na Binário sai com{" "}
+                <strong>cabos organizados, BIOS atualizada e 24 horas de teste</strong>.
               </p>
               <div className="hero-proof-pills">
                 <span className="hero-pill">
-                  <Check className="w-4 h-4 text-emerald-600" /> Compatibilidade 100% Garantida
+                  <Check className="w-4 h-4 text-emerald-600" /> O montador confere a
+                  compatibilidade
                 </span>
                 <span className="hero-pill">
-                  <ShieldCheck className="w-4 h-4 text-emerald-600" /> 1 Ano de Garantia Local
+                  <ShieldCheck className="w-4 h-4 text-emerald-600" /> 1 ano de garantia na loja
                 </span>
                 <span className="hero-pill">
-                  <Truck className="w-4 h-4 text-emerald-600" /> Retirada Imediata em Varginha
+                  <Truck className="w-4 h-4 text-emerald-600" /> Retirada em Varginha
                 </span>
               </div>
             </div>
@@ -1989,7 +1984,7 @@ function Index() {
                     <span>Exibindo peças compatíveis em estoque na loja</span>
                   </div>
                   <span className="catalog-step-pill">
-                    ETAPA {categories.findIndex((item) => item.id === active) + 1} DE{" "}
+                    Etapa {categories.findIndex((item) => item.id === active) + 1} de{" "}
                     {categories.length}
                   </span>
                 </div>
@@ -2038,7 +2033,7 @@ function Index() {
                 {/* Sugestão de upgrade — só quando a diferença de preço é pequena */}
                 {upgradeAtivo && (
                   <div className="upgrade-box">
-                    <Sparkles className="w-4 h-4" />
+                    <TrendingUp className="w-4 h-4" />
                     <div>
                       <strong>
                         Por mais{" "}
@@ -2237,7 +2232,7 @@ function Index() {
                     onClick={() => moveStep(1)}
                     className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold"
                   >
-                    <span className="hidden sm:inline">Próxima Etapa</span>
+                    <span className="hidden sm:inline">Próxima etapa</span>
                     <span className="sm:hidden">Próxima</span>
                     <ChevronRight className="w-4 h-4 ml-1" />
                   </Button>
@@ -2249,7 +2244,7 @@ function Index() {
                 <div className="summary-sidebar-header">
                   <h3>
                     <PackageCheck className="w-5 h-5 text-emerald-400" />
-                    Sua Montagem
+                    Sua montagem
                   </h3>
                   {(chosen.length > 0 || cotacoes.length > 0) && (
                     <button
@@ -2270,7 +2265,7 @@ function Index() {
 
                 {orcamentoRestaurado && (
                   <div className="orcamento-restaurado-aviso">
-                    <Sparkles className="w-3.5 h-3.5" />
+                    <History className="w-3.5 h-3.5" />
                     <span>Recuperamos seu orçamento salvo. Pode continuar de onde parou.</span>
                     <button onClick={() => setOrcamentoRestaurado(false)} aria-label="Fechar aviso">
                       ×
@@ -2324,7 +2319,7 @@ function Index() {
                       ) : (
                         <Copy className="w-3.5 h-3.5 mr-1" />
                       )}
-                      {copied ? "Copiado!" : "Copiar Link"}
+                      {copied ? "Copiado!" : "Copiar link"}
                     </Button>
                     <Button
                       variant="outline"
@@ -2374,7 +2369,7 @@ function Index() {
                 <h2>Como esse PC se sai</h2>
                 <p>
                   Estimativa em 1080p com gráficos altos, baseada nas peças escolhidas. Valores
-                  aproximados para dar uma ideia — não são benchmark oficial.
+                  aproximados para dar uma ideia, não são benchmark oficial.
                 </p>
               </div>
 
@@ -2382,7 +2377,7 @@ function Index() {
                 {/* Jogos */}
                 <div className="perf-card">
                   <h3>
-                    <Sparkles className="w-4 h-4 text-blue-600" /> Nos jogos
+                    <Gamepad2 className="w-4 h-4 text-blue-600" /> Nos jogos
                   </h3>
                   {fpsPerfil ? (
                     <>
@@ -2471,7 +2466,7 @@ function Index() {
         <section id="prontas" className="presets-section no-print">
           <div className="shell">
             <div className="section-title-head">
-              <h2>Configurações Recomendadas pelos Nossos Técnicos</h2>
+              <h2>Configurações recomendadas pelos nossos técnicos</h2>
               <p>
                 Modelos montados e testados pela equipe da Binário, incluindo os mais pedidos por
                 empresas e órgãos públicos. Você pode carregar uma build e alterar qualquer peça.
@@ -2505,7 +2500,7 @@ function Index() {
                   <div className="mt-auto pt-4 border-t border-slate-200">
                     <div className="flex items-baseline justify-between mb-3">
                       <div>
-                        <span className="text-[10px] text-emerald-700 uppercase font-bold block">
+                        <span className="text-[11px] text-emerald-700 font-bold block">
                           À vista
                         </span>
                         <strong className="text-2xl font-extrabold text-emerald-700 font-display">
@@ -2535,7 +2530,7 @@ function Index() {
                       onClick={() => loadPreset(preset.ids)}
                       className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs h-10 mt-3"
                     >
-                      Carregar esta Build no Montador <ArrowRight className="w-4 h-4 ml-1" />
+                      Usar esta configuração <ArrowRight className="w-4 h-4 ml-1" />
                     </Button>
                   </div>
                 </div>
@@ -2552,39 +2547,65 @@ function Index() {
                     <h3>{modelo.name}</h3>
                     <p className="text-slate-600 text-xs leading-relaxed mb-3">{modelo.note}</p>
 
-                    <ul className="modelo-pecas">
-                      {modelo.cotar.map((item) => (
-                        <li key={item.descricao} className="modelo-peca-cotar">
-                          <span>{item.descricao}</span>
-                          <em>a cotar</em>
-                        </li>
-                      ))}
-                      {itens.map(({ peca, qtd }) => (
-                        <li key={peca.id}>
-                          <span>
-                            {qtd > 1 ? `${qtd}x ` : ""}
-                            {peca.name}
+                    <div className="preset-fps-badges">
+                      {(() => {
+                        const { fpsPerfil } = resumoDaBuild(Object.keys(modelo.pecas));
+                        if (!fpsPerfil)
+                          return <span className="fps-badge">Sem placa de vídeo dedicada</span>;
+                        return JOGOS_DESTAQUE.map((i) => (
+                          <span key={i} className="fps-badge">
+                            {JOGOS[i]}: {fpsPerfil[i] || "-"} FPS
                           </span>
-                        </li>
-                      ))}
-                    </ul>
+                        ));
+                      })()}
+                    </div>
 
                     <div className="mt-auto pt-4 border-t border-slate-200">
-                      <span className="text-[10px] text-emerald-700 uppercase font-bold block">
-                        Peças em estoque, à vista
-                      </span>
+                      <span className="text-[11px] text-emerald-700 font-bold block">À vista</span>
                       <strong className="text-2xl font-extrabold text-emerald-700 font-display">
                         {money.format(total)}
                       </strong>
                       <small className="modelo-mais-cotar">
-                        + {modelo.cotar.length} {modelo.cotar.length > 1 ? "itens" : "item"} a cotar
+                        {modelo.cotar.map((item) => item.descricao).join(", ")} a cotar
                       </small>
+
+                      <button
+                        type="button"
+                        className="build-ficha-toggle mt-3"
+                        aria-expanded={fichasPreset}
+                        onClick={() => setFichasPreset((v) => !v)}
+                      >
+                        {fichasPreset ? "Esconder as peças" : "Ver as peças"}
+                        <ChevronDown
+                          className="w-4 h-4"
+                          style={{ transform: fichasPreset ? "rotate(180deg)" : undefined }}
+                        />
+                      </button>
+
+                      {fichasPreset && (
+                        <ul className="modelo-pecas">
+                          {itens.map(({ peca, qtd }) => (
+                            <li key={peca.id}>
+                              <span>
+                                {qtd > 1 ? `${qtd}x ` : ""}
+                                {peca.name}
+                              </span>
+                            </li>
+                          ))}
+                          {modelo.cotar.map((item) => (
+                            <li key={item.descricao} className="modelo-peca-cotar">
+                              <span>{item.descricao}</span>
+                              <em>a cotar</em>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
 
                       <Button
                         onClick={() => loadModelo(modelo)}
                         className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs h-10 mt-3"
                       >
-                        Carregar no Montador <ArrowRight className="w-4 h-4 ml-1" />
+                        Usar esta configuração <ArrowRight className="w-4 h-4 ml-1" />
                       </Button>
                     </div>
                   </div>
@@ -2626,7 +2647,7 @@ function Index() {
         <section id="estoque" className="stock-section no-print">
           <div className="shell">
             <div className="section-title-head">
-              <h2>Computadores Pronta Entrega na Loja em Varginha</h2>
+              <h2>Pronta entrega na loja</h2>
               <p>
                 Já saem montados, formatados com Windows de avaliação e prontos para uso imediato.
               </p>
