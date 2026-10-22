@@ -39,7 +39,7 @@ from winthor_regras import (
     infere_socket,
     infere_watts,
     limpa_descricao,
-    titulo,
+    nome_exibicao,
 )
 
 RAIZ = Path(__file__).resolve().parent.parent
@@ -119,7 +119,7 @@ def peca_nova(codigo: str, desc_original: str, marca: str, preco: float, estoque
     if cat is None:
         return None
     socket = infere_socket(desc, cat)
-    mem = infere_memtype(desc, cat)
+    mem = infere_memtype(desc, cat, socket)
     watts = infere_watts(desc, cat)
     ram = infere_ram(desc, cat)
     apu = infere_apu(desc, cat)
@@ -145,7 +145,7 @@ def peca_nova(codigo: str, desc_original: str, marca: str, preco: float, estoque
     peca = {
         "id": f"w{codigo}",
         "category": cat,
-        "name": titulo(desc),
+        "name": nome_exibicao(desc, cat),
         "brand": marca,
         "code": codigo,
         "foto": foto_de(codigo),

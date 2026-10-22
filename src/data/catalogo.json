@@ -23,7 +23,7 @@
   {
     "id": "w17507",
     "category": "cpu",
-    "name": "Processador AMD Ryzen 7 1700 3.0GHZ AM4",
+    "name": "Processador AMD Ryzen 7 1700 3.0GHz AM4",
     "brand": "Amd",
     "code": "17507",
     "foto": "/fotos/17507.jpg",
@@ -60,7 +60,7 @@
   {
     "id": "w15849",
     "category": "cpu",
-    "name": "Processador Ryzen 3 4100 AM4 - Sem BOX",
+    "name": "Processador AMD Ryzen 3 4100 AM4 - Sem BOX",
     "brand": "Amd",
     "code": "15849",
     "pixPrice": 779.9,
@@ -78,7 +78,7 @@
   {
     "id": "w17867",
     "category": "cpu",
-    "name": "Processador Ryzen 5 5500 3.6GH AM4 BOX",
+    "name": "Processador AMD Ryzen 5 5500 3.6GH AM4 BOX",
     "brand": "Amd",
     "code": "17867",
     "foto": "/fotos/17867.jpg",
@@ -96,7 +96,7 @@
   {
     "id": "w18861",
     "category": "cpu",
-    "name": "Processador Ryzen 7 3700X 3.6GHZ",
+    "name": "Processador AMD Ryzen 7 3700X 3.6GHz",
     "brand": "Amd",
     "code": "18861",
     "foto": "/fotos/18861.jpg",
@@ -115,7 +115,7 @@
   {
     "id": "w18599",
     "category": "cpu",
-    "name": "Processador Ryzen 7 5700X 3.4GHZ AM4 OEM",
+    "name": "Processador AMD Ryzen 7 5700X 3.4GHz AM4 OEM",
     "brand": "Amd",
     "code": "18599",
     "foto": "/fotos/18599.jpg",
@@ -134,7 +134,7 @@
   {
     "id": "w23388",
     "category": "cpu",
-    "name": "Processador Ryzen 7 5700G 4.6GHZ AM4 BOX",
+    "name": "Processador AMD Ryzen 7 5700G 4.6GHz AM4 BOX",
     "brand": "Amd",
     "code": "23388",
     "foto": "/fotos/23388.jpg",
@@ -155,7 +155,7 @@
   {
     "id": "w13281",
     "category": "cpu",
-    "name": "Processador AMD Ryzen 7 5800X 3.8GHZ",
+    "name": "Processador AMD Ryzen 7 5800X 3.8GHz",
     "brand": "Amd",
     "code": "13281",
     "foto": "/fotos/13281.jpg",
@@ -174,7 +174,7 @@
   {
     "id": "w20145",
     "category": "cpu",
-    "name": "Processador I7-4790 3.60GHZ Lga 1150",
+    "name": "Processador Intel Core i7-4790 3.60GHz LGA1150",
     "brand": "Intel",
     "code": "20145",
     "pixPrice": 419.9,
@@ -185,12 +185,13 @@
       "Socket LGA1150",
       "Intel"
     ],
-    "detail": "L-PROCESSADOR  I7-4790 3.60GHZ LGA 1150"
+    "detail": "L-PROCESSADOR  I7-4790 3.60GHZ LGA 1150",
+    "watts": 125
   },
   {
     "id": "w20596",
     "category": "cpu",
-    "name": "Processador I7-6700 3.40GHZ Lga 1151",
+    "name": "Processador Intel Core i7-6700 3.40GHz LGA1151",
     "brand": "Intel",
     "code": "20596",
     "pixPrice": 389.9,
@@ -201,12 +202,13 @@
       "Socket LGA1151",
       "Intel"
     ],
-    "detail": "L-PROCESSADOR  I7-6700 3.40GHZ LGA 1151"
+    "detail": "L-PROCESSADOR  I7-6700 3.40GHZ LGA 1151",
+    "watts": 125
   },
   {
     "id": "w19326",
     "category": "cpu",
-    "name": "Processador I3-12100 3.3GHZ Lga 1700",
+    "name": "Processador Intel Core i3-12100 3.3GHz LGA1700",
     "brand": "Intel",
     "code": "19326",
     "pixPrice": 1889.9,
@@ -217,12 +219,13 @@
       "Socket LGA1700",
       "Intel"
     ],
-    "detail": "L-PROCESSADOR I3-12100 3.3GHZ LGA 1700"
+    "detail": "L-PROCESSADOR I3-12100 3.3GHZ LGA 1700",
+    "watts": 65
   },
   {
     "id": "w19348",
     "category": "cpu",
-    "name": "Processador I5-10400 2.9GHZ Lga 1200",
+    "name": "Processador Intel Core i5-10400 2.9GHz LGA1200",
     "brand": "Intel",
     "code": "19348",
     "pixPrice": 949.9,
@@ -233,12 +236,13 @@
       "Socket LGA1200",
       "Intel"
     ],
-    "detail": "L-PROCESSADOR I5-10400 2.9GHZ LGA 1200"
+    "detail": "L-PROCESSADOR I5-10400 2.9GHZ LGA 1200",
+    "watts": 65
   },
   {
     "id": "w21338",
     "category": "cpu",
-    "name": "Processador I5-10400T 2.0GHZ Lga 1200",
+    "name": "Processador Intel Core i5-10400T 2.0GHz LGA1200",
     "brand": "Intel",
     "code": "21338",
     "pixPrice": 869.9,
@@ -249,12 +253,13 @@
       "Socket LGA1200",
       "Intel"
     ],
-    "detail": "L-PROCESSADOR I5-10400T 2.0GHZ LGA 1200"
+    "detail": "L-PROCESSADOR I5-10400T 2.0GHZ LGA 1200",
+    "watts": 65
   },
   {
     "id": "w19111",
     "category": "cpu",
-    "name": "Processador I5-10500 3.10GHZ Lga 1200",
+    "name": "Processador Intel Core i5-10500 3.10GHz LGA1200",
     "brand": "Intel",
     "code": "19111",
     "pixPrice": 919.9,
@@ -265,12 +270,13 @@
       "Socket LGA1200",
       "Intel"
     ],
-    "detail": "L-PROCESSADOR I5-10500 3.10GHZ LGA 1200"
+    "detail": "L-PROCESSADOR I5-10500 3.10GHZ LGA 1200",
+    "watts": 65
   },
   {
     "id": "w19112",
     "category": "cpu",
-    "name": "Processador I5-10505 3.2GHZ Lga 1200",
+    "name": "Processador Intel Core i5-10505 3.2GHz LGA1200",
     "brand": "Intel",
     "code": "19112",
     "pixPrice": 1339.9,
@@ -281,12 +287,13 @@
       "Socket LGA1200",
       "Intel"
     ],
-    "detail": "L-PROCESSADOR I5-10505 3.2GHZ LGA 1200"
+    "detail": "L-PROCESSADOR I5-10505 3.2GHZ LGA 1200",
+    "watts": 65
   },
   {
     "id": "w19113",
     "category": "cpu",
-    "name": "Processador I5-10600 3.3GHZ Lga 1200",
+    "name": "Processador Intel Core i5-10600 3.3GHz LGA1200",
     "brand": "Intel",
     "code": "19113",
     "pixPrice": 1039.9,
@@ -297,12 +304,13 @@
       "Socket LGA1200",
       "Intel"
     ],
-    "detail": "L-PROCESSADOR I5-10600 3.3GHZ LGA 1200"
+    "detail": "L-PROCESSADOR I5-10600 3.3GHZ LGA 1200",
+    "watts": 65
   },
   {
     "id": "w23315",
     "category": "cpu",
-    "name": "Processador I5-14400 3.5ghzlga1700 OEM",
+    "name": "Processador Intel Core i5-14400 3.5GHz LGA1700 OEM",
     "brand": "Intel",
     "code": "23315",
     "pixPrice": 1929.9,
@@ -313,12 +321,13 @@
       "Socket LGA1700",
       "Intel"
     ],
-    "detail": "L-PROCESSADOR I5-14400 3.5GHZLGA1700 OEM"
+    "detail": "L-PROCESSADOR I5-14400 3.5GHZLGA1700 OEM",
+    "watts": 65
   },
   {
     "id": "w15308",
     "category": "cpu",
-    "name": "Processador I7-12700 Lga 1700 3.6GHZ",
+    "name": "Processador Intel Core i7-12700 LGA1700 3.6GHz",
     "brand": "Intel",
     "code": "15308",
     "pixPrice": 2499.9,
@@ -329,12 +338,13 @@
       "Socket LGA1700",
       "Intel"
     ],
-    "detail": "L-PROCESSADOR I7-12700 LGA 1700 3.6GHZ"
+    "detail": "L-PROCESSADOR I7-12700 LGA 1700 3.6GHZ",
+    "watts": 125
   },
   {
     "id": "w23317",
     "category": "cpu",
-    "name": "Processador I7-12700 LGA17003.6GHZ BOX",
+    "name": "Processador Intel Core i7-12700 LGA1700 3.6GHz BOX",
     "brand": "Intel",
     "code": "23317",
     "pixPrice": 3069.9,
@@ -345,12 +355,13 @@
       "Socket LGA1700",
       "Intel"
     ],
-    "detail": "L-PROCESSADOR I7-12700 LGA17003.6GHZ BOX"
+    "detail": "L-PROCESSADOR I7-12700 LGA17003.6GHZ BOX",
+    "watts": 125
   },
   {
     "id": "w19943",
     "category": "cpu",
-    "name": "Processador I7-12700K 3.6GHZ Lga 1700",
+    "name": "Processador Intel Core i7-12700K 3.6GHz LGA1700",
     "brand": "Intel",
     "code": "19943",
     "pixPrice": 2499.9,
@@ -361,12 +372,13 @@
       "Socket LGA1700",
       "Intel"
     ],
-    "detail": "L-PROCESSADOR I7-12700K 3.6GHZ LGA 1700"
+    "detail": "L-PROCESSADOR I7-12700K 3.6GHZ LGA 1700",
+    "watts": 125
   },
   {
     "id": "w20443",
     "category": "cpu",
-    "name": "Processador I7-4770 3.4GHZ Lga 1150",
+    "name": "Processador Intel Core i7-4770 3.4GHz LGA1150",
     "brand": "Intel",
     "code": "20443",
     "pixPrice": 419.9,
@@ -377,39 +389,47 @@
       "Socket LGA1150",
       "Intel"
     ],
-    "detail": "L-PROCESSADOR I7-4770 3.4GHZ LGA 1150"
+    "detail": "L-PROCESSADOR I7-4770 3.4GHZ LGA 1150",
+    "watts": 125
   },
   {
     "id": "w26066",
     "category": "cpu",
-    "name": "Processador Int I5 9400 Oem-proci59400",
+    "name": "Processador Intel Core i5-9400 OEM",
     "brand": "Intel",
     "code": "26066",
     "pixPrice": 509.9,
     "stock": 21,
     "specs": [
+      "Socket LGA1151",
       "Intel"
     ],
-    "detail": "L-PROCESSADOR INT I5 9400 OEM-PROCI59400"
+    "detail": "L-PROCESSADOR INT I5 9400 OEM-PROCI59400",
+    "socket": "LGA1151",
+    "platform": "Intel",
+    "watts": 65
   },
   {
     "id": "w12855",
     "category": "cpu",
-    "name": "Processador Pentium G5400 3.7GHZ",
+    "name": "Processador Intel Pentium G5400 3.7GHz",
     "brand": "Intel",
     "code": "12855",
     "pixPrice": 399.9,
     "stock": 9,
     "platform": "Intel",
     "specs": [
+      "Socket LGA1151",
       "Intel"
     ],
-    "detail": "L-PROCESSADOR PENTIUM G5400 3.7GHZ"
+    "detail": "L-PROCESSADOR PENTIUM G5400 3.7GHZ",
+    "socket": "LGA1151",
+    "watts": 65
   },
   {
     "id": "w19148",
     "category": "cpu",
-    "name": "Processador Ryzen 5 5600GT 3.6GHZ AM4",
+    "name": "Processador AMD Ryzen 5 5600GT 3.6GHz AM4",
     "brand": "Amd",
     "code": "19148",
     "pixPrice": 1519.9,
@@ -424,35 +444,9 @@
     "detail": "L-PROCESSADOR RYZEN 5 5600GT 3.6GHZ AM4"
   },
   {
-    "id": "w21477",
-    "category": "cpu",
-    "name": "Mini Processador Portatil Oih-2581",
-    "brand": "Oasis",
-    "code": "21477",
-    "pixPrice": 39.9,
-    "stock": 51,
-    "specs": [
-      "Oasis"
-    ],
-    "detail": "MINI PROCESSADOR PORTATIL OIH-2581"
-  },
-  {
-    "id": "w21409",
-    "category": "cpu",
-    "name": "Mini Processador Portatil On-ud101",
-    "brand": "Onistek",
-    "code": "21409",
-    "pixPrice": 29.9,
-    "stock": 29,
-    "specs": [
-      "Onistek"
-    ],
-    "detail": "MINI PROCESSADOR PORTATIL ON-UD101"
-  },
-  {
     "id": "w15653",
-    "category": "cpu",
-    "name": "Placa M?e DDR4 C/processador G-PC6300HQ",
+    "category": "motherboard",
+    "name": "Placa Mãe DDR4 C/processador G-PC6300HQ",
     "brand": "Knup",
     "code": "15653",
     "pixPrice": 469.9,
@@ -460,12 +454,13 @@
     "specs": [
       "Knup"
     ],
-    "detail": "PLACA M?E DDR4 C/PROCESSADOR G-PC6300HQ"
+    "detail": "PLACA M?E DDR4 C/PROCESSADOR G-PC6300HQ",
+    "memType": "DDR4"
   },
   {
     "id": "w15652",
-    "category": "cpu",
-    "name": "Placa M?e DDR4 C/processador G-PC6700HQ",
+    "category": "motherboard",
+    "name": "Placa Mãe DDR4 C/processador G-PC6700HQ",
     "brand": "Knup",
     "code": "15652",
     "pixPrice": 599.9,
@@ -473,12 +468,13 @@
     "specs": [
       "Knup"
     ],
-    "detail": "PLACA M?E DDR4 C/PROCESSADOR G-PC6700HQ"
+    "detail": "PLACA M?E DDR4 C/PROCESSADOR G-PC6700HQ",
+    "memType": "DDR4"
   },
   {
     "id": "w14765",
     "category": "cpu",
-    "name": "Processador G4930 3.20MHZ Lga 1151",
+    "name": "Processador Intel Pentium G4930 3.20GHz LGA1151",
     "brand": "Intel",
     "code": "14765",
     "pixPrice": 269.9,
@@ -494,7 +490,7 @@
   {
     "id": "w9857",
     "category": "cpu",
-    "name": "Processador I3-6100 3.70GHZ LGA1151",
+    "name": "Processador Intel Core i3-6100 3.70GHz LGA1151",
     "brand": "Intel",
     "code": "9857",
     "pixPrice": 139.9,
@@ -505,12 +501,13 @@
       "Socket LGA1151",
       "Intel"
     ],
-    "detail": "PROCESSADOR  I3-6100 3.70GHZ LGA1151"
+    "detail": "PROCESSADOR  I3-6100 3.70GHZ LGA1151",
+    "watts": 65
   },
   {
     "id": "w11549",
     "category": "cpu",
-    "name": "Processador I5-11400 2.6GHZ Lga 1200",
+    "name": "Processador Intel Core i5-11400 2.6GHz LGA1200",
     "brand": "Intel",
     "code": "11549",
     "pixPrice": 1389.9,
@@ -521,12 +518,13 @@
       "Socket LGA1200",
       "Intel"
     ],
-    "detail": "PROCESSADOR  I5-11400 2.6GHZ LGA 1200"
+    "detail": "PROCESSADOR  I5-11400 2.6GHZ LGA 1200",
+    "watts": 65
   },
   {
     "id": "w25752",
     "category": "cpu",
-    "name": "Processador I5-14600K 3.5ghzlga1700 OEM",
+    "name": "Processador Intel Core i5-14600K 3.5GHz LGA1700 OEM",
     "brand": "Intel",
     "code": "25752",
     "pixPrice": 1989.9,
@@ -537,12 +535,13 @@
       "Socket LGA1700",
       "Intel"
     ],
-    "detail": "PROCESSADOR  I5-14600K 3.5GHZLGA1700 OEM"
+    "detail": "PROCESSADOR  I5-14600K 3.5GHZLGA1700 OEM",
+    "watts": 65
   },
   {
     "id": "w3401",
     "category": "cpu",
-    "name": "Processador I5-2400 3.10GHZ Lga 1155",
+    "name": "Processador Intel Core i5-2400 3.10GHz LGA1155",
     "brand": "Intel",
     "code": "3401",
     "pixPrice": 99.9,
@@ -553,25 +552,30 @@
       "Socket LGA1155",
       "Intel"
     ],
-    "detail": "PROCESSADOR  I5-2400 3.10GHZ LGA  1155"
+    "detail": "PROCESSADOR  I5-2400 3.10GHZ LGA  1155",
+    "watts": 65
   },
   {
     "id": "w19063",
     "category": "cpu",
-    "name": "Processador I5-9500 3.0GHZ OEM",
+    "name": "Processador Intel Core i5-9500 3.0GHz OEM",
     "brand": "Intel",
     "code": "19063",
     "pixPrice": 519.9,
     "stock": 40,
     "specs": [
+      "Socket LGA1151",
       "Intel"
     ],
-    "detail": "PROCESSADOR  I5-9500 3.0GHZ OEM"
+    "detail": "PROCESSADOR  I5-9500 3.0GHZ OEM",
+    "socket": "LGA1151",
+    "platform": "Intel",
+    "watts": 65
   },
   {
     "id": "w19339",
     "category": "cpu",
-    "name": "Processador I7-2600K 3.40ghzlga1155 OEM",
+    "name": "Processador Intel Core i7-2600K 3.40GHz LGA1155 OEM",
     "brand": "Intel",
     "code": "19339",
     "pixPrice": 249.9,
@@ -582,25 +586,29 @@
       "Socket LGA1155",
       "Intel"
     ],
-    "detail": "PROCESSADOR  I7-2600K 3.40GHZLGA1155 OEM"
+    "detail": "PROCESSADOR  I7-2600K 3.40GHZLGA1155 OEM",
+    "watts": 125
   },
   {
     "id": "w15382",
     "category": "cpu",
-    "name": "Processador Dual Core G4400T 2.90GHZ",
+    "name": "Processador Intel Pentium G4400T 2.90GHz",
     "brand": "Intel",
     "code": "15382",
     "pixPrice": 259.9,
     "stock": 1,
     "specs": [
+      "Socket LGA1151",
       "Intel"
     ],
-    "detail": "PROCESSADOR DUAL CORE G4400T 2.90GHZ"
+    "detail": "PROCESSADOR DUAL CORE G4400T 2.90GHZ",
+    "socket": "LGA1151",
+    "platform": "Intel"
   },
   {
     "id": "w9265",
     "category": "cpu",
-    "name": "Processador I3-10100 3.6GHZ Lga 1200",
+    "name": "Processador Intel Core i3-10100 3.6GHz LGA1200",
     "brand": "Intel",
     "code": "9265",
     "pixPrice": 869.9,
@@ -611,12 +619,13 @@
       "Socket LGA1200",
       "Intel"
     ],
-    "detail": "PROCESSADOR I3-10100 3.6GHZ LGA 1200"
+    "detail": "PROCESSADOR I3-10100 3.6GHZ LGA 1200",
+    "watts": 65
   },
   {
     "id": "w12008",
     "category": "cpu",
-    "name": "Processador I3-10100F 3.6GHZ Lga 1200",
+    "name": "Processador Intel Core i3-10100F 3.6GHz LGA1200",
     "brand": "Intel",
     "code": "12008",
     "pixPrice": 711.01,
@@ -627,12 +636,13 @@
       "Socket LGA1200",
       "Intel"
     ],
-    "detail": "PROCESSADOR I3-10100F 3.6GHZ LGA 1200"
+    "detail": "PROCESSADOR I3-10100F 3.6GHZ LGA 1200",
+    "watts": 65
   },
   {
     "id": "w11389",
     "category": "cpu",
-    "name": "Processador I3-10105 3.7GHZ Lga 1200",
+    "name": "Processador Intel Core i3-10105 3.7GHz LGA1200",
     "brand": "Intel",
     "code": "11389",
     "pixPrice": 1069.9,
@@ -643,12 +653,13 @@
       "Socket LGA1200",
       "Intel"
     ],
-    "detail": "PROCESSADOR I3-10105 3.7GHZ  LGA 1200"
+    "detail": "PROCESSADOR I3-10105 3.7GHZ  LGA 1200",
+    "watts": 65
   },
   {
     "id": "w12007",
     "category": "cpu",
-    "name": "Processador I3-10105F 3.70GHZ LGA1200",
+    "name": "Processador Intel Core i3-10105F 3.70GHz LGA1200",
     "brand": "Intel",
     "code": "12007",
     "pixPrice": 829.9,
@@ -659,12 +670,13 @@
       "Socket LGA1200",
       "Intel"
     ],
-    "detail": "PROCESSADOR I3-10105F 3.70GHZ LGA1200"
+    "detail": "PROCESSADOR I3-10105F 3.70GHZ LGA1200",
+    "watts": 65
   },
   {
     "id": "w4512",
     "category": "cpu",
-    "name": "Processador I3-4130 3.40GHZ Lga 1150",
+    "name": "Processador Intel Core i3-4130 3.40GHz LGA1150",
     "brand": "Intel",
     "code": "4512",
     "pixPrice": 49.9,
@@ -675,12 +687,13 @@
       "Socket LGA1150",
       "Intel"
     ],
-    "detail": "PROCESSADOR I3-4130 3.40GHZ LGA 1150"
+    "detail": "PROCESSADOR I3-4130 3.40GHZ LGA 1150",
+    "watts": 65
   },
   {
     "id": "w7357",
     "category": "cpu",
-    "name": "Processador I3-4150 3.5GHZ Lga 1150",
+    "name": "Processador Intel Core i3-4150 3.5GHz LGA1150",
     "brand": "Intel",
     "code": "7357",
     "pixPrice": 49.9,
@@ -691,12 +704,13 @@
       "Socket LGA1150",
       "Intel"
     ],
-    "detail": "PROCESSADOR I3-4150  3.5GHZ LGA 1150"
+    "detail": "PROCESSADOR I3-4150  3.5GHZ LGA 1150",
+    "watts": 65
   },
   {
     "id": "w19341",
     "category": "cpu",
-    "name": "Processador I3-4160 3.60ghzlga1150 OEM",
+    "name": "Processador Intel Core i3-4160 3.60GHz LGA1150 OEM",
     "brand": "Intel",
     "code": "19341",
     "pixPrice": 79.9,
@@ -707,12 +721,13 @@
       "Socket LGA1150",
       "Intel"
     ],
-    "detail": "PROCESSADOR I3-4160 3.60GHZLGA1150 OEM"
+    "detail": "PROCESSADOR I3-4160 3.60GHZLGA1150 OEM",
+    "watts": 65
   },
   {
     "id": "w19340",
     "category": "cpu",
-    "name": "Processador I3-540 3.2ghzlga1156 OEM",
+    "name": "Processador Intel Core i3-540 3.2GHz LGA1156 OEM",
     "brand": "Intel",
     "code": "19340",
     "pixPrice": 59.9,
@@ -723,12 +738,13 @@
       "Socket LGA1156",
       "Intel"
     ],
-    "detail": "PROCESSADOR I3-540 3.2GHZLGA1156 OEM"
+    "detail": "PROCESSADOR I3-540 3.2GHZLGA1156 OEM",
+    "watts": 65
   },
   {
     "id": "w7360",
     "category": "cpu",
-    "name": "Processador I3-550 3.2GHZ LGA1156",
+    "name": "Processador Intel Core i3-550 3.2GHz LGA1156",
     "brand": "Intel",
     "code": "7360",
     "pixPrice": 82.85,
@@ -739,25 +755,30 @@
       "Socket LGA1156",
       "Intel"
     ],
-    "detail": "PROCESSADOR I3-550 3.2GHZ LGA1156"
+    "detail": "PROCESSADOR I3-550 3.2GHZ LGA1156",
+    "watts": 65
   },
   {
     "id": "w15796",
     "category": "cpu",
-    "name": "Processador I3-6100T 3.20GHZ 1150 - OEM",
+    "name": "Processador Intel Core i3-6100T 3.20GHz OEM",
     "brand": "Intel",
     "code": "15796",
     "pixPrice": 109.9,
     "stock": 2,
     "specs": [
+      "Socket LGA1151",
       "Intel"
     ],
-    "detail": "PROCESSADOR I3-6100T 3.20GHZ 1150 - OEM"
+    "detail": "PROCESSADOR I3-6100T 3.20GHZ 1150 - OEM",
+    "socket": "LGA1151",
+    "platform": "Intel",
+    "watts": 65
   },
   {
     "id": "w17431",
     "category": "cpu",
-    "name": "Processador I3-7100T 3.40GHZ LGA1151",
+    "name": "Processador Intel Core i3-7100T 3.40GHz LGA1151",
     "brand": "Intel",
     "code": "17431",
     "pixPrice": 119.9,
@@ -768,12 +789,13 @@
       "Socket LGA1151",
       "Intel"
     ],
-    "detail": "PROCESSADOR I3-7100T 3.40GHZ LGA1151"
+    "detail": "PROCESSADOR I3-7100T 3.40GHZ LGA1151",
+    "watts": 65
   },
   {
     "id": "w18085",
     "category": "cpu",
-    "name": "Processador I3-8100 3.6GHZ LGA1151",
+    "name": "Processador Intel Core i3-8100 3.6GHz LGA1151",
     "brand": "Binario",
     "code": "18085",
     "pixPrice": 189.9,
@@ -784,12 +806,13 @@
       "Socket LGA1151",
       "Binario"
     ],
-    "detail": "PROCESSADOR I3-8100 3.6GHZ LGA1151"
+    "detail": "PROCESSADOR I3-8100 3.6GHZ LGA1151",
+    "watts": 65
   },
   {
     "id": "w19338",
     "category": "cpu",
-    "name": "Processador I5-10500T 2.30ghzlga1200 OEM",
+    "name": "Processador Intel Core i5-10500T 2.30GHz LGA1200 OEM",
     "brand": "Intel",
     "code": "19338",
     "pixPrice": 1179.9,
@@ -800,12 +823,13 @@
       "Socket LGA1200",
       "Intel"
     ],
-    "detail": "PROCESSADOR I5-10500T 2.30GHZLGA1200 OEM"
+    "detail": "PROCESSADOR I5-10500T 2.30GHZLGA1200 OEM",
+    "watts": 65
   },
   {
     "id": "w13818",
     "category": "cpu",
-    "name": "Processador I5-13400 2.50GHZ Lga 1700",
+    "name": "Processador Intel Core i5-13400 2.50GHz LGA1700",
     "brand": "Intel",
     "code": "13818",
     "pixPrice": 1779.9,
@@ -816,12 +840,13 @@
       "Socket LGA1700",
       "Intel"
     ],
-    "detail": "PROCESSADOR I5-13400 2.50GHZ LGA 1700"
+    "detail": "PROCESSADOR I5-13400 2.50GHZ LGA 1700",
+    "watts": 65
   },
   {
     "id": "w21542",
     "category": "cpu",
-    "name": "Processador I5-13400T 2.5GHZ LGA1700 OEM",
+    "name": "Processador Intel Core i5-13400T 2.5GHz LGA1700 OEM",
     "brand": "Intel",
     "code": "21542",
     "pixPrice": 1379.9,
@@ -832,12 +857,13 @@
       "Socket LGA1700",
       "Intel"
     ],
-    "detail": "PROCESSADOR I5-13400T 2.5GHZ LGA1700 OEM"
+    "detail": "PROCESSADOR I5-13400T 2.5GHZ LGA1700 OEM",
+    "watts": 65
   },
   {
     "id": "w15305",
     "category": "cpu",
-    "name": "Processador I5-3450 3.1GHZ LGA1155 -",
+    "name": "Processador Intel Core i5-3450 3.1GHz LGA1155",
     "brand": "Intel",
     "code": "15305",
     "pixPrice": 99.9,
@@ -848,12 +874,13 @@
       "Socket LGA1155",
       "Intel"
     ],
-    "detail": "PROCESSADOR I5-3450 3.1GHZ LGA1155 -"
+    "detail": "PROCESSADOR I5-3450 3.1GHZ LGA1155 -",
+    "watts": 65
   },
   {
     "id": "w16045",
     "category": "cpu",
-    "name": "Processador I5-3470 3.2GHZ LGA1155",
+    "name": "Processador Intel Core i5-3470 3.2GHz LGA1155",
     "brand": "Intel",
     "code": "16045",
     "pixPrice": 129.9,
@@ -864,12 +891,13 @@
       "Socket LGA1155",
       "Intel"
     ],
-    "detail": "PROCESSADOR I5-3470 3.2GHZ LGA1155"
+    "detail": "PROCESSADOR I5-3470 3.2GHZ LGA1155",
+    "watts": 65
   },
   {
     "id": "w13801",
     "category": "cpu",
-    "name": "Processador I5-3550 3.30GHZ Lga 1155 OEM",
+    "name": "Processador Intel Core i5-3550 3.30GHz LGA1155 OEM",
     "brand": "Intel",
     "code": "13801",
     "pixPrice": 109.9,
@@ -880,12 +908,13 @@
       "Socket LGA1155",
       "Intel"
     ],
-    "detail": "PROCESSADOR I5-3550 3.30GHZ LGA 1155 OEM"
+    "detail": "PROCESSADOR I5-3550 3.30GHZ LGA 1155 OEM",
+    "watts": 65
   },
   {
     "id": "w13802",
     "category": "cpu",
-    "name": "Processador I5-3570 3.40GHZ Lga 1155 OEM",
+    "name": "Processador Intel Core i5-3570 3.40GHz LGA1155 OEM",
     "brand": "Intel",
     "code": "13802",
     "pixPrice": 99.9,
@@ -896,12 +925,13 @@
       "Socket LGA1155",
       "Intel"
     ],
-    "detail": "PROCESSADOR I5-3570 3.40GHZ LGA 1155 OEM"
+    "detail": "PROCESSADOR I5-3570 3.40GHZ LGA 1155 OEM",
+    "watts": 65
   },
   {
     "id": "w8869",
     "category": "cpu",
-    "name": "Processador I5-4570 3.20GHZ Lga 1150",
+    "name": "Processador Intel Core i5-4570 3.20GHz LGA1150",
     "brand": "Intel",
     "code": "8869",
     "pixPrice": 149.9,
@@ -912,12 +942,13 @@
       "Socket LGA1150",
       "Intel"
     ],
-    "detail": "PROCESSADOR I5-4570 3.20GHZ LGA 1150"
+    "detail": "PROCESSADOR I5-4570 3.20GHZ LGA 1150",
+    "watts": 65
   },
   {
     "id": "w25909",
     "category": "cpu",
-    "name": "Processador I5-4570S 2.90GHZ Lga 1150",
+    "name": "Processador Intel Core i5-4570S 2.90GHz LGA1150",
     "brand": "Intel",
     "code": "25909",
     "pixPrice": 139.9,
@@ -928,12 +959,13 @@
       "Socket LGA1150",
       "Intel"
     ],
-    "detail": "PROCESSADOR I5-4570S 2.90GHZ LGA 1150"
+    "detail": "PROCESSADOR I5-4570S 2.90GHZ LGA 1150",
+    "watts": 65
   },
   {
     "id": "w13950",
     "category": "cpu",
-    "name": "Processador I5-4570T 2.90GHZ Lga 1150",
+    "name": "Processador Intel Core i5-4570T 2.90GHz LGA1150",
     "brand": "Intel",
     "code": "13950",
     "pixPrice": 139.9,
@@ -944,12 +976,13 @@
       "Socket LGA1150",
       "Intel"
     ],
-    "detail": "PROCESSADOR I5-4570T 2.90GHZ LGA 1150"
+    "detail": "PROCESSADOR I5-4570T 2.90GHZ LGA 1150",
+    "watts": 65
   },
   {
     "id": "w4969",
     "category": "cpu",
-    "name": "Processador I5-4590 3.3GHZ Lga 1150",
+    "name": "Processador Intel Core i5-4590 3.3GHz LGA1150",
     "brand": "Intel",
     "code": "4969",
     "pixPrice": 139.9,
@@ -960,25 +993,30 @@
       "Socket LGA1150",
       "Intel"
     ],
-    "detail": "PROCESSADOR I5-4590 3.3GHZ LGA 1150"
+    "detail": "PROCESSADOR I5-4590 3.3GHZ LGA 1150",
+    "watts": 65
   },
   {
     "id": "w14581",
     "category": "cpu",
-    "name": "Processador I5-4590S 3.00GHZ OEM",
+    "name": "Processador Intel Core i5-4590S 3.00GHz OEM",
     "brand": "Intel",
     "code": "14581",
     "pixPrice": 139.9,
     "stock": 78,
     "specs": [
+      "Socket LGA1150",
       "Intel"
     ],
-    "detail": "PROCESSADOR I5-4590S 3.00GHZ OEM"
+    "detail": "PROCESSADOR I5-4590S 3.00GHZ OEM",
+    "socket": "LGA1150",
+    "platform": "Intel",
+    "watts": 65
   },
   {
     "id": "w13949",
     "category": "cpu",
-    "name": "Processador I5-4590T 2.00GHZ Lga 1150",
+    "name": "Processador Intel Core i5-4590T 2.00GHz LGA1150",
     "brand": "Intel",
     "code": "13949",
     "pixPrice": 139.9,
@@ -989,38 +1027,47 @@
       "Socket LGA1150",
       "Intel"
     ],
-    "detail": "PROCESSADOR I5-4590T 2.00GHZ LGA 1150"
+    "detail": "PROCESSADOR I5-4590T 2.00GHZ LGA 1150",
+    "watts": 65
   },
   {
     "id": "w13730",
     "category": "cpu",
-    "name": "Processador I5-6600 3.3GHZ 1151 OEM",
+    "name": "Processador Intel Core i5-6600 3.3GHz OEM",
     "brand": "Intel",
     "code": "13730",
     "pixPrice": 139.9,
     "stock": 1,
     "specs": [
+      "Socket LGA1151",
       "Intel"
     ],
-    "detail": "PROCESSADOR I5-6600 3.3GHZ 1151 OEM"
+    "detail": "PROCESSADOR I5-6600 3.3GHZ 1151 OEM",
+    "socket": "LGA1151",
+    "platform": "Intel",
+    "watts": 65
   },
   {
     "id": "w26041",
     "category": "cpu",
-    "name": "Processador I5-7400T 2.40GHZ Lga OEM",
+    "name": "Processador Intel Core i5-7400T 2.40GHz OEM",
     "brand": "Intel",
     "code": "26041",
     "pixPrice": 159.9,
     "stock": 59,
     "specs": [
+      "Socket LGA1151",
       "Intel"
     ],
-    "detail": "PROCESSADOR I5-7400T 2.40GHZ LGA  OEM"
+    "detail": "PROCESSADOR I5-7400T 2.40GHZ LGA  OEM",
+    "socket": "LGA1151",
+    "platform": "Intel",
+    "watts": 65
   },
   {
     "id": "w18131",
     "category": "cpu",
-    "name": "Processador I5-7500 3.4GHZ LGA1151",
+    "name": "Processador Intel Core i5-7500 3.4GHz LGA1151",
     "brand": "Intel",
     "code": "18131",
     "pixPrice": 169.9,
@@ -1031,51 +1078,64 @@
       "Socket LGA1151",
       "Intel"
     ],
-    "detail": "PROCESSADOR I5-7500 3.4GHZ LGA1151"
+    "detail": "PROCESSADOR I5-7500 3.4GHZ LGA1151",
+    "watts": 65
   },
   {
     "id": "w26042",
     "category": "cpu",
-    "name": "Processador I5-7500T 2.70GHZ OEM",
+    "name": "Processador Intel Core i5-7500T 2.70GHz OEM",
     "brand": "Intel",
     "code": "26042",
     "pixPrice": 159.9,
     "stock": 142,
     "specs": [
+      "Socket LGA1151",
       "Intel"
     ],
-    "detail": "PROCESSADOR I5-7500T 2.70GHZ OEM"
+    "detail": "PROCESSADOR I5-7500T 2.70GHZ OEM",
+    "socket": "LGA1151",
+    "platform": "Intel",
+    "watts": 65
   },
   {
     "id": "w19846",
     "category": "cpu",
-    "name": "Processador I5-7600 3.5GHZ OEM",
+    "name": "Processador Intel Core i5-7600 3.5GHz OEM",
     "brand": "Intel",
     "code": "19846",
     "pixPrice": 169.9,
     "stock": 123,
     "specs": [
+      "Socket LGA1151",
       "Intel"
     ],
-    "detail": "PROCESSADOR I5-7600 3.5GHZ OEM"
+    "detail": "PROCESSADOR I5-7600 3.5GHZ OEM",
+    "socket": "LGA1151",
+    "platform": "Intel",
+    "watts": 65
   },
   {
     "id": "w26282",
     "category": "cpu",
-    "name": "Processador I5-7600T 2.80GHZ OEM",
+    "name": "Processador Intel Core i5-7600T 2.80GHz OEM",
     "brand": "Intel",
     "code": "26282",
     "pixPrice": 159.9,
     "stock": 4,
     "specs": [
+      "Socket LGA1151",
       "Intel"
     ],
-    "detail": "PROCESSADOR I5-7600T 2.80GHZ OEM"
+    "detail": "PROCESSADOR I5-7600T 2.80GHZ OEM",
+    "socket": "LGA1151",
+    "platform": "Intel",
+    "watts": 65
   },
   {
     "id": "w10295",
     "category": "cpu",
-    "name": "Processador I7-10700 2.90GHZ LGA1200 OEM",
+    "name": "Processador Intel Core i7-10700 2.90GHz LGA1200 OEM",
     "brand": "Intel",
     "code": "10295",
     "pixPrice": 1689.9,
@@ -1086,12 +1146,13 @@
       "Socket LGA1200",
       "Intel"
     ],
-    "detail": "PROCESSADOR I7-10700 2.90GHZ LGA1200 OEM"
+    "detail": "PROCESSADOR I7-10700 2.90GHZ LGA1200 OEM",
+    "watts": 125
   },
   {
     "id": "w18634",
     "category": "cpu",
-    "name": "Processador I7-14700 2.10GHZ LGA1700 OEM",
+    "name": "Processador Intel Core i7-14700 2.10GHz LGA1700 OEM",
     "brand": "Intel",
     "code": "18634",
     "pixPrice": 2889.9,
@@ -1102,12 +1163,13 @@
       "Socket LGA1700",
       "Intel"
     ],
-    "detail": "PROCESSADOR I7-14700 2.10GHZ LGA1700 OEM"
+    "detail": "PROCESSADOR I7-14700 2.10GHZ LGA1700 OEM",
+    "watts": 125
   },
   {
     "id": "w13832",
     "category": "cpu",
-    "name": "Processador I7-2600 3.40GHZ Lga 1155",
+    "name": "Processador Intel Core i7-2600 3.40GHz LGA1155",
     "brand": "Intel",
     "code": "13832",
     "pixPrice": 259.9,
@@ -1118,12 +1180,13 @@
       "Socket LGA1155",
       "Intel"
     ],
-    "detail": "PROCESSADOR I7-2600 3.40GHZ LGA 1155"
+    "detail": "PROCESSADOR I7-2600 3.40GHZ LGA 1155",
+    "watts": 125
   },
   {
     "id": "w8758",
     "category": "cpu",
-    "name": "Processador I7-3770K 3.50GHZ Lga 1155",
+    "name": "Processador Intel Core i7-3770K 3.50GHz LGA1155",
     "brand": "Intel",
     "code": "8758",
     "pixPrice": 438.41,
@@ -1134,69 +1197,81 @@
       "Socket LGA1155",
       "Intel"
     ],
-    "detail": "PROCESSADOR I7-3770K 3.50GHZ LGA 1155"
+    "detail": "PROCESSADOR I7-3770K 3.50GHZ LGA 1155",
+    "watts": 125
   },
   {
     "id": "w26705",
     "category": "cpu",
-    "name": "Processador I7-7700 3.60GHZ OEM",
+    "name": "Processador Intel Core i7-7700 3.60GHz OEM",
     "brand": "Intel",
     "code": "26705",
     "pixPrice": 409.9,
     "stock": 170,
     "specs": [
+      "Socket LGA1151",
       "Intel"
     ],
-    "detail": "PROCESSADOR I7-7700 3.60GHZ OEM"
+    "detail": "PROCESSADOR I7-7700 3.60GHZ OEM",
+    "socket": "LGA1151",
+    "platform": "Intel",
+    "watts": 125
   },
   {
     "id": "w15795",
     "category": "cpu",
-    "name": "Processador I7-8700 3.20GHZ LGA1150 OEM",
+    "name": "Processador Intel Core i7-8700 3.20GHz LGA1151 OEM",
     "brand": "Intel",
     "code": "15795",
     "pixPrice": 989.9,
     "stock": 3,
     "platform": "Intel",
-    "socket": "LGA1150",
+    "socket": "LGA1151",
     "specs": [
-      "Socket LGA1150",
+      "Socket LGA1151",
       "Intel"
     ],
-    "detail": "PROCESSADOR I7-8700 3.20GHZ LGA1150 OEM"
+    "detail": "PROCESSADOR I7-8700 3.20GHZ LGA1150 OEM",
+    "watts": 125
   },
   {
     "id": "w26285",
     "category": "cpu",
-    "name": "Processador INTEL I5 6600K OEM",
+    "name": "Processador Intel Core i5-6600K OEM",
     "brand": "Intel",
     "code": "26285",
     "pixPrice": 149.9,
     "stock": 12,
     "platform": "Intel",
     "specs": [
+      "Socket LGA1151",
       "Intel"
     ],
-    "detail": "PROCESSADOR INTEL I5 6600K OEM"
+    "detail": "PROCESSADOR INTEL I5 6600K OEM",
+    "socket": "LGA1151",
+    "watts": 65
   },
   {
     "id": "w3921",
     "category": "cpu",
-    "name": "Processador INTEL I5-3470 3.2ghz1155 OEM",
+    "name": "Processador Intel Core i5-3470 3.2GHz OEM",
     "brand": "Intel",
     "code": "3921",
     "pixPrice": 99.9,
     "stock": 100,
     "platform": "Intel",
     "specs": [
+      "Socket LGA1155",
       "Intel"
     ],
-    "detail": "PROCESSADOR INTEL I5-3470 3.2GHZ1155 OEM"
+    "detail": "PROCESSADOR INTEL I5-3470 3.2GHZ1155 OEM",
+    "socket": "LGA1155",
+    "watts": 65
   },
   {
     "id": "w13164",
     "category": "motherboard",
-    "name": "Placa Mae Desk 1155 G-H61/K Knup (2xddr3",
+    "name": "Placa Mãe Desk 1155 G-H61/K Knup (2xddr3",
     "brand": "Knup",
     "code": "13164",
     "foto": "/fotos/13164.jpg",
@@ -1208,12 +1283,13 @@
       "Socket LGA1155",
       "Knup"
     ],
-    "detail": "PLACA MAE DESK 1155 G-H61/K KNUP (2XDDR3"
+    "detail": "PLACA MAE DESK 1155 G-H61/K KNUP (2XDDR3",
+    "memType": "DDR3"
   },
   {
     "id": "w21561",
     "category": "motherboard",
-    "name": "Placa Mae H61 LGA1155 DDR3 Hayom Plm2300",
+    "name": "Placa Mãe H61 LGA1155 DDR3 Hayom Plm2300",
     "brand": "Hayom",
     "code": "21561",
     "foto": "/fotos/21561.jpg",
@@ -1233,7 +1309,7 @@
   {
     "id": "w19679",
     "category": "motherboard",
-    "name": "Placa Mae B75 LGA1155 DDR3 Hayom Plm2301",
+    "name": "Placa Mãe B75 LGA1155 DDR3 Hayom Plm2301",
     "brand": "Hayom",
     "code": "19679",
     "foto": "/fotos/19679.jpg",
@@ -1252,7 +1328,7 @@
   {
     "id": "w25492",
     "category": "motherboard",
-    "name": "Placa Mae H61-m2pro 1155 Diamond Clanm",
+    "name": "Placa Mãe H61-m2pro 1155 Diamond Clanm",
     "brand": "Haoquing",
     "code": "25492",
     "foto": "/fotos/25492.jpg",
@@ -1264,12 +1340,13 @@
       "Socket LGA1155",
       "Haoquing"
     ],
-    "detail": "PLACA MAE H61-M2PRO 1155 DIAMOND CLANM"
+    "detail": "PLACA MAE H61-M2PRO 1155 DIAMOND CLANM",
+    "memType": "DDR3"
   },
   {
     "id": "w25779",
     "category": "motherboard",
-    "name": "Placa Mae LGA1155 Delta-h61m2k H61",
+    "name": "Placa Mãe LGA1155 Delta-h61m2k H61",
     "brand": "Delta",
     "code": "25779",
     "foto": "/fotos/25779.jpg",
@@ -1281,12 +1358,13 @@
       "Socket LGA1155",
       "Delta"
     ],
-    "detail": "PLACA MAE LGA1155 DELTA-H61M2K H61"
+    "detail": "PLACA MAE LGA1155 DELTA-H61M2K H61",
+    "memType": "DDR3"
   },
   {
     "id": "w12405",
     "category": "motherboard",
-    "name": "Placa Mae G-H81/M Desk Knup DDR3 Lga 115",
+    "name": "Placa Mãe G-H81/M Desk Knup DDR3 LGA115",
     "brand": "Knup",
     "code": "12405",
     "foto": "/fotos/12405.jpg",
@@ -1305,7 +1383,7 @@
   {
     "id": "w25764",
     "category": "motherboard",
-    "name": "Placa Mae Delta LGA1150 H81",
+    "name": "Placa Mãe Delta LGA1150 H81",
     "brand": "Delta",
     "code": "25764",
     "foto": "/fotos/25764.jpg",
@@ -1317,12 +1395,13 @@
       "Socket LGA1150",
       "Delta"
     ],
-    "detail": "S-PLACA MAE DELTA LGA1150 H81"
+    "detail": "S-PLACA MAE DELTA LGA1150 H81",
+    "memType": "DDR3"
   },
   {
     "id": "w25780",
     "category": "motherboard",
-    "name": "Placa Mae LGA1150 Delta-h81m2k H81",
+    "name": "Placa Mãe LGA1150 Delta-h81m2k H81",
     "brand": "Delta",
     "code": "25780",
     "foto": "/fotos/25780.jpg",
@@ -1334,12 +1413,13 @@
       "Socket LGA1150",
       "Delta"
     ],
-    "detail": "PLACA MAE LGA1150 DELTA-H81M2K H81"
+    "detail": "PLACA MAE LGA1150 DELTA-H81M2K H81",
+    "memType": "DDR3"
   },
   {
     "id": "w13656",
     "category": "motherboard",
-    "name": "Placa Mae H81m.2-tg DDR3 LGA1150",
+    "name": "Placa Mãe H81m.2-tg DDR3 LGA1150",
     "brand": "Brazil Pc",
     "code": "13656",
     "foto": "/fotos/13656.jpg",
@@ -1358,7 +1438,7 @@
   {
     "id": "w11414",
     "category": "motherboard",
-    "name": "Placa Mae Hm55-nt DDR3 LGA1156",
+    "name": "Placa Mãe Hm55-nt DDR3 LGA1156",
     "brand": "Sem marca",
     "code": "11414",
     "foto": "/fotos/11414.jpg",
@@ -1376,7 +1456,7 @@
   {
     "id": "w26062",
     "category": "motherboard",
-    "name": "Placa Mae Delta Gaming X79-mkii",
+    "name": "Placa Mãe Delta Gaming X79-mkii",
     "brand": "Delta",
     "code": "26062",
     "foto": "/fotos/26062.jpg",
@@ -1390,7 +1470,7 @@
   {
     "id": "w20838",
     "category": "motherboard",
-    "name": "Placa Mae Vxmbb250 M.2 LGA1151 DDR4",
+    "name": "Placa Mãe Vxmbb250 M.2 LGA1151 DDR4",
     "brand": "Duex",
     "code": "20838",
     "foto": "/fotos/20838.jpg",
@@ -1409,7 +1489,7 @@
   {
     "id": "w17705",
     "category": "motherboard",
-    "name": "Placa Mae A320 Mainboard Haoquing",
+    "name": "Placa Mãe A320 Mainboard Haoquing",
     "brand": "Haoquing",
     "code": "17705",
     "foto": "/fotos/17705.jpg",
@@ -1421,12 +1501,13 @@
       "Socket AM4",
       "Haoquing"
     ],
-    "detail": "PLACA MAE A320 MAINBOARD HAOQUING"
+    "detail": "PLACA MAE A320 MAINBOARD HAOQUING",
+    "memType": "DDR4"
   },
   {
     "id": "w20430",
     "category": "motherboard",
-    "name": "Placa Mae Vxpro Vxmbh110 LGA1151 DDR4",
+    "name": "Placa Mãe Vxpro Vxmbh110 LGA1151 DDR4",
     "brand": "Duex",
     "code": "20430",
     "pixPrice": 339.9,
@@ -1445,7 +1526,7 @@
   {
     "id": "w22333",
     "category": "motherboard",
-    "name": "Placa Mae H310 LGA1151 M2 Delta-h310m2k",
+    "name": "Placa Mãe H310 LGA1151 M2 Delta-h310m2k",
     "brand": "Delta",
     "code": "22333",
     "foto": "/fotos/22333.jpg",
@@ -1457,12 +1538,13 @@
       "Socket LGA1151",
       "Delta"
     ],
-    "detail": "PLACA MAE H310 LGA1151 M2 DELTA-H310M2K"
+    "detail": "PLACA MAE H310 LGA1151 M2 DELTA-H310M2K",
+    "memType": "DDR4"
   },
   {
     "id": "w12375",
     "category": "motherboard",
-    "name": "Placa Mae G-A520 Desk DDR4 AM4",
+    "name": "Placa Mãe G-A520 Desk DDR4 AM4",
     "brand": "Revenger",
     "code": "12375",
     "foto": "/fotos/12375.jpg",
@@ -1481,7 +1563,7 @@
   {
     "id": "w13525",
     "category": "motherboard",
-    "name": "Placa Mae Dx H110ZG Duex DDR4 LGA1151",
+    "name": "Placa Mãe Dx H110ZG Duex DDR4 LGA1151",
     "brand": "Intel",
     "code": "13525",
     "foto": "/fotos/13525.jpg",
@@ -1500,7 +1582,7 @@
   {
     "id": "w15334",
     "category": "motherboard",
-    "name": "Placa Mae Desk 1151 DDR4 G-B250 Knup",
+    "name": "Placa Mãe Desk 1151 DDR4 G-B250 Knup",
     "brand": "Revenger",
     "code": "15334",
     "pixPrice": 359.9,
@@ -1519,7 +1601,7 @@
   {
     "id": "w21563",
     "category": "motherboard",
-    "name": "Placa Mae Dxmbh110s M2 LGA1151 DDR4 Duex",
+    "name": "Placa Mãe Dxmbh110s M2 LGA1151 DDR4 Duex",
     "brand": "Duex",
     "code": "21563",
     "foto": "/fotos/21563.jpg",
@@ -1538,7 +1620,7 @@
   {
     "id": "w15479",
     "category": "motherboard",
-    "name": "Placa Mae Bpc-h310/b250m.2-tg Bpc DDR4",
+    "name": "Placa Mãe Bpc-h310/b250m.2-tg Bpc DDR4",
     "brand": "Bpc",
     "code": "15479",
     "foto": "/fotos/15479.jpg",
@@ -1557,7 +1639,7 @@
   {
     "id": "w17412",
     "category": "motherboard",
-    "name": "Placa Mae G-H310 LGA1151 Revenger",
+    "name": "Placa Mãe G-H310 LGA1151 Revenger",
     "brand": "Revenger",
     "code": "17412",
     "foto": "/fotos/17412.jpg",
@@ -1569,12 +1651,13 @@
       "Socket LGA1151",
       "Revenger"
     ],
-    "detail": "PLACA MAE G-H310 LGA1151 REVENGER"
+    "detail": "PLACA MAE G-H310 LGA1151 REVENGER",
+    "memType": "DDR4"
   },
   {
     "id": "w13715",
     "category": "motherboard",
-    "name": "Placa Mae G-H470 Revenger DDR4 LGA1200",
+    "name": "Placa Mãe G-H470 Revenger DDR4 LGA1200",
     "brand": "Revenger",
     "code": "13715",
     "foto": "/fotos/13715.jpg",
@@ -1593,7 +1676,7 @@
   {
     "id": "w18314",
     "category": "motherboard",
-    "name": "Placa Mae Lga 1200 G-H511 Revenger",
+    "name": "Placa Mãe LGA1200 G-H511 Revenger",
     "brand": "Revenger",
     "code": "18314",
     "foto": "/fotos/18314.jpg",
@@ -1605,12 +1688,13 @@
       "Socket LGA1200",
       "Revenger"
     ],
-    "detail": "S-PLACA MAE  LGA 1200 G-H511 REVENGER"
+    "detail": "S-PLACA MAE  LGA 1200 G-H511 REVENGER",
+    "memType": "DDR4"
   },
   {
     "id": "w18308",
     "category": "motherboard",
-    "name": "Placa Mae Lga 1200 DDR4 G-H511 Revenger",
+    "name": "Placa Mãe LGA1200 DDR4 G-H511 Revenger",
     "brand": "Revenger",
     "code": "18308",
     "foto": "/fotos/18308.jpg",
@@ -1629,7 +1713,7 @@
   {
     "id": "w19577",
     "category": "motherboard",
-    "name": "Placa Mae Delta-a520m2k AM4",
+    "name": "Placa Mãe Delta-a520m2k AM4",
     "brand": "Delta",
     "code": "19577",
     "foto": "/fotos/19577.jpg",
@@ -1641,12 +1725,13 @@
       "Socket AM4",
       "Delta"
     ],
-    "detail": "PLACA MAE DELTA-A520M2K AM4"
+    "detail": "PLACA MAE DELTA-A520M2K AM4",
+    "memType": "DDR4"
   },
   {
     "id": "w14224",
     "category": "motherboard",
-    "name": "Placa Mae G-H610 Revenger DDR4 LGA1700",
+    "name": "Placa Mãe G-H610 Revenger DDR4 LGA1700",
     "brand": "Revenger",
     "code": "14224",
     "foto": "/fotos/14224.jpg",
@@ -1665,7 +1750,7 @@
   {
     "id": "w19632",
     "category": "motherboard",
-    "name": "Placa Mae Delta H510M2K",
+    "name": "Placa Mãe Delta H510M2K",
     "brand": "Delta",
     "code": "19632",
     "pixPrice": 479.9,
@@ -1677,12 +1762,13 @@
       "Delta"
     ],
     "detail": "PLACA MAE DELTA H510M2K",
-    "foto": "/fotos/19632.jpg"
+    "foto": "/fotos/19632.jpg",
+    "memType": "DDR4"
   },
   {
     "id": "w26090",
     "category": "motherboard",
-    "name": "Placa Mae Delta H510M2K",
+    "name": "Placa Mãe Delta H510M2K",
     "brand": "Delta",
     "code": "26090",
     "foto": "/fotos/26090.jpg",
@@ -1694,12 +1780,13 @@
       "Socket LGA1200",
       "Delta"
     ],
-    "detail": "L-PLACA MAE DELTA H510M2K"
+    "detail": "L-PLACA MAE DELTA H510M2K",
+    "memType": "DDR4"
   },
   {
     "id": "w11439",
     "category": "motherboard",
-    "name": "Placa Mae G-H510 DDR4 Lga 1200",
+    "name": "Placa Mãe G-H510 DDR4 LGA1200",
     "brand": "Knup",
     "code": "11439",
     "foto": "/fotos/11439.jpg",
@@ -1718,7 +1805,7 @@
   {
     "id": "w10491",
     "category": "motherboard",
-    "name": "Placa Mae H310MHP S1151 Biostar DDR4 Lga",
+    "name": "Placa Mãe H310MHP S1151 Biostar DDR4",
     "brand": "Biostar",
     "code": "10491",
     "foto": "/fotos/10491.jpg",
@@ -1737,7 +1824,7 @@
   {
     "id": "w18884",
     "category": "motherboard",
-    "name": "Placa Mae H610 Revenger DDR4 LGA1700",
+    "name": "Placa Mãe H610 Revenger DDR4 LGA1700",
     "brand": "Revenger",
     "code": "18884",
     "foto": "/fotos/18884.jpg",
@@ -1756,7 +1843,7 @@
   {
     "id": "w20491",
     "category": "motherboard",
-    "name": "Placa Mae Bpc-h510pm.2-g LGA1200",
+    "name": "Placa Mãe Bpc-h510pm.2-g LGA1200",
     "brand": "Bpc",
     "code": "20491",
     "pixPrice": 499.9,
@@ -1768,12 +1855,13 @@
       "Bpc"
     ],
     "detail": "L-PLACA MAE BPC-H510PM.2-G LGA1200",
-    "foto": "/fotos/20491.jpg"
+    "foto": "/fotos/20491.jpg",
+    "memType": "DDR4"
   },
   {
     "id": "w19941",
     "category": "motherboard",
-    "name": "Placa Mae H610 M.2 SSD Delta-h610m2k",
+    "name": "Placa Mãe H610 M.2 SSD Delta-h610m2k",
     "brand": "Delta",
     "code": "19941",
     "pixPrice": 519.9,
@@ -1790,7 +1878,7 @@
   {
     "id": "w21131",
     "category": "motherboard",
-    "name": "Placa Mae Lga 1700 G-B760 Revenger",
+    "name": "Placa Mãe LGA1700 G-B760 Revenger",
     "brand": "Revenger",
     "code": "21131",
     "foto": "/fotos/21131.jpg",
@@ -1807,7 +1895,7 @@
   {
     "id": "w18307",
     "category": "motherboard",
-    "name": "Placa Mae Lga 1700 G-B760 Revenger",
+    "name": "Placa Mãe LGA1700 G-B760 Revenger",
     "brand": "Revenger",
     "code": "18307",
     "foto": "/fotos/18307.jpg",
@@ -1824,7 +1912,7 @@
   {
     "id": "w19486",
     "category": "motherboard",
-    "name": "Placa Mae B450M-A DDR4 Angthumb",
+    "name": "Placa Mãe B450M-A DDR4 Angthumb",
     "brand": "Binario",
     "code": "19486",
     "foto": "/fotos/19486.jpg",
@@ -1843,7 +1931,7 @@
   {
     "id": "w13927",
     "category": "motherboard",
-    "name": "Placa Mae c/ Processador I7 G11800H DDR4",
+    "name": "Placa Mãe c/ Processador I7 G11800H DDR4",
     "brand": "Knup",
     "code": "13927",
     "foto": "/fotos/13927.jpg",
@@ -1859,7 +1947,7 @@
   {
     "id": "w16472",
     "category": "motherboard",
-    "name": "Placa Mae c/ Processador I7 G10870H DDR4",
+    "name": "Placa Mãe c/ Processador I7 G10870H DDR4",
     "brand": "Knup",
     "code": "16472",
     "foto": "/fotos/16472.jpg",
@@ -1875,7 +1963,7 @@
   {
     "id": "w19978",
     "category": "motherboard",
-    "name": "Placa Mae c/ Processador I5 G11500H DDR4",
+    "name": "Placa Mãe c/ Processador I5 G11500H DDR4",
     "brand": "Knup",
     "code": "19978",
     "pixPrice": 1579.9,
@@ -1891,21 +1979,25 @@
   {
     "id": "w19367",
     "category": "motherboard",
-    "name": "Placa Mae 9mx87eg7-00-g11 X870 Eagle",
+    "name": "Placa Mãe 9mx87eg7-00-g11 X870 Eagle",
     "brand": "Gigabyte",
     "code": "19367",
     "pixPrice": 2379.9,
     "stock": 13,
     "specs": [
+      "Socket AM5",
       "Gigabyte"
     ],
     "detail": "E-PLACA MAE 9MX87EG7-00-G11 X870 EAGLE",
-    "foto": "/fotos/19367.jpg"
+    "foto": "/fotos/19367.jpg",
+    "socket": "AM5",
+    "platform": "AMD",
+    "memType": "DDR5"
   },
   {
     "id": "w26287",
     "category": "motherboard",
-    "name": "Placa Mae Delta-a520m2k AM4 OEM",
+    "name": "Placa Mãe Delta-a520m2k AM4 OEM",
     "brand": "Delta",
     "code": "26287",
     "pixPrice": 399.9,
@@ -1916,12 +2008,13 @@
       "Socket AM4",
       "Delta"
     ],
-    "detail": "L-PLACA MAE DELTA-A520M2K AM4 OEM"
+    "detail": "L-PLACA MAE DELTA-A520M2K AM4 OEM",
+    "memType": "DDR4"
   },
   {
     "id": "w15588",
     "category": "motherboard",
-    "name": "Placa Mae H110B4U Mainboard Haoquing",
+    "name": "Placa Mãe H110B4U Mainboard Haoquing",
     "brand": "Haoquing",
     "code": "15588",
     "pixPrice": 389.9,
@@ -1932,12 +2025,13 @@
       "Socket LGA1151",
       "Haoquing"
     ],
-    "detail": "PLACA MAE H110B4U MAINBOARD HAOQUING"
+    "detail": "PLACA MAE H110B4U MAINBOARD HAOQUING",
+    "memType": "DDR4"
   },
   {
     "id": "w13636",
     "category": "motherboard",
-    "name": "Placa Mae C/processador DDR4 G-PC11400H",
+    "name": "Placa Mãe C/processador DDR4 G-PC11400H",
     "brand": "Knup",
     "code": "13636",
     "pixPrice": 1049.9,
@@ -1952,7 +2046,7 @@
   {
     "id": "w9388",
     "category": "memory",
-    "name": "Memoria PC 4GB DDR4 Smart 2133MHZ",
+    "name": "Memória PC 4GB DDR4 Smart 2133MHz",
     "brand": "Smart",
     "code": "9388",
     "pixPrice": 91.92,
@@ -1970,7 +2064,7 @@
   {
     "id": "w16642",
     "category": "memory",
-    "name": "Memoria PC 8GB DDR4 Axpro 3200MHZ",
+    "name": "Memória PC 8GB DDR4 Axpro 3200MHz",
     "brand": "Axpro",
     "code": "16642",
     "foto": "/fotos/16642.jpg",
@@ -1988,7 +2082,7 @@
   {
     "id": "w17211",
     "category": "memory",
-    "name": "Memoria PC 8GB DDR4 Kgt 2400MHZ",
+    "name": "Memória PC 8GB DDR4 Kgt 2400MHz",
     "brand": "Kingston",
     "code": "17211",
     "foto": "/fotos/17211.jpg",
@@ -2006,7 +2100,7 @@
   {
     "id": "w20959",
     "category": "memory",
-    "name": "Memoria PC 8GB DDR4 Hyperx 2400MHZ",
+    "name": "Memória PC 8GB DDR4 Hyperx 2400MHz",
     "brand": "Hyperx",
     "code": "20959",
     "foto": "/fotos/20959.jpg",
@@ -2024,7 +2118,7 @@
   {
     "id": "w17849",
     "category": "memory",
-    "name": "Memoria PC 8GB DDR3 Clanm 1600MHZ",
+    "name": "Memória PC 8GB DDR3 Clanm 1600MHz",
     "brand": "Clainm",
     "code": "17849",
     "foto": "/fotos/17849.jpg",
@@ -2042,7 +2136,7 @@
   {
     "id": "w8173",
     "category": "memory",
-    "name": "Memoria PC 8GB DDR3 1600MHZ OEM",
+    "name": "Memória PC 8GB DDR3 1600MHz OEM",
     "brand": "Sem marca",
     "code": "8173",
     "foto": "/fotos/8173.jpg",
@@ -2060,7 +2154,7 @@
   {
     "id": "w19932",
     "category": "memory",
-    "name": "Memoria PC 8GB DDR3 1600 MHZ Prodrive",
+    "name": "Memória PC 8GB DDR3 1600 MHZ Prodrive",
     "brand": "Prodrive",
     "code": "19932",
     "foto": "/fotos/19932.jpg",
@@ -2078,7 +2172,7 @@
   {
     "id": "w19384",
     "category": "memory",
-    "name": "Memoria PC 4GB DDR4 Teikon 2133MHZ",
+    "name": "Memória PC 4GB DDR4 Teikon 2133MHz",
     "brand": "Smart",
     "code": "19384",
     "pixPrice": 189.9,
@@ -2096,7 +2190,7 @@
   {
     "id": "w19385",
     "category": "memory",
-    "name": "Memoria PC 4GB DDR4 Goldkey 2400 MHZ",
+    "name": "Memória PC 4GB DDR4 Goldkey 2400 MHZ",
     "brand": "Kingston",
     "code": "19385",
     "pixPrice": 189.9,
@@ -2114,7 +2208,7 @@
   {
     "id": "w19685",
     "category": "memory",
-    "name": "Memoria PC 8GB DDR3 1600 MHZ Ara-1608p",
+    "name": "Memória PC 8GB DDR3 1600 MHZ Ara-1608p",
     "brand": "Aitek",
     "code": "19685",
     "foto": "/fotos/19685.jpg",
@@ -2132,7 +2226,7 @@
   {
     "id": "w19871",
     "category": "memory",
-    "name": "Memoria PC 4GB DDR4 Adata 2400MHZ",
+    "name": "Memória PC 4GB DDR4 Adata 2400MHz",
     "brand": "Adata ",
     "code": "19871",
     "foto": "/fotos/19871.jpg",
@@ -2150,7 +2244,7 @@
   {
     "id": "w20072",
     "category": "memory",
-    "name": "Memoria PC 4GB DDR4 Adata 2133MHZ",
+    "name": "Memória PC 4GB DDR4 Adata 2133MHz",
     "brand": "Adata ",
     "code": "20072",
     "pixPrice": 189.9,
@@ -2168,7 +2262,7 @@
   {
     "id": "w9390",
     "category": "memory",
-    "name": "Memoria PC 4GB DDR4 2666MHZ",
+    "name": "Memória PC 4GB DDR4 2666MHz",
     "brand": "Smart",
     "code": "9390",
     "foto": "/fotos/9390.jpg",
@@ -2186,7 +2280,7 @@
   {
     "id": "w17610",
     "category": "memory",
-    "name": "Memoria PC 16GB DDR4 Kgt 2666MHZ",
+    "name": "Memória PC 16GB DDR4 Kgt 2666MHz",
     "brand": "Kingston",
     "code": "17610",
     "foto": "/fotos/17610.jpg",
@@ -2204,7 +2298,7 @@
   {
     "id": "w7855",
     "category": "memory",
-    "name": "Memoria PC 8GB DDR4 Netcore 2666MHZ",
+    "name": "Memória PC 8GB DDR4 Netcore 2666MHz",
     "brand": "Netcore",
     "code": "7855",
     "foto": "/fotos/7855.jpg",
@@ -2222,7 +2316,7 @@
   {
     "id": "w1396",
     "category": "memory",
-    "name": "Memoria PC 8GB DDR4 2666 MHZ",
+    "name": "Memória PC 8GB DDR4 2666 MHZ",
     "brand": "Kingston",
     "code": "1396",
     "foto": "/fotos/1396.jpg",
@@ -2240,7 +2334,7 @@
   {
     "id": "w16120",
     "category": "memory",
-    "name": "Memoria PC 8GB DDR4 Desk 3200MHZ",
+    "name": "Memória PC 8GB DDR4 Desk 3200MHz",
     "brand": "Bpc",
     "code": "16120",
     "foto": "/fotos/16120.jpg",
@@ -2258,7 +2352,7 @@
   {
     "id": "w19145",
     "category": "memory",
-    "name": "Memoria PC 8GB DDR4 Kgt 3200MHZ",
+    "name": "Memória PC 8GB DDR4 Kgt 3200MHz",
     "brand": "Kingston",
     "code": "19145",
     "foto": "/fotos/19145.jpg",
@@ -2276,7 +2370,7 @@
   {
     "id": "w19865",
     "category": "memory",
-    "name": "Memoria PC 8GB DDR4 3200MHZ Fury",
+    "name": "Memória PC 8GB DDR4 3200MHz Fury",
     "brand": "Kingston",
     "code": "19865",
     "foto": "/fotos/19865.jpg",
@@ -2294,7 +2388,7 @@
   {
     "id": "w21336",
     "category": "memory",
-    "name": "Memoria PC 8GB DDR4 Keepdata 2666HZ",
+    "name": "Memória PC 8GB DDR4 Keepdata 2666HZ",
     "brand": "Keepdata",
     "code": "21336",
     "foto": "/fotos/21336.jpg",
@@ -2312,7 +2406,7 @@
   {
     "id": "w20049",
     "category": "memory",
-    "name": "Memoria PC 8GB DDR4 Keepdata 2666HZ",
+    "name": "Memória PC 8GB DDR4 Keepdata 2666HZ",
     "brand": "Keepdata",
     "code": "20049",
     "pixPrice": 469.9,
@@ -2330,7 +2424,7 @@
   {
     "id": "w18345",
     "category": "memory",
-    "name": "Memoria 8GB DDR4 Hayom 2666 MHZ",
+    "name": "Memória 8GB DDR4 Hayom 2666 MHZ",
     "brand": "Hayom",
     "code": "18345",
     "foto": "/fotos/18345.jpg",
@@ -2348,7 +2442,7 @@
   {
     "id": "w19346",
     "category": "memory",
-    "name": "Memoria PC 16GB DDR4 Kgt 3200MHZ",
+    "name": "Memória PC 16GB DDR4 Kgt 3200MHz",
     "brand": "Kingston",
     "code": "19346",
     "foto": "/fotos/19346.jpg",
@@ -2366,7 +2460,7 @@
   {
     "id": "w15523",
     "category": "memory",
-    "name": "Memoria PC 16GB DDR4 3200MHZ Hyperx Fury",
+    "name": "Memória PC 16GB DDR4 3200MHz Hyperx Fury",
     "brand": "Hyperx",
     "code": "15523",
     "foto": "/fotos/15523.jpg",
@@ -2384,7 +2478,7 @@
   {
     "id": "w20704",
     "category": "memory",
-    "name": "Memoria PC 16GB DDR5 Adata 6400MHZ Br",
+    "name": "Memória PC 16GB DDR5 Adata 6400MHz Br",
     "brand": "Adata ",
     "code": "20704",
     "foto": "/fotos/20704.jpg",
@@ -2402,7 +2496,7 @@
   {
     "id": "w20707",
     "category": "memory",
-    "name": "Memoria PC 16GB DDR5 Kgt 6400MHZ Pr",
+    "name": "Memória PC 16GB DDR5 Kgt 6400MHz Pr",
     "brand": "Kingston",
     "code": "20707",
     "foto": "/fotos/20707.jpg",
@@ -2420,7 +2514,7 @@
   {
     "id": "w26531",
     "category": "memory",
-    "name": "Memoria PC 16GB DDR4 2666MHZ Keepdata",
+    "name": "Memória PC 16GB DDR4 2666MHz Keepdata",
     "brand": "Keepdata",
     "code": "26531",
     "pixPrice": 789.9,
@@ -2437,7 +2531,7 @@
   {
     "id": "w26532",
     "category": "memory",
-    "name": "Memoria PC 16GB DDR4 2666MHZ Macrovip",
+    "name": "Memória PC 16GB DDR4 2666MHz Macrovip",
     "brand": "Macrovip",
     "code": "26532",
     "pixPrice": 789.9,
@@ -2454,7 +2548,7 @@
   {
     "id": "w26484",
     "category": "memory",
-    "name": "Memoria PC 8GB DDR4 Clanm 3200MHZ",
+    "name": "Memória PC 8GB DDR4 Clanm 3200MHz",
     "brand": "Clainm",
     "code": "26484",
     "pixPrice": 319.9,
@@ -2471,7 +2565,7 @@
   {
     "id": "w26486",
     "category": "memory",
-    "name": "Memoria PC 8GB DDR4 Clanm 3200MHZ Br",
+    "name": "Memória PC 8GB DDR4 Clanm 3200MHz Br",
     "brand": "Clainm",
     "code": "26486",
     "pixPrice": 329.9,
@@ -2488,7 +2582,7 @@
   {
     "id": "w26485",
     "category": "memory",
-    "name": "Memoria PC 8GB DDR4 Clanm 3200MHZ Pr",
+    "name": "Memória PC 8GB DDR4 Clanm 3200MHz Pr",
     "brand": "Clainm",
     "code": "26485",
     "pixPrice": 329.9,
@@ -2505,7 +2599,7 @@
   {
     "id": "w18403",
     "category": "memory",
-    "name": "Memoria PC 16GB DDR4 Kgt 2666MHZ",
+    "name": "Memória PC 16GB DDR4 Kgt 2666MHz",
     "brand": "Kingston",
     "code": "18403",
     "pixPrice": 779.9,
@@ -2522,7 +2616,7 @@
   {
     "id": "w17063",
     "category": "gpu",
-    "name": "Placa de Video Geforce G-GT610/2G Reven",
+    "name": "Placa de Vídeo Geforce G-GT610/2G Reven",
     "brand": "Knup",
     "code": "17063",
     "foto": "/fotos/17063.jpg",
@@ -2538,7 +2632,7 @@
   {
     "id": "w17103",
     "category": "gpu",
-    "name": "Placa de Video NVIDIA Geforce GT730/4G",
+    "name": "Placa de Vídeo NVIDIA Geforce GT730/4G",
     "brand": "Nvidia",
     "code": "17103",
     "foto": "/fotos/17103.jpg",
@@ -2554,7 +2648,7 @@
   {
     "id": "w21635",
     "category": "gpu",
-    "name": "Placa de Video NVIDIA Geforce GT730/4GB",
+    "name": "Placa de Vídeo NVIDIA Geforce GT730/4GB",
     "brand": "Knup",
     "code": "21635",
     "foto": "/fotos/21635.jpg",
@@ -2571,7 +2665,7 @@
   {
     "id": "w19296",
     "category": "gpu",
-    "name": "Placa de Video 4GB DDR5 GT740/4G Aitek",
+    "name": "Placa de Vídeo 4GB DDR5 GT740/4G Aitek",
     "brand": "Aitek",
     "code": "19296",
     "foto": "/fotos/19296.jpg",
@@ -2588,7 +2682,7 @@
   {
     "id": "w20485",
     "category": "gpu",
-    "name": "Placa de Video 4GB DDR5 G-GTX750TI",
+    "name": "Placa de Vídeo 4GB DDR5 G-GTX750TI",
     "brand": "Revenger",
     "code": "20485",
     "pixPrice": 719.9,
@@ -2605,7 +2699,7 @@
   {
     "id": "w19209",
     "category": "gpu",
-    "name": "Placa de Video 4GB DDR5 Delta-rx560",
+    "name": "Placa de Vídeo 4GB DDR5 Delta-rx560",
     "brand": "Aitek",
     "code": "19209",
     "foto": "/fotos/19209.jpg",
@@ -2622,7 +2716,7 @@
   {
     "id": "w20957",
     "category": "gpu",
-    "name": "Placa de Video 4GB DDR5 GTX1050TI",
+    "name": "Placa de Vídeo 4GB DDR5 GTX1050TI",
     "brand": "Nvidia",
     "code": "20957",
     "foto": "/fotos/20957.jpg",
@@ -2639,7 +2733,7 @@
   {
     "id": "w20166",
     "category": "gpu",
-    "name": "Placa de Video 8GB DDR5 Delta-rx580",
+    "name": "Placa de Vídeo 8GB DDR5 Delta-rx580",
     "brand": "Delta",
     "code": "20166",
     "pixPrice": 1189.9,
@@ -2656,7 +2750,7 @@
   {
     "id": "w26468",
     "category": "gpu",
-    "name": "Placa de Video GT610 2GB DDR3 Delta-gt610",
+    "name": "Placa de Vídeo GT610 2GB DDR3 Delta-gt610",
     "brand": "Delta",
     "code": "26468",
     "pixPrice": 229.9,
@@ -2670,7 +2764,7 @@
   {
     "id": "w26410",
     "category": "gpu",
-    "name": "Placa de Video G-GTX1660S/6G 6GB",
+    "name": "Placa de Vídeo G-GTX1660S/6G 6GB",
     "brand": "Revenger",
     "code": "26410",
     "pixPrice": 1569.9,
@@ -2683,7 +2777,7 @@
   {
     "id": "w19862",
     "category": "gpu",
-    "name": "Placa de Video RX5600XT 6GB Gddr6",
+    "name": "Placa de Vídeo RX5600XT 6GB Gddr6",
     "brand": "Delta",
     "code": "19862",
     "pixPrice": 1829.9,
@@ -2697,7 +2791,7 @@
   {
     "id": "w26412",
     "category": "gpu",
-    "name": "Placa de Video 4GB DDR5 Delta-rx550",
+    "name": "Placa de Vídeo 4GB DDR5 Delta-rx550",
     "brand": "Delta",
     "code": "26412",
     "pixPrice": 669.9,
@@ -2710,7 +2804,7 @@
   {
     "id": "w19027",
     "category": "gpu",
-    "name": "Placa de Video Rtx 5070 X2 Oc 12GB Gddr7",
+    "name": "Placa de Vídeo Rtx 5070 X2 Oc 12GB Gddr7",
     "brand": "Inno3D",
     "code": "19027",
     "pixPrice": 6317.06,
@@ -2723,7 +2817,7 @@
   {
     "id": "w26544",
     "category": "gpu",
-    "name": "Placa de Video RTX3060 12GBDDR6 Pr Clanm",
+    "name": "Placa de Vídeo RTX3060 12GBDDR6 Pr Clanm",
     "brand": "Clanm",
     "code": "26544",
     "pixPrice": 3259.9,
@@ -2736,7 +2830,7 @@
   {
     "id": "w21412",
     "category": "gpu",
-    "name": "Placa de Video Rx 7600 8GB Blizzards",
+    "name": "Placa de Vídeo Rx 7600 8GB Blizzards",
     "brand": "Haoquing",
     "code": "21412",
     "pixPrice": 2209.9,
@@ -2749,7 +2843,7 @@
   {
     "id": "w26088",
     "category": "gpu",
-    "name": "Placa de Video Vx Pro Vx GT730-4GD3-A",
+    "name": "Placa de Vídeo Vx Pro Vx GT730-4GD3-A",
     "brand": "Vx Pro",
     "code": "26088",
     "pixPrice": 319.9,
@@ -2763,7 +2857,7 @@
   {
     "id": "w17285",
     "category": "gpu",
-    "name": "Placa de Video NVIDIA Gef GT750TI/8G",
+    "name": "Placa de Vídeo NVIDIA Gef GT750TI/8G",
     "brand": "Revenger",
     "code": "17285",
     "pixPrice": 679.9,
@@ -2776,7 +2870,7 @@
   {
     "id": "w25878",
     "category": "storage",
-    "name": "SSD Pro-ultra Rapido 120GB Flashdrive",
+    "name": "SSD Pro-ultra Rápido 120GB Flashdrive",
     "brand": "Flash Drive",
     "code": "25878",
     "foto": "/fotos/25878.jpg",
@@ -2916,7 +3010,7 @@
   {
     "id": "w25877",
     "category": "storage",
-    "name": "SSD Pro-ultra Rapido 240 GB Flashdrive",
+    "name": "SSD Pro-ultra Rápido 240 GB Flashdrive",
     "brand": "Flash Drive",
     "code": "25877",
     "foto": "/fotos/25877.jpg",
@@ -3011,7 +3105,7 @@
   {
     "id": "w25940",
     "category": "storage",
-    "name": "SSD Pro-ultra Rapido 480GB Flashdrive",
+    "name": "SSD Pro-ultra Rápido 480GB Flashdrive",
     "brand": "Flash Drive",
     "code": "25940",
     "foto": "/fotos/25940.jpg",
@@ -3235,7 +3329,7 @@
   {
     "id": "w26330",
     "category": "storage",
-    "name": "SSD Pro-ultra Rapido 120GB Flashdrive",
+    "name": "SSD Pro-ultra Rápido 120GB Flashdrive",
     "brand": "Flash Drive",
     "code": "26330",
     "pixPrice": 149.9,
@@ -3248,7 +3342,7 @@
   {
     "id": "w26516",
     "category": "storage",
-    "name": "SSD Pro-ultra Rapido 240 GB Flashdrive",
+    "name": "SSD Pro-ultra Rápido 240 GB Flashdrive",
     "brand": "Flash Drive",
     "code": "26516",
     "pixPrice": 239.9,
@@ -3800,7 +3894,7 @@
   {
     "id": "w6074",
     "category": "cooler",
-    "name": "KIT Ventilacao c/ 02 Coolers 12V Padrao",
+    "name": "KIT Ventilação c/ 02 Coolers 12V Padrão",
     "brand": "Knup",
     "code": "6074",
     "foto": "/fotos/6074.jpg",
@@ -4099,7 +4193,7 @@
   {
     "id": "w19669",
     "category": "monitor",
-    "name": "Luminaria de LED para Monitor Ald-ac3065",
+    "name": "Luminária de LED para Monitor Ald-ac3065",
     "brand": "Aitek",
     "code": "19669",
     "foto": "/fotos/19669.jpg",
@@ -4420,7 +4514,7 @@
   {
     "id": "w20584",
     "category": "monitor",
-    "name": "Monitor LED 24\" Ips100hz Giratorio Axpro",
+    "name": "Monitor LED 24\" Ips100hz Giratório Axpro",
     "brand": "Axpro",
     "code": "20584",
     "pixPrice": 807.77,
@@ -4715,7 +4809,7 @@
   {
     "id": "w14565",
     "category": "keyboard",
-    "name": "Teclado USB Padrao com Fio Kb110 Duex",
+    "name": "Teclado USB Padrão com Fio Kb110 Duex",
     "brand": "C3 Tech",
     "code": "14565",
     "foto": "/fotos/14565.jpg",
@@ -4771,7 +4865,7 @@
   {
     "id": "w13675",
     "category": "keyboard",
-    "name": "Teclado Basico USB Tf100 Tc193 Mult",
+    "name": "Teclado Básico USB Tf100 Tc193 Mult",
     "brand": "Multilaser",
     "code": "13675",
     "foto": "/fotos/13675.jpg",
@@ -4827,7 +4921,7 @@
   {
     "id": "w26171",
     "category": "keyboard",
-    "name": "Teclado Multimidia Keyboard-km-3928",
+    "name": "Teclado Multimídia Keyboard-km-3928",
     "brand": "Ninja",
     "code": "26171",
     "foto": "/fotos/26171.jpg",
@@ -4841,7 +4935,7 @@
   {
     "id": "w16425",
     "category": "keyboard",
-    "name": "Combo Wireless 2.4GHZ Offi Mouse/teclado",
+    "name": "Combo Wireless 2.4GHz Offi Mouse/teclado",
     "brand": "Santana",
     "code": "16425",
     "foto": "/fotos/16425.jpg",
@@ -4855,7 +4949,7 @@
   {
     "id": "w18831",
     "category": "keyboard",
-    "name": "Teclado Multimidia Km3928u",
+    "name": "Teclado Multimídia Km3928u",
     "brand": "Ninja",
     "code": "18831",
     "foto": "/fotos/18831.jpg",
@@ -4995,7 +5089,7 @@
   {
     "id": "w25358",
     "category": "keyboard",
-    "name": "Teclado Semi Mercanico Pei-fr01",
+    "name": "Teclado Semi Mecânico Pei-fr01",
     "brand": "Peining",
     "code": "25358",
     "foto": "/fotos/25358.jpg",
@@ -5009,7 +5103,7 @@
   {
     "id": "w25361",
     "category": "keyboard",
-    "name": "Teclado Mercanico Pei-fr03",
+    "name": "Teclado Mecânico Pei-fr03",
     "brand": "Peining",
     "code": "25361",
     "foto": "/fotos/25361.jpg",
@@ -5079,7 +5173,7 @@
   {
     "id": "w21624",
     "category": "keyboard",
-    "name": "Teclado Mecanico RGB LED Delta-tm1071",
+    "name": "Teclado Mecânico RGB LED Delta-tm1071",
     "brand": "Delta",
     "code": "21624",
     "foto": "/fotos/21624.jpg",
@@ -5107,7 +5201,7 @@
   {
     "id": "w25369",
     "category": "keyboard",
-    "name": "Teclado com Fio Mecanico Pei-fr-3025",
+    "name": "Teclado com Fio Mecânico Pei-fr-3025",
     "brand": "Peining",
     "code": "25369",
     "foto": "/fotos/25369.jpg",
@@ -5121,7 +5215,7 @@
   {
     "id": "w21623",
     "category": "keyboard",
-    "name": "Teclado Mecanico RGB LED Delta-tm1111",
+    "name": "Teclado Mecânico RGB LED Delta-tm1111",
     "brand": "Delta",
     "code": "21623",
     "foto": "/fotos/21623.jpg",
@@ -5149,7 +5243,7 @@
   {
     "id": "w15665",
     "category": "keyboard",
-    "name": "Mini Teclado Dobravel C Touchpad Ims-950",
+    "name": "Mini Teclado Dobrável C Touchpad Ims-950",
     "brand": "Imenso",
     "code": "15665",
     "foto": "/fotos/15665.jpg",
@@ -5163,7 +5257,7 @@
   {
     "id": "w25365",
     "category": "keyboard",
-    "name": "Teclado com Fio Mecanico Pei-fr07",
+    "name": "Teclado com Fio Mecânico Pei-fr07",
     "brand": "Peining",
     "code": "25365",
     "foto": "/fotos/25365.jpg",
@@ -5177,7 +5271,7 @@
   {
     "id": "w25375",
     "category": "keyboard",
-    "name": "Teclado com Fio Mecanico Pei-fr06",
+    "name": "Teclado com Fio Mecânico Pei-fr06",
     "brand": "Peining",
     "code": "25375",
     "foto": "/fotos/25375.jpg",
@@ -5204,7 +5298,7 @@
   {
     "id": "w14566",
     "category": "mouse",
-    "name": "Mouse USB Padrao com Fio M365 Duex",
+    "name": "Mouse USB Padrão com Fio M365 Duex",
     "brand": "Duex",
     "code": "14566",
     "foto": "/fotos/14566.jpg",
@@ -5232,7 +5326,7 @@
   {
     "id": "w18978",
     "category": "mouse",
-    "name": "Mouse Optico USB com Fio Ka-601 Kapbom",
+    "name": "Mouse Óptico USB com Fio Ka-601 Kapbom",
     "brand": "Kap Bom",
     "code": "18978",
     "foto": "/fotos/18978.jpg",
@@ -5316,7 +5410,7 @@
   {
     "id": "w11411",
     "category": "mouse",
-    "name": "Mouse Optico Ninja Mo-m236 1200DPI USB",
+    "name": "Mouse Óptico Ninja Mo-m236 1200DPI USB",
     "brand": "Ninja",
     "code": "11411",
     "foto": "/fotos/11411.jpg",
@@ -5372,7 +5466,7 @@
   {
     "id": "w12905",
     "category": "mouse",
-    "name": "Mouse Optico Gamer 3200DPI Kp-v4 Knup",
+    "name": "Mouse Óptico Gamer 3200DPI Kp-v4 Knup",
     "brand": "Knup",
     "code": "12905",
     "foto": "/fotos/12905.jpg",
@@ -5386,7 +5480,7 @@
   {
     "id": "w16444",
     "category": "mouse",
-    "name": "Mouse Optico C/fiousb Acer M117 Branco",
+    "name": "Mouse Óptico C/fiousb Acer M117 Branco",
     "brand": "Acer",
     "code": "16444",
     "foto": "/fotos/16444.jpg",
@@ -5540,7 +5634,7 @@
   {
     "id": "w16446",
     "category": "mouse",
-    "name": "Mouse Optico com Fio USB Acer Emw130",
+    "name": "Mouse Óptico com Fio USB Acer Emw130",
     "brand": "Acer",
     "code": "16446",
     "foto": "/fotos/16446.jpg",
@@ -5582,7 +5676,7 @@
   {
     "id": "w18391",
     "category": "chair",
-    "name": "Cadeira Escritorio Ergonomica Mcc-p021",
+    "name": "Cadeira Escritorio Ergonômica Mcc-p021",
     "brand": "Tomate",
     "code": "18391",
     "foto": "/fotos/18391.jpg",

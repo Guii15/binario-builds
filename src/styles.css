@@ -1319,10 +1319,12 @@
   }
 }
 
-/* evita scroll horizontal no celular */
+/* evita scroll horizontal no celular. "clip" em vez de "hidden": hidden
+   transforma o body num container de rolagem e quebra o position: sticky
+   do cabecalho e do resumo da montagem. */
 html,
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* =====================================================================
@@ -3424,4 +3426,13 @@ button:not(:disabled):active,
 .dark .modelo-peca-cotar em,
 .dark .modelo-mais-cotar {
   color: #fbbf24;
+}
+
+/* Resumo da montagem acompanha a rolagem no computador; se ficar mais alto
+   que a tela, rola por dentro. */
+@media (min-width: 1025px) {
+  .summary-sidebar-card {
+    max-height: calc(100vh - 6rem);
+    overflow-y: auto;
+  }
 }

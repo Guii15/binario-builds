@@ -21,6 +21,12 @@ def limpa_descricao(desc: str) -> str:
     s = re.sub(r"\bMEMORIAPC\b", "MEMORIA PC", s, flags=re.I)
     s = re.sub(r"\bPLACA DEVIDEO\b", "PLACA DE VIDEO", s, flags=re.I)
     s = re.sub(r"\bRYZEN(\d)", r"RYZEN \1", s, flags=re.I)
+    # acento perdido na exportacao: "PLACA M?E"
+    s = s.replace("M?E", "MAE")
+    # socket e clock grudados: "3.5GHZLGA1700", "LGA17003.6GHZ", "3.2GHZ1155"
+    s = re.sub(r"(GHZ)(LGA|\d)", r"\1 \2", s, flags=re.I)
+    s = re.sub(r"(LGA(?:775|\d{4}))(?=\d)", r"\1 ", s, flags=re.I)
+    s = re.sub(r"\bLGA (775|\d{4})\b", r"LGA\1", s, flags=re.I)
     return s.strip()
 
 
@@ -32,6 +38,7 @@ def titulo(s: str) -> str:
         "TB", "MHZ", "GHZ", "W", "OEM", "BOX", "AM4", "AM5", "II", "III",
         "AMD", "INTEL", "NVIDIA", "ITX", "ATA", "PCIE", "WIFI", "BT", "ARGB",
         "KIT", "TG", "MB", "VGA", "HDMI", "DP", "IPS", "VA", "TN", "HZ", "MM",
+        "LGA", "FHD", "HD",
     }
     out = []
     for w in s.split():
@@ -50,8 +57,45 @@ def titulo(s: str) -> str:
         elif w.lower() in miudas and out:
             out.append(w.lower())
         else:
-            out.append(w.capitalize())
+            out.append(ACENTOS.get(w.capitalize(), w.capitalize()))
     return " ".join(out)
+
+
+# WinThor guarda sem acento. Palavras que aparecem nos nomes das pecas.
+ACENTOS = {
+    "Mae": "Mãe", "Memoria": "Memória", "Video": "Vídeo", "Multimidia": "Multimídia",
+    "Mecanico": "Mecânico", "Mercanico": "Mecânico", "Padrao": "Padrão", "Basico": "Básico",
+    "Giratorio": "Giratório", "Rapido": "Rápido", "Portatil": "Portátil", "Ate": "Até",
+    "Dobravel": "Dobrável", "Ergonomica": "Ergonômica", "Ventilacao": "Ventilação",
+    "Luminaria": "Luminária", "Cristal": "Cristal", "Optico": "Óptico",
+}
+
+
+def nome_exibicao(desc: str, cat: str) -> str:
+    """Nome que aparece no card: titulo() mais os ajustes de cada categoria."""
+    n = titulo(desc)
+    n = re.sub(r"(\d)GHZ\b", r"\1GHz", n)
+    n = re.sub(r"(\d)MHZ\b", r"\1MHz", n)
+    n = re.sub(r"(\d)HZ\b", r"\1Hz", n)
+    if cat == "cpu":
+        # "I5-14400", "INTEL I5 6600K", "Int I5 9400" -> "Intel Core i5-14400"
+        n = re.sub(
+            r"\b(?:Intel |INTEL |Int )?(?:Core )?I([3579])[- ]?(\d{3,5}[A-Z]{0,2})\b",
+            r"Intel Core i\1-\2",
+            n,
+        )
+        n = re.sub(r"\bOem-proc\w*", "OEM", n, flags=re.I)
+        n = re.sub(r"^Processador (?:Pentium |Dual Core |Celeron )?G(\d{4})", r"Processador Intel Pentium G\1", n)
+        n = re.sub(r"^Processador Ryzen", "Processador AMD Ryzen", n)
+        n = re.sub(r"(\d\.\d+)MHz", r"\1GHz", n)  # "3.20MHZ" no WinThor e GHz
+        sock = socket_intel(desc.upper())
+        if sock:
+            n = re.sub(r"\bLGA\d{3,4}\b", sock, n)
+        # numero de socket solto ("3.2GHz 1155") as vezes vem errado na
+        # descricao; o socket certo ja esta no campo socket.
+        n = re.sub(r"(?<!LGA)\s(1150|1151|1155|1156|1200|1700)\b", "", n)
+        n = re.sub(r"\s+-\s*(OEM)?$", r" \1", n).strip()
+    return n
 
 
 # ------------------------------------------------------------ exclusoes ---
@@ -63,6 +107,8 @@ EXCLUIR = [
     r"CASE P/", r"\bCASE\b.*\bSSD\b", r"COMPARTIMENTO", r"CARREGADOR",
     r"VEICULAR", r"CELULAR", r"\bTV\b", r"PROJETOR", r"SPLITTER",
     r"EXTENSOR", r"ADAPTADOR", r"CABO", r"HUB ", r"BATERIA",
+    # "MINI PROCESSADOR PORTATIL" e processador de alimentos, nao CPU
+    r"PROCESSADOR PORTATIL", r"PROCESSADOR DE ALIMENTO",
 ]
 # Produto acabado (maquina montada) - tem vitrine propria no site, nao e peca.
 MAQUINA = r"^(COMPUTADOR|PC )|\bALL IN ONE\b"
@@ -81,7 +127,7 @@ def classifica(d: str):
     if re.search(MAQUINA, U):
         return None  # maquina montada, fora do montador de pecas
     # combo placa-mae + processador: conta como placa-mae
-    if re.search(r"PLACA MAE.*PROCESSADOR|PLACA MAE C/ PROC", U):
+    if re.search(r"PLACA MAE.*PROCESSADOR|PLACA MAE C/ ?PROC", U):
         return "motherboard"
     if re.search(r"PLACA MAE|PLACA-MAE|MAINBOARD", U):
         return "motherboard"
@@ -138,6 +184,12 @@ SOCKETS = ["AM5", "AM4", "AM3", "LGA1700", "LGA1200", "LGA1151", "LGA1150",
 def infere_socket(d: str, cat: str):
     if cat not in ("cpu", "motherboard"):
         return None
+    # Processador Intel: a geracao do modelo manda. A descricao as vezes traz
+    # o socket errado ("I7-8700 ... LGA1150").
+    if cat == "cpu":
+        sock = socket_intel(d.upper())
+        if sock:
+            return sock
     U = re.sub(r"[\s\-]", "", d.upper())
     for s in SOCKETS:
         if s in U:
@@ -146,7 +198,7 @@ def infere_socket(d: str, cat: str):
     # Sem \b no fim: o chipset costuma vir grudado no modelo (H310MHP, B550M).
     CHIPSET = {
         r"\bA520|\bB550|\bA320|\bB450|\bX570": "AM4",
-        r"\bB650|\bX670|\bA620": "AM5",
+        r"\bB650|\bX670|\bA620|\bB850|\bX870": "AM5",
         r"\bH610|\bB660|\bB760|\bZ690|\bZ790|\bH710": "LGA1700",
         r"\bH510|\bH511|\bB560|\bZ590|\bH470|\bB460": "LGA1200",
         r"\bH310|\bB250|\bB360|\bH110|\bZ370": "LGA1151",
@@ -167,12 +219,41 @@ def infere_socket(d: str, cat: str):
     return None
 
 
-def infere_memtype(d: str, cat: str):
+def socket_intel(U: str):
+    """Socket do Intel pelo modelo: i5-4570 e 4a geracao, i5-14400 e 14a."""
+    m = re.search(r"\bI[3579][- ]?(\d{3,5})", U)
+    if m:
+        num = m.group(1)
+        if len(num) == 3:  # i3-540, i5-750: 1a geracao
+            return "LGA1156"
+        ger = int(num[:2]) if len(num) == 5 else int(num[0])
+        for gens, sock in (
+            ((2, 3), "LGA1155"), ((4,), "LGA1150"), ((6, 7, 8, 9), "LGA1151"),
+            ((10, 11), "LGA1200"), ((12, 13, 14), "LGA1700"),
+        ):
+            if ger in gens:
+                return sock
+    # Pentium/Celeron: G4400, G5400 -> LGA1151; G6900, G7400 -> LGA1700
+    m = re.search(r"\bG(\d)\d{3}T?\b", U)
+    if m:
+        return {"1": "LGA1155", "2": "LGA1155", "3": "LGA1150", "4": "LGA1151",
+                "5": "LGA1151", "6": "LGA1700", "7": "LGA1700"}.get(m.group(1))
+    return None
+
+
+def infere_memtype(d: str, cat: str, socket=None):
     """CUIDADO: em placa de video, DDR5 = memoria de VIDEO, nao serve pra compat."""
     if cat not in ("motherboard", "memory"):
         return None
     m = re.search(r"\bDDR([345])\b", d.upper())
-    return f"DDR{m.group(1)}" if m else None
+    if m:
+        return f"DDR{m.group(1)}"
+    # Placa sem o tipo escrito: o socket resolve quase sempre. LGA1700 tem
+    # placa DDR4 e DDR5, entao fica sem (conferir na mao).
+    if cat == "motherboard" and socket:
+        return {"AM5": "DDR5", "AM4": "DDR4", "LGA1200": "DDR4", "LGA1151": "DDR4",
+                "LGA1150": "DDR3", "LGA1155": "DDR3", "LGA1156": "DDR3"}.get(socket)
+    return None
 
 
 def infere_watts(d: str, cat: str):
@@ -193,9 +274,9 @@ def infere_watts(d: str, cat: str):
             return 105
         if re.search(r"RYZEN [35]", U):
             return 65
-        if re.search(r"CORE I[79]", U):
+        if re.search(r"\bI[79][- ]?\d", U):
             return 125
-        if re.search(r"CORE I[35]", U):
+        if re.search(r"\bI[35][- ]?\d|PENTIUM|CELERON", U):
             return 65
         return None
     return None
