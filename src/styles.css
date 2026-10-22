@@ -184,7 +184,6 @@
     border-radius: 9999px;
     font-weight: 700;
     font-size: 0.7rem;
-    text-transform: uppercase;
   }
 
   /* Header */
@@ -228,8 +227,6 @@
   .brand-title small {
     font-size: 0.62rem;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
     color: #1a7f4b;
     margin-top: 0.15rem;
   }
@@ -744,7 +741,6 @@
   .summary-item-label small {
     font-size: 0.62rem;
     color: #6a7689;
-    text-transform: uppercase;
     font-weight: 600;
   }
   .summary-item-label strong {
@@ -834,7 +830,6 @@
   .pix-total-block span {
     font-size: 0.72rem;
     color: #6a7689;
-    text-transform: uppercase;
     font-weight: 600;
   }
   .pix-total-block strong {
@@ -940,7 +935,6 @@
   .preset-kicker {
     font-size: 0.7rem;
     font-weight: 700;
-    text-transform: uppercase;
     color: #0b4fa8;
     margin-bottom: 0.5rem;
   }
@@ -1079,7 +1073,6 @@
   background: #e9eef7;
   border: 1px solid #d7dde8;
   color: #2c3747;
-  font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 600;
   white-space: nowrap;
@@ -1131,8 +1124,6 @@
   display: inline-block;
   font-size: 0.65rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: #1a7f4b;
 }
 .review-head h1 {
@@ -1411,6 +1402,7 @@ body {
 .stock-machine-card {
   display: flex;
   flex-direction: column;
+  align-items: stretch;
   gap: 1rem;
   height: 100%;
   padding: 1.1rem;
@@ -1460,7 +1452,7 @@ body {
 .stock-machine-price {
   display: flex;
   align-items: baseline;
-  justify-content: center;
+  justify-content: space-between;
   gap: 0.35rem;
 }
 .stock-machine-price strong {
@@ -1472,8 +1464,6 @@ body {
 .stock-machine-price span {
   font-size: 0.7rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
   color: #6a7689;
 }
 
@@ -1518,8 +1508,6 @@ body {
   font-family: var(--font-display);
   font-size: 0.72rem;
   font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: #ffffff;
   margin-bottom: 0.2rem;
 }
@@ -1705,8 +1693,6 @@ body {
 .vendedor-chip-texto small {
   font-size: 0.58rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
   color: #8f9bac;
 }
 .vendedor-chip-texto strong {
@@ -1773,8 +1759,6 @@ body {
   display: block;
   font-size: 0.68rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: #8f9bac;
   margin-top: 0.25rem;
 }
@@ -2337,6 +2321,9 @@ body {
 }
 .dark .orcamento-restaurado-aviso button {
   color: #a5b4fc;
+}
+.dark .stock-machine-foot {
+  border-top-color: rgba(148, 163, 184, 0.18);
 }
 .dark .stock-machine-tone {
   background: rgba(5, 150, 105, 0.16);

@@ -890,22 +890,25 @@ function Index() {
     },
   ];
 
-  const visibleParts = parts.filter((part) => {
-    if (part.category !== active) return false;
-    if (part.stock === 0) return false;
-    if (platform !== "all" && part.platform && part.platform !== platform) return false;
-    if (active === "motherboard" && cpu?.socket && part.socket !== cpu.socket) return false;
-    if (active === "memory" && boardMemType && part.memType && part.memType !== boardMemType)
-      return false;
-    if (active === "psu" && requiredWatts && (part.watts ?? 0) < requiredWatts) return false;
-    if (precoFaixa === "ate500" && part.pixPrice > 500) return false;
-    if (precoFaixa === "500a1000" && (part.pixPrice < 500 || part.pixPrice > 1000)) return false;
-    if (precoFaixa === "1000a2000" && (part.pixPrice < 1000 || part.pixPrice > 2000)) return false;
-    if (precoFaixa === "acima2000" && part.pixPrice < 2000) return false;
-    return `${part.name} ${part.brand} ${part.code} ${part.specs.join(" ")}`
-      .toLowerCase()
-      .includes(search.toLowerCase());
-  });
+  const visibleParts = parts
+    .filter((part) => {
+      if (part.category !== active) return false;
+      if (part.stock === 0) return false;
+      if (platform !== "all" && part.platform && part.platform !== platform) return false;
+      if (active === "motherboard" && cpu?.socket && part.socket !== cpu.socket) return false;
+      if (active === "memory" && boardMemType && part.memType && part.memType !== boardMemType)
+        return false;
+      if (active === "psu" && requiredWatts && (part.watts ?? 0) < requiredWatts) return false;
+      if (precoFaixa === "ate500" && part.pixPrice > 500) return false;
+      if (precoFaixa === "500a1000" && (part.pixPrice < 500 || part.pixPrice > 1000)) return false;
+      if (precoFaixa === "1000a2000" && (part.pixPrice < 1000 || part.pixPrice > 2000))
+        return false;
+      if (precoFaixa === "acima2000" && part.pixPrice < 2000) return false;
+      return `${part.name} ${part.brand} ${part.code} ${part.specs.join(" ")}`
+        .toLowerCase()
+        .includes(search.toLowerCase());
+    })
+    .sort((a, b) => Number(!a.foto) - Number(!b.foto) || a.pixPrice - b.pixPrice);
 
   function selectPart(part: Part) {
     if (part.category === "memory" && slotsCheios) return;
@@ -1645,7 +1648,7 @@ function Index() {
           <span className="flex items-center gap-1 text-slate-800">
             <Zap className="w-4 h-4 text-amber-600" /> Fonte recomendada
           </span>
-          <span className="font-mono text-slate-800 font-bold">
+          <span className={requiredWatts ? "text-slate-800 font-bold" : "text-slate-500"}>
             {requiredWatts ? `${requiredWatts} W` : "a calcular"}
           </span>
         </div>
@@ -2681,6 +2684,10 @@ function Index() {
                   </div>
 
                   <div className="stock-machine-foot">
+                    <div className="stock-machine-price">
+                      <span>À vista</span>
+                      <strong>{money.format(machine.pixPrice)}</strong>
+                    </div>
                     <button
                       onClick={() =>
                         setSellerIntent({
@@ -2693,10 +2700,6 @@ function Index() {
                       <MessageCircle className="w-5 h-5 fill-current" />
                       <span>Comprar pelo WhatsApp</span>
                     </button>
-                    <div className="stock-machine-price">
-                      <strong>{money.format(machine.pixPrice)}</strong>
-                      <span></span>
-                    </div>
                   </div>
                 </div>
               ))}
